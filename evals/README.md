@@ -12,7 +12,8 @@ evals/
 │       ├── skill-fired.md   # tool_used: the expected skill loaded (indicator, with-plugin arm only)
 │       └── g<N>-<type>.md   # llm or regex graders: PASS/FAIL rubric
 ├── BASELINE.md              # gaps observed without the plugin
-├── RESULTS.md               # results with the plugin, per model
+├── RESULTS.md               # results with the plugin, grader changes, triggers, models
+├── triggers/                # trigger query sets for the skill-creator trigger evaluation
 └── results/                 # run outputs (gitignored)
 ```
 
@@ -38,6 +39,12 @@ scripts/run-evals.sh --baseline --model sonnet --runs 1    # no-plugin baseline 
 ```
 
 Any other `claude plugin eval` option is passed through. WebFetch and WebSearch are granted so skills can ground answers in documentation.
+
+Every run spends the CLI account's plan usage (each case is a full `claude` child process). Before a bulk run, make one test call (`claude -p "Reply with the single word OK."`); if it reports a usage or rate limit, do not start, because refused calls are scored as failures. Re-run only the cases you changed (`--cases`), and keep full runs for releases.
+
+### Trigger accuracy
+
+[triggers/](triggers/) holds 16 queries per skill for `learn`, `quiz`, `challenge` and `mock`. Run them with the skill-creator skill's `scripts/run_eval.py` from a scratch directory that has its own `.claude/` folder (the runner writes a temporary command file there), with `CLAUDECODE` unset; see [triggers/README.md](triggers/README.md) and the results in [RESULTS.md](RESULTS.md).
 
 ## Coverage
 

@@ -92,7 +92,7 @@ Skill-specific:
 - [x] I2 Mermaid diagrams in README: component overview, `init` sequence, quiz sequence, module status states, data model (render-checked on GitHub) — 5 diagrams (overview, init, quiz answer, module status, data model) rendered with Mermaid 10.9.1 in a local page: 5 SVGs, 0 errors
 - [x] I3 `CONTRIBUTING.md`: how to add a pack, run evals, privacy rules, commit style — `CONTRIBUTING.md`: setup-hooks, adding a pack, evals, checks, privacy rules, releases, commit style
 - [x] I4 `CHANGELOG.md` with 0.1.0 entry — `## [0.1.0]` with an Added list; release date filled in at publishing (L4)
-- [ ] I5 `evals/README.md`; `docs/` up to date with any deviations made during the build
+- [x] I5 `evals/README.md`; `docs/` up to date with any deviations made during the build — `evals/README.md` covers layout, running, `--cases`, the usage rule and trigger sets; build decisions recorded in ARCHITECTURE (ids, Google Skills numbering and hours, read-only mode, gaps eligibility, mock coverage, snapshot ids, reset scope, page notices and footer, seeding paths, Project skills line) and CHANGELOG build notes
 
 ## J. Quality gates
 
