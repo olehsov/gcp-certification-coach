@@ -13,11 +13,11 @@ Legend: `[ ]` open · `[x]` done · `[~]` done with a deviation (explain in the 
 
 ## B. Repository structure (ADR 0009, ARCHITECTURE §3)
 
-- [ ] B1 `.claude-plugin/marketplace.json` at repo root listing `gcp-cert-coach` from `./plugins/gcp-cert-coach`
-- [ ] B2 `plugins/gcp-cert-coach/.claude-plugin/plugin.json` with `name: gcp-cert-coach`, `displayName: GCP Certification Coach`, `version: 0.1.0`, description with non-affiliation disclaimer, `author` (public GitHub handle only), `license: MIT`, homepage and repository URLs
-- [ ] B3 Nine skill folders: `init`, `learn`, `quiz`, `challenge`, `mock`, `progress`, `sync`, `rebuild`, `reset`; folder name equals `name`
-- [ ] B4 No `bin/` inside the plugin; only `plugin.json` inside the plugin's `.claude-plugin/`
-- [ ] B5 `docs/`, `evals/`, `scripts/`, `.github/` outside the plugin folder
+- [x] B1 `.claude-plugin/marketplace.json` at repo root listing `gcp-cert-coach` from `./plugins/gcp-cert-coach` — `.claude-plugin/marketplace.json`; `claude plugin validate .` passed
+- [x] B2 `plugins/gcp-cert-coach/.claude-plugin/plugin.json` with `name: gcp-cert-coach`, `displayName: GCP Certification Coach`, `version: 0.1.0`, description with non-affiliation disclaimer, `author` (public GitHub handle only), `license: MIT`, homepage and repository URLs — author object with the owner handle and profile URL; validate --strict passed
+- [x] B3 Nine skill folders: `init`, `learn`, `quiz`, `challenge`, `mock`, `progress`, `sync`, `rebuild`, `reset`; folder name equals `name` — `plugins/gcp-cert-coach/skills/*`
+- [x] B4 No `bin/` inside the plugin; only `plugin.json` inside the plugin's `.claude-plugin/` — CI step "Plugin folder limits" also checks `bin/`
+- [x] B5 `docs/`, `evals/`, `scripts/`, `.github/` outside the plugin folder — repo root
 - [ ] B6 `README.md`, `LICENSE` (MIT), `LICENSE-CONTENT` (CC BY 4.0), `CHANGELOG.md`, `CONTRIBUTING.md` at repo root; plugin `README.md` (≥ 40 words: what it does, how to use it, what data it sends) and `LICENSE` inside the plugin folder
 
 ## C. Evals first (best practices: evaluation-driven development)
