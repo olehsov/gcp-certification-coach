@@ -32,7 +32,8 @@ Eval runs happen in Claude Code in an empty working directory, without the artif
 claude auth login                                          # once; eval child processes use the CLI login
 scripts/run-evals.sh --model sonnet --runs 1 -j 4          # full suite, with and without the plugin
 scripts/run-evals.sh --tag quiz --model haiku              # one skill's cases
-scripts/run-evals.sh --case 'quiz-*' --runs 3              # by name glob
+scripts/run-evals.sh --case 'quiz-*' --runs 3              # by name glob (one glob, no braces)
+scripts/run-evals.sh --cases quiz-pretest,mock-verdict-hard --model haiku  # a named subset
 scripts/run-evals.sh --baseline --model sonnet --runs 1    # no-plugin baseline only
 ```
 

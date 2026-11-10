@@ -1,0 +1,66 @@
+[
+ {
+  "query": "I don't get the difference between Cloud NAT and Private Google Access, I'm studying for the ACE exam",
+  "should_trigger": true
+ },
+ {
+  "query": "when would the associate cloud engineer exam want Spanner instead of Cloud SQL?",
+  "should_trigger": true
+ },
+ {
+  "query": "help me understand GCS storage classes for my GCP cert",
+  "should_trigger": true
+ },
+ {
+  "query": "explain VPC peering vs Shared VPC like I'm prepping for the ACE",
+  "should_trigger": true
+ },
+ {
+  "query": "here are the steps from my qwiklab: gcloud compute instances create ... --tags=http-server, then a firewall rule. what is each step doing?",
+  "should_trigger": true
+ },
+ {
+  "query": "can you turn the transcript of the Kubernetes Engine video from my GCP course into study notes?",
+  "should_trigger": true
+ },
+ {
+  "query": "what are the common exam traps around IAM basic vs predefined roles? google cloud cert prep",
+  "should_trigger": true
+ },
+ {
+  "query": "compare managed instance groups and unmanaged instance groups for my cloud engineer exam",
+  "should_trigger": true
+ },
+ {
+  "query": "quiz me on VPC networking, I'm doing ACE prep",
+  "should_trigger": false
+ },
+ {
+  "query": "give me a 50 question mock exam for associate cloud engineer",
+  "should_trigger": false
+ },
+ {
+  "query": "give me a hands-on challenge on least-privilege service accounts",
+  "should_trigger": false
+ },
+ {
+  "query": "I finished course 2 module 3 of the ACE path, mark it done",
+  "should_trigger": false
+ },
+ {
+  "query": "explain the difference between TCP and UDP for my networking class",
+  "should_trigger": false
+ },
+ {
+  "query": "turn these lecture slides on photosynthesis into notes",
+  "should_trigger": false
+ },
+ {
+  "query": "explain how AWS IAM policies are evaluated",
+  "should_trigger": false
+ },
+ {
+  "query": "what's the difference between a list and a tuple in python?",
+  "should_trigger": false
+ }
+]

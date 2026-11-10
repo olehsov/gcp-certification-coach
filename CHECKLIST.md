@@ -68,7 +68,7 @@ Skill-specific:
 - [x] F1 All constants from §6 present in the pack's scoring file with a `rationale` per value — `packs/ace/scoring.yaml`: every constant of §6 plus `rationale` keyed by dotted path; a script check found no constant without rationale
 - [x] F2 `init` copies scoring into `settings.scoring`; other skills read constants only from the tracker — `build_seed.py` copies the whole scoring.yaml into `settings.scoring`; skills read constants from the tracker (defaults only as a fallback with a rebuild suggestion)
 - [x] F3 Standard and Hard profiles complete — `profiles.standard` and `profiles.hard` complete (cap, intervals, decay, readiness gates, mock bands)
-- [ ] F4 Verified on claude.ai that a skill can read its own `references/` and `assets/` (ADR 0006 build-time check); result noted here
+- [ ] F4 Verified on claude.ai that a skill can read its own `references/` and `assets/` (ADR 0006 build-time check); result noted here — checked in the manual test, step K2c
 
 ## G. ACE pack (ARCHITECTURE §7, docs/seed/ace-path-snapshot.yaml)
 
@@ -97,9 +97,9 @@ Skill-specific:
 ## J. Quality gates
 
 - [ ] J1 `claude plugin validate ./plugins/gcp-cert-coach` passes
-- [~] J2 `claude plugin eval` passes and beats the baseline; results summarized in `evals/RESULTS.md` — in progress: run 1 (Sonnet, 1 run/arm) with-plugin mean 0.77 vs without 0.39; 9 failing cases triaged (6 grader wording fixed to match the spec, skill fixes in init, sync, learn); re-run pending; `evals/RESULTS.md` not written yet
-- [~] J3 Descriptions tuned with the skill-creator skill for trigger accuracy (no false triggers between `quiz`, `mock`, `challenge`, `learn`) — in progress: skill-creator trigger evals (16 queries each, Sonnet 5.5, 1 run): 0 false triggers; misses on positives (learn 5/8, quiz 5/8, challenge 5/8, mock 6/8); descriptions rewritten, re-run pending
-- [~] J4 `/skill-doctor` report reviewed; issues fixed or explained — run once: each plugin skill costs ~220–290 listing tokens per turn, no usage yet (new plugin); decision on shortening descriptions pending the trigger re-run
+- [ ] J2 `claude plugin eval` passes and beats the baseline; results summarized in `evals/RESULTS.md` — progress: run 1 with 0.77 vs without 0.39; targeted run 2 (15 cases, with-plugin only): init, sync, progress cases all pass; open: learn-no-course-text (skill not firing), rebuild-migrate (skill now lists migration steps), 3 graders reworded as numbered conditions; full run pending; RESULTS.md drafted (grader changes done)
+- [ ] J3 Descriptions tuned with the skill-creator skill for trigger accuracy (no false triggers between `quiz`, `mock`, `challenge`, `learn`) — progress: sets now in `evals/triggers/`; descriptions rewritten twice; this session's trigger runs are INVALID (CLI usage limit hit, limited calls counted as misses; 0 false triggers); re-run needed, target 7/8 positives
+- [ ] J4 `/skill-doctor` report reviewed; issues fixed or explained — progress: run once (~220–290 listing tokens per skill); decision pending the trigger re-run
 - [ ] J5 Tested with Haiku, Sonnet and Opus; notes in `evals/RESULTS.md`
 - [ ] J6 `scripts/check-privacy.sh` passes (emails, claude.ai artifact URLs, qwiklabs, project-id and billing-account patterns, API keys, non-English text in skills and templates, personal denylist from `~/.config/gcp-cert-coach/denylist.txt` when present)
 - [ ] J7 `.github/workflows/validate.yml` runs plugin validate, the privacy check and gitleaks on push and pull request
@@ -114,9 +114,12 @@ Skill-specific:
 ## K. Manual end-to-end test on claude.ai (maintainer, before publishing)
 
 - [ ] K1 Plugin zipped and uploaded via Customize → Plugins → Add → Upload plugin
-- [ ] K2 In a new Project: `init` for ACE in a non-English language; tracker published and filled
+- [ ] K2 In a new Project, with code execution **on**: `init` for ACE in a non-English language; tracker published and filled; init says it seeded with the seed script (path A); note any PyYAML install step
+- [ ] K2b In a second new Project, with code execution **off** (Settings → Capabilities): `init` for ACE; init says it seeded without the script (path B), never asks to enable code execution; counts on the page match K2 (activities, modules, concepts). If claude.ai does not offer plugin skills at all with code execution off, record that, and test path B instead by telling init in K2b that the script cannot be run
+- [ ] K2c F4 check during K2/K2b: init read `assets/packs/ace/*.yaml` and `assets/tracker.html` from its own folder (the tree shows Google Skills titles; the page title is `ACE Cert Coach`); `rebuild` read its own `assets/tracker.html`; `progress` read its own `references/browser-progress-check.md`. Record the result in F4
+- [ ] K2d The data tool accepted 50-write batches; `set`/`update` wording in the skills matched the tool
 - [ ] K3 Mark progress manually and via browser check
-- [ ] K4 Quiz of 5 questions: only completed modules, confidence collected, tracker updates live
+- [ ] K4 Quiz of 5 questions: only completed modules, confidence collected, tracker updates live; Mode and Difficulty toggles on the page write `meta/settings`
 - [ ] K5 Pause, then quiz: plan resumes
 - [ ] K6 `rebuild` keeps data; `reset` snapshots and asks for confirmation
 - [ ] K7 Issues found are fixed and re-tested

@@ -1,0 +1,66 @@
+[
+ {
+  "query": "give me a full mock exam for the associate cloud engineer",
+  "should_trigger": true
+ },
+ {
+  "query": "am I ready to book the ACE exam?",
+  "should_trigger": true
+ },
+ {
+  "query": "let's do an exam simulation, 50 questions, google cloud ACE",
+  "should_trigger": true
+ },
+ {
+  "query": "start a practice exam like the real GCP cert",
+  "should_trigger": true
+ },
+ {
+  "query": "question 12 of 50: C, confidence 3",
+  "should_trigger": true
+ },
+ {
+  "query": "I just did a full-length practice test for ACE and got 72%, weakest in networking. should I book?",
+  "should_trigger": true
+ },
+ {
+  "query": "full length practice exam for professional cloud architect please",
+  "should_trigger": true
+ },
+ {
+  "query": "run a timed-style mock for my google cloud certification",
+  "should_trigger": true
+ },
+ {
+  "query": "quiz me with 5 questions on Cloud Storage for ACE",
+  "should_trigger": false
+ },
+ {
+  "query": "next question",
+  "should_trigger": false
+ },
+ {
+  "query": "give me a hands-on challenge on GKE",
+  "should_trigger": false
+ },
+ {
+  "query": "explain what the exam guide sections of the ACE cover",
+  "should_trigger": false
+ },
+ {
+  "query": "mock up a landing page for my bakery",
+  "should_trigger": false
+ },
+ {
+  "query": "give me a mock interview for a product manager role",
+  "should_trigger": false
+ },
+ {
+  "query": "am I ready to book a flight to Tokyo in March?",
+  "should_trigger": false
+ },
+ {
+  "query": "full practice exam for the AWS cloud practitioner",
+  "should_trigger": false
+ }
+]

@@ -136,8 +136,10 @@ sequenceDiagram
   participant W as Google Cloud pages and Google Skills
   participant A as Tracker
   L->>C: /gcp-cert-coach:init
-  C->>L: Language? Certification?
-  L->>C: Ukrainian, ACE
+  C->>L: Language?
+  L->>C: Ukrainian
+  C->>L: Certification? (current list)
+  L->>C: ACE
   C->>C: Load the curated pack (or generate a beta pack from W)
   C->>L: Mode, difficulty, weekly hours, exam date?
   C->>L: What have you completed? (type it or check the site)
@@ -212,7 +214,7 @@ Design documents: [PRD](docs/PRD.md), [architecture](docs/ARCHITECTURE.md), [dec
 
 **Where do questions come from?** Claude writes original questions from the official documentation for each concept and links the page used for the answer key. If you think a key is wrong, say so: Claude re-checks it and records feedback.
 
-**Can I use Coursera instead of Google Skills?** Yes. The courses are the same; skill badges exist only on Google Skills and can be left uncompleted.
+**Can I use Coursera instead of Google Skills?** Yes. The courses are the same; skill badges exist only on Google Skills and can be left uncompleted. Module numbers follow Google Skills, which can differ from Coursera (for ACE, course 2 has an extra introduction module first), so when you type "course 2 module 3", check the title the coach echoes back.
 
 **What does "ready" mean?** All the profile conditions in the table above, not a single number. Course readiness is not exam readiness; switch to Full exam mode before booking.
 

@@ -32,6 +32,9 @@ else
   echo "pre-push: gitleaks not installed, history scan skipped (CI always runs it; install: brew install gitleaks)"
 fi
 
+echo "pre-push: consistency check (tracker.html copies byte-identical, shared references, versions)"
+"$ROOT/scripts/check-consistency.sh" || fail=1
+
 echo "pre-push: privacy check on all tracked files"
 "$ROOT/scripts/check-privacy.sh" --tracked || fail=1
 

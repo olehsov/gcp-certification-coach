@@ -1,0 +1,66 @@
+[
+ {
+  "query": "quiz me on what I've finished so far for the ACE",
+  "should_trigger": true
+ },
+ {
+  "query": "test me on IAM roles, google cloud exam prep",
+  "should_trigger": true
+ },
+ {
+  "query": "practice questions on GKE please, I'm studying for associate cloud engineer",
+  "should_trigger": true
+ },
+ {
+  "query": "next question",
+  "should_trigger": true
+ },
+ {
+  "query": "B, confidence 2",
+  "should_trigger": true
+ },
+ {
+  "query": "pre-test me on the next module of my GCP learning path",
+  "should_trigger": true
+ },
+ {
+  "query": "I'm back after two weeks off, let's practice for the cloud engineer exam",
+  "should_trigger": true
+ },
+ {
+  "query": "the last practice question was wrong, Cloud Storage nearline min duration is 30 days not 60",
+  "should_trigger": true
+ },
+ {
+  "query": "give me a full 50 question mock exam for ACE",
+  "should_trigger": false
+ },
+ {
+  "query": "explain how Cloud Load Balancing works for my GCP cert",
+  "should_trigger": false
+ },
+ {
+  "query": "give me a practical exercise on Cloud Run I can do in my own project",
+  "should_trigger": false
+ },
+ {
+  "query": "how far along am I in my ACE prep? show my progress",
+  "should_trigger": false
+ },
+ {
+  "query": "quiz me on French irregular verbs",
+  "should_trigger": false
+ },
+ {
+  "query": "make me a trivia quiz about 90s movies",
+  "should_trigger": false
+ },
+ {
+  "query": "test my Python function for edge cases",
+  "should_trigger": false
+ },
+ {
+  "query": "practice questions for the AWS Solutions Architect exam",
+  "should_trigger": false
+ }
+]

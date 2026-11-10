@@ -14,6 +14,8 @@
 #   scripts/run-evals.sh --model sonnet --runs 1 -j 4
 #   scripts/run-evals.sh --tag quiz --model haiku
 #   scripts/run-evals.sh --baseline --model sonnet --runs 1 -j 4
+#   scripts/run-evals.sh --cases quiz-pretest,mock-verdict-hard --model haiku
+#     --cases     (after --baseline, before other options) run only these case folders
 set -euo pipefail
 ROOT="$(git rev-parse --show-toplevel)"
 STAGE="$(mktemp -d "${TMPDIR:-/tmp}/gcp-cert-coach-eval.XXXXXX")"
@@ -21,6 +23,8 @@ trap 'rm -rf "$STAGE"' EXIT
 
 BASELINE=0
 if [ "${1:-}" = "--baseline" ]; then BASELINE=1; shift; fi
+CASES=""
+if [ "${1:-}" = "--cases" ]; then CASES="$2"; shift 2; fi
 
 PLUGIN="$STAGE/gcp-cert-coach"
 mkdir -p "$PLUGIN"
@@ -31,6 +35,13 @@ else
   cp -R "$ROOT/plugins/gcp-cert-coach/." "$PLUGIN/"
 fi
 rsync -a --exclude results/ "$ROOT/evals/" "$PLUGIN/evals/"
+if [ -n "$CASES" ]; then
+  # Keep only the named case folders (comma-separated); --case takes a single glob only.
+  for d in "$PLUGIN"/evals/*/; do
+    n="$(basename "$d")"
+    case ",$CASES," in *",$n,"*) ;; *) if [ -f "$d/prompt.md" ]; then rm -rf "$d"; fi ;; esac
+  done
+fi
 EXTRA=()
 if [ "$BASELINE" = 1 ]; then
   find "$PLUGIN/evals" -name skill-fired.md -delete

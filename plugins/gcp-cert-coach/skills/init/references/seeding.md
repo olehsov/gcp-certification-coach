@@ -9,7 +9,9 @@
 
 ## 1. Build the batches
 
-**With code execution** (preferred): run the script from the skill folder.
+Two paths produce the same documents. Pick one, and tell the learner which one was used in the seed message ("Seeded with the seed script" or "Seeded without the script: code execution is not available here").
+
+### Path A: seed script (when code execution is available)
 
 ```bash
 python3 ${CLAUDE_SKILL_DIR}/scripts/build_seed.py --pack ${CLAUDE_SKILL_DIR}/assets/packs/ace \
@@ -21,7 +23,18 @@ On claude.ai chat the placeholder is not substituted: run it from the skill fold
 
 The script prints a summary (batch count, document counts, completed modules, title) and writes `batch-01.json` … to the output folder. Each batch is a list of `{"op": "set", "path": "<collection>/<id>", "data": {...}}`. It also writes `ui-strings-en.json`.
 
-**Without code execution:** build the same documents by hand from the pack files, in this order: `meta/settings`, then for each activity its document, its modules and their concepts, then the gaps activity, gap topics (as modules) and their concepts. Cut the list into batches of at most 50 writes.
+Switch to path B when code execution is off (claude.ai with code execution disabled, or no code tool at all), when the script cannot start, or when PyYAML cannot be installed. Do not ask the learner to turn on code execution; path B needs nothing from them.
+
+### Path B: by hand from the pack files
+
+Read `pack.yaml`, `path.yaml`, `gaps.yaml` and `scoring.yaml` (for a generated pack, the JSON from generated-pack.md) and build the same `set` operations the script builds, in this order:
+
+1. `meta/settings` from `pack.yaml` (`certId`, `certName`, `certShortName`, `packSource` default `curated`, `packVersion`, `examGuide {version, url, sections}`, `path {url, title, providers}`), the learner's choices (`mode`, `difficulty`, `language`, `paceHoursPerWeek`, `startDate`, `examDate` or null), `ui: {}` (filled in section 3), `scoring` = the whole parsed `scoring.yaml`, `schemaVersion: 1`, `pluginVersion` (the `PLUGIN_VERSION` constant in the tracker template's script), `paused: null`, `pausedDaysTotal: 0`, `pauseHistory: []`, and `lastSyncAt`, `createdAt`, `updatedAt` = now (UTC).
+2. For each activity in `path.yaml`, in order: `activities/<id>`, then each of its `modules/<id>`, each followed by its `concepts/<id>`. Ids come from the pack; never invent or renumber them. Missing `optional` is false, missing `weight` is `core`, missing `examRelevant` is true, missing `labs`/`docUrls`/`sections` are empty lists. A module is `completed: true` with `completedAt: <startDate>` when the learner confirmed it or its whole activity in step 6; otherwise `completed: false`, `completedAt: null`.
+3. The gaps activity from `gaps.yaml`: `activities/<gaps id, default gaps>` with `order` = number of path activities + 1, `kind: gaps`, `title` (default "Exam guide gaps"), `hours` = `hoursPerTopic` (default 1) × number of topics, `optional: false`, `urls: {}`. Each topic becomes `modules/<topic id>` with `activityId` = the gaps id, `examRelevant: true`, `hours` = `hoursPerTopic`, `labs: []`, `completed: false`, `completedAt: null`, followed by its concepts.
+4. Every concept: `level: 0`, `answers: 0`, `correct: 0`, `recent: []`, `days: []`, `lastReviewed: null`, `bonus: 0`, `archived: false`. Every activity and module: `archived: false`.
+
+Cut the list into batches of at most 50 operations in that order (settings first). Count activities, modules and concepts as you go; these counts replace the script's summary in the verify step. For the page strings in section 3, use the `EN` map at the top of the tracker template's script.
 
 ## 2. Document shapes (schema version 1)
 

@@ -18,6 +18,7 @@ Optional: create a personal denylist at `~/.config/gcp-cert-coach/denylist.txt` 
 - `plugins/gcp-cert-coach/`: everything users install (manifest, skills, README, LICENSE, icon). Nothing else goes here.
 - `docs/`, `evals/`, `scripts/`, `.github/`: outside the plugin folder.
 - One folder per skill under `skills/`, named like the skill. Supporting files sit in that skill's `references/`, `assets/` or `scripts/` and are linked from its `SKILL.md`. Skills never read another skill's folder (ADR 0006); the few shared files are copied and kept identical by `scripts/check-consistency.sh`.
+- The tracker page template is edited only in `skills/init/assets/tracker.html`. After every change, copy it over `skills/rebuild/assets/tracker.html` (`cp plugins/gcp-cert-coach/skills/init/assets/tracker.html plugins/gcp-cert-coach/skills/rebuild/assets/tracker.html`). The pre-push hook and CI run `scripts/check-consistency.sh`, which fails unless both copies are byte-identical. The same applies to `references/browser-progress-check.md`, edited in `init` and copied to `progress` (only line 3, the cross-reference, differs).
 
 ## Adding a certification pack
 

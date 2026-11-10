@@ -1,0 +1,66 @@
+[
+ {
+  "query": "give me a challenge for my ACE prep",
+  "should_trigger": true
+ },
+ {
+  "query": "practical exercise on least-privilege service accounts, google cloud",
+  "should_trigger": true
+ },
+ {
+  "query": "I want a challenge lab like the skill badges but about VPC firewall rules",
+  "should_trigger": true
+ },
+ {
+  "query": "a hands-on GKE task I can do in my own GCP project to practice for the cert",
+  "should_trigger": true
+ },
+ {
+  "query": "here is my challenge submission: I created the bucket with uniform access, gsutil iam get output below",
+  "should_trigger": true
+ },
+ {
+  "query": "grade my work: kubectl get deploy output and the steps I took for the autoscaling challenge",
+  "should_trigger": true
+ },
+ {
+  "query": "something practical to do myself on Cloud Run for associate cloud engineer, no step by step",
+  "should_trigger": true
+ },
+ {
+  "query": "I finished the load balancer challenge, here is gcloud compute forwarding-rules list output",
+  "should_trigger": true
+ },
+ {
+  "query": "quiz me on Cloud IAM for the ACE",
+  "should_trigger": false
+ },
+ {
+  "query": "start a mock exam for the GCP associate cloud engineer",
+  "should_trigger": false
+ },
+ {
+  "query": "explain the steps of the lab I just did on Cloud SQL",
+  "should_trigger": false
+ },
+ {
+  "query": "run gcloud compute instances list on my project for me",
+  "should_trigger": false
+ },
+ {
+  "query": "give me a coding challenge in Rust",
+  "should_trigger": false
+ },
+ {
+  "query": "30 day fitness challenge plan please",
+  "should_trigger": false
+ },
+ {
+  "query": "hands-on Terraform exercise for Azure",
+  "should_trigger": false
+ },
+ {
+  "query": "mark the skill badge Set Up an App Dev Environment as completed",
+  "should_trigger": false
+ }
+]

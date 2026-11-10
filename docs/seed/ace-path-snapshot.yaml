@@ -1,3 +1,6 @@
+# HISTORICAL: superseded by the curated pack in plugins/gcp-cert-coach/skills/init/assets/packs/ace/,
+# which follows Google Skills module order and hours. Kept only as a record of the design input.
+#
 # ACE learning path snapshot
 #
 # Purpose: starting data for the curated ACE pack (plugins/gcp-cert-coach/skills/init/assets/packs/ace/).

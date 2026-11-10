@@ -229,7 +229,7 @@ All documents are flat JSON. Timestamps are ISO 8601 UTC strings. Dates (`YYYY-M
 
 **`snapshots/{snapshotId}`** and **`snapshots/{snapshotId}/<collection>`**
 
-Created by `reset` and before a destructive `sync`. Metadata: `ts`, `reason`, `pluginVersion`, `counts`.
+Created by `reset`, before a destructive `sync` and before a `rebuild` migration. Ids: `reset-<YYYYMMDD-HHMM>`, `sync-<YYYYMMDD-HHMM>`, `migration-<YYYYMMDD-HHMM>`. Metadata: `ts`, `reason`, `pluginVersion`, `counts`.
 
 ### 5.3 Locating the tracker
 
@@ -238,7 +238,7 @@ Every skill except `init` locates the tracker in this order:
 1. A line in the current context (Project instructions or the conversation) of the form:
    `GCP Cert Coach tracker: <artifact URL> (certification: <certId>)`
 2. The learner's artifact list, filtered by titles ending in `Cert Coach`. One match → use it. Several → ask which certification. None → offer `init`.
-3. If the artifact data tool or the database is unavailable, continue the learning activity, say clearly that progress is not being saved, and suggest opening the conversation in claude.ai or the desktop app.
+3. If the artifact data tool or the database is unavailable, continue the learning activity, say clearly that progress is not being saved, and suggest opening the conversation in claude.ai or the desktop app. In this read-only mode a skill uses a tracker export from the conversation when one is present and shows the write batch it would have made (as JSON), labeled "not saved". Destructive skills show the full plan (snapshot first, archive rather than delete) and apply nothing.
 
 `init` ends by printing the line from step 1 and recommending one Claude Project per certification.
 
@@ -255,7 +255,9 @@ Sections, top to bottom:
 7. **Calibration:** accuracy of "sure" answers, overall accuracy.
 8. **Mock exams:** history with verdicts.
 9. **Recent answers:** last 15 log entries.
-10. **Notices:** "not synced for 30 days", "database unavailable".
+10. **Notices:** "not synced for 30 days", "database unavailable". Rendered at the top of the page, above the header, so they are seen first; listed last here because they are usually empty.
+
+A footer shows the plugin version (the `PLUGIN_VERSION` constant in the template) and the non-affiliation disclaimer. The template's `<title>` is `GCP Cert Coach`; `init` and `rebuild` replace it with `<certShortName> Cert Coach`. Calibration also shows the share of guesses (confidence 1).
 
 Mode and difficulty toggles write `meta/settings` from the page (the owner has write access). Everything else is written by Claude. The page subscribes once per collection with `onSnapshot`, uses a 10-second load timeout, and follows the artifact page contract (theme tokens, phone width, no external hosts except allowed CDNs and Google Fonts).
 
@@ -316,7 +318,7 @@ Missing an easy question costs more than missing a hard one because it signals a
 
 ### 6.6 Selection priority for quiz questions
 
-From exam-relevant concepts in completed, non-archived modules (plus gaps in Full mode):
+From exam-relevant concepts in completed, non-archived modules (plus gaps in Full mode). Gap topics are seeded in both modes and shown only in Full mode, so switching mode needs no reseed; in Full mode their concepts are eligible without being marked completed. A concept is due when `overdue >= 0`; a module's `review` status uses `overdue > 0`.
 
 1. Concepts with an open misconception (new wording each time).
 2. Concepts never asked.
@@ -333,7 +335,7 @@ Interleave across modules; do not serve more than 2 consecutive questions from o
 | Pre-test (5 questions on the next uncompleted module) | Logged with `kind: pretest`; no level change; after the module is completed, the same concepts are re-tested to show improvement |
 | Warm-up (5 questions on highest-level concepts) | Runs as the first quiz after a pause of more than 7 days; scored normally |
 | Challenge | Bonus `15 + 10 × score` to each linked concept when `score ≥ 0.5`, subject to the 100 cap and not to the daily cap; resolves linked misconceptions when `score = 1`; does not count toward answers or days |
-| Mock exam | 50 questions across sections by official weight; levels updated with normal rules in one batch at the end; verdict per §6.3 |
+| Mock exam | 50 questions across sections by official weight, drawn from every exam-relevant module of the current mode whether completed or not (FR-1 applies to quizzes, not mocks); levels of every tested concept updated with normal rules at the end in one batch, or consecutive batches when the data tool limits batch size (the `mocks` document last); verdict per §6.3 |
 
 ### 6.8 Readiness
 
@@ -360,6 +362,12 @@ Interleave across modules; do not serve more than 2 consecutive questions from o
 
 Content rules: titles and structure only from public course outlines; descriptions written originally; documentation links only to public Google pages.
 
+Identifiers and sources:
+
+- Activities: `c<N>` for courses and `b<N>` for skill badges, numbered in Google Skills path order. Modules: `<activityId>-m<N>`. Concepts: `<moduleId>-k<N>`. Gap topics: `g<NN>`, their concepts `g<NN>-k<N>`. The gaps activity id is `gaps`.
+- Module numbering follows the Google Skills path, which can differ from Coursera (for ACE, course 2 starts with a "Course Introduction" module there). "Course N, module M" in progress messages means Google Skills order.
+- Hours are the durations stated on Google Skills (ACE total 58.75 h); a gap topic counts 1 h.
+
 ### 7.2 Generated pack (`packSource: generated`, beta)
 
 1. Find the certification page and exam guide on `cloud.google.com/learn/certification`.
@@ -375,6 +383,7 @@ Each `SKILL.md` must contain: purpose, when to use and when not to use, precondi
 - Trigger: start preparing, set up, choose a certification.
 - Steps: ask language → list current certifications → choose → load curated pack or generate → choose mode, difficulty, pace, optional exam date → initial progress (manual or browser) → show summary for confirmation → publish tracker → seed database → verify read-back → print the Project instructions line and next steps.
 - Refuses to create a second tracker for a certification that already has one unless the learner confirms.
+- Seeds with `scripts/build_seed.py` when code execution is available; otherwise builds the same batches from the pack files (see `init/references/seeding.md`) and says which path it used.
 
 ### learn
 - Trigger: explain, how does X work, break down this lab.
@@ -389,6 +398,7 @@ Each `SKILL.md` must contain: purpose, when to use and when not to use, precondi
 - Trigger: give me a challenge, hands-on task.
 - Steps: pick completed concepts → task with goal and constraints, no step list → ask for a step narrative and outputs of named verification commands (screenshots optional) → evaluate against documentation → score 0–1 with per-requirement findings → write batch.
 - Reminds the learner to remove project ids or personal data from pasted output; stores only a summary.
+- Without a Google Cloud project, offers a design challenge (the learner describes the architecture and the commands they would run) with the score capped at 0.5.
 
 ### mock
 - Trigger: mock exam, practice exam.
@@ -408,7 +418,7 @@ Each `SKILL.md` must contain: purpose, when to use and when not to use, precondi
 
 ### reset
 - Trigger: reset my progress, start over.
-- Show what will be reset → snapshot → explicit confirmation phrase → reset concept levels, log and misconceptions; keep tree, settings and completion marks unless the learner asks to clear them too.
+- Show what will be reset → snapshot → explicit confirmation phrase → reset concept levels, log and misconceptions; keep tree, settings and completion marks unless the learner asks to clear them too. Mocks, challenges, feedback and earlier snapshots are kept. The confirmation phrase is `reset <certShortName> progress`.
 
 ## 9. Cross-cutting rules
 
@@ -430,8 +440,10 @@ sequenceDiagram
   participant W as Google docs and Google Skills
   participant A as Tracker artifact
   L->>C: /gcp-cert-coach:init
-  C->>L: Language? Certification?
-  L->>C: Ukrainian, ACE
+  C->>L: Language?
+  L->>C: Ukrainian
+  C->>L: Certification? (current list)
+  L->>C: ACE
   C->>C: Load curated pack (or generate from W)
   C->>L: Mode, difficulty, weekly hours, exam date?
   C->>L: What have you completed? (type it or check the site)

@@ -1,6 +1,6 @@
 ---
 name: learn
-description: Explains Google Cloud services, concepts, comparisons and labs for someone preparing for a Google Cloud certification (Associate Cloud Engineer and others) with GCP Certification Coach, grounded in official documentation with links, in a fixed study format (how it works, when to use it, alternatives, exam angle, common traps) or as a step-by-step lab breakdown. Use this skill whenever a learner studying for a Google Cloud exam asks to explain, compare or understand a service or topic ("I don't get the difference between Cloud NAT and Private Google Access", "when would the exam want Spanner", "help me understand storage classes"), pastes lab steps or gcloud commands to break down, or asks to turn course transcripts or slides into notes, even if they do not name the coach. Not for practice questions (use quiz), a 50-question mock exam (use mock), hands-on tasks (use challenge) or recording progress (use progress).
+description: Use whenever someone preparing for a Google Cloud certification (Associate Cloud Engineer or any other) asks how a Google Cloud service works, how two services differ, which service an exam scenario wants or what the exam traps are ("I don't get Cloud NAT vs Private Google Access", "when would the exam want Spanner"), or pastes lab steps, gcloud commands, a course transcript or slides to break down or turn into notes. Use it even for questions you could answer from memory: this skill grounds the answer in official documentation with links, uses the study format and applies the course-copyright rule. Explains topics with GCP Certification Coach in a fixed format (how it works, when to use it, alternatives, exam angle, common traps) or as a step-by-step lab breakdown. Not for practice questions (use quiz), a 50-question mock exam (use mock), hands-on tasks (use challenge) or recording progress (use progress).
 ---
 
 # Learn
@@ -39,7 +39,7 @@ Explain one topic or one lab so the learner understands it well enough to answer
 
 ## Output format
 
-Markdown with the section headings from the format reference, short paragraphs and tables for comparisons. Always end with a "Documentation" list of the pages you used. Product names, commands, flags and API names stay in English; the prose is in the learner's language.
+Markdown with the section headings from the format reference, short paragraphs and tables for comparisons. Always end with a "Documentation" list of the pages you used; put any next-step suggestion before that list. Product names, commands, flags and API names stay in English; the prose is in the learner's language.
 
 ## Course materials
 

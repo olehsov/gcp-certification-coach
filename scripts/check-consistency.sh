@@ -5,7 +5,7 @@ set -euo pipefail
 ROOT="$(git rev-parse --show-toplevel)"; cd "$ROOT"
 P=plugins/gcp-cert-coach
 fail=0
-same() { if ! cmp -s "$1" "$2"; then echo "check-consistency: $1 and $2 differ (copy one over the other)"; fail=1; fi; }
+same() { if ! cmp -s "$1" "$2"; then echo "check-consistency: $1 and $2 differ: edit the template in init and copy it to rebuild"; fail=1; fi; }
 same $P/skills/init/assets/tracker.html $P/skills/rebuild/assets/tracker.html
 # The browser check is shared by init and progress; only the cross-reference line differs.
 if ! diff <(sed 3d $P/skills/init/references/browser-progress-check.md) <(sed 3d $P/skills/progress/references/browser-progress-check.md) >/dev/null; then

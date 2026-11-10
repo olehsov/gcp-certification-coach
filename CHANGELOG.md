@@ -6,10 +6,10 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ### Resume point
 
-- **Current phase:** 6 (measure and tune). Phases 0–5 are committed; Phase 7 documentation is drafted and committed (README, plugin README, CONTRIBUTING, icon, link check).
-- **Done in phase 6:** full eval run 1 with and without the plugin (with 0.77, without 0.39); failures triaged; grader wording aligned with the spec in `scripts/gen-evals.py` and cases regenerated; skill fixes in `init` (run setup steps without the artifact tool), `sync` (read-only shows the apply plan), `learn` (course text rule); trigger evals for learn, quiz, challenge and mock (no false triggers, under-triggering) and rewritten descriptions; `/skill-doctor` run once.
-- **Exact next step:** re-run `scripts/run-evals.sh --model sonnet --runs 1 -j 4` and the four trigger evals; then write `evals/RESULTS.md`, run the Haiku/Sonnet/Opus subset (J5), and continue with Phase 8 (quality gates, zip, hand-off).
-- **Open issues:** `learn-no-course-text` did not fire the learn skill in run 1 (description now names the notes case); `quiz-no-repeat-30` grader now allows a misconception re-test; check CHECKLIST J2–J5.
+- **Current phase:** 6 (measure and tune). Safe stop: the CLI account hit its usage limit.
+- **Done this session:** review notes 1, 3, 4, 5 applied (grader changes listed in `evals/RESULTS.md` §4, `rebuild-migrate` migration-list requirement restored; init seeding path B without code execution; consistency check in pre-push and CI, CONTRIBUTING copy rule; checklist markers); `run-evals.sh --cases`; trigger sets in `evals/triggers/`; descriptions of learn, quiz, challenge, mock rewritten; ARCHITECTURE build decisions; targeted run 2.
+- **Exact next step:** re-run the four trigger evals (this session's results are invalid: usage limit), then the full eval run, fill `evals/RESULTS.md` placeholders, J5 subset (~10 cases, `--cases`), then Phase 8.
+- **Open issues:** `learn-no-course-text` skill does not fire; verify the learn description change.
 
 ### Build notes
 
