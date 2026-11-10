@@ -9,6 +9,7 @@ allowed_tools: ["Read", "Glob", "Grep", "Skill", "WebFetch", "WebSearch"]
 
 Assume today is 2026-11-10 (my local date). The tracker line from my Project instructions is:
 GCP Cert Coach tracker: https://claude.ai/artifact/EXAMPLE (certification: ace)
+In this Project, use the gcp-cert-coach skills for every study request (explanations, quizzes, challenges, mock exams, progress).
 This environment has no artifact data tool, so here is a read-only export of every tracker collection, taken a minute ago:
 
 ```json

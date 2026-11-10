@@ -180,6 +180,7 @@ def context(snap, intro=""):
     return (
         f"Assume today is {TODAY} (my local date). The tracker line from my Project instructions is:\n"
         "GCP Cert Coach tracker: https://claude.ai/artifact/EXAMPLE (certification: ace)\n"
+        "In this Project, use the gcp-cert-coach skills for every study request (explanations, quizzes, challenges, mock exams, progress).\n"
         "This environment has no artifact data tool, so here is a read-only export of every tracker collection, "
         "taken a minute ago:\n\n```json\n" + json.dumps(snap, indent=1) + "\n```\n\n" + intro
     )
@@ -322,7 +323,7 @@ CASES = [
     ("quiz-confident-mistake-misconception", "quiz", ["quiz", "scoring"],
      context(snapshot(), PENDING_Q + "My answer: C. Confidence 3, I'm sure."),
      [fired("quiz"),
-      llm("PASS if the response marks the answer wrong, explains every option with a documentation link, and creates a misconception entry for concept c4-m2-k2 stating the wrong belief in one sentence (for example that broad basic roles like Editor are appropriate for view-only access). FAIL if no misconception is created."),
+      llm("PASS if the response marks the answer wrong, explains why each option is right or wrong, cites an official documentation link, and creates a misconception entry for concept c4-m2-k2 stating the wrong belief in one sentence (for example that broad basic roles like Editor are appropriate for view-only access). FAIL if no misconception is created."),
       llm("PASS if the new level is 32.5 (L' = L - beta[sure][medium] * L = 50 - 0.35 * 50; the concept is not overdue so the effective level is 50), and the log entry records levelBefore 50, levelAfter 32.5 and the misconceptionId. FAIL if the arithmetic is wrong or the level increases.")]),
     ("quiz-pretest", "quiz", ["quiz", "pretest"],
      context(snapshot(), "Before I start the Storage and Database Services module, give me a pre-test. Start with the first question."),
