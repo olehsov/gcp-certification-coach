@@ -12,6 +12,7 @@ All runs use `claude plugin eval` (Claude Code 2.1.311) through `scripts/run-eva
 6. Model comparison
 7. Context cost (`/skill-doctor`)
 8. Known limitations
+9. v0.2.0 targeted runs
 
 ## 1. Summary
 
@@ -82,4 +83,48 @@ Reading the result:
 - Inside the plugin eval (§3), where the whole plugin is installed and the prompt carries a tracker line, the `skill-fired` indicator shows the expected skill was called in most cases; the misses there are listed in §3.
 - J3 target (at least 5/8 with 0 false triggers) is **not met** in this harness. Description tuning stopped here to save usage. Mitigation shipped in v0.1.0: `init` prints a second Project instructions line ("In this Project, use the gcp-cert-coach skills for every study request ..."), and the README quick start recommends the explicit commands (`/gcp-cert-coach:quiz` and others). The decisive check is triggering in a real claude.ai Project during the manual test (CHECKLIST K).
 
+## 9. v0.2.0 targeted runs
 
+Setup: Sonnet agent, Haiku judge (3 votes), with-plugin arm only (`--ablation none`); the without-plugin baseline from run 1 (0.39) is reused. Cases changed or added for the fixes from the manual test. One run per case unless noted.
+
+| Batch | Cases | First result | After fixes |
+|---|---|---|---|
+| 1. New and changed cases | 14 | 10 pass | 14 pass |
+| 2. quiz and mock regression | 12 | 9 pass | 12 pass |
+| 3. progress, init, reset, rebuild regression | 12 | 12 pass | - |
+| 4. sync, learn, challenge regression | 10 | 9 pass | 10 pass |
+
+All 48 cases pass at least once after the fixes below. Judge flakes are recorded as such; no grader was loosened.
+
+### Failures and what was done
+
+| Case | Cause | Action |
+|---|---|---|
+| `quiz-ambiguous-letter-confirm` | Skill gap: scored "the third option" immediately | quiz step 5 now says: no letter named means no scoring and no key; state the letter read and ask. Passes |
+| `reset-restore-from-snapshot` | Skill gap: restore message omitted what is overwritten and what is kept | reset restore section lists what the message must contain. Passes |
+| `quiz-pretest` | Skill gap: first message no longer said the pre-test does not change levels | quiz pre-test text requires that sentence. Passes 2 of 2 |
+| `progress-numbers-denied-asks-names` | Skill not fired (the response was correct) | Case prompt now carries the Project instructions line, the shipped trigger mitigation. Passes |
+| `init-seed-script-fails` | Judge vote on a rubric that was not explicit | Rubric rewritten as three numbered conditions (same meaning). Passes |
+| `quiz-feedback-doc-link`, `quiz-guess-no-gain` | Judge flake: responses met the rubric on reading (votes FAIL FAIL PASS and FAIL FAIL FAIL) | No change; both pass 2 of 2 on re-run |
+| `challenge-evaluate-and-bonus` | Fixture incomplete: the submission lacked the VM identity output, so the skill (correctly) asked for it once before scoring | Fixture now includes that command output. Passes 2 of 2 |
+
+### Grader and fixture changes (v0.2.0)
+
+- `progress-mark-module`: now requires a confirmation with titles before any write (spec change A3).
+- `init-summary-before-publish`: new condition, remaining hours with the practice buffer and a finish date (A5).
+- `rebuild-same-url`: fixture tracker is at 0.1.0 so a rebuild is needed; `rebuild-already-up-to-date` covers the same-version path.
+- Fixture settings carry `templateVersion` and `latestPluginVersion`; a complete reset snapshot with chunks is available for restore cases.
+
+### Cost and time per quiz case (A9.5)
+
+Same nine quiz cases, with-plugin arm, mean of run 1 (before) and the v0.2.0 runs (after). In these cases the tracker is an export in the prompt, so the measured effect is mostly fewer fetches and fewer turns, not the selective reads of a real database. Dollar cost is what `claude plugin eval` reports; no token counts are available, so tokens are not claimed.
+
+| Measure | Before | After |
+|---|---|---|
+| Mean cost per case | $0.117 | $0.098 (-16%) |
+| Mean time per case | 33.8 s | 22.3 s (-34%) |
+| Turns, `quiz-no-repeat-30` | 19 | 5 |
+| Turns, `quiz-warmup-after-pause` | 9 | 3 |
+| Turns, `quiz-completed-only` | 8 | 3 |
+
+Single-question cases (feedback, guess, misconception) did not get cheaper (about $0.10 each): their cost is dominated by the explanation of every option. The real-session saving (curated links, selective reads) needs the claude.ai re-test to confirm.

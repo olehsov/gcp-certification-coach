@@ -350,7 +350,8 @@ CASES = [
              "Here is my submission for challenge ch-001 (create a service account with only Storage Object Viewer on one bucket and attach it to a VM, no keys).\n"
              "Narrative: I created sa-reader, granted roles/storage.objectViewer on the bucket, created the VM with --service-account=sa-reader and --scopes=cloud-platform.\n"
              "Output of gcloud iam service-accounts keys list --iam-account=sa-reader@[REDACTED].iam.gserviceaccount.com --managed-by=user:\nListed 0 items.\n"
-             "Output of gcloud storage buckets get-iam-policy gs://[REDACTED]:\nbindings:\n- members:\n  - serviceAccount:sa-reader@[REDACTED].iam.gserviceaccount.com\n  role: roles/storage.objectViewer"),
+             "Output of gcloud storage buckets get-iam-policy gs://[REDACTED]:\nbindings:\n- members:\n  - serviceAccount:sa-reader@[REDACTED].iam.gserviceaccount.com\n  role: roles/storage.objectViewer\n"
+             "Output of gcloud compute instances describe vm-1 --zone us-east1-b --format=\"value(serviceAccounts[].email)\":\nsa-reader@[REDACTED].iam.gserviceaccount.com"),
      [fired("challenge"),
       llm("PASS if the response evaluates each requirement with findings, gives a score between 0 and 1, and if score >= 0.5 computes the bonus as 15 + 10 x score applied to each linked concept (c2-m2-k3 and c4-m2-k2), not subject to the daily cap and capped at 100; and if the score is 1 it resolves the open misconception mc-001. FAIL if the bonus formula is wrong or missing."),
       llm("PASS if the stored challenge record contains only a summary (reviewSummary) and not the raw command output. FAIL if it plans to store the raw output.")]),
@@ -465,7 +466,7 @@ CASES = [
      [fired("progress"),
       llm("PASS if all hold: (1) it resolves the numbers to titles and asks a confirmation question that names the course title (Essential Google Cloud Infrastructure: Core Services) and the module title (Storage and Database Services), in the form 'Do you mean course 4 <title>, module <title>?'; (2) it does not write or claim to have saved or marked anything before the learner says yes (showing the planned change as pending is fine). FAIL if it marks the module completed, says it is saved, or confirms without naming the titles.")]),
     ("progress-numbers-denied-asks-names", "progress", ["progress", "confirm"],
-     context(snapshot(), "Earlier I told you 'I finished module 3 of course 4' and you asked: 'Do you mean course 4 Essential Google Cloud Infrastructure: Core Services, module Storage and Database Services?' My answer: No, that is not what I did."),
+     context(snapshot(), "(Project instructions: In this Project, use the gcp-cert-coach skills for every study request.) Earlier I told you 'I finished module 3 of course 4' and you asked: 'Do you mean course 4 Essential Google Cloud Infrastructure: Core Services, module Storage and Database Services?' My answer: No, that is not what I did."),
      [fired("progress"),
       llm("PASS if all hold: (1) it asks the learner to type the course and module names (or titles) they mean; (2) it does not guess another module from the numbers and does not mark anything; (3) it says it will match the names by title and confirm once more before writing. FAIL if it picks a different module itself or writes anything.")]),
     ("quiz-hedged-confidence-1", "quiz", ["quiz", "scoring", "confidence"],
@@ -487,7 +488,7 @@ CASES = [
     ("init-seed-script-fails", "init", ["init", "seeding"],
      f"Assume today is {TODAY}. Set up the GCP Cert Coach. My answers to all setup questions: explanation language English; certification Associate Cloud Engineer; mode Course; difficulty Standard; 7 hours per week; no exam date; nothing completed yet. I confirm the summary, go ahead and publish. Note: this chat has no Python at all, so the seed script cannot run here. (There are no artifact tools in this environment, so describe how you will seed.)",
      [fired("init"),
-      llm("PASS if all hold: (1) it says the seed script could not run and that it will build the write batches by hand from the pack files (the by-hand path); (2) it never asks the learner to enable code execution or change any setting; (3) it describes batches of at most 50 writes in order starting with meta/settings, and verification by reading back counts. FAIL if it asks the learner to turn on code execution or to install something, or invents the tree.")]),
+      llm("Check three conditions. (1) The response says the seed script could not run (or that the batches are built without it) and that the write batches are built by hand from the pack files. (2) The response does not ask the learner to enable code execution, install anything or change any setting; telling the learner that publishing needs claude.ai or the desktop app does not count as asking for a setting change. (3) The response describes batches of at most 50 writes written in order, with meta/settings first, and a read-back check of the counts. PASS if all three hold. FAIL if any one fails, or the tree is invented.")]),
 ]
 
 

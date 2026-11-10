@@ -40,7 +40,7 @@ A destructive operation, done carefully: plan → show → snapshot → explicit
 
 ## Workflow: restore
 
-Follow [references/snapshots.md](references/snapshots.md) section 3: list complete snapshots, show what restoring changes, take a restore snapshot, ask for the phrase `restore <certShortName> progress`, write the rows back **from the snapshot chunks only** (never from this conversation), read back and report counts. Restore works in a new chat: everything needed is in the tracker.
+Follow [references/snapshots.md](references/snapshots.md) section 3. The restore message must contain: the tracker named; the snapshot (id, reason, date, row counts per collection); what restoring changes (documents in the snapshot are overwritten with their saved content, documents created after the snapshot are kept, the tree, settings and completion marks are untouched unless in the snapshot); the saved values it will bring back (read from the snapshot chunks); a restore snapshot of the current state taken first; and the phrase `restore <certShortName> progress` to type. Then write the rows back **from the snapshot chunks only** (never from this conversation), read back and report counts. In a session without the data tool, show this same message and say nothing was restored. Restore works in a new chat: everything needed is in the tracker.
 
 ## Output format
 

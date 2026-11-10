@@ -536,3 +536,5 @@ bindings:
 - members:
   - serviceAccount:sa-reader@[REDACTED].iam.gserviceaccount.com
   role: roles/storage.objectViewer
+Output of gcloud compute instances describe vm-1 --zone us-east1-b --format="value(serviceAccounts[].email)":
+sa-reader@[REDACTED].iam.gserviceaccount.com

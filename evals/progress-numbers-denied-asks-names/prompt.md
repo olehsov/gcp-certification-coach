@@ -513,4 +513,4 @@ This environment has no artifact data tool, so here is a read-only export of eve
 }
 ```
 
-Earlier I told you 'I finished module 3 of course 4' and you asked: 'Do you mean course 4 Essential Google Cloud Infrastructure: Core Services, module Storage and Database Services?' My answer: No, that is not what I did.
+(Project instructions: In this Project, use the gcp-cert-coach skills for every study request.) Earlier I told you 'I finished module 3 of course 4' and you asked: 'Do you mean course 4 Essential Google Cloud Infrastructure: Core Services, module Storage and Database Services?' My answer: No, that is not what I did.
