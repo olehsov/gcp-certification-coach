@@ -98,7 +98,7 @@ Skill-specific:
 
 - [ ] J1 `claude plugin validate ./plugins/gcp-cert-coach` passes
 - [ ] J2 `claude plugin eval` passes and beats the baseline; results summarized in `evals/RESULTS.md` — progress: run 1 with 0.77 vs without 0.39; targeted run 2 (15 cases, with-plugin only): init, sync, progress cases all pass; open: learn-no-course-text (skill not firing), rebuild-migrate (skill now lists migration steps), 3 graders reworded as numbered conditions; full run pending; RESULTS.md drafted (grader changes done)
-- [ ] J3 Descriptions tuned with the skill-creator skill for trigger accuracy (no false triggers between `quiz`, `mock`, `challenge`, `learn`) — progress: sets now in `evals/triggers/`; descriptions rewritten twice; this session's trigger runs are INVALID (CLI usage limit hit, limited calls counted as misses; 0 false triggers); re-run needed, target 7/8 positives
+- [ ] J3 Descriptions tuned with the skill-creator skill for trigger accuracy (no false triggers between `quiz`, `mock`, `challenge`, `learn`) — measured once (valid run, probes OK): learn 1/8, quiz 2/8, challenge 2/8, mock 2/8 positives, 0 false triggers; below the 5/8 acceptance bar, so not [~]; tuning stopped by maintainer decision; mitigation shipped (second Project instructions line, explicit commands in README); decisive check is triggering in a real Project (K)
 - [ ] J4 `/skill-doctor` report reviewed; issues fixed or explained — progress: run once (~220–290 listing tokens per skill); decision pending the trigger re-run
 - [ ] J5 Tested with Haiku, Sonnet and Opus; notes in `evals/RESULTS.md`
 - [ ] J6 `scripts/check-privacy.sh` passes (emails, claude.ai artifact URLs, qwiklabs, project-id and billing-account patterns, API keys, non-English text in skills and templates, personal denylist from `~/.config/gcp-cert-coach/denylist.txt` when present)
@@ -122,6 +122,7 @@ Skill-specific:
 - [ ] K4 Quiz of 5 questions: only completed modules, confidence collected, tracker updates live; Mode and Difficulty toggles on the page write `meta/settings`
 - [ ] K5 Pause, then quiz: plan resumes
 - [ ] K6 `rebuild` keeps data; `reset` snapshots and asks for confirmation
+- [ ] K2e Triggering in the Project with both instruction lines: plain requests ("explain Cloud NAT", "quiz me", "give me a challenge", "mock exam", "I finished module 2 of course 3") each start the matching skill; note misses (J3)
 - [ ] K7 Issues found are fixed and re-tested
 
 ## L. Publish

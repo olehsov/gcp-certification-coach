@@ -62,4 +62,25 @@ Three rubrics were rewritten as numbered conditions because the Haiku judge fail
 | `learn-lab-breakdown` | Per command: what and why for all four; alternatives and production practices for at least three of four; documentation links. Stricter than before (old FAIL only if alternatives or production notes were missing "at all"). |
 | `quiz-no-repeat-30` | Two numbered conditions with the repeat definition above; same meaning. |
 
-Pending: filled after the final full run (work in progress).
+## 5. Trigger accuracy
+
+Tool: the skill-creator trigger evaluation (`scripts/run_eval.py`), Sonnet 5.5, 1 run per query, query sets in [triggers/](triggers/) (8 should-trigger, 8 should-not per skill). The runner registers one skill description at a time as a project command and sends each query as a fresh single-turn `claude -p`; a query counts as triggered only if Claude calls the skill.
+
+| Skill | Positives triggered | False triggers |
+|---|---|---|
+| learn | 1/8 | 0/8 |
+| quiz | 2/8 | 0/8 |
+| challenge | 2/8 | 0/8 |
+| mock | 2/8 | 0/8 |
+
+Valid run: one test call before each skill and one after the last all answered normally. Two earlier rounds in the same session are discarded because the account hit its usage limit mid-run (refused calls count as misses). Before the description rewrite, an earlier session measured 5/8, 5/8, 5/8 and 6/8 with a different, since-lost query set, so the numbers are not directly comparable.
+
+Reading the result:
+
+- No false triggers: the descriptions never claim AWS, Azure, general coding or unrelated "quiz", "challenge" or "mock" requests.
+- Under-triggering is strong in this setup. Claude answers single-turn study questions from its own knowledge instead of loading a skill; context-dependent replies ("next question", "B, confidence 2") have no prior question to refer to. The test environment also lists about 100 other commands and 60 other skills from the maintainer's own setup, which compete with the one under test.
+- Inside the plugin eval (§3), where the whole plugin is installed and the prompt carries a tracker line, the `skill-fired` indicator shows the expected skill was called in most cases; the misses there are listed in §3.
+- J3 target (at least 5/8 with 0 false triggers) is **not met** in this harness. Description tuning stopped here to save usage. Mitigation shipped in v0.1.0: `init` prints a second Project instructions line ("In this Project, use the gcp-cert-coach skills for every study request ..."), and the README quick start recommends the explicit commands (`/gcp-cert-coach:quiz` and others). The decisive check is triggering in a real claude.ai Project during the manual test (CHECKLIST K).
+
+RESULTS_REST
+
