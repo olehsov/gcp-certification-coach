@@ -173,6 +173,7 @@ All documents are flat JSON. Timestamps are ISO 8601 UTC strings. Dates (`YYYY-M
 | `weight` | `core` \| `support` | Support counts half in readiness |
 | `examRelevant` | bool | False for intros, summaries, course resources |
 | `hours` | number \| null | If the provider lists it |
+| `labs` | string[] | Lab titles inside the module (informational; added during the v0.1.0 build) |
 | `completed` | bool | Marked by the learner |
 | `completedAt` | date \| null | |
 | `archived` | bool | |

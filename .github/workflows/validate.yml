@@ -41,6 +41,9 @@ jobs:
       - name: Install Claude Code CLI
         run: npm install -g "@anthropic-ai/claude-code@${CLAUDE_CODE_VERSION}"
 
+      - name: Consistency (duplicated skill files, versions)
+        run: scripts/check-consistency.sh
+
       - name: Validate marketplace
         run: claude plugin validate . --strict
 

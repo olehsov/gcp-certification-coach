@@ -179,6 +179,7 @@ td:first-child{white-space:nowrap}
     <div class="ph"><span class="eyebrow" id="eLog">Log</span><h2 id="hLog">Recent answers</h2></div>
     <div class="tw"><table><thead><tr><th id="thDate">Date</th><th id="thConcept">Concept</th><th id="thQuestion">Question</th><th id="thResult">Result</th><th id="thConf">Confidence</th><th id="thLevel">Level</th></tr></thead><tbody id="log"><tr><td colspan="6" class="muted">Quiz answers appear here.</td></tr></tbody></table></div>
   </section>
+  <footer class="muted" id="foot" style="font-size:12px">GCP Cert Coach. Not affiliated with or endorsed by Google or Anthropic.</footer>
 </div>
 
 <script>
@@ -212,9 +213,11 @@ const EN = {
   conf1:"guess", conf2:"think", conf3:"sure", pretest:"pre-test",
   thDate:"Date", thConcept:"Concept", thQuestion:"Question", thResult:"Result", thConf:"Confidence", thLevel:"Level",
   staleSync:"The learning path and exam guide were last checked {days} days ago. Ask Claude to sync the tracker.",
-  schemaNewer:"This tracker uses a newer data version than this page. Ask Claude to rebuild the tracker page."
+  schemaNewer:"This tracker uses a newer data version than this page. Ask Claude to rebuild the tracker page.",
+  footer:"Not affiliated with or endorsed by Google or Anthropic."
 };
 const SCHEMA_VERSION = 1;
+const PLUGIN_VERSION = "0.1.0"; // keep equal to plugin.json "version" (checked in CI)
 const DAY = 864e5;
 const S = {settings:null, activities:[], modules:[], concepts:[], log:[], misconceptions:[], mocks:[], loaded:false, error:null, writeError:null};
 const $ = id => document.getElementById(id);
@@ -356,6 +359,7 @@ function render() {
   $("pauseChip").hidden = !(s && s.paused); if (s && s.paused) $("pauseChip").textContent = t("pausedSince", {date: s.paused.since});
   document.querySelectorAll(".seg button").forEach(b => b.disabled = !S.db || !s || S.readOnly);
   renderNotices();
+  $("foot").textContent = "GCP Cert Coach " + PLUGIN_VERSION + " · " + t("footer");
   if (!S.modules.length) {
     $("tree").innerHTML = `<div class="panel empty">${esc(t("emptyTree"))}</div>`;
     $("ringVal").textContent = "–"; $("ringArc").setAttribute("stroke-dasharray", "0 100");

@@ -61,6 +61,7 @@ This environment has no artifact data tool, so here is a read-only export of eve
    "since": "2026-10-25"
   },
   "pausedDaysTotal": 0,
+  "pauseHistory": [],
   "lastSyncAt": "2026-10-20T09:00:00Z",
   "scoring": {
    "alpha": {
@@ -136,14 +137,22 @@ This environment has no artifact data tool, so here is a read-only export of eve
      }
     }
    },
+   "rounding": {
+    "levelDecimals": 1,
+    "minLevel": 0,
+    "maxLevel": 100
+   },
    "misconception": {
+    "createOnSure": true,
+    "createOnThinkWhenSpecificBelief": true,
     "resolveAfterConsecutiveCorrect": 2,
     "minConfidenceToResolve": 2
    },
    "challengeBonus": {
     "base": 15,
     "perScore": 10,
-    "minScore": 0.5
+    "minScore": 0.5,
+    "resolveMisconceptionsAtScore": 1.0
    },
    "session": {
     "defaultQuestions": 5,
@@ -153,10 +162,23 @@ This environment has no artifact data tool, so here is a read-only export of eve
     "warmupAfterPauseDays": 7,
     "mockQuestions": 50
    },
+   "readiness": {
+    "coreWeight": 1.0,
+    "supportWeight": 0.5
+   },
+   "history": {
+    "recentAnswersKept": 5,
+    "distinctDaysKept": 10
+   },
    "plan": {
     "gapHoursPerTopic": 1,
     "practiceBufferFraction": 0.2,
     "minutesPerLoggedAnswer": 3
+   },
+   "page": {
+    "reviewQueueSize": 7,
+    "recentAnswersShown": 15,
+    "staleSyncDays": 30
    }
   }
  },
