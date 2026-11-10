@@ -6,10 +6,10 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ### Resume point
 
-- **Current phase:** 6 (measure and tune), following the maintainer's usage-saving plan: trigger evals once; re-run only failing or changed cases; J5 with 5 cases per model; one full run at the end; then Phases 7 and 8.
-- **Last completed step:** targeted re-runs done: every previously failing or changed case passes. J5 run was started and stopped at the maintainer's safe stop (results discarded).
-- **Exact next step:** J5: test call, then run-evals.sh --cases quiz-guess-no-gain,quiz-confident-mistake-misconception,quiz-completed-only,reset-confirm-snapshot,mock-verdict-hard --ablation none with haiku, sonnet, opus; then one full run; fill RESULTS.md placeholders; Phase 8.
-- **Open issues:** J3 below the bar in the trigger harness (mitigation shipped; decisive check in K2e).
+- **Current phase:** 8 done; waiting for the manual test on claude.ai (J5 and the full eval run moved after it by maintainer decision).
+- **Last completed step:** Phase 8 gates passed (validate --strict x2, privacy tracked and history, gitleaks full history, consistency, links 182/0); zip built at dist/gcp-cert-coach-0.1.0.zip and verified. Phase now: waiting for the maintainer's manual test (CHECKLIST K).
+- **Exact next step:** apply fixes from the manual test results, then J5 (5 cases x 3 models, with-plugin), one full run with and without plugin, fill evals/RESULTS.md placeholders, then Phase 9 (publish) after the maintainer confirms.
+- **Open issues:** J3 below the bar in the trigger harness (K2e decides); J2 and J5 deferred until after the manual test; J7 CI never run (no remote).
 
 ### Build notes
 

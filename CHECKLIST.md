@@ -96,13 +96,13 @@ Skill-specific:
 
 ## J. Quality gates
 
-- [ ] J1 `claude plugin validate ./plugins/gcp-cert-coach` passes
-- [ ] J2 `claude plugin eval` passes and beats the baseline; results summarized in `evals/RESULTS.md` — progress: run 1 with 0.77 vs without 0.39; targeted runs 2–4 (with-plugin only): all previously failing or changed cases now pass (learn-no-course-text fires learn; rebuild-migrate fixture fixed to a real schema-0 export); final full run pending
+- [x] J1 `claude plugin validate ./plugins/gcp-cert-coach` passes — `--strict` passes for the plugin and the marketplace (Phase 8 gate)
+- [ ] J2 `claude plugin eval` passes and beats the baseline; results summarized in `evals/RESULTS.md` — progress: run 1 with 0.77 vs without 0.39; targeted runs 2–4 (with-plugin only): all previously failing or changed cases now pass (learn-no-course-text fires learn; rebuild-migrate fixture fixed to a real schema-0 export); final full run pending; full run (with and without plugin) deferred until after the manual test, because its results may change the skills
 - [ ] J3 Descriptions tuned with the skill-creator skill for trigger accuracy (no false triggers between `quiz`, `mock`, `challenge`, `learn`) — measured once (valid run, probes OK): learn 1/8, quiz 2/8, challenge 2/8, mock 2/8 positives, 0 false triggers; below the 5/8 acceptance bar, so not [~]; tuning stopped by maintainer decision; mitigation shipped (second Project instructions line, explicit commands in README); decisive check is triggering in a real Project (K)
 - [ ] J4 `/skill-doctor` report reviewed; issues fixed or explained — progress: run once (~220–290 listing tokens per skill); decision pending the trigger re-run
-- [ ] J5 Tested with Haiku, Sonnet and Opus; notes in `evals/RESULTS.md` — progress: 5 key cases chosen (scoring x2, selection, destructive, mock verdict); first attempt stopped at a safe stop, not run yet
-- [ ] J6 `scripts/check-privacy.sh` passes (emails, claude.ai artifact URLs, qwiklabs, project-id and billing-account patterns, API keys, non-English text in skills and templates, personal denylist from `~/.config/gcp-cert-coach/denylist.txt` when present)
-- [ ] J7 `.github/workflows/validate.yml` runs plugin validate, the privacy check and gitleaks on push and pull request
+- [ ] J5 Tested with Haiku, Sonnet and Opus; notes in `evals/RESULTS.md` — progress: 5 key cases chosen (scoring x2, selection, destructive, mock verdict); first attempt stopped at a safe stop, not run yet; deferred until after the manual test
+- [x] J6 `scripts/check-privacy.sh` passes (emails, claude.ai artifact URLs, qwiklabs, project-id and billing-account patterns, API keys, non-English text in skills and templates, personal denylist from `~/.config/gcp-cert-coach/denylist.txt` when present) — `--tracked` and `--history` clean with the denylist loaded; gitleaks over full history: no leaks found
+- [ ] J7 `.github/workflows/validate.yml` runs plugin validate, the privacy check and gitleaks on push and pull request — workflow written (validate --strict, privacy --tracked and --history, consistency incl. byte-identical tracker.html copies, gitleaks, folder limits); has never run because there is no remote yet; check at L3
 - [x] J8 All links in README and docs resolve — `scripts/check-links.py`: 182 external URLs → all 200, relative links resolve (repository URLs re-checked after publishing)
 - [x] J9 `.githooks/pre-commit` runs the privacy check and gitleaks on staged files; tested by staging a fake email and confirming the commit is blocked — staged `leak-test.txt` with an invented address → "pre-commit: BLOCKED", exit 1; file removed
 - [x] J10 `.gitignore` covers zips, eval run outputs, transcripts, `.env*`, `*.local.*` — `.gitignore` (also `evals/results/` written by `claude plugin eval`, OS files)
@@ -113,7 +113,7 @@ Skill-specific:
 
 ## K. Manual end-to-end test on claude.ai (maintainer, before publishing)
 
-- [ ] K1 Plugin zipped and uploaded via Customize → Plugins → Add → Upload plugin
+- [ ] K1 Plugin zipped and uploaded via Customize → Plugins → Add → Upload plugin — zip built and checked: `dist/gcp-cert-coach-0.1.0.zip` (39 files, one top-level folder, one plugin.json, no OS junk, identical to the plugin folder); upload is the maintainer's step
 - [ ] K2 In a new Project, with code execution **on**: `init` for ACE in a non-English language; tracker published and filled; init says it seeded with the seed script (path A); note any PyYAML install step
 - [ ] K2b In a second new Project, with code execution **off** (Settings → Capabilities): `init` for ACE; init says it seeded without the script (path B), never asks to enable code execution; counts on the page match K2 (activities, modules, concepts). If claude.ai does not offer plugin skills at all with code execution off, record that, and test path B instead by telling init in K2b that the script cannot be run
 - [ ] K2c F4 check during K2/K2b: init read `assets/packs/ace/*.yaml` and `assets/tracker.html` from its own folder (the tree shows Google Skills titles; the page title is `ACE Cert Coach`); `rebuild` read its own `assets/tracker.html`; `progress` read its own `references/browser-progress-check.md`. Record the result in F4
