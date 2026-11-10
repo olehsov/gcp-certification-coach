@@ -124,6 +124,24 @@ LOG = [
 ]
 
 
+
+# Schema 0 (prototype tracker): no meta/settings, courses/topics/log collections (rebuild/references/migrations.md).
+SCHEMA0_EXPORT = {
+    "courses": [
+        {"id": "1", "num": 1, "title": "Google Cloud Fundamentals: Core Infrastructure", "done": True},
+        {"id": "2", "num": 2, "title": "Essential Google Cloud Infrastructure: Foundation", "done": False},
+    ],
+    "topics": [
+        {"id": "t1", "course": 1, "title": "Resources and Access in the Cloud", "sections": ["1.1"], "weight": "core",
+         "level": 45, "answers": 6, "correct": 4, "lastReviewed": "2026-11-05", "subtopics": ["Resource hierarchy", "IAM roles"]},
+        {"id": "t2", "course": 2, "title": "Virtual Networks", "sections": ["2.4"], "weight": "core",
+         "level": 0, "answers": 0, "correct": 0, "lastReviewed": None, "subtopics": ["VPC", "Firewall rules"]},
+    ],
+    "log": [
+        {"id": "l1", "ts": "2026-11-05T18:00:00Z", "topic": "t1", "q": "Example question about the resource hierarchy", "correct": True, "after": 45},
+    ],
+}
+
 def snapshot(settings_over=None, modules=None, concepts=None, log=None, misconceptions=None, extra=None):
     data = {
         "meta/settings": settings(**(settings_over or {})),
@@ -378,7 +396,7 @@ CASES = [
 
     # ---------------- rebuild ----------------
     ("rebuild-migrate", "rebuild", ["rebuild"],
-     context(snapshot({"schemaVersion": 0}), "The tracker page looks outdated. Update it."),
+     context(SCHEMA0_EXPORT, "The tracker page looks outdated. Update it."),
      [fired("rebuild"),
       llm("PASS if all hold: (1) it notices schemaVersion 0 is older than 1; (2) it plans the data migration according to the 0 -> 1 migration list before republishing (naming at least one of its steps, such as mapping courses to activities, topics to modules, or migrating the log); (3) it says a snapshot comes first and the learner confirms before data changes; (4) it keeps the SAME artifact URL and does not reset learner data. Without artifact tools it may stop after this plan. FAIL if it plans a new artifact URL, resets data, or ignores the schema version.")]),
     ("rebuild-same-url", "rebuild", ["rebuild"],
