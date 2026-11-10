@@ -1,0 +1,86 @@
+# Scoring constants (docs/ARCHITECTURE.md section 6). `init` copies this whole file into the tracker
+# as `meta/settings.scoring`; every other skill and the tracker page read constants only from there.
+# Values sit at the top level; `rationale` explains every constant, keyed by its dotted path.
+
+alpha: {easy: 0.15, medium: 0.25, hard: 0.35}
+confidenceMultiplier: {"1": 0.0, "2": 0.6, "3": 1.0}
+beta:
+  "1": {easy: 0.10, medium: 0.08, hard: 0.05}
+  "2": {easy: 0.25, medium: 0.20, hard: 0.15}
+  "3": {easy: 0.40, medium: 0.35, hard: 0.30}
+rounding: {levelDecimals: 1, minLevel: 0, maxLevel: 100}
+
+profiles:
+  standard:
+    dailyGainCap: 25
+    reviewIntervalDays: {below60: 3, below80: 7, atLeast80: 14}
+    decayPerWeekOverdue: 3
+    moduleReady: {minLevel: 75, minCoverage: 0.8, minAnswers: 4, minDistinctDays: 2, lastNCorrect: 2, openMisconceptionsAllowed: true}
+    mock: {greenMinPercent: 75, greenConsecutive: 1, amberMinPercent: 60}
+  hard:
+    dailyGainCap: 20
+    reviewIntervalDays: {below60: 2, below80: 5, atLeast80: 10}
+    decayPerWeekOverdue: 5
+    moduleReady: {minLevel: 85, minCoverage: 1.0, minAnswers: 6, minDistinctDays: 3, lastNCorrect: 3, openMisconceptionsAllowed: false}
+    mock: {greenMinPercent: 80, greenConsecutive: 2, amberMinPercent: 65}
+
+misconception: {createOnSure: true, createOnThinkWhenSpecificBelief: true, resolveAfterConsecutiveCorrect: 2, minConfidenceToResolve: 2}
+challengeBonus: {base: 15, perScore: 10, minScore: 0.5, resolveMisconceptionsAtScore: 1.0}
+session: {defaultQuestions: 5, maxConsecutiveSameModule: 2, pretestQuestions: 5, warmupQuestions: 5, warmupAfterPauseDays: 7, mockQuestions: 50}
+readiness: {coreWeight: 1.0, supportWeight: 0.5}
+history: {recentAnswersKept: 5, distinctDaysKept: 10}
+plan: {gapHoursPerTopic: 1, practiceBufferFraction: 0.2, minutesPerLoggedAnswer: 3}
+page: {reviewQueueSize: 7, recentAnswersShown: 15, staleSyncDays: 30}
+
+rationale:
+  alpha: "Gain fraction of the remaining gap to 100 on a correct answer. Harder questions are stronger evidence of mastery, so they close more of the gap."
+  confidenceMultiplier.1: "A correct guess proves nothing, so it earns no gain; this keeps lucky guesses from inflating readiness."
+  confidenceMultiplier.2: "Partial certainty earns partial credit."
+  confidenceMultiplier.3: "A confident correct answer earns the full gain."
+  beta.1: "Loss fraction for wrong guesses. Small, so answering an honest 'don't know' is safe."
+  beta.2: "Loss fraction for wrong 'think' answers: a moderate signal of a gap."
+  beta.3: "Loss fraction for wrong 'sure' answers. Largest, because confident errors are the most dangerous on the exam."
+  beta.byDifficulty: "Within each confidence, missing an easy question costs more than missing a hard one because it signals a basic gap."
+  rounding: "Levels are clamped to 0-100 and rounded to one decimal so stored values stay readable and comparable."
+  profiles.standard.dailyGainCap: "Maximum level gain per concept per day. Durable knowledge needs more than one session."
+  profiles.hard.dailyGainCap: "Lower cap in Hard so readiness needs more separate days of practice."
+  profiles.standard.reviewIntervalDays: "Expanding review intervals by level (spaced repetition): weak concepts come back sooner."
+  profiles.hard.reviewIntervalDays: "Shorter intervals in Hard: reviews come sooner at every level."
+  profiles.standard.decayPerWeekOverdue: "Level points lost per week past the review interval, modelling forgetting after a missed review."
+  profiles.hard.decayPerWeekOverdue: "Faster decay in Hard."
+  profiles.standard.moduleReady.minLevel: "Module level a learner must reach before the module counts as ready."
+  profiles.hard.moduleReady.minLevel: "Higher bar in Hard."
+  profiles.standard.moduleReady.minCoverage: "Share of exam-relevant concepts with at least one answer; most of the module must have been tested."
+  profiles.hard.moduleReady.minCoverage: "Every exam-relevant concept must have been tested in Hard."
+  profiles.standard.moduleReady.minAnswers: "Minimum answers across the module (pre-tests excluded) so readiness is not decided by one lucky question."
+  profiles.hard.moduleReady.minAnswers: "More evidence required in Hard."
+  profiles.standard.moduleReady.minDistinctDays: "Answers on at least two days: knowledge survived at least one night."
+  profiles.hard.moduleReady.minDistinctDays: "Three days in Hard."
+  profiles.standard.moduleReady.lastNCorrect: "The most recent module answers must be correct with confidence 2 or higher: recent performance, not history."
+  profiles.hard.moduleReady.lastNCorrect: "Longer recent streak in Hard."
+  profiles.standard.moduleReady.openMisconceptionsAllowed: "Standard tolerates an open misconception so one confident slip does not block a well-practiced module."
+  profiles.hard.moduleReady.openMisconceptionsAllowed: "Hard requires every misconception in the module to be resolved."
+  profiles.standard.mock: "Green at 75% once, amber 60-74%, red below 60%. Advice about booking the exam only; never a pass prediction."
+  profiles.hard.mock: "Green needs 80% twice in a row, amber 65-79%, red below 65%: a stricter, repeatable bar."
+  misconception.createOnSure: "A wrong answer with confidence 3 always records the wrong belief."
+  misconception.createOnThinkWhenSpecificBelief: "A wrong 'think' answer records a misconception only when the explanation identifies a specific wrong belief, to avoid noise."
+  misconception.resolveAfterConsecutiveCorrect: "Two consecutive correct answers on the concept, with new wording, show the belief was corrected."
+  misconception.minConfidenceToResolve: "Resolving answers need at least 'think' confidence; a guess does not prove the belief changed."
+  challengeBonus: "Bonus 15 + 10 x score to each linked concept when score >= 0.5. Hands-on success is strong evidence, so it bypasses the daily cap but not the 100 cap; it does not count as answers or days."
+  challengeBonus.resolveMisconceptionsAtScore: "Only a perfect challenge resolves linked misconceptions."
+  session.defaultQuestions: "Five questions fit a short session and give enough signal to update levels."
+  session.maxConsecutiveSameModule: "Interleaving across modules improves retention; at most two questions in a row from one module."
+  session.pretestQuestions: "A five-question pre-test primes learning without changing levels."
+  session.warmupQuestions: "A five-question warm-up on strong concepts rebuilds momentum after a long break."
+  session.warmupAfterPauseDays: "A pause longer than a week triggers the warm-up."
+  session.mockQuestions: "Fifty questions, close to the real exam length, distributed by official section weights."
+  readiness.coreWeight: "Core modules count fully in section scores."
+  readiness.supportWeight: "Support modules (overviews, background) count half."
+  history.recentAnswersKept: "Last five answers per concept are enough for the recent-correct rule and calibration."
+  history.distinctDaysKept: "Last ten answer dates are enough for the distinct-days rule."
+  plan.gapHoursPerTopic: "Estimated study time per exam-guide gap topic in Full exam mode."
+  plan.practiceBufferFraction: "Practice time added on top of course hours (20% of required hours)."
+  plan.minutesPerLoggedAnswer: "Practice already done is credited at three minutes per logged answer."
+  page.reviewQueueSize: "The review queue shows the top seven items so it stays actionable."
+  page.recentAnswersShown: "The page lists the last fifteen answers."
+  page.staleSyncDays: "After thirty days without sync the page suggests checking for path or exam-guide updates."

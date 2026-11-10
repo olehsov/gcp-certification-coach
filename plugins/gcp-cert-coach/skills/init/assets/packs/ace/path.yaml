@@ -1,0 +1,937 @@
+# ACE learning path: activities -> modules -> concepts.
+# Titles and structure from the public Google Skills outline of the Associate Cloud Engineer
+# Certification path. Skill-badge concepts and all concept titles marked in README are original
+# summaries. No course descriptions or materials are reproduced. See README.md for sources.
+#
+# Fields: see docs/ARCHITECTURE.md section 5.2. `labs` lists hands-on lab titles inside a module
+# (informational; used by learn and challenge, not seeded as separate documents).
+
+activities:
+  - id: c1
+    order: 1
+    kind: course
+    title: "Build a Certification Study Guide: ACE Exam Prep"
+    hours: 1
+    optional: false
+    urls: {googleSkills: https://www.skills.google/paths/11/course_templates/77, coursera: null}
+    modules:
+      - id: c1-m1
+        order: 1
+        title: "Gemini Notebook and ACE Certification"
+        sections: []
+        weight: support
+        examRelevant: false
+        hours: null
+        concepts:
+          - {id: c1-m1-k1, order: 1, title: "Learning objectives"}
+          - {id: c1-m1-k2, order: 2, title: "About the certification"}
+      - id: c1-m2
+        order: 2
+        title: "Study guide preparation"
+        sections: []
+        weight: support
+        examRelevant: false
+        hours: null
+        concepts:
+          - {id: c1-m2-k1, order: 1, title: "Sources"}
+          - {id: c1-m2-k2, order: 2, title: "Prompting Gemini Notebook"}
+          - {id: c1-m2-k3, order: 3, title: "Study modes"}
+          - {id: c1-m2-k4, order: 4, title: "Recap"}
+  - id: c2
+    order: 2
+    kind: course
+    title: "Google Cloud Fundamentals: Core Infrastructure"
+    hours: 5
+    optional: false
+    urls: {googleSkills: https://www.skills.google/paths/11/course_templates/60, coursera: null}
+    modules:
+      - id: c2-m1
+        order: 1
+        title: "Course Introduction"
+        sections: []
+        weight: support
+        examRelevant: false
+        hours: null
+        concepts:
+          - {id: c2-m1-k1, order: 1, title: "Course introduction"}
+      - id: c2-m2
+        order: 2
+        title: "Introducing Google Cloud"
+        sections: ["1.2"]
+        weight: support
+        examRelevant: true
+        hours: null
+        concepts:
+          - {id: c2-m2-k1, order: 1, title: "Cloud computing overview"}
+          - {id: c2-m2-k2, order: 2, title: "IaaS and PaaS"}
+          - {id: c2-m2-k3, order: 3, title: "The Google Cloud network"}
+          - {id: c2-m2-k4, order: 4, title: "Environmental impact"}
+          - {id: c2-m2-k5, order: 5, title: "Security"}
+          - {id: c2-m2-k6, order: 6, title: "Open source ecosystems"}
+          - {id: c2-m2-k7, order: 7, title: "Pricing and billing", docUrls: ["https://docs.cloud.google.com/billing/docs/concepts"]}
+      - id: c2-m3
+        order: 3
+        title: "Resources and Access in the Cloud"
+        sections: ["1.1", "5.1", "5.2"]
+        weight: core
+        examRelevant: true
+        hours: null
+        labs: ["Getting Started with Cloud Marketplace"]
+        concepts:
+          - {id: c2-m3-k1, order: 1, title: "Resource hierarchy", docUrls: ["https://docs.cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy"]}
+          - {id: c2-m3-k2, order: 2, title: "Identity and Access Management", docUrls: ["https://docs.cloud.google.com/iam/docs/overview"]}
+          - {id: c2-m3-k3, order: 3, title: "Service accounts", docUrls: ["https://docs.cloud.google.com/iam/docs/service-account-overview"]}
+          - {id: c2-m3-k4, order: 4, title: "Cloud Identity", docUrls: ["https://docs.cloud.google.com/identity/docs/overview"]}
+          - {id: c2-m3-k5, order: 5, title: "Interacting with Google Cloud"}
+          - {id: c2-m3-k6, order: 6, title: "Cloud Marketplace"}
+      - id: c2-m4
+        order: 4
+        title: "Virtual Machines and Networks in the Cloud"
+        sections: ["2.1", "2.3", "3.1", "3.5"]
+        weight: core
+        examRelevant: true
+        hours: null
+        labs: ["Get Started with VPC Networking and Compute Engine"]
+        concepts:
+          - {id: c2-m4-k1, order: 1, title: "VPC networking", docUrls: ["https://docs.cloud.google.com/vpc/docs/vpc"]}
+          - {id: c2-m4-k2, order: 2, title: "Compute Engine", docUrls: ["https://docs.cloud.google.com/compute/docs/overview"]}
+          - {id: c2-m4-k3, order: 3, title: "Scaling virtual machines"}
+          - {id: c2-m4-k4, order: 4, title: "Important VPC compatibilities"}
+          - {id: c2-m4-k5, order: 5, title: "Cloud Load Balancing", docUrls: ["https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview"]}
+          - {id: c2-m4-k6, order: 6, title: "Cloud DNS and Cloud CDN"}
+          - {id: c2-m4-k7, order: 7, title: "Connecting networks to Google VPC"}
+      - id: c2-m5
+        order: 5
+        title: "Storage in the Cloud"
+        sections: ["2.2", "4.4"]
+        weight: core
+        examRelevant: true
+        hours: null
+        labs: ["Getting Started with Cloud Storage and Cloud SQL"]
+        concepts:
+          - {id: c2-m5-k1, order: 1, title: "Storage options overview"}
+          - {id: c2-m5-k2, order: 2, title: "Cloud Storage", docUrls: ["https://docs.cloud.google.com/storage/docs/introduction"]}
+          - {id: c2-m5-k3, order: 3, title: "Storage classes and data transfer", docUrls: ["https://docs.cloud.google.com/storage/docs/storage-classes"]}
+          - {id: c2-m5-k4, order: 4, title: "Cloud SQL", docUrls: ["https://docs.cloud.google.com/sql/docs/introduction"]}
+          - {id: c2-m5-k5, order: 5, title: "Spanner"}
+          - {id: c2-m5-k6, order: 6, title: "Firestore"}
+          - {id: c2-m5-k7, order: 7, title: "Bigtable"}
+          - {id: c2-m5-k8, order: 8, title: "Comparing storage options"}
+      - id: c2-m6
+        order: 6
+        title: "Containers in the Cloud"
+        sections: ["2.1", "3.2"]
+        weight: core
+        examRelevant: true
+        hours: null
+        concepts:
+          - {id: c2-m6-k1, order: 1, title: "Introduction to containers"}
+          - {id: c2-m6-k2, order: 2, title: "Kubernetes"}
+          - {id: c2-m6-k3, order: 3, title: "Google Kubernetes Engine", docUrls: ["https://docs.cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview"]}
+      - id: c2-m7
+        order: 7
+        title: "Applications in the Cloud"
+        sections: ["3.3", "4.3"]
+        weight: core
+        examRelevant: true
+        hours: null
+        labs: ["Hello Cloud Run"]
+        concepts:
+          - {id: c2-m7-k1, order: 1, title: "Cloud Run", docUrls: ["https://docs.cloud.google.com/run/docs/overview/what-is-cloud-run"]}
+          - {id: c2-m7-k2, order: 2, title: "Development in the cloud"}
+      - id: c2-m8
+        order: 8
+        title: "Prompt Engineering"
+        sections: []
+        weight: support
+        examRelevant: false
+        hours: null
+        concepts:
+          - {id: c2-m8-k1, order: 1, title: "Prompt engineering"}
+      - id: c2-m9
+        order: 9
+        title: "Course Summary"
+        sections: []
+        weight: support
+        examRelevant: false
+        hours: null
+        concepts:
+          - {id: c2-m9-k1, order: 1, title: "Course summary"}
+          - {id: c2-m9-k2, order: 2, title: "Course resources"}
+  - id: c3
+    order: 3
+    kind: course
+    title: "Essential Google Cloud Infrastructure: Foundation"
+    hours: 6.75
+    optional: false
+    urls: {googleSkills: https://www.skills.google/paths/11/course_templates/50, coursera: null}
+    modules:
+      - id: c3-m1
+        order: 1
+        title: "Introduction"
+        sections: []
+        weight: support
+        examRelevant: false
+        hours: null
+        concepts:
+          - {id: c3-m1-k1, order: 1, title: "Course introduction"}
+      - id: c3-m2
+        order: 2
+        title: "Interacting with Google Cloud"
+        sections: ["1.1"]
+        weight: core
+        examRelevant: true
+        hours: null
+        labs: ["Explore the Google Cloud Console and Cloud Shell", "Deploy a LAMP Stack with Google Cloud Marketplace"]
+        concepts:
+          - {id: c3-m2-k1, order: 1, title: "Using Google Cloud"}
+          - {id: c3-m2-k2, order: 2, title: "Projects"}
+          - {id: c3-m2-k3, order: 3, title: "Cloud Marketplace deployments"}
+      - id: c3-m3
+        order: 3
+        title: "Virtual Networks"
+        sections: ["2.3", "3.5", "4.5"]
+        weight: core
+        examRelevant: true
+        hours: null
+        labs: ["Create and Configure VPC Networks", "Implement Private Google Access and Cloud NAT"]
+        concepts:
+          - {id: c3-m3-k1, order: 1, title: "Virtual Private Cloud"}
+          - {id: c3-m3-k2, order: 2, title: "Projects, networks and subnetworks"}
+          - {id: c3-m3-k3, order: 3, title: "Expanding a subnet", docUrls: ["https://docs.cloud.google.com/vpc/docs/create-modify-vpc-networks"]}
+          - {id: c3-m3-k4, order: 4, title: "IP addresses", docUrls: ["https://docs.cloud.google.com/vpc/docs/ip-addresses"]}
+          - {id: c3-m3-k5, order: 5, title: "Internal and external IP addresses"}
+          - {id: c3-m3-k6, order: 6, title: "Mapping IP addresses"}
+          - {id: c3-m3-k7, order: 7, title: "Routes and firewall rules", docUrls: ["https://docs.cloud.google.com/vpc/docs/routes"]}
+          - {id: c3-m3-k8, order: 8, title: "Network pricing"}
+          - {id: c3-m3-k9, order: 9, title: "Common network designs"}
+          - {id: c3-m3-k10, order: 10, title: "Private Google Access and Cloud NAT", docUrls: ["https://docs.cloud.google.com/vpc/docs/private-google-access", "https://docs.cloud.google.com/nat/docs/overview"]}
+      - id: c3-m4
+        order: 4
+        title: "Virtual Machines"
+        sections: ["2.1", "3.1", "4.1"]
+        weight: core
+        examRelevant: true
+        hours: null
+        labs: ["Create Virtual Machines", "Create and Configure Virtual Machines"]
+        concepts:
+          - {id: c3-m4-k1, order: 1, title: "Compute Engine"}
+          - {id: c3-m4-k2, order: 2, title: "VM access and lifecycle"}
+          - {id: c3-m4-k3, order: 3, title: "Compute options", docUrls: ["https://docs.cloud.google.com/compute/docs/machine-resource"]}
+          - {id: c3-m4-k4, order: 4, title: "Compute pricing", docUrls: ["https://docs.cloud.google.com/compute/docs/instances/spot"]}
+          - {id: c3-m4-k5, order: 5, title: "Special compute configurations"}
+          - {id: c3-m4-k6, order: 6, title: "Images", docUrls: ["https://docs.cloud.google.com/compute/docs/images"]}
+          - {id: c3-m4-k7, order: 7, title: "Disk options", docUrls: ["https://docs.cloud.google.com/compute/docs/disks"]}
+          - {id: c3-m4-k8, order: 8, title: "Common Compute Engine actions"}
+      - id: c3-m5
+        order: 5
+        title: "Course Resources"
+        sections: []
+        weight: support
+        examRelevant: false
+        hours: null
+        concepts:
+          - {id: c3-m5-k1, order: 1, title: "Course resources"}
+  - id: c4
+    order: 4
+    kind: course
+    title: "Essential Google Cloud Infrastructure: Core Services"
+    hours: 8.25
+    optional: false
+    urls: {googleSkills: https://www.skills.google/paths/11/course_templates/49, coursera: null}
+    modules:
+      - id: c4-m1
+        order: 1
+        title: "Introduction"
+        sections: []
+        weight: support
+        examRelevant: false
+        hours: null
+        concepts:
+          - {id: c4-m1-k1, order: 1, title: "Course introduction"}
+      - id: c4-m2
+        order: 2
+        title: "Identity and Access Management (IAM)"
+        sections: ["1.1", "5.1", "5.2"]
+        weight: core
+        examRelevant: true
+        hours: null
+        labs: ["Exploring IAM"]
+        concepts:
+          - {id: c4-m2-k1, order: 1, title: "IAM overview"}
+          - {id: c4-m2-k2, order: 2, title: "Organization"}
+          - {id: c4-m2-k3, order: 3, title: "Roles", docUrls: ["https://docs.cloud.google.com/iam/docs/roles-overview"]}
+          - {id: c4-m2-k4, order: 4, title: "Custom roles", docUrls: ["https://docs.cloud.google.com/iam/docs/creating-custom-roles"]}
+          - {id: c4-m2-k5, order: 5, title: "Members", docUrls: ["https://docs.cloud.google.com/iam/docs/principals-overview"]}
+          - {id: c4-m2-k6, order: 6, title: "Service accounts", docUrls: ["https://docs.cloud.google.com/iam/docs/best-practices-service-accounts"]}
+          - {id: c4-m2-k7, order: 7, title: "Organization restrictions"}
+          - {id: c4-m2-k8, order: 8, title: "IAM best practices", docUrls: ["https://docs.cloud.google.com/iam/docs/using-iam-securely"]}
+      - id: c4-m3
+        order: 3
+        title: "Storage and Database Services"
+        sections: ["2.2", "3.4", "4.4"]
+        weight: core
+        examRelevant: true
+        hours: null
+        labs: ["Create and Manage Cloud Storage Buckets and Encryption", "Configure Cloud SQL"]
+        concepts:
+          - {id: c4-m3-k1, order: 1, title: "Cloud Storage"}
+          - {id: c4-m3-k2, order: 2, title: "Cloud Storage features"}
+          - {id: c4-m3-k3, order: 3, title: "Choosing a storage class"}
+          - {id: c4-m3-k4, order: 4, title: "Filestore", docUrls: ["https://docs.cloud.google.com/filestore/docs/overview"]}
+          - {id: c4-m3-k5, order: 5, title: "Cloud SQL"}
+          - {id: c4-m3-k6, order: 6, title: "Spanner", docUrls: ["https://docs.cloud.google.com/spanner/docs"]}
+          - {id: c4-m3-k7, order: 7, title: "AlloyDB", docUrls: ["https://docs.cloud.google.com/alloydb/docs/overview"]}
+          - {id: c4-m3-k8, order: 8, title: "Firestore", docUrls: ["https://docs.cloud.google.com/firestore/native/docs/overview"]}
+          - {id: c4-m3-k9, order: 9, title: "Bigtable", docUrls: ["https://docs.cloud.google.com/bigtable/docs/overview"]}
+          - {id: c4-m3-k10, order: 10, title: "Memorystore", docUrls: ["https://docs.cloud.google.com/memorystore/docs/redis/memorystore-for-redis-overview"]}
+      - id: c4-m4
+        order: 4
+        title: "Resource Management"
+        sections: ["1.1", "1.2"]
+        weight: core
+        examRelevant: true
+        hours: null
+        labs: ["Examine Billing Data with BigQuery"]
+        concepts:
+          - {id: c4-m4-k1, order: 1, title: "Resource Manager"}
+          - {id: c4-m4-k2, order: 2, title: "Quotas", docUrls: ["https://docs.cloud.google.com/docs/quotas/overview"]}
+          - {id: c4-m4-k3, order: 3, title: "Labels", docUrls: ["https://docs.cloud.google.com/resource-manager/docs/labels-overview"]}
+          - {id: c4-m4-k4, order: 4, title: "Billing"}
+      - id: c4-m5
+        order: 5
+        title: "Resource Monitoring"
+        sections: ["4.6"]
+        weight: core
+        examRelevant: true
+        hours: null
+        labs: ["Monitor Resources with Google Cloud Observability"]
+        concepts:
+          - {id: c4-m5-k1, order: 1, title: "Observability overview"}
+          - {id: c4-m5-k2, order: 2, title: "Monitoring", docUrls: ["https://docs.cloud.google.com/monitoring/docs/monitoring-overview"]}
+          - {id: c4-m5-k3, order: 3, title: "Logging", docUrls: ["https://docs.cloud.google.com/logging/docs/overview"]}
+          - {id: c4-m5-k4, order: 4, title: "Error Reporting"}
+          - {id: c4-m5-k5, order: 5, title: "Tracing"}
+          - {id: c4-m5-k6, order: 6, title: "Profiling"}
+          - {id: c4-m5-k7, order: 7, title: "Partner integrations"}
+      - id: c4-m6
+        order: 6
+        title: "Course Resources"
+        sections: []
+        weight: support
+        examRelevant: false
+        hours: null
+        concepts:
+          - {id: c4-m6-k1, order: 1, title: "Course resources"}
+  - id: c5
+    order: 5
+    kind: course
+    title: "Elastic Google Cloud Infrastructure: Scaling and Automation"
+    hours: 7
+    optional: false
+    urls: {googleSkills: https://www.skills.google/paths/11/course_templates/178, coursera: null}
+    modules:
+      - id: c5-m1
+        order: 1
+        title: "Introduction"
+        sections: []
+        weight: support
+        examRelevant: false
+        hours: null
+        concepts:
+          - {id: c5-m1-k1, order: 1, title: "Course introduction"}
+      - id: c5-m2
+        order: 2
+        title: "Interconnecting Networks"
+        sections: ["3.5"]
+        weight: core
+        examRelevant: true
+        hours: null
+        labs: ["Configure Google Cloud HA VPN"]
+        concepts:
+          - {id: c5-m2-k1, order: 1, title: "Cloud VPN"}
+          - {id: c5-m2-k2, order: 2, title: "HA VPN", docUrls: ["https://docs.cloud.google.com/network-connectivity/docs/vpn/concepts/overview"]}
+          - {id: c5-m2-k3, order: 3, title: "Cloud Interconnect", docUrls: ["https://docs.cloud.google.com/network-connectivity/docs/interconnect/concepts/overview"]}
+          - {id: c5-m2-k4, order: 4, title: "Peering"}
+          - {id: c5-m2-k5, order: 5, title: "Choosing a connection"}
+          - {id: c5-m2-k6, order: 6, title: "Shared VPC and VPC Network Peering", docUrls: ["https://docs.cloud.google.com/vpc/docs/shared-vpc", "https://docs.cloud.google.com/vpc/docs/vpc-peering"]}
+      - id: c5-m3
+        order: 3
+        title: "Load Balancing and Autoscaling"
+        sections: ["2.3", "3.1"]
+        weight: core
+        examRelevant: true
+        hours: null
+        labs: ["Configure an Application Load Balancer with Autoscaling", "Configure an Internal Network Load Balancer"]
+        concepts:
+          - {id: c5-m3-k1, order: 1, title: "Managed instance groups", docUrls: ["https://docs.cloud.google.com/compute/docs/instance-groups"]}
+          - {id: c5-m3-k2, order: 2, title: "Autoscaling and health checks", docUrls: ["https://docs.cloud.google.com/compute/docs/autoscaler"]}
+          - {id: c5-m3-k3, order: 3, title: "Application Load Balancing"}
+          - {id: c5-m3-k4, order: 4, title: "Cloud CDN", docUrls: ["https://docs.cloud.google.com/cdn/docs/overview"]}
+          - {id: c5-m3-k5, order: 5, title: "Network load balancing"}
+          - {id: c5-m3-k6, order: 6, title: "Internal load balancing"}
+          - {id: c5-m3-k7, order: 7, title: "Choosing a load balancer", docUrls: ["https://docs.cloud.google.com/load-balancing/docs/choosing-load-balancer"]}
+      - id: c5-m4
+        order: 4
+        title: "Infrastructure Automation"
+        sections: ["3.6"]
+        weight: core
+        examRelevant: true
+        hours: null
+        labs: ["Automating the Deployment of Infrastructure Using Terraform"]
+        concepts:
+          - {id: c5-m4-k1, order: 1, title: "Terraform", docUrls: ["https://docs.cloud.google.com/docs/terraform/terraform-overview"]}
+          - {id: c5-m4-k2, order: 2, title: "Google Cloud Marketplace"}
+      - id: c5-m5
+        order: 5
+        title: "Managed Services"
+        sections: ["3.4", "4.4"]
+        weight: support
+        examRelevant: true
+        hours: null
+        concepts:
+          - {id: c5-m5-k1, order: 1, title: "BigQuery", docUrls: ["https://docs.cloud.google.com/bigquery/docs/introduction"]}
+          - {id: c5-m5-k2, order: 2, title: "Dataflow", docUrls: ["https://docs.cloud.google.com/dataflow/docs/overview"]}
+          - {id: c5-m5-k3, order: 3, title: "Dataprep"}
+          - {id: c5-m5-k4, order: 4, title: "Managed Service for Apache Spark"}
+      - id: c5-m6
+        order: 6
+        title: "Course Resources"
+        sections: []
+        weight: support
+        examRelevant: false
+        hours: null
+        concepts:
+          - {id: c5-m6-k1, order: 1, title: "Course resources"}
+  - id: c6
+    order: 6
+    kind: course
+    title: "Getting Started with Google Kubernetes Engine"
+    hours: 5.75
+    optional: false
+    urls: {googleSkills: https://www.skills.google/paths/11/course_templates/2, coursera: null}
+    modules:
+      - id: c6-m1
+        order: 1
+        title: "Course Introduction"
+        sections: []
+        weight: support
+        examRelevant: false
+        hours: null
+        concepts:
+          - {id: c6-m1-k1, order: 1, title: "Course introduction"}
+      - id: c6-m2
+        order: 2
+        title: "Introduction to Google Cloud"
+        sections: ["1.1", "1.2"]
+        weight: support
+        examRelevant: true
+        hours: null
+        labs: ["Accessing the Google Cloud Console and Cloud Shell"]
+        concepts:
+          - {id: c6-m2-k1, order: 1, title: "Cloud computing and Google Cloud"}
+          - {id: c6-m2-k2, order: 2, title: "Compute offerings"}
+          - {id: c6-m2-k3, order: 3, title: "The Google network"}
+          - {id: c6-m2-k4, order: 4, title: "Resource management"}
+          - {id: c6-m2-k5, order: 5, title: "Billing"}
+          - {id: c6-m2-k6, order: 6, title: "Interacting with Google Cloud"}
+      - id: c6-m3
+        order: 3
+        title: "Introduction to Containers and Kubernetes"
+        sections: ["3.2"]
+        weight: core
+        examRelevant: true
+        hours: null
+        labs: ["Working with Cloud Build"]
+        concepts:
+          - {id: c6-m3-k1, order: 1, title: "Containers"}
+          - {id: c6-m3-k2, order: 2, title: "Container images"}
+          - {id: c6-m3-k3, order: 3, title: "Cloud Build", docUrls: ["https://docs.cloud.google.com/build/docs/overview"]}
+          - {id: c6-m3-k4, order: 4, title: "Kubernetes"}
+          - {id: c6-m3-k5, order: 5, title: "Google Kubernetes Engine"}
+      - id: c6-m4
+        order: 4
+        title: "Kubernetes Architecture"
+        sections: ["3.2", "4.2"]
+        weight: core
+        examRelevant: true
+        hours: null
+        labs: ["Deploying GKE Autopilot Clusters", "Running a Containerized App on Google Kubernetes Engine"]
+        concepts:
+          - {id: c6-m4-k1, order: 1, title: "Kubernetes components"}
+          - {id: c6-m4-k2, order: 2, title: "Kubernetes concepts", docUrls: ["https://docs.cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview"]}
+          - {id: c6-m4-k3, order: 3, title: "Object management"}
+          - {id: c6-m4-k4, order: 4, title: "Deployments and controllers", docUrls: ["https://docs.cloud.google.com/kubernetes-engine/docs/get-started/deploy-workloads"]}
+          - {id: c6-m4-k5, order: 5, title: "Services and networking"}
+      - id: c6-m5
+        order: 5
+        title: "Kubernetes Operations"
+        sections: ["3.2", "4.2"]
+        weight: core
+        examRelevant: true
+        hours: null
+        labs: ["Deploying GKE Autopilot Clusters from Cloud Shell"]
+        concepts:
+          - {id: c6-m5-k1, order: 1, title: "The kubectl command", docUrls: ["https://docs.cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl"]}
+          - {id: c6-m5-k2, order: 2, title: "Introspection"}
+      - id: c6-m6
+        order: 6
+        title: "Course Summary"
+        sections: []
+        weight: support
+        examRelevant: false
+        hours: null
+        concepts:
+          - {id: c6-m6-k1, order: 1, title: "Course summary"}
+      - id: c6-m7
+        order: 7
+        title: "Course Resources"
+        sections: []
+        weight: support
+        examRelevant: false
+        hours: null
+        concepts:
+          - {id: c6-m7-k1, order: 1, title: "Course resources"}
+  - id: c7
+    order: 7
+    kind: course
+    title: "Logging and Monitoring in Google Cloud"
+    hours: 8.5
+    optional: false
+    urls: {googleSkills: https://www.skills.google/paths/11/course_templates/99, coursera: null}
+    modules:
+      - id: c7-m1
+        order: 1
+        title: "Introduction to Google Cloud Observability"
+        sections: ["4.6"]
+        weight: support
+        examRelevant: true
+        hours: null
+        concepts:
+          - {id: c7-m1-k1, order: 1, title: "Need for observability"}
+          - {id: c7-m1-k2, order: 2, title: "Cloud Monitoring"}
+          - {id: c7-m1-k3, order: 3, title: "Cloud Logging"}
+          - {id: c7-m1-k4, order: 4, title: "Error Reporting"}
+          - {id: c7-m1-k5, order: 5, title: "Application performance management tools"}
+      - id: c7-m2
+        order: 2
+        title: "Monitoring Critical Systems"
+        sections: ["4.6", "1.1"]
+        weight: core
+        examRelevant: true
+        hours: null
+        labs: ["Monitoring and Dashboarding Multiple Projects"]
+        concepts:
+          - {id: c7-m2-k1, order: 1, title: "Monitoring architecture patterns"}
+          - {id: c7-m2-k2, order: 2, title: "Monitoring multiple projects", docUrls: ["https://docs.cloud.google.com/monitoring/settings"]}
+          - {id: c7-m2-k3, order: 3, title: "Data model and dashboards"}
+          - {id: c7-m2-k4, order: 4, title: "Query metrics"}
+          - {id: c7-m2-k5, order: 5, title: "Uptime checks", docUrls: ["https://docs.cloud.google.com/monitoring/uptime-checks"]}
+      - id: c7-m3
+        order: 3
+        title: "Alerting Policies"
+        sections: ["4.6"]
+        weight: core
+        examRelevant: true
+        hours: null
+        labs: ["Alerting in Google Cloud", "Service Monitoring"]
+        concepts:
+          - {id: c7-m3-k1, order: 1, title: "SLI, SLO and SLA"}
+          - {id: c7-m3-k2, order: 2, title: "Developing an alerting strategy"}
+          - {id: c7-m3-k3, order: 3, title: "Creating alerts", docUrls: ["https://docs.cloud.google.com/monitoring/alerts"]}
+          - {id: c7-m3-k4, order: 4, title: "Service Monitoring"}
+      - id: c7-m4
+        order: 4
+        title: "Advanced Logging and Analysis"
+        sections: ["4.6"]
+        weight: core
+        examRelevant: true
+        hours: null
+        labs: ["Log Analytics on Google Cloud"]
+        concepts:
+          - {id: c7-m4-k1, order: 1, title: "Cloud Logging architecture"}
+          - {id: c7-m4-k2, order: 2, title: "Log types and collection"}
+          - {id: c7-m4-k3, order: 3, title: "Storing, routing and exporting logs", docUrls: ["https://docs.cloud.google.com/logging/docs/routing/overview"]}
+          - {id: c7-m4-k4, order: 4, title: "Querying and viewing logs", docUrls: ["https://docs.cloud.google.com/logging/docs/view/logging-query-language"]}
+          - {id: c7-m4-k5, order: 5, title: "Log-based metrics", docUrls: ["https://docs.cloud.google.com/logging/docs/logs-based-metrics"]}
+          - {id: c7-m4-k6, order: 6, title: "Log Analytics", docUrls: ["https://docs.cloud.google.com/logging/docs/log-analytics"]}
+      - id: c7-m5
+        order: 5
+        title: "Working with Audit Logs"
+        sections: ["4.6"]
+        weight: core
+        examRelevant: true
+        hours: null
+        labs: ["Cloud Audit Logs"]
+        concepts:
+          - {id: c7-m5-k1, order: 1, title: "Cloud Audit Logs", docUrls: ["https://docs.cloud.google.com/logging/docs/audit"]}
+          - {id: c7-m5-k2, order: 2, title: "Data Access audit logs", docUrls: ["https://docs.cloud.google.com/logging/docs/audit/configure-data-access"]}
+          - {id: c7-m5-k3, order: 3, title: "Audit log entry format"}
+          - {id: c7-m5-k4, order: 4, title: "Audit logging best practices"}
+      - id: c7-m6
+        order: 6
+        title: "Course Summary"
+        sections: []
+        weight: support
+        examRelevant: false
+        hours: null
+        concepts:
+          - {id: c7-m6-k1, order: 1, title: "Course summary"}
+      - id: c7-m7
+        order: 7
+        title: "Course Resources"
+        sections: []
+        weight: support
+        examRelevant: false
+        hours: null
+        concepts:
+          - {id: c7-m7-k1, order: 1, title: "Course resources"}
+  - id: c8
+    order: 8
+    kind: course
+    title: "Observability in Google Cloud"
+    hours: 6.5
+    optional: false
+    urls: {googleSkills: https://www.skills.google/paths/11/course_templates/864, coursera: null}
+    modules:
+      - id: c8-m1
+        order: 1
+        title: "Introduction"
+        sections: []
+        weight: support
+        examRelevant: false
+        hours: null
+        concepts:
+          - {id: c8-m1-k1, order: 1, title: "Course introduction"}
+      - id: c8-m2
+        order: 2
+        title: "Configuring Google Cloud Services for Observability"
+        sections: ["4.6"]
+        weight: core
+        examRelevant: true
+        hours: null
+        labs: ["Monitoring a Compute Engine by using Ops Agent"]
+        concepts:
+          - {id: c8-m2-k1, order: 1, title: "Ops Agent", docUrls: ["https://docs.cloud.google.com/monitoring/agent/ops-agent"]}
+          - {id: c8-m2-k2, order: 2, title: "Non-VM resources"}
+          - {id: c8-m2-k3, order: 3, title: "Cloud Operations for GKE"}
+          - {id: c8-m2-k4, order: 4, title: "Managed Service for Prometheus", docUrls: ["https://docs.cloud.google.com/stackdriver/docs/managed-prometheus"]}
+          - {id: c8-m2-k5, order: 5, title: "Exposing user-defined metrics"}
+      - id: c8-m3
+        order: 3
+        title: "Monitoring Google Cloud Network"
+        sections: ["4.6"]
+        weight: support
+        examRelevant: true
+        hours: null
+        labs: ["Analyzing Network Traffic with VPC Flow Logs"]
+        concepts:
+          - {id: c8-m3-k1, order: 1, title: "VPC Flow Logs", docUrls: ["https://docs.cloud.google.com/vpc/docs/flow-logs"]}
+          - {id: c8-m3-k2, order: 2, title: "Firewall Rules Logging"}
+          - {id: c8-m3-k3, order: 3, title: "Load Balancer Logging"}
+          - {id: c8-m3-k4, order: 4, title: "Cloud NAT logs"}
+          - {id: c8-m3-k5, order: 5, title: "Packet Mirroring"}
+          - {id: c8-m3-k6, order: 6, title: "Network Intelligence Center"}
+      - id: c8-m4
+        order: 4
+        title: "Investigating Application Performance Issues"
+        sections: ["4.6"]
+        weight: support
+        examRelevant: true
+        hours: null
+        labs: ["View application latency with Cloud Trace"]
+        concepts:
+          - {id: c8-m4-k1, order: 1, title: "Error Reporting"}
+          - {id: c8-m4-k2, order: 2, title: "Cloud Trace", docUrls: ["https://docs.cloud.google.com/trace/docs/overview"]}
+          - {id: c8-m4-k3, order: 3, title: "Cloud Profiler"}
+      - id: c8-m5
+        order: 5
+        title: "Optimizing the Costs for Google Cloud Observability"
+        sections: ["4.6"]
+        weight: support
+        examRelevant: true
+        hours: null
+        concepts:
+          - {id: c8-m5-k1, order: 1, title: "Observability costs and pricing"}
+          - {id: c8-m5-k2, order: 2, title: "Bill estimation"}
+          - {id: c8-m5-k3, order: 3, title: "Cost control best practices"}
+      - id: c8-m6
+        order: 6
+        title: "Course Summary"
+        sections: []
+        weight: support
+        examRelevant: false
+        hours: null
+        concepts:
+          - {id: c8-m6-k1, order: 1, title: "Course summary"}
+  - id: c9
+    order: 9
+    kind: course
+    title: "Getting Started with Terraform for Google Cloud"
+    hours: 6.5
+    optional: false
+    urls: {googleSkills: https://www.skills.google/paths/11/course_templates/443, coursera: null}
+    modules:
+      - id: c9-m1
+        order: 1
+        title: "Course Introduction"
+        sections: []
+        weight: support
+        examRelevant: false
+        hours: null
+        concepts:
+          - {id: c9-m1-k1, order: 1, title: "Course introduction"}
+      - id: c9-m2
+        order: 2
+        title: "Introduction to Terraform for Google Cloud"
+        sections: ["3.6"]
+        weight: core
+        examRelevant: true
+        hours: null
+        concepts:
+          - {id: c9-m2-k1, order: 1, title: "Infrastructure as code"}
+          - {id: c9-m2-k2, order: 2, title: "Terraform overview"}
+          - {id: c9-m2-k3, order: 3, title: "Using Terraform"}
+      - id: c9-m3
+        order: 3
+        title: "Terms and Concepts"
+        sections: ["3.6"]
+        weight: core
+        examRelevant: true
+        hours: null
+        labs: ["Infrastructure as Code with Terraform"]
+        concepts:
+          - {id: c9-m3-k1, order: 1, title: "Terraform configurations and HCL"}
+          - {id: c9-m3-k2, order: 2, title: "Author phase terms and concepts"}
+          - {id: c9-m3-k3, order: 3, title: "Terraform commands"}
+          - {id: c9-m3-k4, order: 4, title: "Terraform Validator"}
+      - id: c9-m4
+        order: 4
+        title: "Writing Infrastructure Code for Google Cloud"
+        sections: ["3.6"]
+        weight: core
+        examRelevant: true
+        hours: null
+        labs: ["Creating Resource Dependencies with Terraform"]
+        concepts:
+          - {id: c9-m4-k1, order: 1, title: "Resources"}
+          - {id: c9-m4-k2, order: 2, title: "Meta-arguments"}
+          - {id: c9-m4-k3, order: 3, title: "Resource dependencies"}
+          - {id: c9-m4-k4, order: 4, title: "Variables"}
+          - {id: c9-m4-k5, order: 5, title: "Variables best practices"}
+          - {id: c9-m4-k6, order: 6, title: "Output values"}
+          - {id: c9-m4-k7, order: 7, title: "Terraform Registry and Cloud Foundation Toolkit", docUrls: ["https://docs.cloud.google.com/docs/terraform/blueprints/terraform-blueprints"]}
+      - id: c9-m5
+        order: 5
+        title: "Organizing and Reusing Configuration with Terraform Modules"
+        sections: ["3.6"]
+        weight: core
+        examRelevant: true
+        hours: null
+        labs: ["Automating the Deployment of Infrastructure Using Terraform"]
+        concepts:
+          - {id: c9-m5-k1, order: 1, title: "Terraform modules"}
+          - {id: c9-m5-k2, order: 2, title: "Module use cases and benefits"}
+          - {id: c9-m5-k3, order: 3, title: "Reusing configurations with modules"}
+          - {id: c9-m5-k4, order: 4, title: "Module variables and outputs"}
+          - {id: c9-m5-k5, order: 5, title: "Module best practices"}
+      - id: c9-m6
+        order: 6
+        title: "Introduction to Terraform State"
+        sections: ["3.6"]
+        weight: core
+        examRelevant: true
+        hours: null
+        labs: ["Creating a Remote Backend"]
+        concepts:
+          - {id: c9-m6-k1, order: 1, title: "Terraform state"}
+          - {id: c9-m6-k2, order: 2, title: "Storing state files and remote backends", docUrls: ["https://docs.cloud.google.com/docs/terraform/resource-management/store-state"]}
+          - {id: c9-m6-k3, order: 3, title: "State best practices"}
+      - id: c9-m7
+        order: 7
+        title: "Course Summary"
+        sections: []
+        weight: support
+        examRelevant: false
+        hours: null
+        concepts:
+          - {id: c9-m7-k1, order: 1, title: "Course summary"}
+  - id: b1
+    order: 10
+    kind: skill_badge
+    title: "Implementing Cloud Load Balancing for Compute Engine"
+    hours: 0.5
+    optional: false
+    urls: {googleSkills: https://www.skills.google/paths/11/course_templates/648, coursera: null}
+    modules:
+      - id: b1-m1
+        order: 1
+        title: "Configure a Passthrough Network Load Balancer"
+        sections: ["2.3", "3.1"]
+        weight: core
+        examRelevant: true
+        hours: null
+        concepts:
+          - {id: b1-m1-k1, order: 1, title: "Passthrough Network Load Balancer architecture", docUrls: ["https://docs.cloud.google.com/load-balancing/docs/network/networklb-backend-service"]}
+          - {id: b1-m1-k2, order: 2, title: "Backend health checks"}
+          - {id: b1-m1-k3, order: 3, title: "Forwarding rules and static external IPs"}
+      - id: b1-m2
+        order: 2
+        title: "Set Up Application Load Balancers"
+        sections: ["2.3", "3.1"]
+        weight: core
+        examRelevant: true
+        hours: null
+        concepts:
+          - {id: b1-m2-k1, order: 1, title: "Instance templates and managed instance groups", docUrls: ["https://docs.cloud.google.com/compute/docs/instance-templates"]}
+          - {id: b1-m2-k2, order: 2, title: "Backend services and URL maps"}
+          - {id: b1-m2-k3, order: 3, title: "External Application Load Balancer", docUrls: ["https://docs.cloud.google.com/load-balancing/docs/https"]}
+          - {id: b1-m2-k4, order: 4, title: "Firewall rules for health check probes"}
+      - id: b1-m3
+        order: 3
+        title: "Use an Internal Application Load Balancer"
+        sections: ["2.3", "3.1"]
+        weight: core
+        examRelevant: true
+        hours: null
+        concepts:
+          - {id: b1-m3-k1, order: 1, title: "Internal Application Load Balancer", docUrls: ["https://docs.cloud.google.com/load-balancing/docs/l7-internal"]}
+          - {id: b1-m3-k2, order: 2, title: "Proxy-only subnets"}
+          - {id: b1-m3-k3, order: 3, title: "Regional backend services"}
+      - id: b1-m4
+        order: 4
+        title: "Implement Load Balancing on Compute Engine: Challenge Lab"
+        sections: ["2.3", "3.1"]
+        weight: core
+        examRelevant: true
+        hours: null
+        concepts:
+          - {id: b1-m4-k1, order: 1, title: "Load balancing requirements to deployment"}
+  - id: b2
+    order: 11
+    kind: skill_badge
+    title: "Develop Your Google Cloud Network"
+    hours: 1.25
+    optional: false
+    urls: {googleSkills: https://www.skills.google/paths/11/course_templates/625, coursera: null}
+    modules:
+      - id: b2-m1
+        order: 1
+        title: "Manage Access Control with IAM"
+        sections: ["5.1"]
+        weight: core
+        examRelevant: true
+        hours: null
+        concepts:
+          - {id: b2-m1-k1, order: 1, title: "Granting and revoking project roles"}
+          - {id: b2-m1-k2, order: 2, title: "Testing access as a second principal"}
+      - id: b2-m2
+        order: 2
+        title: "Introduction to SQL for BigQuery and Cloud SQL"
+        sections: ["3.4", "4.4"]
+        weight: support
+        examRelevant: true
+        hours: null
+        concepts:
+          - {id: b2-m2-k1, order: 1, title: "Querying BigQuery datasets"}
+          - {id: b2-m2-k2, order: 2, title: "Importing data into Cloud SQL", docUrls: ["https://docs.cloud.google.com/sql/docs/mysql/import-export"]}
+          - {id: b2-m2-k3, order: 3, title: "SQL query basics"}
+      - id: b2-m3
+        order: 3
+        title: "Create and Configure Multiple VPC Networks"
+        sections: ["3.5", "4.5"]
+        weight: core
+        examRelevant: true
+        hours: null
+        concepts:
+          - {id: b2-m3-k1, order: 1, title: "Custom mode VPC networks and subnets"}
+          - {id: b2-m3-k2, order: 2, title: "Firewall rules across VPC networks"}
+          - {id: b2-m3-k3, order: 3, title: "VMs with multiple network interfaces", docUrls: ["https://docs.cloud.google.com/vpc/docs/multiple-interfaces-concepts"]}
+      - id: b2-m4
+        order: 4
+        title: "Monitor a Compute Engine Instance with Cloud Monitoring"
+        sections: ["4.6"]
+        weight: core
+        examRelevant: true
+        hours: null
+        concepts:
+          - {id: b2-m4-k1, order: 1, title: "Installing the Ops Agent"}
+          - {id: b2-m4-k2, order: 2, title: "Uptime checks and alerting policies"}
+      - id: b2-m5
+        order: 5
+        title: "Managing Deployments Using Kubernetes Engine"
+        sections: ["3.2", "4.2"]
+        weight: core
+        examRelevant: true
+        hours: null
+        concepts:
+          - {id: b2-m5-k1, order: 1, title: "Deployment rollouts and rollbacks"}
+          - {id: b2-m5-k2, order: 2, title: "Canary deployments"}
+          - {id: b2-m5-k3, order: 3, title: "Blue-green deployments"}
+      - id: b2-m6
+        order: 6
+        title: "Develop your Google Cloud Network: Challenge Lab"
+        sections: ["3.2", "3.5", "4.5", "5.1"]
+        weight: core
+        examRelevant: true
+        hours: null
+        concepts:
+          - {id: b2-m6-k1, order: 1, title: "Network, IAM and GKE requirements to deployment"}
+  - id: b3
+    order: 12
+    kind: skill_badge
+    title: "Build Infrastructure with Terraform on Google Cloud"
+    hours: 1.75
+    optional: false
+    urls: {googleSkills: https://www.skills.google/paths/11/course_templates/636, coursera: null}
+    modules:
+      - id: b3-m1
+        order: 1
+        title: "Terraform Fundamentals"
+        sections: ["3.6"]
+        weight: core
+        examRelevant: true
+        hours: null
+        concepts:
+          - {id: b3-m1-k1, order: 1, title: "Providers and resources"}
+          - {id: b3-m1-k2, order: 2, title: "The init, plan and apply workflow"}
+      - id: b3-m2
+        order: 2
+        title: "Infrastructure as Code with Terraform"
+        sections: ["3.6"]
+        weight: core
+        examRelevant: true
+        hours: null
+        concepts:
+          - {id: b3-m2-k1, order: 1, title: "Changing and destroying infrastructure"}
+          - {id: b3-m2-k2, order: 2, title: "Implicit and explicit dependencies"}
+      - id: b3-m3
+        order: 3
+        title: "Interact with Terraform Modules"
+        sections: ["3.6"]
+        weight: core
+        examRelevant: true
+        hours: null
+        concepts:
+          - {id: b3-m3-k1, order: 1, title: "Using registry modules"}
+          - {id: b3-m3-k2, order: 2, title: "Building a local module"}
+      - id: b3-m4
+        order: 4
+        title: "Manage Terraform State"
+        sections: ["3.6"]
+        weight: core
+        examRelevant: true
+        hours: null
+        concepts:
+          - {id: b3-m4-k1, order: 1, title: "Remote backend in Cloud Storage"}
+          - {id: b3-m4-k2, order: 2, title: "Importing existing resources"}
+          - {id: b3-m4-k3, order: 3, title: "State locking"}
+      - id: b3-m5
+        order: 5
+        title: "Build Infrastructure with Terraform on Google Cloud: Challenge Lab"
+        sections: ["3.6"]
+        weight: core
+        examRelevant: true
+        hours: null
+        concepts:
+          - {id: b3-m5-k1, order: 1, title: "Terraform requirements to deployment"}

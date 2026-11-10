@@ -147,8 +147,8 @@ def llm(criteria, weight=1):
     return {"type": "llm", "weight": weight, "body": criteria}
 
 
-def regex(pattern, weight=1, match=True, flags=None):
-    g = {"type": "regex", "weight": weight, "pattern": pattern, "match": match}
+def regex(pattern, weight=1, flags=None):
+    g = {"type": "regex", "weight": weight, "pattern": pattern}
     if flags:
         g["flags"] = flags
     return g

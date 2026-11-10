@@ -1,0 +1,166 @@
+# Exam-guide gaps: objectives of the Associate Cloud Engineer exam guide that the learning path
+# does not cover or covers only in passing. Seeded as one extra activity (kind: gaps, id: gaps)
+# shown only in Full exam mode. Each gap topic becomes a module; each concept links 1-3 official
+# documentation pages (verified working on the pack's lastVerified date).
+
+activity:
+  id: gaps
+  kind: gaps
+  title: "Exam guide gaps"
+  hoursPerTopic: 1
+  optional: false
+
+topics:
+  - id: g01
+    order: 1
+    title: "Organization policies"
+    sections: ["1.1"]
+    weight: core
+    examRelevant: true
+    concepts:
+      - {id: g01-k1, order: 1, title: "Organization Policy Service", docUrls: ["https://docs.cloud.google.com/organization-policy/overview"]}
+      - {id: g01-k2, order: 2, title: "Constraints and inheritance", docUrls: ["https://docs.cloud.google.com/organization-policy/hierarchy-evaluation", "https://docs.cloud.google.com/organization-policy/reference/org-policy-constraints"]}
+  - id: g02
+    order: 2
+    title: "Managing users and groups in Cloud Identity"
+    sections: ["1.1"]
+    weight: core
+    examRelevant: true
+    concepts:
+      - {id: g02-k1, order: 1, title: "Manual user and group management", docUrls: ["https://docs.cloud.google.com/identity/docs/overview", "https://docs.cloud.google.com/architecture/identity/overview-google-authentication"]}
+      - {id: g02-k2, order: 2, title: "Automated provisioning and directory sync", docUrls: ["https://docs.cloud.google.com/architecture/identity/federating-gcp-with-active-directory-introduction", "https://support.google.com/a/answer/106368"]}
+  - id: g03
+    order: 3
+    title: "Billing budgets, alerts and exports"
+    sections: ["1.2"]
+    weight: core
+    examRelevant: true
+    concepts:
+      - {id: g03-k1, order: 1, title: "Budgets and alert thresholds", docUrls: ["https://docs.cloud.google.com/billing/docs/how-to/budgets"]}
+      - {id: g03-k2, order: 2, title: "Billing export to BigQuery", docUrls: ["https://docs.cloud.google.com/billing/docs/how-to/export-data-bigquery"]}
+      - {id: g03-k3, order: 3, title: "Billing accounts and linking projects", docUrls: ["https://docs.cloud.google.com/billing/docs/how-to/manage-billing-account", "https://docs.cloud.google.com/billing/docs/how-to/modify-project"]}
+  - id: g04
+    order: 4
+    title: "Network Service Tiers"
+    sections: ["2.3"]
+    weight: core
+    examRelevant: true
+    concepts:
+      - {id: g04-k1, order: 1, title: "Premium and Standard tiers", docUrls: ["https://docs.cloud.google.com/network-tiers/docs/overview"]}
+  - id: g05
+    order: 5
+    title: "OS Login and VM Manager"
+    sections: ["3.1"]
+    weight: core
+    examRelevant: true
+    concepts:
+      - {id: g05-k1, order: 1, title: "OS Login", docUrls: ["https://docs.cloud.google.com/compute/docs/oslogin", "https://docs.cloud.google.com/compute/docs/oslogin/set-up-oslogin"]}
+      - {id: g05-k2, order: 2, title: "VM Manager patch and inventory", docUrls: ["https://docs.cloud.google.com/compute/docs/vm-manager", "https://docs.cloud.google.com/compute/vm-manager/docs/patch", "https://docs.cloud.google.com/compute/vm-manager/docs/os-inventory/os-inventory-management"]}
+  - id: g06
+    order: 6
+    title: "GKE cluster configurations and operations"
+    sections: ["3.2", "4.2"]
+    weight: core
+    examRelevant: true
+    concepts:
+      - {id: g06-k1, order: 1, title: "Regional and private clusters", docUrls: ["https://docs.cloud.google.com/kubernetes-engine/docs/concepts/regional-clusters", "https://docs.cloud.google.com/kubernetes-engine/docs/concepts/network-isolation"]}
+      - {id: g06-k2, order: 2, title: "Node pools", docUrls: ["https://docs.cloud.google.com/kubernetes-engine/docs/concepts/node-pools"]}
+      - {id: g06-k3, order: 3, title: "Horizontal and vertical Pod autoscaling", docUrls: ["https://docs.cloud.google.com/kubernetes-engine/docs/concepts/horizontalpodautoscaler", "https://docs.cloud.google.com/kubernetes-engine/docs/concepts/verticalpodautoscaler"]}
+      - {id: g06-k4, order: 4, title: "Artifact Registry access from GKE", docUrls: ["https://docs.cloud.google.com/artifact-registry/docs/integrate-gke"]}
+      - {id: g06-k5, order: 5, title: "StatefulSets and Services", docUrls: ["https://docs.cloud.google.com/kubernetes-engine/docs/concepts/statefulset", "https://docs.cloud.google.com/kubernetes-engine/docs/concepts/service"]}
+  - id: g07
+    order: 7
+    title: "Event-driven Cloud Run and Cloud Run functions"
+    sections: ["3.3"]
+    weight: core
+    examRelevant: true
+    concepts:
+      - {id: g07-k1, order: 1, title: "Eventarc triggers", docUrls: ["https://docs.cloud.google.com/eventarc/docs/overview", "https://docs.cloud.google.com/run/docs/triggering/trigger-with-events"]}
+      - {id: g07-k2, order: 2, title: "Pub/Sub and Cloud Storage events", docUrls: ["https://docs.cloud.google.com/run/docs/tutorials/pubsub", "https://docs.cloud.google.com/eventarc/standard/docs/run/create-trigger-storage-gcloud"]}
+      - {id: g07-k3, order: 3, title: "Choosing Cloud Run services or Cloud Run functions", docUrls: ["https://docs.cloud.google.com/run/docs/functions/comparison", "https://docs.cloud.google.com/functions/docs/concepts/overview"]}
+  - id: g08
+    order: 8
+    title: "Cloud Run revisions, traffic splitting and scaling"
+    sections: ["4.3"]
+    weight: core
+    examRelevant: true
+    concepts:
+      - {id: g08-k1, order: 1, title: "Revisions and traffic splitting", docUrls: ["https://docs.cloud.google.com/run/docs/rollouts-rollbacks-traffic-migration"]}
+      - {id: g08-k2, order: 2, title: "Min and max instances and concurrency", docUrls: ["https://docs.cloud.google.com/run/docs/configuring/min-instances", "https://docs.cloud.google.com/run/docs/configuring/max-instances", "https://docs.cloud.google.com/run/docs/about-concurrency"]}
+  - id: g09
+    order: 9
+    title: "Loading data"
+    sections: ["3.4"]
+    weight: core
+    examRelevant: true
+    concepts:
+      - {id: g09-k1, order: 1, title: "Command-line uploads with gcloud storage and bq", docUrls: ["https://docs.cloud.google.com/storage/docs/uploading-objects", "https://docs.cloud.google.com/bigquery/docs/quickstarts/load-data-bq"]}
+      - {id: g09-k2, order: 2, title: "Loading from Cloud Storage into BigQuery", docUrls: ["https://docs.cloud.google.com/bigquery/docs/batch-loading-data", "https://docs.cloud.google.com/bigquery/docs/loading-data-cloud-storage-csv"]}
+      - {id: g09-k3, order: 3, title: "Storage Transfer Service", docUrls: ["https://docs.cloud.google.com/storage-transfer/docs/overview"]}
+  - id: g10
+    order: 10
+    title: "Pub/Sub basics"
+    sections: ["3.4"]
+    weight: core
+    examRelevant: true
+    concepts:
+      - {id: g10-k1, order: 1, title: "Topics and subscriptions", docUrls: ["https://docs.cloud.google.com/pubsub/docs/overview", "https://docs.cloud.google.com/pubsub/docs/subscriber"]}
+      - {id: g10-k2, order: 2, title: "Push and pull delivery", docUrls: ["https://docs.cloud.google.com/pubsub/docs/push", "https://docs.cloud.google.com/pubsub/docs/pull"]}
+  - id: g11
+    order: 11
+    title: "Firewall policies and targeting"
+    sections: ["3.5"]
+    weight: core
+    examRelevant: true
+    concepts:
+      - {id: g11-k1, order: 1, title: "Hierarchical and network firewall policies", docUrls: ["https://docs.cloud.google.com/firewall/docs/firewall-policies-overview", "https://docs.cloud.google.com/firewall/docs/firewall-policies"]}
+      - {id: g11-k2, order: 2, title: "Targeting by network tags and service accounts", docUrls: ["https://docs.cloud.google.com/firewall/docs/firewalls"]}
+      - {id: g11-k3, order: 3, title: "Ingress and egress rules", docUrls: ["https://docs.cloud.google.com/firewall/docs/firewalls"]}
+  - id: g12
+    order: 12
+    title: "Infrastructure as code tooling beyond Terraform"
+    sections: ["3.6"]
+    weight: core
+    examRelevant: true
+    concepts:
+      - {id: g12-k1, order: 1, title: "Config Connector", docUrls: ["https://docs.cloud.google.com/config-connector/docs/overview"]}
+      - {id: g12-k2, order: 2, title: "Helm charts in Artifact Registry", docUrls: ["https://docs.cloud.google.com/artifact-registry/docs/helm"]}
+      - {id: g12-k3, order: 3, title: "Cloud Foundation Toolkit", docUrls: ["https://docs.cloud.google.com/docs/terraform/blueprints/terraform-blueprints"]}
+  - id: g13
+    order: 13
+    title: "Snapshot schedules and image management"
+    sections: ["4.1"]
+    weight: core
+    examRelevant: true
+    concepts:
+      - {id: g13-k1, order: 1, title: "Snapshots and snapshot schedules", docUrls: ["https://docs.cloud.google.com/compute/docs/disks/create-snapshots", "https://docs.cloud.google.com/compute/docs/disks/scheduled-snapshots"]}
+      - {id: g13-k2, order: 2, title: "Creating images from disks and snapshots", docUrls: ["https://docs.cloud.google.com/compute/docs/images/create-custom"]}
+  - id: g14
+    order: 14
+    title: "Cloud Storage lifecycle and object security"
+    sections: ["4.4"]
+    weight: core
+    examRelevant: true
+    concepts:
+      - {id: g14-k1, order: 1, title: "Object Lifecycle Management", docUrls: ["https://docs.cloud.google.com/storage/docs/lifecycle"]}
+      - {id: g14-k2, order: 2, title: "Uniform bucket-level access and signed URLs", docUrls: ["https://docs.cloud.google.com/storage/docs/uniform-bucket-level-access", "https://docs.cloud.google.com/storage/docs/access-control/signed-urls"]}
+  - id: g15
+    order: 15
+    title: "Database backup, restore and cost estimation"
+    sections: ["4.4"]
+    weight: core
+    examRelevant: true
+    concepts:
+      - {id: g15-k1, order: 1, title: "Cloud SQL backups and point-in-time recovery", docUrls: ["https://docs.cloud.google.com/sql/docs/mysql/backup-recovery/backups", "https://docs.cloud.google.com/sql/docs/mysql/backup-recovery/pitr"]}
+      - {id: g15-k2, order: 2, title: "Firestore backups", docUrls: ["https://docs.cloud.google.com/firestore/native/docs/backups"]}
+      - {id: g15-k3, order: 3, title: "Estimating storage costs", docUrls: ["https://cloud.google.com/products/calculator", "https://cloud.google.com/storage/pricing"]}
+  - id: g16
+    order: 16
+    title: "Service account impersonation and short-lived credentials"
+    sections: ["5.2"]
+    weight: core
+    examRelevant: true
+    concepts:
+      - {id: g16-k1, order: 1, title: "Service account impersonation", docUrls: ["https://docs.cloud.google.com/iam/docs/service-account-impersonation"]}
+      - {id: g16-k2, order: 2, title: "Short-lived credentials", docUrls: ["https://docs.cloud.google.com/iam/docs/create-short-lived-credentials-direct"]}
+      - {id: g16-k3, order: 3, title: "Attaching service accounts to resources", docUrls: ["https://docs.cloud.google.com/iam/docs/attach-service-accounts"]}

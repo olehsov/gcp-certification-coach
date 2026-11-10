@@ -1,0 +1,57 @@
+# Curated pack metadata for the Associate Cloud Engineer certification.
+# Version and verification dates live here only (CLAUDE.md: no time-sensitive phrasing elsewhere).
+
+certId: ace
+certName: Associate Cloud Engineer
+certShortName: ACE
+packSource: curated
+packVersion: 1.0.0
+lastVerified: 2026-11-10
+
+certificationUrl: https://cloud.google.com/learn/certification/cloud-engineer
+
+examGuide:
+  url: https://cloud.google.com/learn/certification/guides/cloud-engineer
+  # The guide page has no version number; it is labeled "Current". Record the verification date.
+  version: "current as of lastVerified"
+  sections:
+    - {id: "1", name: "Setting up a cloud solution environment", weight: 20}
+    - {id: "2", name: "Planning and configuring a cloud solution", weight: 17.5}
+    - {id: "3", name: "Deploying and implementing a cloud solution", weight: 25}
+    - {id: "4", name: "Ensuring successful operation of a cloud solution", weight: 20}
+    - {id: "5", name: "Configuring access and security", weight: 17.5}
+  # Objective titles only (ids used in module `sections` lists).
+  objectives:
+    - {id: "1.1", title: "Setting up cloud projects and accounts"}
+    - {id: "1.2", title: "Managing billing configuration"}
+    - {id: "2.1", title: "Planning and configuring compute resources"}
+    - {id: "2.2", title: "Planning and configuring data storage options"}
+    - {id: "2.3", title: "Planning and configuring network resources"}
+    - {id: "3.1", title: "Deploying and implementing Compute Engine resources"}
+    - {id: "3.2", title: "Deploying and implementing Google Kubernetes Engine resources"}
+    - {id: "3.3", title: "Deploying and implementing Cloud Run and Cloud Functions resources"}
+    - {id: "3.4", title: "Deploying and implementing data solutions"}
+    - {id: "3.5", title: "Deploying and implementing networking resources"}
+    - {id: "3.6", title: "Implementing resources through infrastructure as code"}
+    - {id: "4.1", title: "Managing Compute Engine resources"}
+    - {id: "4.2", title: "Managing Google Kubernetes Engine resources"}
+    - {id: "4.3", title: "Managing Cloud Run resources"}
+    - {id: "4.4", title: "Managing storage and database solutions"}
+    - {id: "4.5", title: "Managing networking resources"}
+    - {id: "4.6", title: "Monitoring and logging"}
+    - {id: "5.1", title: "Managing Identity and Access Management (IAM)"}
+    - {id: "5.2", title: "Managing service accounts"}
+
+path:
+  title: "Associate Cloud Engineer Certification"
+  url: https://www.skills.google/paths/11
+  providers:
+    googleSkills: https://www.skills.google/paths/11
+    # Same courses without the skill badges.
+    coursera: https://www.coursera.org/professional-certificates/cloud-engineering-gcp
+
+# Files in this pack.
+files:
+  path: path.yaml
+  gaps: gaps.yaml
+  scoring: scoring.yaml
