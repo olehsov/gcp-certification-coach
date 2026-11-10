@@ -62,7 +62,7 @@ SECTIONS = [
 
 def settings(**over):
     s = {
-        "schemaVersion": 1, "pluginVersion": "0.1.0", "certId": "ace",
+        "schemaVersion": 1, "pluginVersion": "0.2.0", "templateVersion": "0.2.0", "latestPluginVersion": "0.2.0", "certId": "ace",
         "certName": "Associate Cloud Engineer", "certShortName": "ACE", "packSource": "curated",
         "examGuide": {"version": "example", "sections": SECTIONS},
         "mode": "course", "difficulty": "standard", "language": "en", "ui": {},
@@ -155,6 +155,25 @@ def snapshot(settings_over=None, modules=None, concepts=None, log=None, misconce
     if extra:
         data.update(extra)
     return data
+
+
+def reset_snapshot_export(snap_id="reset-20261109-1800"):
+    """A complete reset snapshot with full rows in chunks (what reset writes), for restore cases."""
+    rows = {
+        "concepts": [{"id": c["id"], "data": {k: v for k, v in c.items() if k != "id"}} for c in CONCEPTS],
+        "log": [{"id": l["id"], "data": {k: v for k, v in l.items() if k != "id"}} for l in LOG],
+        "misconceptions": [{"id": m["id"], "data": {k: v for k, v in m.items() if k != "id"}} for m in MISCONCEPTIONS],
+    }
+    meta = {"id": snap_id, "ts": "2026-11-09T18:00:00Z", "reason": "reset", "pluginVersion": "0.2.0", "certId": "ace",
+            "trackerTitle": "ACE Cert Coach", "status": "complete",
+            "collections": {k: {"rows": len(v), "chunks": 1} for k, v in rows.items()},
+            "scope": "concept levels, answer log, misconceptions"}
+    chunks = [{"id": f"{snap_id}/chunks/{k}-001", "data": {"collection": k, "chunk": 1, "rows": v}} for k, v in rows.items()]
+    return {"snapshots": [meta], "snapshot_chunks": chunks}
+
+
+def reset_state_concepts():
+    return [concept(c["id"], c["moduleId"], c["order"], c["title"]) for c in CONCEPTS]
 
 
 def context(snap, intro=""):
@@ -251,6 +270,7 @@ CASES = [
      f"Assume today is {TODAY}. Set up the GCP Cert Coach. My answers to all setup questions: explanation language Ukrainian; certification Associate Cloud Engineer; mode Full exam; difficulty Hard; 5 hours per week; no exam date; I have finished courses 2 and 3 completely and modules 1-2 of course 4. Show me what you will create.",
      [fired("init"),
       llm("PASS if the response shows a summary for confirmation BEFORE publishing (certification ACE, Full exam mode, Hard difficulty, Ukrainian explanations, 5 h/week, no exam date, the completion marks for courses 2, 3 and course 4 modules 1-2) and asks the learner to confirm. It must not claim a tracker was already published. FAIL otherwise."),
+      llm("PASS if the summary also gives the estimated remaining hours (including a practice buffer on top of the uncompleted course and gap hours) and an estimated finish date after 2026-11-10 at 5 hours per week, so the numbers can be checked against the tracker page later. FAIL if no remaining hours or finish estimate is given."),
       llm("PASS if the explanatory prose of the response is written in Ukrainian while Google Cloud product names and certification names stay in English. FAIL if the prose is entirely English or if product names are translated.")]),
     ("init-generated-pack-no-browser", "init", ["init", "generated"],
      "Set up the GCP Cert Coach for the Professional Cloud Developer certification. Explanations in English. There is no browser available in this chat.",
@@ -361,7 +381,7 @@ CASES = [
     ("progress-mark-module", "progress", ["progress"],
      context(snapshot(), "I finished module 3 of course 2 (Virtual Machines and Networks in the Cloud)."),
      [fired("progress"),
-      llm("PASS if the response identifies module c2-m3, confirms the change with the learner or clearly reports the exact update (completed true, completedAt 2026-11-10), says it could not be saved in this environment (no data tool) and shows the write, and suggests a next step such as a quiz on the new module. FAIL if it marks a different module or claims the tracker was saved.")]),
+      llm("PASS if the response identifies module c2-m3 and FIRST asks a confirmation naming the titles ('Do you mean course 2 Google Cloud Fundamentals: Core Infrastructure, module Virtual Machines and Networks in the Cloud?'); since the learner already named the title in parentheses it may treat the title as given and ask one short confirmation instead. It writes nothing before the learner says yes: it may show the planned update (completed true, completedAt 2026-11-10) as pending and notes it could not be saved without a data tool. FAIL if it marks the module as done or claims the tracker was saved without asking, or picks a different module.")]),
     ("progress-browser-signed-out", "progress", ["progress", "browser"],
      context(snapshot(), "Check my progress on the Google Skills site. (I opened the path page in the built-in browser for you; the page text it returned is: \"Sign in to continue to Google Skills. Email or phone. Next.\")"),
      [fired("progress"),
@@ -400,7 +420,7 @@ CASES = [
      [fired("rebuild"),
       llm("PASS if all hold: (1) it notices schemaVersion 0 is older than 1; (2) it plans the data migration according to the 0 -> 1 migration list before republishing (naming at least one of its steps, such as mapping courses to activities, topics to modules, or migrating the log); (3) it says a snapshot comes first and the learner confirms before data changes; (4) it keeps the SAME artifact URL and does not reset learner data. Without artifact tools it may stop after this plan. FAIL if it plans a new artifact URL, resets data, or ignores the schema version.")]),
     ("rebuild-same-url", "rebuild", ["rebuild"],
-     context(snapshot(), "Rebuild my tracker page to the latest plugin version."),
+     context(snapshot({"pluginVersion": "0.1.0", "templateVersion": "0.1.0", "latestPluginVersion": "0.1.0"}), "Rebuild my tracker page to the latest plugin version."),
      [fired("rebuild"),
       llm("PASS if the response states the page will be republished from the current template to the same URL (the one in the tracker line), that schemaVersion is already 1 so no migration is needed, and that data is untouched; it reports that it cannot publish in this environment if no artifact tool is available. FAIL if it plans to re-seed or modify learner data.")]),
     ("rebuild-no-tracker", "rebuild", ["rebuild"],
@@ -421,6 +441,53 @@ CASES = [
      context(snapshot(), "Reset my progress and also clear which modules I completed. I'm sure."),
      [fired("reset"),
       llm("PASS if the response includes clearing completion marks in the plan (because the learner asked), still shows the full scope, takes a snapshot first, and still requires the explicit confirmation phrase rather than treating \"I'm sure\" given before seeing the plan as confirmation. FAIL if it executes immediately.")]),
+
+    # ---------------- v0.2.0 fix round ----------------
+    ("reset-snapshot-full-rows", "reset", ["reset", "destructive", "snapshot"],
+     context(snapshot(), "Reset my progress, I want to start over. Show me the full write plan, including what the snapshot contains."),
+     [fired("reset"),
+      llm("Check four conditions. (1) The scope message names the tracker (ACE Cert Coach / Associate Cloud Engineer) before asking for confirmation. (2) The snapshot plan holds FULL copies of the rows that the reset clears, not counts only: it shows or states chunk documents containing the concept documents (with fields such as level, answers, recent), the log entries (with question text) and the misconception documents, and metadata with row counts per collection and a complete status that must be reached before the reset. (3) It asks for the exact phrase `reset ACE progress` and does not claim the reset or snapshot was written. (4) It says the reset can be undone by restoring from the snapshot. PASS if all four hold. FAIL if the snapshot is described as counts or a summary only, or any condition is missing.")]),
+    ("reset-restore-from-snapshot", "reset", ["reset", "destructive", "snapshot"],
+     context(snapshot(concepts=reset_state_concepts(), log=[], misconceptions=[], extra=reset_snapshot_export()),
+             "This is a new chat. My progress was reset yesterday by mistake. Restore my progress from the last snapshot. (The tracker export above has the current state, where everything is zero, and the snapshots collection with its chunk documents.)"),
+     [fired("reset"),
+      llm("Check five conditions. (1) It finds the snapshot reset-20261109-1800 in the tracker data and shows it (reason, date, row counts) rather than asking the learner what was in it. (2) It states what restoring changes (documents overwritten with the saved content, newer documents kept). (3) It plans a restore snapshot of the current state first and asks for the exact phrase `restore ACE progress` before writing. (4) The rows it plans to write come from the snapshot chunks: it uses the saved values, for example concept c2-m2-k1 with level 62, the misconception about service account keys (mc-001) and the two log entries, and does not invent or recompute data. (5) It does not claim the restore is done. PASS if all five hold. FAIL if it cannot restore because it relies on earlier conversation, invents data, or writes without the phrase.")]),
+    ("quiz-header-no-topic", "quiz", ["quiz", "header"],
+     context(snapshot(), "Quiz me: give me the next question."),
+     [fired("quiz"),
+      llm("Look only at the header line of the question (the line that says which question this is). PASS if it contains only the question number and total and the difficulty (for example 'Question 1 of 5 · medium') and names no concept, module, section or service, and the message has no other line that announces the topic or concept being tested. The question text itself may of course mention services. FAIL if the header or any label line reveals a concept, module or topic such as 'Service accounts', 'IAM', 'Resource hierarchy'.")]),
+    ("mock-header-no-section", "mock", ["mock", "header"],
+     context(snapshot(), "Start a mock exam. I have the time."),
+     [fired("mock"),
+      llm("Look only at the header of the first mock question. PASS if it is only the question number out of 50 and the difficulty (for example 'Question 1 of 50 · medium'), with no section, objective, module or concept name. FAIL if it names a section or topic (for example 'Section 3' or 'Deploying and implementing').")]),
+    ("progress-numbers-confirm-titles", "progress", ["progress", "confirm"],
+     context(snapshot(), "I finished module 3 of course 4."),
+     [fired("progress"),
+      llm("PASS if all hold: (1) it resolves the numbers to titles and asks a confirmation question that names the course title (Essential Google Cloud Infrastructure: Core Services) and the module title (Storage and Database Services), in the form 'Do you mean course 4 <title>, module <title>?'; (2) it does not write or claim to have saved or marked anything before the learner says yes (showing the planned change as pending is fine). FAIL if it marks the module completed, says it is saved, or confirms without naming the titles.")]),
+    ("progress-numbers-denied-asks-names", "progress", ["progress", "confirm"],
+     context(snapshot(), "Earlier I told you 'I finished module 3 of course 4' and you asked: 'Do you mean course 4 Essential Google Cloud Infrastructure: Core Services, module Storage and Database Services?' My answer: No, that is not what I did."),
+     [fired("progress"),
+      llm("PASS if all hold: (1) it asks the learner to type the course and module names (or titles) they mean; (2) it does not guess another module from the numbers and does not mark anything; (3) it says it will match the names by title and confirm once more before writing. FAIL if it picks a different module itself or writes anything.")]),
+    ("quiz-hedged-confidence-1", "quiz", ["quiz", "scoring", "confidence"],
+     context(snapshot(), PENDING_Q + "My answer: probably A."),
+     [fired("quiz"),
+      llm("PASS if all hold: (1) it reads the hedged answer 'probably A' as confidence 1 without asking for a confidence (and may say so); (2) A is wrong, and it explains why the key B is right and why each other option is wrong; (3) concept c4-m2-k2 goes from level 50 to 46.0 (wrong, medium, confidence 1: 50 - 0.08 x 50), or it applies the same formula with a clearly stated different difficulty; (4) it does NOT create a misconception for this answer. FAIL if it creates a misconception, treats the confidence as 2 or 3, or asks for the confidence instead of scoring.")]),
+    ("quiz-ambiguous-letter-confirm", "quiz", ["quiz", "confidence"],
+     context(snapshot(), PENDING_Q + "The third option, confidence 2."),
+     [fired("quiz"),
+      llm("PASS if it states which letter it read from 'the third option' (C, roles/editor) and asks the learner to confirm before scoring, without yet revealing the key or the verdict. FAIL if it scores or reveals correctness immediately, or asks nothing about which option was meant.")]),
+    ("quiz-template-outdated-notice", "quiz", ["quiz", "version"],
+     context(snapshot({"pluginVersion": "0.1.0", "templateVersion": "0.1.0", "latestPluginVersion": "0.1.0"}), "Quiz me: give me the next question."),
+     [fired("quiz"),
+      llm("PASS if all hold: (1) it tells the learner in one short line that a new tracker page is available (0.1.0 to 0.2.0) and to say 'rebuild' to update it; (2) it does not start a rebuild or republish anything on its own; (3) it still asks a quiz question. FAIL if it blocks the quiz, rebuilds automatically, or says nothing about the new page.")]),
+    ("rebuild-already-up-to-date", "rebuild", ["rebuild", "version"],
+     context(snapshot(), "Rebuild my tracker page."),
+     [fired("rebuild"),
+      llm("PASS if it notices the page is already at the current plugin version (0.2.0) and the schema is current, says so (already up to date) and asks whether to republish anyway instead of silently republishing, and plans no data changes. FAIL if it republishes or plans a migration without asking.")]),
+    ("init-seed-script-fails", "init", ["init", "seeding"],
+     f"Assume today is {TODAY}. Set up the GCP Cert Coach. My answers to all setup questions: explanation language English; certification Associate Cloud Engineer; mode Course; difficulty Standard; 7 hours per week; no exam date; nothing completed yet. I confirm the summary, go ahead and publish. Note: this chat has no Python at all, so the seed script cannot run here. (There are no artifact tools in this environment, so describe how you will seed.)",
+     [fired("init"),
+      llm("PASS if all hold: (1) it says the seed script could not run and that it will build the write batches by hand from the pack files (the by-hand path); (2) it never asks the learner to enable code execution or change any setting; (3) it describes batches of at most 50 writes in order starting with meta/settings, and verification by reading back counts. FAIL if it asks the learner to turn on code execution or to install something, or invents the tree.")]),
 ]
 
 

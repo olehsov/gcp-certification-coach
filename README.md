@@ -16,6 +16,7 @@ Works in claude.ai chat, the Claude desktop app and Cowork. The first curated pa
 - [Modes and difficulty](#modes-and-difficulty)
 - [How mastery works](#how-mastery-works)
 - [How it fits together](#how-it-fits-together)
+- [Usage and cost](#usage-and-cost)
 - [Privacy and data](#privacy-and-data)
 - [FAQ](#faq)
 - [Roadmap](#roadmap)
@@ -35,7 +36,7 @@ Works in claude.ai chat, the Claude desktop app and Cowork. The first curated pa
 - **Skill tree from the official learning path**: activities (courses and skill badges) → modules → concepts, mapped to exam-guide sections with official weights.
 - **Exam-guide gaps** (Full exam mode): 16 ACE topics the path covers only in passing, each with official documentation links.
 - **Exam-style quizzes** in six formats (scenario, multi-select, command, explain, choose a service, why it is wrong), only on completed modules, never repeating a question, always explaining every option with a documentation link.
-- **Confidence ratings** (guess, think, sure): a correct guess earns nothing, a confident mistake is recorded as a misconception and asked again with new wording until fixed.
+- **Confidence ratings** (1 guess or unsure, 2 fairly confident, 3 sure; hedged answers such as "probably B" count as 1): a correct guess earns nothing, a confident mistake is recorded as a misconception and asked again with new wording until fixed.
 - **Pre-tests** before a module (no level change), **hands-on challenges** in your own project with evidence-based review and a bonus, **mock exams** with a red, amber or green recommendation.
 - **Live tracker page**: readiness ring, plan, review queue, section mastery, skill tree with statuses, misconceptions, calibration, mock history, recent answers.
 - **Explanations in your language**; Google Cloud terms, commands and exam questions stay in English.
@@ -96,7 +97,7 @@ Disagree with a question or have an idea? Say "this question is wrong" or "I'd l
 | Concept coverage | ≥ 80% | 100% |
 | Answers (pre-tests excluded) | ≥ 4 | ≥ 6 |
 | On distinct days | ≥ 2 | ≥ 3 |
-| Last answers correct with confidence ≥ think | 2 | 3 |
+| Last answers correct with confidence ≥ fairly confident | 2 | 3 |
 | Open misconceptions allowed | yes | no |
 | Mock exam green | ≥ 75% once | ≥ 80% twice in a row |
 
@@ -106,7 +107,7 @@ Switch either one at any time from the tracker page or by asking.
 
 Each concept has a level from 0 to 100.
 
-- **Correct:** level moves toward 100 by a fraction of the remaining gap: 15%, 25% or 35% for easy, medium or hard questions, times 0 (guess), 0.6 (think) or 1.0 (sure).
+- **Correct:** level moves toward 100 by a fraction of the remaining gap: 15%, 25% or 35% for easy, medium or hard questions, times 0 (guess or unsure), 0.6 (fairly confident) or 1.0 (sure).
 - **Wrong:** level drops by a fraction of the current level, small for an honest guess and largest for a confident mistake. Missing an easy question costs more than missing a hard one.
 - **Daily gain cap:** at most 25 points per concept per day (20 in Hard), so one long evening does not count as durable knowledge.
 - **Review and decay:** each concept comes back after 3, 7 or 14 days depending on its level (2, 5, 10 in Hard). Past that, it loses 3 points per week (5 in Hard). Paused time does not count.
@@ -205,6 +206,13 @@ erDiagram
 
 Design documents: [PRD](docs/PRD.md), [architecture](docs/ARCHITECTURE.md), [decision records](docs/adr/).
 
+## Usage and cost
+
+- Use Sonnet for quizzes and daily learning, and Opus for mock exams and hard topics.
+- Start a new chat for each study session. All state lives in the tracker, so nothing is lost, and long threads make every turn slower and costlier.
+- Quizzes cite the curated documentation links by default and fetch a page only when needed, which keeps sessions fast.
+- When the tracker page falls behind the plugin, the coach and the page tell you; say "rebuild" to update it (your data is untouched).
+
 ## Privacy and data
 
 - Your progress is stored only in a private artifact in your own Claude account. The plugin has no servers, no connectors and no telemetry.
@@ -219,7 +227,7 @@ Design documents: [PRD](docs/PRD.md), [architecture](docs/ARCHITECTURE.md), [dec
 
 **Where do questions come from?** Claude writes original questions from the official documentation for each concept and links the page used for the answer key. If you think a key is wrong, say so: Claude re-checks it and records feedback.
 
-**Can I use Coursera instead of Google Skills?** Yes. The courses are the same; skill badges exist only on Google Skills and can be left uncompleted. Module numbers follow Google Skills, which can differ from Coursera (for ACE, course 2 has an extra introduction module first), so when you type "course 2 module 3", check the title the coach echoes back.
+**Can I use Coursera instead of Google Skills?** Yes. The courses are the same; skill badges exist only on Google Skills and can be left uncompleted. Module numbers follow Google Skills, which can differ from Coursera (for ACE, course 2 has an extra introduction module first), so when you type "course 2 module 3" the coach always asks "Do you mean course 2 <title>, module <title>?" and writes nothing until you say yes; if the titles are wrong, type the module and course names instead.
 
 **What does "ready" mean?** All the profile conditions in the table above, not a single number. Course readiness is not exam readiness; switch to Full exam mode before booking.
 

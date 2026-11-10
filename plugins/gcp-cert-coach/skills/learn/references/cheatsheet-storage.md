@@ -18,12 +18,14 @@ Use when a learner asks where to store data, or a question hinges on that choice
 
 ## Cloud Storage classes
 
-| Class | Use for | Minimum storage duration |
-|---|---|---|
-| Standard | Frequently accessed ("hot") data | None |
-| Nearline | Accessed about once a month or less | 30 days |
-| Coldline | Accessed about once a quarter or less | 90 days |
-| Archive | Accessed less than once a year; long-term retention | 365 days |
+| Class | Use for |
+|---|---|
+| Standard | Frequently accessed ("hot") data |
+| Nearline | Accessed about once a month or less |
+| Coldline | Accessed about once a quarter or less |
+| Archive | Accessed less than once a year; long-term retention |
+
+Minimum storage durations per class are in [facts.md](facts.md).
 
 Colder classes cost less to store and more to retrieve. Use **Object Lifecycle Management** to move or delete objects by age, and **Autoclass** to let Cloud Storage manage classes automatically.
 

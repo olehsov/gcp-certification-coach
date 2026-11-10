@@ -157,8 +157,11 @@ td:first-child{white-space:nowrap}
       <div class="ph" style="margin:0"><span class="eyebrow" id="eTree">Learning path</span><h2 id="hTree">Skill tree</h2></div>
       <div class="legend" id="legend"></div>
     </div>
+    <p class="muted" id="treeHelp" style="font-size:12px;margin:8px 0 0"></p>
     <div class="tree" id="tree" style="margin-top:10px"><div class="panel empty" id="treeEmpty">The skill tree is empty. Run <b>/gcp-cert-coach:init</b> in a chat to build it from the official learning path.</div></div>
   </section>
+
+  <details class="panel" id="how" style="margin-top:14px"><summary id="hHowLevels" style="cursor:pointer;font-weight:600">How levels work</summary><p class="muted" id="howLevels" style="margin:10px 0 0"></p></details>
 
   <div class="grid3">
     <section class="panel" aria-labelledby="hMisc">
@@ -194,7 +197,7 @@ const EN = {
   emptyTree:"The skill tree is empty. Run /gcp-cert-coach:init in a chat to build it from the official learning path.",
   mode:"Mode", modeCourse:"Course", modeFull:"Full exam", difficulty:"Difficulty", diffStandard:"Standard", diffHard:"Hard",
   pausedSince:"Paused since {date}", beta:"beta",
-  statModules:"{done}/{total} modules completed", statReady:"{n} ready", statAnswers:"{n} answers", statCorrect:"{p}% correct",
+  statModules:"{done}/{total} modules completed", statMastered:"{n} concepts mastered", statAnswers:"{n} answers", statCorrect:"{p}% correct",
   ePlan:"Plan", hPlan:"Study plan", remaining:"Remaining", pace:"Weekly pace", finish:"Estimated finish", examDate:"Exam date",
   requiredPace:"Required pace", onTrack:"On track", behind:"Behind plan", hoursUnit:"{n} h", paceUnit:"{n} h/week",
   planPaused:"The plan is paused; any learning command resumes it.", planDone:"All required activities are complete. Keep practicing until every module is ready.",
@@ -210,20 +213,26 @@ const EN = {
   sureAcc:"Correct when sure", overallAcc:"Correct overall", guessShare:"Answers marked guess",
   eMocks:"Mock exams", hMocks:"Mock history", mocksEmpty:"No mock exams yet.", verdict_green:"green", verdict_amber:"amber", verdict_red:"red",
   eLog:"Log", hLog:"Recent answers", logEmpty:"Quiz answers appear here.", correct:"correct", wrong:"wrong",
-  conf1:"guess", conf2:"think", conf3:"sure", pretest:"pre-test",
+  conf1:"guess or unsure", conf2:"fairly confident", conf3:"sure", pretest:"pre-test",
   thDate:"Date", thConcept:"Concept", thQuestion:"Question", thResult:"Result", thConf:"Confidence", thLevel:"Level",
   staleSync:"The learning path and exam guide were last checked {days} days ago. Ask Claude to sync the tracker.",
   schemaNewer:"This tracker uses a newer data version than this page. Ask Claude to rebuild the tracker page.",
+  levelHelp:"Module level: average of all exam-relevant concepts, including untested ones (they count as 0). Coverage: share of concepts answered at least once.",
+  conceptHelp:"Concept line: level · correct/answers (for example 25 · 1/1 = level 25, 1 correct of 1 answer).",
+  hHowLevels:"How levels work",
+  howLevels:"Each concept has a level from 0 to 100. A correct answer raises it, more for harder questions and higher confidence; a correct guess adds nothing; a confident mistake lowers it most. Levels fade when a concept is overdue for review. A module is ready when its level, coverage, answers, distinct days and recent results meet your difficulty profile. Concepts mastered counts concepts at or above the ready level.",
+  pageOutdated:"This page is older than your plugin ({page} → {latest}). Say 'rebuild' in chat to update it.",
   footer:"Not affiliated with or endorsed by Google or Anthropic."
 };
 const SCHEMA_VERSION = 1;
-const PLUGIN_VERSION = "0.1.0"; // keep equal to plugin.json "version" (checked in CI)
+const PLUGIN_VERSION = "0.2.0"; // keep equal to plugin.json "version" (checked in CI)
 const DAY = 864e5;
 const S = {settings:null, activities:[], modules:[], concepts:[], log:[], misconceptions:[], mocks:[], loaded:false, error:null, writeError:null};
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const t = (k, vars) => { const ui = (S.settings && S.settings.ui) || {}; let s = (typeof ui[k] === "string" && ui[k]) || EN[k] || k;
   if (vars) for (const [a, b] of Object.entries(vars)) s = s.split("{" + a + "}").join(b); return s; };
+const semverLt = (a, b) => { const p = v => String(v || "0").split(".").map(n => parseInt(n, 10) || 0); const x = p(a), y = p(b); for (let i = 0; i < 3; i++) { if ((x[i] || 0) !== (y[i] || 0)) return (x[i] || 0) < (y[i] || 0); } return false; };
 const r1 = x => Math.round(x * 10) / 10;
 
 // ---------- dates (learner's local calendar) ----------
@@ -348,8 +357,9 @@ function setText(id, key) { const el = $(id); if (el) el.textContent = t(key); }
 function render() {
   const s = S.settings;
   if (s) document.title = (s.certShortName ? s.certShortName + " " : "") + "Cert Coach";
-  ["ePlan","hPlan","eQueue","hQueue","eSections","hSections","eTree","hTree","eMisc","hMisc","eCalib","hCalib","eMocks","hMocks","eLog","hLog","thDate","thConcept","thQuestion","thResult","thConf","thLevel"].forEach(k => setText(k, k));
+  ["hHowLevels","ePlan","hPlan","eQueue","hQueue","eSections","hSections","eTree","hTree","eMisc","hMisc","eCalib","hCalib","eMocks","hMocks","eLog","hLog","thDate","thConcept","thQuestion","thResult","thConf","thLevel"].forEach(k => setText(k, k));
   setText("lblMode","mode"); setText("lblDiff","difficulty"); setText("modeCourse","modeCourse"); setText("modeFull","modeFull"); setText("diffStandard","diffStandard"); setText("diffHard","diffHard"); setText("beta","beta");
+  $("howLevels").textContent = t("howLevels");
   $("certName").textContent = s ? (s.certName || t("certFallback")) : t("certFallback");
   $("beta").hidden = !(s && s.packSource === "generated");
   $("hTitle").textContent = mode() === "full" ? t("examReadiness") : t("courseReadiness");
@@ -371,9 +381,11 @@ function render() {
   $("ringVal").textContent = rv + "%"; $("ringArc").setAttribute("stroke-dasharray", rv + " 100");
   $("ring").setAttribute("aria-label", $("hTitle").textContent + ": " + rv + "%");
   const mods = S.modules.filter(m => live(m) && inMode(activityOf(m)));
-  const done = mods.filter(m => m.completed).length, ready = mods.filter(m => st.get(m.id).status === "ready").length;
+  const done = mods.filter(m => m.completed).length;
+  const minLv = profile().moduleReady?.minLevel ?? 75;
+  const mastered = mods.filter(m => m.examRelevant !== false).reduce((n, m) => n + st.get(m.id).cs.filter(c => effLevel(c) >= minLv).length, 0);
   const scored = S.log.filter(l => l.kind !== "pretest"), corr = scored.filter(l => l.correct).length;
-  $("stats").innerHTML = `<span>${esc(t("statModules", {done, total: mods.length}))}</span><span>${esc(t("statReady", {n: ready}))}</span><span>${esc(t("statAnswers", {n: scored.length}))}${scored.length ? " · " + esc(t("statCorrect", {p: Math.round(corr / scored.length * 100)})) : ""}</span>`;
+  $("stats").innerHTML = `<span>${esc(t("statModules", {done, total: mods.length}))}</span><span>${esc(t("statMastered", {n: mastered}))}</span><span>${esc(t("statAnswers", {n: scored.length}))}${scored.length ? " · " + esc(t("statCorrect", {p: Math.round(corr / scored.length * 100)})) : ""}</span>`;
   renderPlan(st); renderQueue(st); renderSections(secScores); renderTree(st); renderMisc(); renderCalib(scored); renderMocks(); renderLog();
 }
 function renderNotices() {
@@ -382,6 +394,7 @@ function renderNotices() {
   if (S.writeError) n.push(`<div class="notice bad" role="status">${esc(S.writeError)}</div>`);
   if (S.timedOut && !S.loaded) n.push(`<div class="notice" role="status">${esc(t("timeout"))}</div>`);
   const s = S.settings;
+  if (s && s.latestPluginVersion && semverLt(PLUGIN_VERSION, s.latestPluginVersion)) n.push(`<div class="notice info" role="status">${esc(t("pageOutdated", {page: PLUGIN_VERSION, latest: s.latestPluginVersion}))}</div>`);
   if (s && s.schemaVersion > SCHEMA_VERSION) n.push(`<div class="notice info">${esc(t("schemaNewer"))}</div>`);
   if (s && s.lastSyncAt) { const d = daysBetween(toDate(s.lastSyncAt), today()); if (d > ((sc().page || {}).staleSyncDays || 30)) n.push(`<div class="notice info">${esc(t("staleSync", {days: d}))}</div>`); }
   $("notices").innerHTML = n.join("");
@@ -408,6 +421,7 @@ const STATUSES = ["not_started", "completed", "practicing", "ready", "review"];
 const chipClass = s => s === "not_started" ? "c-idle" : "c-" + s;
 function renderTree(st) {
   $("legend").innerHTML = STATUSES.map(s => `<span class="chip ${chipClass(s)}">${esc(t("st_" + s))}</span>`).join("");
+  $("treeHelp").textContent = t("levelHelp") + " " + t("conceptHelp");
   const openA = new Set([...document.querySelectorAll("details.act[open]")].map(d => d.dataset.id));
   const openM = new Set([...document.querySelectorAll("details.mod[open]")].map(d => d.dataset.id));
   const acts = S.activities.filter(inMode).sort((a, b) => (a.order || 0) - (b.order || 0));
@@ -418,8 +432,8 @@ function renderTree(st) {
     const done = ms.filter(m => m.completed).length;
     return `<details class="act" data-id="${esc(a.id)}"${openA.has(a.id) ? " open" : ""}><summary><span class="an num">${a.kind === "gaps" ? "G" : i + 1}</span><span class="at">${esc(a.title)}<small>${esc(t("kind_" + a.kind))}${a.optional ? " · " + esc(t("optional")) : ""}${a.hours ? " · " + esc(t("hoursUnit", {n: a.hours})) : ""}</small></span><span class="ameta"><span class="mini" aria-hidden="true"><i style="width:${avg}%"></i></span><span class="chip ${done === ms.length && ms.length ? "c-completed" : "c-idle"} num">${done}/${ms.length}</span></span></summary>
       <div class="mods">${ms.map(m => { const x = st.get(m.id), lv = Math.round(x.level);
-        return `<details class="mod" data-id="${esc(m.id)}"${openM.has(m.id) ? " open" : ""}><summary><span class="mt">${esc(m.title)}<span class="tags" style="display:block">${(m.sections || []).length ? "§ " + m.sections.map(esc).join(", ") : esc(t("noSection"))}${x.rel && m.weight === "support" ? " · " + esc(t("support")) : ""}${x.answers ? " · " + esc(t("answersShort", {c: x.correct, n: x.answers})) + " · " + esc(t("coverage", {p: Math.round(x.coverage * 100)})) : ""}</span></span><span class="lv"><span class="chip ${chipClass(x.status)}">${esc(t("st_" + x.status))}</span>${x.rel ? `<span class="num">${lv}</span>` : ""}</span>${x.rel ? `<span class="bar"><i style="width:${lv}%"></i></span>` : ""}</summary>
-          <ul class="concepts">${x.cs.map(c => `<li><span>${esc(c.title)}</span><span class="num muted">${x.rel ? Math.round(effLevel(c)) + (c.answers ? " · " + (c.correct || 0) + "/" + c.answers : "") : ""}</span></li>`).join("")}</ul></details>`; }).join("")}</div></details>`;
+        return `<details class="mod" data-id="${esc(m.id)}"${openM.has(m.id) ? " open" : ""}><summary><span class="mt">${esc(m.title)}<span class="tags" style="display:block">${(m.sections || []).length ? "§ " + m.sections.map(esc).join(", ") : esc(t("noSection"))}${x.rel && m.weight === "support" ? " · " + esc(t("support")) : ""}${x.answers ? " · " + esc(t("answersShort", {c: x.correct, n: x.answers})) + " · " + `<span title="${esc(t("levelHelp"))}">` + esc(t("coverage", {p: Math.round(x.coverage * 100)})) + "</span>" : ""}</span></span><span class="lv"><span class="chip ${chipClass(x.status)}">${esc(t("st_" + x.status))}</span>${x.rel ? `<span class="num" title="${esc(t("levelHelp"))}">${lv}</span>` : ""}</span>${x.rel ? `<span class="bar"><i style="width:${lv}%"></i></span>` : ""}</summary>
+          <ul class="concepts">${x.cs.map(c => `<li><span>${esc(c.title)}</span><span class="num muted" title="${esc(t("conceptHelp"))}">${x.rel ? Math.round(effLevel(c)) + (c.answers ? " · " + (c.correct || 0) + "/" + c.answers : "") : ""}</span></li>`).join("")}</ul></details>`; }).join("")}</div></details>`;
   }).join("");
 }
 function conceptTitle(id) { const c = S.concepts.find(c => c.id === id); return c ? c.title : id; }

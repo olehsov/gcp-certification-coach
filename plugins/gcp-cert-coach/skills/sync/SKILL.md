@@ -33,7 +33,7 @@ Keep the tree current without losing progress. Destructive changes follow plan �
 2. **Live sources.** Exam guide: `settings.examGuide.url` — section names and weights, objective ids and titles only. Path: `settings.path.url` and each activity page — activity titles, stated hours, optional marks, module titles and item titles (as in the generated-pack rules: drop quizzes, lab intros and reviews; skill-badge labs are modules). If the learner pasted an outline, use it instead and say so.
 3. **Diff** with [references/diff-and-apply.md](references/diff-and-apply.md): match by id where the source gives one, else by order and title similarity; classify every difference as added, removed, renamed, moved, changed hours or optional flag, or section mapping change; and compare exam-guide version, sections and weights.
 4. **Show** the diff grouped by activity, with counts and the effect on progress for each item ("renamed: keeps level and completion", "removed: archived, hidden from quizzes, data kept", "added: level 0, not completed"). For new modules, propose `sections`, `weight` and `examRelevant`. Ask for an explicit yes. Partial approval ("only the renames") is fine.
-5. **Snapshot** before any change: `set snapshots/<snapshotId>` (`ts`, `reason: "sync"`, `pluginVersion`, `counts`) and copies of every document that will be updated or archived under `snapshots/<snapshotId>/<collection>/<id>`. Snapshot id: `sync-<YYYYMMDD-HHMM>`.
+5. **Snapshot** before any change, following [references/snapshots.md](references/snapshots.md): id `sync-<YYYYMMDD-HHMM>`, full copies of every document that will be updated or archived, chunked, read back and verified (`status: "complete"`). No apply before the snapshot is complete.
 6. **Apply** in batches of at most 50 writes: added items `set` with level 0 and not completed; renamed or moved items `update` title, order and fields while keeping id, level, answers, completion; removed items `update archived: true` (never delete); exam-guide changes `update meta/settings.examGuide`. New concepts get ids that do not collide with existing ones (next free `-k<N>`; new modules next free `-m<N>`).
 7. **Finish:** `update meta/settings` with `lastSyncAt` (now) and `updatedAt`. Report what changed and what it means (for example "readiness may drop because a new core module was added"). With no differences, only update `lastSyncAt` and say the tracker is current.
 
@@ -44,9 +44,14 @@ Diff tables per activity: change, item, before → after, effect on progress. A 
 ## Tracker access
 
 - **Locate:** a line `GCP Cert Coach tracker: <URL> (certification: <id>)` in the Project instructions or this conversation; otherwise the learner's artifact list, titles ending in "Cert Coach" (one: use it; several: ask which certification; none: offer `/gcp-cert-coach:init`). Never create a tracker here.
-- **Schema:** if `meta/settings.schemaVersion` is above 1, ask the learner to update the plugin; below 1, run `/gcp-cert-coach:rebuild` first.
+- **Version:** Plugin version: 0.2.0. On the `meta/settings` read, compare versions. `schemaVersion` below 1: stop and offer `/gcp-cert-coach:rebuild` first; above 1: ask the learner to update the plugin. `templateVersion` (missing means `pluginVersion`) older than the plugin version: say once per session, in one line, "A new tracker page is available (x → y). Say 'rebuild' to update it."; never rebuild on your own. `latestPluginVersion` older than the plugin version: include it in the settings write this skill makes anyway; never write only for this.
 - **Writes:** batches as above. Pass the version you read for each document you update; on a version conflict re-read once and redo; if it fails again, stop, report what was applied and point to the snapshot.
 - **No data tool or database unavailable:** show the diff and the apply plan in order (snapshot of the affected documents first, then the changes, archived not deleted), say nothing was applied, and say that confirmation will be asked in a session that can write.
+
+## References
+
+- [references/diff-and-apply.md](references/diff-and-apply.md): matching, change types, example diff
+- [references/snapshots.md](references/snapshots.md): snapshot format and restore
 
 ## Feedback
 

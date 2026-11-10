@@ -13,6 +13,10 @@ Pre-tests use the **next uncompleted module** instead: the lowest-order exam-rel
 
 Warm-ups use the candidates with the **highest effective level** (at least one answer), top `session.warmupQuestions`.
 
+## Planning
+
+Plan all questions of the session at once from a single read (concepts, formats, difficulty per question). The question header never names the concept or module.
+
 ## Priority (normal sessions)
 
 Rank candidates and fill the session in this order:

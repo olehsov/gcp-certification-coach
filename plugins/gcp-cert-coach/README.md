@@ -33,6 +33,10 @@ Start with `/gcp-cert-coach:init` in a Claude Project used only for one certific
 | `/gcp-cert-coach:rebuild` | Update the tracker page to the plugin's current version |
 | `/gcp-cert-coach:reset` | Snapshot, confirm, then reset levels and history |
 
+## Usage and cost
+
+Use Sonnet for quizzes and daily learning and Opus for mock exams and hard topics. Start a new chat per study session: the tracker keeps all state, and long threads get slower and costlier.
+
 ## Data
 
 - **Stored:** your learning progress and settings, in the database of a private tracker artifact in your own Claude account (levels, answers to practice questions, misconceptions, mock results, challenge summaries, feedback notes). No names, emails, Google Cloud project ids or raw command output are stored.

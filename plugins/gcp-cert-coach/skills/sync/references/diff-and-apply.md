@@ -24,7 +24,7 @@ Never delete documents during sync. Never reset levels during sync.
 
 ## Snapshot
 
-Before applying, copy every document that the plan will update or archive to `snapshots/<snapshotId>/<collection>/<id>` (same body), plus `snapshots/<snapshotId>` with `{ts, reason: "sync", pluginVersion, counts: {activities, modules, concepts}}`. Added documents need no snapshot. To roll back, copy the snapshot bodies back with `set` (only on the learner's request).
+Before applying, take a snapshot of every document that the plan will update or archive, in the format of [snapshots.md](snapshots.md) (full copies in chunks, verified, reason `sync`). Added documents need no snapshot. To roll back, restore from the snapshot (snapshots.md section 3), only on the learner's request.
 
 ## Example diff (shortened)
 

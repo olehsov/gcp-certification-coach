@@ -50,12 +50,4 @@ From `log` entries other than pre-tests: share correct when confidence is 3 ("co
 
 ## 6. Plan
 
-- Required activities: not optional, not archived, in the current mode.
-- Remaining course hours = for each uncompleted module: its `hours` if known, else activity `hours` ÷ number of modules in the activity.
-- Gaps (Full exam mode): `plan.gapHoursPerTopic` per uncompleted gap topic; required gap hours = that × all gap topics.
-- Practice buffer = `plan.practiceBufferFraction` × total required hours − logged answers (excluding pre-tests) × `plan.minutesPerLoggedAnswer` / 60, floored at 0.
-- Remaining = remaining course hours + remaining gap hours + practice buffer.
-- Weeks = remaining ÷ `paceHoursPerWeek`. Estimated finish = today + weeks × 7 days + days of the active pause so far.
-- With `examDate`: required pace = remaining ÷ weeks until the exam; on track when required pace ≤ `paceHoursPerWeek`. Report both.
-
-Example: 40 remaining course hours, Course mode, total required 58.75 h, 20 logged answers → buffer 0.2 × 58.75 − 20 × 3 / 60 = 11.75 − 1 = 10.75 → remaining 50.75 h; at 7 h/week ≈ 7.25 weeks ≈ 51 days → finish = today + 51 days.
+Use [plan-estimate.md](plan-estimate.md) exactly: it is the single formula shared with the tracker page and `init`. Do not recompute the estimate another way.

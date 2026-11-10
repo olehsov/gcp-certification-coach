@@ -48,7 +48,7 @@ Every run spends the CLI account's plan usage (each case is a full `claude` chil
 
 ## Coverage
 
-At least three cases per skill (37 in total). CHECKLIST C3 mapping:
+At least three cases per skill (48 in total; 11 added for v0.2.0). CHECKLIST C3 mapping:
 
 | C3 requirement | Case(s) |
 |---|---|
@@ -62,6 +62,17 @@ At least three cases per skill (37 in total). CHECKLIST C3 mapping:
 | Init refuses a duplicate tracker without confirmation | `init-duplicate-guard` |
 | Progress browser check asks to sign in when signed out | `progress-browser-signed-out` |
 | Explanation language follows settings, terms stay English | `learn-language-uk`, `init-summary-before-publish` |
+
+v0.2.0 cases (fixes from the manual test):
+
+| Requirement | Case(s) |
+|---|---|
+| Snapshot holds every removed row; restore works from the snapshot alone | `reset-snapshot-full-rows`, `reset-restore-from-snapshot` |
+| Question header never reveals the topic | `quiz-header-no-topic`, `mock-header-no-section` |
+| Module numbers are confirmed with titles before writing | `progress-numbers-confirm-titles`, `progress-numbers-denied-asks-names`, `progress-mark-module` |
+| Hedged answers are confidence 1 and create no misconception; unclear letter is confirmed | `quiz-hedged-confidence-1`, `quiz-ambiguous-letter-confirm` |
+| Outdated page is mentioned once, not rebuilt automatically; same-version rebuild asks | `quiz-template-outdated-notice`, `rebuild-already-up-to-date` |
+| Seeding without the script (path B), never asks to change settings | `init-seed-script-fails` |
 
 ## Privacy
 

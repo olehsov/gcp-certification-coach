@@ -82,5 +82,4 @@ Reading the result:
 - Inside the plugin eval (§3), where the whole plugin is installed and the prompt carries a tracker line, the `skill-fired` indicator shows the expected skill was called in most cases; the misses there are listed in §3.
 - J3 target (at least 5/8 with 0 false triggers) is **not met** in this harness. Description tuning stopped here to save usage. Mitigation shipped in v0.1.0: `init` prints a second Project instructions line ("In this Project, use the gcp-cert-coach skills for every study request ..."), and the README quick start recommends the explicit commands (`/gcp-cert-coach:quiz` and others). The decisive check is triggering in a real claude.ai Project during the manual test (CHECKLIST K).
 
-RESULTS_REST
 

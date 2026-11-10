@@ -26,9 +26,9 @@ A practical task that proves the learner can build something without a script to
 - [ ] 4. Save the challenge as assigned
 ```
 
-1. Read `meta/settings`, `modules`, `concepts`, open `misconceptions` and `challenges` with status `assigned`. If one is still assigned, offer to continue it instead of creating another.
+1. Read `meta/settings`, `modules` with `completed` true, the `concepts` of those modules only (filtered by `moduleId`), open `misconceptions` and `challenges` with status `assigned`. Never list the whole `concepts` collection. If one is still assigned, offer to continue it instead of creating another.
 2. Pick concepts from completed, exam-relevant modules where a learner can build something in a project: prefer concepts with an open misconception or a mid-range level (30–80). Avoid concepts with nothing to build (pricing theory, history).
-3. Write the task with [references/challenge-format.md](references/challenge-format.md): goal, constraints, success criteria, 2–4 named verification commands, a cost and cleanup note, the redaction reminder, and what to submit. **No step list, no commands that perform the task, no console click path.** Ground each requirement in a documentation page you fetched; keep those links for the review, not the task.
+3. Write the task with [references/challenge-format.md](references/challenge-format.md): goal, constraints, success criteria, 2–4 named verification commands, a cost and cleanup note, the redaction reminder, and what to submit. **No step list, no commands that perform the task, no console click path.** Ground each requirement in the concept's curated `docUrls` or a page you fetched (at most two fetches, only for facts not in the curated links); numbers come from [references/facts.md](references/facts.md) or a fetched page. Keep the links for the review, not the task.
 4. Write `challenges/<id>`: `{ts, title, conceptIds, status: "assigned", score: null, bonusApplied: false, reviewSummary: null}`.
 
 ## Workflow: review a submission
@@ -52,9 +52,18 @@ Task message: title, goal, constraints, success criteria (numbered), verificatio
 ## Tracker access
 
 - **Locate:** a line `GCP Cert Coach tracker: <URL> (certification: <id>)` in the Project instructions or this conversation; otherwise the learner's artifact list, titles ending in "Cert Coach" (one: use it; several: ask which certification; none: offer `/gcp-cert-coach:init`). Never create a tracker here.
-- **Schema:** if `meta/settings.schemaVersion` is above 1, ask the learner to update the plugin; below 1, suggest `/gcp-cert-coach:rebuild`.
+- **Version:** Plugin version: 0.2.0. On the `meta/settings` read, compare versions. `schemaVersion` below 1: stop and offer `/gcp-cert-coach:rebuild` first; above 1: ask the learner to update the plugin. `templateVersion` (missing means `pluginVersion`) older than the plugin version: say once per session, in one line, "A new tracker page is available (x → y). Say 'rebuild' to update it."; never rebuild on your own. `latestPluginVersion` older than the plugin version: include it in the settings write this skill makes anyway; never write only for this.
 - **Writes:** one batch per step above. Pass the version you read for each document you update; on a version conflict re-read once and redo; if it fails again, stop and report.
 - **No data tool or database unavailable:** continue; if the conversation contains a tracker export, use it read-only. Say that nothing was saved and show the batch you would have written as a JSON code block.
+
+## Long conversations
+
+If this conversation already holds a finished session summary, say once, in one line, that a new chat per study session is faster and cheaper; the tracker keeps all state.
+
+## References
+
+- [references/challenge-format.md](references/challenge-format.md): task and review format
+- [references/facts.md](references/facts.md): verified numeric facts
 
 ## Feedback
 

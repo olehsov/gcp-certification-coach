@@ -49,7 +49,7 @@ Skill-specific:
 - [x] D13 `progress`: mark modules; browser check with all FR-9 fallbacks; confirm before writing; pause; mode and difficulty change; plan §6.9 (US-13..16) — `progress/SKILL.md` branches + `references/browser-progress-check.md` (all FR-9 fallbacks) + `references/status-and-plan.md` (§6.8–6.9)
 - [x] D14 `sync`: plan → diff → confirm → snapshot → apply; archived not deleted; `lastSyncAt` (US-17) — `sync/SKILL.md` + `references/diff-and-apply.md`: snapshot before apply, archive never delete, `lastSyncAt`
 - [x] D15 `rebuild`: schema migration list; republish to the same URL; data untouched (US-18) — `rebuild/SKILL.md` + `references/migrations.md` (0 → 1); republish to the same URL; own copy of the template
-- [x] D16 `reset`: show scope → snapshot → explicit confirmation → reset; keeps tree and settings (US-19) — `reset/SKILL.md`: scope with counts → snapshot → phrase `reset <ACE> progress` → batches; keeps tree, settings, completion marks by default
+- [x] D16 `reset`: show scope → snapshot → explicit confirmation → reset; keeps tree and settings (US-19) — `reset/SKILL.md`: names the tracker → scope with counts → full-copy snapshot (chunks, verified) → phrase `reset <ACE> progress` → batches; keeps tree, settings, completion marks by default; restore path from the snapshot (0.2.0)
 - [x] D17 Feedback capture available from every skill (US-20, FR-12) — "Feedback" section with the `feedback/<id>` document shape in all nine skills
 
 ## E. Tracker template (ARCHITECTURE §5)
@@ -68,7 +68,7 @@ Skill-specific:
 - [x] F1 All constants from §6 present in the pack's scoring file with a `rationale` per value — `packs/ace/scoring.yaml`: every constant of §6 plus `rationale` keyed by dotted path; a script check found no constant without rationale
 - [x] F2 `init` copies scoring into `settings.scoring`; other skills read constants only from the tracker — `build_seed.py` copies the whole scoring.yaml into `settings.scoring`; skills read constants from the tracker (defaults only as a fallback with a rebuild suggestion)
 - [x] F3 Standard and Hard profiles complete — `profiles.standard` and `profiles.hard` complete (cap, intervals, decay, readiness gates, mock bands)
-- [ ] F4 Verified on claude.ai that a skill can read its own `references/` and `assets/` (ADR 0006 build-time check); result noted here — checked in the manual test, step K2c
+- [x] F4 Verified on claude.ai that a skill can read its own `references/` and `assets/` (ADR 0006 build-time check); result noted here — manual test K2c passed: init read the pack and template from its own folder (curated ACE pack seeded, page published)
 
 ## G. ACE pack (ARCHITECTURE §7, docs/seed/ace-path-snapshot.yaml)
 
@@ -113,17 +113,17 @@ Skill-specific:
 
 ## K. Manual end-to-end test on claude.ai (maintainer, before publishing)
 
-- [ ] K1 Plugin zipped and uploaded via Customize → Plugins → Add → Upload plugin — zip built and checked: `dist/gcp-cert-coach-0.1.0.zip` (39 files, one top-level folder, one plugin.json, no OS junk, identical to the plugin folder); upload is the maintainer's step
-- [ ] K2 In a new Project, with code execution **on**: `init` for ACE in a non-English language; tracker published and filled; init says it seeded with the seed script (path A); note any PyYAML install step
-- [ ] K2b In a second new Project, with code execution **off** (Settings → Capabilities): `init` for ACE; init says it seeded without the script (path B), never asks to enable code execution; counts on the page match K2 (activities, modules, concepts). If claude.ai does not offer plugin skills at all with code execution off, record that, and test path B instead by telling init in K2b that the script cannot be run
-- [ ] K2c F4 check during K2/K2b: init read `assets/packs/ace/*.yaml` and `assets/tracker.html` from its own folder (the tree shows Google Skills titles; the page title is `ACE Cert Coach`); `rebuild` read its own `assets/tracker.html`; `progress` read its own `references/browser-progress-check.md`. Record the result in F4
-- [ ] K2d The data tool accepted 50-write batches; `set`/`update` wording in the skills matched the tool
-- [ ] K3 Mark progress manually and via browser check
-- [ ] K4 Quiz of 5 questions: only completed modules, confidence collected, tracker updates live; Mode and Difficulty toggles on the page write `meta/settings`
-- [ ] K5 Pause, then quiz: plan resumes
-- [ ] K6 `rebuild` keeps data; `reset` snapshots and asks for confirmation
-- [ ] K2e Triggering in the Project with both instruction lines: plain requests ("explain Cloud NAT", "quiz me", "give me a challenge", "mock exam", "I finished module 2 of course 3") each start the matching skill; note misses (J3)
-- [ ] K7 Issues found are fixed and re-tested
+- [x] K1 Plugin zipped and uploaded via Customize → Plugins → Add → Upload plugin — zip built and checked: `dist/gcp-cert-coach-0.1.0.zip` (39 files, one top-level folder, one plugin.json, no OS junk, identical to the plugin folder); upload is the maintainer's step
+- [x] K2 In a new Project, with code execution **on**: `init` for ACE in a non-English language; tracker published and filled; init says it seeded with the seed script (path A); note any PyYAML install step
+- [~] K2b (deviation: claude.ai has no separate code-execution toggle; skills need "Create and edit files" on and code still runs when it is off, so path B cannot be reached there; path B is verified by the `init-seed-script-fails` eval and the wording no longer mentions code execution) In a second new Project, with code execution **off** (Settings → Capabilities): `init` for ACE; init says it seeded without the script (path B), never asks to enable code execution; counts on the page match K2 (activities, modules, concepts). If claude.ai does not offer plugin skills at all with code execution off, record that, and test path B instead by telling init in K2b that the script cannot be run
+- [x] K2c F4 check during K2/K2b: init read `assets/packs/ace/*.yaml` and `assets/tracker.html` from its own folder (the tree shows Google Skills titles; the page title is `ACE Cert Coach`); `rebuild` read its own `assets/tracker.html`; `progress` read its own `references/browser-progress-check.md`. Record the result in F4
+- [x] K2d The data tool accepted 50-write batches; `set`/`update` wording in the skills matched the tool
+- [~] K3 (partial: module numbering and confirmation fixed in 0.2.0, A3; re-test on the new zip) Mark progress manually and via browser check
+- [~] K4 (mostly passed; findings fixed in 0.2.0: header cueing A2, confidence parsing A4, doc grounding and cost A9; re-test) Quiz of 5 questions: only completed modules, confidence collected, tracker updates live; Mode and Difficulty toggles on the page write `meta/settings`
+- [x] K5 Pause, then quiz: plan resumes
+- [~] K6 (rebuild passed; reset passed in the same chat, but the snapshot held counts only: fixed in 0.2.0, A1; re-test restore in a new chat) `rebuild` keeps data; `reset` snapshots and asks for confirmation
+- [x] K2e Triggering in the Project with both instruction lines: plain requests ("explain Cloud NAT", "quiz me", "give me a challenge", "mock exam", "I finished module 2 of course 3") each start the matching skill; note misses (J3)
+- [~] K7 Issues found are fixed (0.2.0 phase A); re-test on claude.ai pending (rebuild, header and hedged answer, module confirmation, reset then restore in a new chat) — Issues found are fixed and re-tested
 
 ## L. Publish
 

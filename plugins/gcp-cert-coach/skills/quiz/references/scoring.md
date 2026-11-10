@@ -52,7 +52,7 @@ Then apply the daily gain cap (gains only), clamp to 0–100 and round to one de
 
 ## 5. Misconceptions
 
-- **Create** (status `open`) when the answer is wrong with confidence 3, or wrong with confidence 2 and your explanation names a specific wrong belief. `statement` is one English sentence describing the wrong belief, not the question ("Believes a VM needs a downloaded key to call APIs as its attached service account."). Link it in the log entry's `misconceptionId`.
+- **Create** (status `open`) when the answer is wrong with confidence 3, or wrong with confidence 2 and your explanation names a specific wrong belief. **Never** for confidence 1 (a guess or hedged answer, see [answer-parsing.md](answer-parsing.md)). `statement` is one English sentence describing the wrong belief, not the question ("Believes a VM needs a downloaded key to call APIs as its attached service account."). Link it in the log entry's `misconceptionId`.
 - **Refute**: a correct answer with confidence ≥ `minConfidenceToResolve` on a concept with an open misconception increments `consecutiveRefutations`; at `resolveAfterConsecutiveCorrect` set `status: "resolved"` and `resolvedAt`.
 - **Reset**: a wrong answer on that concept sets `consecutiveRefutations` back to 0.
 - Never create a second open misconception with the same belief on a concept; update the existing one.
@@ -81,7 +81,7 @@ Standard profile, concept not overdue, `L = 50`:
 | Correct, medium, confidence 2 | 50 + 0.25 × 0.6 × 50 = 57.5 | **57.5** |
 | Correct, hard, confidence 3 | 50 + 0.35 × 1.0 × 50 = 67.5, gain 17.5 ≤ 25 | **67.5** |
 | Wrong, easy, confidence 3 | 50 − 0.40 × 50 | **30.0** + misconception |
-| Wrong, medium, confidence 1 | 50 − 0.08 × 50 | **46.0** |
+| Wrong, medium, confidence 1 (for example "probably A") | 50 − 0.08 × 50 | **46.0**, no misconception |
 
 Decay: stored level 62, last reviewed 12 days ago, no pauses, standard profile: interval 7 (62 is below 80), overdue 5 days, `L = 62 − 3 × 5 / 7 = 59.9`. Score from 59.9.
 

@@ -40,10 +40,10 @@ Copy this checklist and tick it off as you go:
 3. **Certification.** Fetch the current list from https://cloud.google.com/learn/certification and show it grouped by level (Foundational, Associate, Professional). Mark Associate Cloud Engineer as "curated" and the others as "beta (generated)". One certification per tracker.
 4. **Pack.** Curated: read `${CLAUDE_SKILL_DIR}/assets/packs/<certId>/` (relative path `assets/packs/<certId>/`; ACE is `ace`): [pack.yaml](assets/packs/ace/pack.yaml), [path.yaml](assets/packs/ace/path.yaml), [gaps.yaml](assets/packs/ace/gaps.yaml), [scoring.yaml](assets/packs/ace/scoring.yaml). Generated: say that this certification gets a generated pack labeled beta, follow [references/generated-pack.md](references/generated-pack.md) (without a built-in browser, ask the learner to paste the learning path outline or to open the chat in the Claude desktop app), and show the tree for confirmation before going on.
 5. **Choices.** Ask in one message, with defaults: mode **Course** (learning path only) or **Full exam** (path plus exam-guide gaps; recommended before booking the exam); difficulty **Standard** or **Hard**; weekly study hours (default 7); exam date (optional). Explain each in one line.
-6. **Initial progress.** Ask what is already done. Accept typed input such as "courses 1, 3, 4; course 6 modules 1-3" (numbers follow the path order on Google Skills; resolve them to ids and echo the titles back) or offer the browser check in [references/browser-progress-check.md](references/browser-progress-check.md). Never write completion marks the learner has not confirmed.
-7. **Summary.** Show certification, pack type (beta if generated), mode, difficulty, language, pace, exam date, and the completed activities and modules by title, plus the estimated remaining hours. Ask for confirmation. Nothing is published before a yes.
+6. **Initial progress.** Ask what is already done. Accept typed input such as "courses 1, 3, 4; course 6 modules 1-3". Course platforms number modules differently, so resolve every number to ids (Google Skills path order) and always ask "Do you mean course N <course title>, module(s) <module titles>?" before accepting it. On a no, ask the learner to type the course and module names, match them by title and confirm again. Titles given directly need one short confirmation. Or offer the browser check in [references/browser-progress-check.md](references/browser-progress-check.md). Never write completion marks the learner has not confirmed.
+7. **Summary.** Show certification, pack type (beta if generated), mode, difficulty, language, pace, exam date, and the completed activities and modules by title, plus the estimated remaining hours and finish date (or required pace). Take these numbers from the seed script's summary (run it now with the learner's choices) or, on the by-hand path, from [references/plan-estimate.md](references/plan-estimate.md); the page shows the same numbers. Ask for confirmation. Nothing is published before a yes.
 8. **Publish.** Take `assets/tracker.html` (`${CLAUDE_SKILL_DIR}/assets/tracker.html`), replace `<title>GCP Cert Coach</title>` with `<title><Short name> Cert Coach</title>` (for example `ACE Cert Coach`), and publish it as a new artifact with the db capability and no other capabilities; keep the default access rules (the owner reads and writes). Publish exactly this file; do not edit its code.
-9. **Seed.** Follow [references/seeding.md](references/seeding.md): build the write batches with the seed script when code execution is available, otherwise by hand from the pack files (path B there; never ask the learner to enable code execution); translate `settings.ui` when the language is not English; write the batches in order with the artifact data tool; and tell the learner which path was used.
+9. **Seed.** Follow [references/seeding.md](references/seeding.md): build the write batches with the seed script when it can run, otherwise by hand from the pack files (path B there; say the script could not run, and never ask the learner to change any setting); translate `settings.ui` when the language is not English; write the batches in order with the artifact data tool; and tell the learner which path was used.
 10. **Verify.** Read back `meta/settings` and one page of `activities`, `modules` and `concepts`; compare the counts with the seed summary (the script's, or your own counts on path B). If something is missing, rewrite only the failed batch once; if it still fails, report what is missing.
 11. **Hand-off.** Print, in one code block, two lines: `GCP Cert Coach tracker: <artifact URL> (certification: <certId>)` and `In this Project, use the gcp-cert-coach skills for every study request (explanations, quizzes, challenges, mock exams, progress).` (keep both in English, whatever the explanation language). Tell the learner to paste them into the instructions of a Claude Project used only for this certification, so every chat there finds the tracker. Then suggest the next step: a quiz on a completed module, a pre-test on the next module, or an explanation.
 
@@ -64,12 +64,17 @@ Copy this checklist and tick it off as you go:
 
 When the learner disputes content or suggests a change, write `feedback/<timestamp>-<4 random letters>` with `{ts, source: "learner", kind: "wrong_question" | "bug" | "improvement", text, logId: null, pluginVersion: settings.pluginVersion, status: "new"}`. Write `text` as a neutral summary without names, emails, project ids or pasted output, and tell the learner it was recorded.
 
+## Version
+
+Plugin version: 0.2.0. The seeded settings record it as `pluginVersion`, `templateVersion` and `latestPluginVersion`.
+
 ## Privacy
 
 Store only learning progress and settings. Never store the learner's name, email, Google Cloud project ids or anything read from their account pages beyond completion marks.
 
 ## References
 
+- [references/plan-estimate.md](references/plan-estimate.md): the plan estimate formula
 - [references/seeding.md](references/seeding.md): document shapes, batch plan, script usage, UI translation
 - [references/generated-pack.md](references/generated-pack.md): building a beta pack for other certifications
 - [references/browser-progress-check.md](references/browser-progress-check.md): reading progress from Google Skills or Coursera

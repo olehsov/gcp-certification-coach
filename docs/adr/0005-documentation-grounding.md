@@ -1,6 +1,6 @@
 # ADR 0005: Ground content in public Google Cloud documentation via web search; defer MCP
 
-- Status: Accepted
+- Status: Accepted; amended by [ADR 0010](0010-curated-links-first.md)
 - Date: 2026-11-10
 
 ## Context

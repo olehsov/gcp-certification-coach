@@ -11,12 +11,22 @@ same $P/skills/init/assets/tracker.html $P/skills/rebuild/assets/tracker.html
 if ! diff <(sed 3d $P/skills/init/references/browser-progress-check.md) <(sed 3d $P/skills/progress/references/browser-progress-check.md) >/dev/null; then
   echo "check-consistency: browser-progress-check.md differs between init and progress"; fail=1
 fi
+# Shared references: identical copies in every skill that uses them.
+group() { local f="$1"; shift; local first="$1"; shift; for d in "$@"; do same "$P/skills/$first/references/$f" "$P/skills/$d/references/$f"; done; }
+group snapshots.md reset sync rebuild
+group plan-estimate.md progress init
+group facts.md quiz learn mock challenge
+group answer-parsing.md quiz mock
 v_manifest=$(python3 -c "import json;print(json.load(open('$P/.claude-plugin/plugin.json'))['version'])")
 v_market=$(python3 -c "import json;print([p for p in json.load(open('.claude-plugin/marketplace.json'))['plugins'] if p['name']=='gcp-cert-coach'][0].get('version',''))")
 v_seed=$(sed -n 's/^PLUGIN_VERSION = "\([^"]*\)".*/\1/p' $P/skills/init/scripts/build_seed.py)
 v_page=$(sed -n 's/^const PLUGIN_VERSION = "\([^"]*\)".*/\1/p' $P/skills/init/assets/tracker.html)
 for v in "$v_market" "$v_seed" "$v_page"; do
   if [ "$v" != "$v_manifest" ]; then echo "check-consistency: version mismatch (plugin.json $v_manifest, marketplace $v_market, build_seed $v_seed, tracker $v_page)"; fail=1; break; fi
+done
+for f in $P/skills/*/SKILL.md; do
+  v=$(sed -n 's/.*Plugin version: \([0-9]*\.[0-9]*\.[0-9]*\).*/\1/p' "$f" | head -1)
+  if [ -n "$v" ] && [ "$v" != "$v_manifest" ]; then echo "check-consistency: $f says plugin version $v, plugin.json says $v_manifest"; fail=1; fi
 done
 [ "$fail" = 0 ] && echo "check-consistency: ok (version $v_manifest)"
 exit "$fail"

@@ -16,6 +16,8 @@ This environment has no artifact data tool, so here is a read-only export of eve
  "meta/settings": {
   "schemaVersion": 1,
   "pluginVersion": "0.1.0",
+  "templateVersion": "0.1.0",
+  "latestPluginVersion": "0.1.0",
   "certId": "ace",
   "certName": "Associate Cloud Engineer",
   "certShortName": "ACE",

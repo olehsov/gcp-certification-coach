@@ -134,6 +134,8 @@ All documents are flat JSON. Timestamps are ISO 8601 UTC strings. Dates (`YYYY-M
 |---|---|---|
 | `schemaVersion` | int | Database schema version (1) |
 | `pluginVersion` | string | Plugin version that last wrote the settings |
+| `templateVersion` | string | Plugin version the tracker page was published from (set by `init` and `rebuild`); missing means `pluginVersion`. Added in 0.2.0, schema stays 1 |
+| `latestPluginVersion` | string | Highest plugin version that has touched the tracker; the page compares it with its own embedded version and shows an "outdated" notice. Added in 0.2.0 |
 | `certId`, `certName`, `certShortName` | string | e.g. `ace`, `Associate Cloud Engineer`, `ACE` |
 | `packSource` | `curated` \| `generated` | Generated packs are labeled `beta` in the UI |
 | `examGuide` | object | `{version, url, sections: [{id, name, weight}]}` |
@@ -201,7 +203,7 @@ All documents are flat JSON. Timestamps are ISO 8601 UTC strings. Dates (`YYYY-M
 | `conceptId`, `moduleId` | string | |
 | `format` | `scenario` \| `multi_select` \| `command` \| `explain` \| `choose_service` \| `why_wrong` | |
 | `difficulty` | `easy` \| `medium` \| `hard` | |
-| `confidence` | 1 \| 2 \| 3 | guess, think, sure |
+| `confidence` | 1 \| 2 \| 3 | 1 guess or unsure (hedged answers), 2 fairly confident, 3 sure |
 | `question` | string | Full question text including options |
 | `answerKey` | string | Correct option(s) |
 | `given` | string | Learner's answer |
@@ -229,7 +231,7 @@ All documents are flat JSON. Timestamps are ISO 8601 UTC strings. Dates (`YYYY-M
 
 **`snapshots/{snapshotId}`** and **`snapshots/{snapshotId}/<collection>`**
 
-Created by `reset`, before a destructive `sync` and before a `rebuild` migration. Ids: `reset-<YYYYMMDD-HHMM>`, `sync-<YYYYMMDD-HHMM>`, `migration-<YYYYMMDD-HHMM>`. Metadata: `ts`, `reason`, `pluginVersion`, `counts`.
+Created by `reset`, before a destructive `sync`, before a `rebuild` migration and before a restore. Ids: `reset-<YYYYMMDD-HHMM>`, `sync-<YYYYMMDD-HHMM>`, `migration-<YYYYMMDD-HHMM>`, `restore-<YYYYMMDD-HHMM>`. Metadata: `ts`, `reason`, `pluginVersion`, `certId`, `trackerTitle`, `status` (`writing` then `complete`), `collections` (`{name: {rows, chunks}}`), `scope`. The documents themselves live in `snapshots/<id>/chunks/<collection>-<NNN>` as `{collection, chunk, rows: [{id, data}]}` with full copies (at most 100 rows per chunk, 25 for `log`), so a snapshot is restorable in any chat without conversation context. A destructive step starts only after `status: "complete"`. See `skills/reset/references/snapshots.md` (identical copies in sync and rebuild).
 
 ### 5.3 Locating the tracker
 
@@ -246,7 +248,7 @@ Every skill except `init` locates the tracker in this order:
 
 Sections, top to bottom:
 
-1. **Header:** certification name, `beta` badge for generated packs, readiness ring labeled "Course readiness" (Course mode) or "Exam readiness" (Full mode), mode and difficulty toggles, pause state.
+1. **Header:** certification name, `beta` badge for generated packs, readiness ring labeled "Course readiness" (Course mode) or "Exam readiness" (Full mode), counts (modules completed, concepts mastered = exam-relevant concepts at or above the profile's module-ready level, answers), mode and difficulty toggles, pause state.
 2. **Plan:** remaining hours, weekly pace, estimated finish date (or exam date), on-track indicator.
 3. **Exam-guide sections:** mastery bar and official weight for each section.
 4. **Review queue:** top 7 items by priority (§6.6).
@@ -257,7 +259,7 @@ Sections, top to bottom:
 9. **Recent answers:** last 15 log entries.
 10. **Notices:** "not synced for 30 days", "database unavailable". Rendered at the top of the page, above the header, so they are seen first; listed last here because they are usually empty.
 
-A footer shows the plugin version (the `PLUGIN_VERSION` constant in the template) and the non-affiliation disclaimer. The template's `<title>` is `GCP Cert Coach`; `init` and `rebuild` replace it with `<certShortName> Cert Coach`. Calibration also shows the share of guesses (confidence 1).
+The skill tree explains its numbers (module level includes untested concepts; coverage; the `level · correct/answers` concept format) with a help line and tooltips, and a collapsible "How levels work" note follows it. The page embeds `PLUGIN_VERSION`; when `settings.latestPluginVersion` is higher it shows a notice asking the learner to say "rebuild". A footer shows the plugin version (the `PLUGIN_VERSION` constant in the template) and the non-affiliation disclaimer. The template's `<title>` is `GCP Cert Coach`; `init` and `rebuild` replace it with `<certShortName> Cert Coach`. Calibration also shows the share of guesses (confidence 1).
 
 Mode and difficulty toggles write `meta/settings` from the page (the owner has write access). Everything else is written by Claude. The page subscribes once per collection with `onSnapshot`, uses a 10-second load timeout, and follows the artifact page contract (theme tokens, phone width, no external hosts except allowed CDNs and Google Fonts).
 
@@ -279,15 +281,15 @@ Let `L` be the concept's effective level (§6.5), `d` the difficulty and `c` the
 
 | Confidence | `m` (correct) | `β` easy | `β` medium | `β` hard | Rationale |
 |---|---|---|---|---|---|
-| 1 guess | 0.0 | 0.10 | 0.08 | 0.05 | A guess proves nothing; an honest "don't know" is barely penalized, so honesty is safe |
-| 2 think | 0.6 | 0.25 | 0.20 | 0.15 | Partial certainty earns partial credit |
+| 1 guess or unsure | 0.0 | 0.10 | 0.08 | 0.05 | A guess proves nothing; an honest "don't know" is barely penalized, so honesty is safe |
+| 2 fairly confident | 0.6 | 0.25 | 0.20 | 0.15 | Partial certainty earns partial credit |
 | 3 sure | 1.0 | 0.40 | 0.35 | 0.30 | Confident errors are the most dangerous on the exam |
 
 Missing an easy question costs more than missing a hard one because it signals a basic gap.
 
 ### 6.2 Misconceptions
 
-- A wrong answer with confidence 3 always creates a misconception. A wrong answer with confidence 2 creates one when the explanation identifies a specific wrong belief.
+- A wrong answer with confidence 1 never creates a misconception, and hedged answers ("probably B") count as confidence 1. A wrong answer with confidence 3 always creates a misconception. A wrong answer with confidence 2 creates one when the explanation identifies a specific wrong belief.
 - A later question on the same concept, with different wording, targets the misconception.
 - Resolved after 2 consecutive correct answers on that concept with confidence ≥ 2. A wrong answer resets the counter.
 
@@ -345,6 +347,8 @@ Interleave across modules; do not serve more than 2 consecutive questions from o
 
 ### 6.9 Plan
 
+The formula lives once, in `progress/references/plan-estimate.md` (copy in `init`); the tracker page, `progress` and the seed script follow it.
+
 - Remaining hours = hours of uncompleted required activities (module hours if known, else activity hours pro-rated by module count) + Full mode gap estimate (1 hour per gap topic) + practice buffer (20% of total required hours, minus practice already done at 3 minutes per logged answer).
 - Weeks = remaining hours / `paceHoursPerWeek`. Estimated finish = today + weeks + active pause days.
 - With `examDate`, show required pace and on-track status instead.
@@ -365,7 +369,7 @@ Content rules: titles and structure only from public course outlines; descriptio
 Identifiers and sources:
 
 - Activities: `c<N>` for courses and `b<N>` for skill badges, numbered in Google Skills path order. Modules: `<activityId>-m<N>`. Concepts: `<moduleId>-k<N>`. Gap topics: `g<NN>`, their concepts `g<NN>-k<N>`. The gaps activity id is `gaps`.
-- Module numbering follows the Google Skills path, which can differ from Coursera (for ACE, course 2 starts with a "Course Introduction" module there). "Course N, module M" in progress messages means Google Skills order.
+- Module numbering follows the Google Skills path, which can differ from Coursera (for ACE, course 2 starts with a "Course Introduction" module there). Numbers typed by the learner are resolved to ids in Google Skills order and are never written without the question "Do you mean course N <title>, module(s) <titles>?"; a no leads to typed names matched by title, then a second confirmation.
 - Hours are the durations stated on Google Skills (ACE total 58.75 h); a gap topic counts 1 h.
 
 ### 7.2 Generated pack (`packSource: generated`, beta)
@@ -383,7 +387,7 @@ Each `SKILL.md` must contain: purpose, when to use and when not to use, precondi
 - Trigger: start preparing, set up, choose a certification.
 - Steps: ask language → list current certifications → choose → load curated pack or generate → choose mode, difficulty, pace, optional exam date → initial progress (manual or browser) → show summary for confirmation → publish tracker → seed database → verify read-back → print the Project instructions line and next steps.
 - Refuses to create a second tracker for a certification that already has one unless the learner confirms.
-- Seeds with `scripts/build_seed.py` when code execution is available; otherwise builds the same batches from the pack files (see `init/references/seeding.md`) and says which path it used.
+- Seeds with `scripts/build_seed.py` when the script can run; otherwise (no tool to run it, a script error, PyYAML unavailable) builds the same batches from the pack files (see `init/references/seeding.md`) and says which path it used. The script's summary carries the plan estimate (§6.9) that init quotes before confirmation.
 
 ### learn
 - Trigger: explain, how does X work, break down this lab.
@@ -392,7 +396,7 @@ Each `SKILL.md` must contain: purpose, when to use and when not to use, precondi
 
 ### quiz
 - Trigger: quiz me, test me, practice questions, pre-test.
-- Steps: locate tracker → read settings, tree, recent log → auto-resume if paused (warm-up if pause > 7 days) → select concepts (§6.6) → for each question: show question, collect answer and confidence (1/2/3), reveal result, explain every option, cite documentation → write one batch → continue → end with session summary and module status changes.
+- Steps: locate tracker → read settings, completed modules, their concepts and open misconceptions (selective reads, never the whole collections), then the last 50 log entries of the selected concepts → auto-resume if paused (warm-up if pause > 7 days) → plan the whole session once (§6.6) → for each question: show it under the header `Question N of M · <difficulty>` only (no concept, module or section name), read the answer and confidence (1/2/3; hedges count as 1; ambiguity is asked about, see `quiz/references/answer-parsing.md`), reveal the result, explain every option, cite the curated documentation link → write one batch → continue → end with session summary and module status changes.
 
 ### challenge
 - Trigger: give me a challenge, hands-on task.
@@ -402,7 +406,7 @@ Each `SKILL.md` must contain: purpose, when to use and when not to use, precondi
 
 ### mock
 - Trigger: mock exam, practice exam.
-- 50 questions weighted by sections; one at a time; answer key revealed only at the end; confidence collected per question; one write batch at the end; section breakdown, verdict, weakest concepts, next steps.
+- 50 questions weighted by sections; one at a time under the header `Question n of 50 · <difficulty>`; answer key revealed only at the end; confidence collected per question; one write batch at the end; section breakdown, verdict, weakest concepts, next steps.
 
 ### progress
 - Trigger: I finished module X, status, plan, pause, change mode or difficulty, check my progress on the site.
@@ -410,20 +414,21 @@ Each `SKILL.md` must contain: purpose, when to use and when not to use, precondi
 
 ### sync
 - Trigger: check for updates to the path or exam guide.
-- Plan → diff (added, removed, renamed activities, modules, concepts; exam-guide version) → confirm → snapshot affected data → apply (new items level 0, renamed items keep data, removed items archived) → update `lastSyncAt`.
+- Plan → diff (added, removed, renamed activities, modules, concepts; exam-guide version) → confirm → complete snapshot of affected data (§5.2) → apply (new items level 0, renamed items keep data, removed items archived) → update `lastSyncAt`.
 
 ### rebuild
 - Trigger: update the tracker page, the tracker looks outdated.
-- Read current page and settings → migrate data if `schemaVersion` is older (migrations listed in `references/`) → republish template to the same URL without changing data.
+- Read current page and settings → migrate data if `schemaVersion` is older (migrations listed in `references/`) → republish template to the same URL without changing data → set `templateVersion` and `latestPluginVersion`. At the same version it answers "already up to date, republish anyway?".
 
 ### reset
 - Trigger: reset my progress, start over.
-- Show what will be reset → snapshot → explicit confirmation phrase → reset concept levels, log and misconceptions; keep tree, settings and completion marks unless the learner asks to clear them too. Mocks, challenges, feedback and earlier snapshots are kept. The confirmation phrase is `reset <certShortName> progress`.
+- Name the tracker (title and certification) → show what will be reset → complete snapshot with full copies (§5.2) → explicit confirmation phrase → reset concept levels, log and misconceptions; keep tree, settings and completion marks unless the learner asks to clear them too. Mocks, challenges, feedback and earlier snapshots are kept. The confirmation phrase is `reset <certShortName> progress`.
+- Restore ("restore my progress from the last snapshot"): list complete snapshots → show the effect → snapshot the current state → phrase `restore <certShortName> progress` → write rows back from the snapshot chunks only, never from the conversation → read back and compare counts.
 
 ## 9. Cross-cutting rules
 
 - **Language:** see ADR 0007.
-- **Grounding:** see ADR 0005. Prefer `cloud.google.com/*/docs` and `docs.cloud.google.com`. Never use course materials as a source.
+- **Grounding:** see ADR 0005, amended by ADR 0010. Curated concept `docUrls` and `facts.md` first; fetch on demand (at most one fetch per quiz question, two per explanation). Prefer `cloud.google.com/*/docs` and `docs.cloud.google.com`. Never use course materials as a source. Numeric facts live once in `references/facts.md` (identical copies in learn, quiz, mock and challenge).
 - **Writes:** one batch per answer; pin updates with the last-read document version; on a version conflict, re-read and redo once.
 - **Privacy:** never store names, emails, project ids, billing ids or raw command output; ask learners to redact pasted output.
 - **Feedback:** when the learner disputes a question or suggests a change, write a `feedback` document and say it was recorded.
@@ -466,7 +471,7 @@ sequenceDiagram
   participant D as Google docs
   participant A as Tracker database
   C->>A: Read settings, concepts, recent log
-  C->>D: Fetch page for selected concept
+  C->>D: Fetch a page only if no curated link or the fact is not in facts.md
   C->>L: Question
   L->>C: Answer + confidence (1/2/3)
   C->>L: Result, why each option is right or wrong, doc link

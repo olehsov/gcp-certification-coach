@@ -6,9 +6,9 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ### Resume point
 
-- **Current phase:** 8 done; waiting for the manual test on claude.ai (J5 and the full eval run moved after it by maintainer decision).
-- **Last completed step:** Phase 8 gates passed (validate --strict x2, privacy tracked and history, gitleaks full history, consistency, links 182/0); zip built at dist/gcp-cert-coach-0.1.0.zip and verified. Phase now: waiting for the maintainer's manual test (CHECKLIST K).
-- **Exact next step:** apply fixes from the manual test results, then J5 (5 cases x 3 models, with-plugin), one full run with and without plugin, fill evals/RESULTS.md placeholders, then Phase 9 (publish) after the maintainer confirms.
+- **Current phase:** v0.2.0 fix round, Phase A (fixes) done; Phase B (targeted evals) next, then Phase C (J5 and wrap-up).
+- **Last completed step:** A1–A11 implemented, new eval cases generated (not run), gates and zip for 0.2.0.
+- **Exact next step:** Phase B: canary call, then the cases for the changed skills plus the new ones, with-plugin arm only (see notes.local.md). Phase 9 (publish) only after the maintainer says "publish".
 - **Open issues:** J3 below the bar in the trigger harness (K2e decides); J2 and J5 deferred until after the manual test; J7 CI never run (no remote).
 
 ### Build notes
@@ -31,7 +31,27 @@ Rules from the official documentation that were not reflected in `CLAUDE.md` or 
 - **Self-contained skill copies** (ADR 0006): `rebuild` ships its own copy of `tracker.html`, and `progress` its own copy of the browser progress check; `scripts/check-consistency.sh` (CI) keeps the copies identical and the plugin version equal in `plugin.json`, `marketplace.json`, `build_seed.py` and the template.
 - **`modules.labs`**: informational list of lab titles per module, seeded from the pack and used by learn and challenge (ARCHITECTURE §5.2 addition).
 - **Project instructions skills line**: `init` prints a second line for the Project instructions asking Claude to use the plugin's skills for every study request, because skills under-trigger on plain study requests (`evals/RESULTS.md`, trigger accuracy).
-- **Seeding without code execution**: `init` builds the seed batches by hand from the pack files when the seed script cannot run, and says which path it used.
+- **Seeding without the script**: `init` builds the seed batches by hand from the pack files when the seed script cannot run (no tool to run it, a script error, PyYAML unavailable), and says which path it used. claude.ai has no separate code-execution toggle, so this path is verified by an eval rather than by switching a setting.
+
+## [0.2.0] - release date set at publishing
+
+Fixes from the manual test on claude.ai.
+
+### Fixed
+
+- **Reset snapshots are restorable.** Snapshots now hold full copies of every document that is removed (chunked, row counts verified, `status: complete` before anything is changed), and `reset` has an explicit restore path that reads only from the snapshot, so it works in a new chat. `sync` and `rebuild` use the same format. Reset names the tracker it will wipe in the confirmation.
+- **Question headers no longer give the answer away.** Quiz, pre-test, warm-up and mock headers read `Question N of M · <difficulty>` only.
+- **Module numbers are always confirmed.** Numbers typed in `init` or `progress` are resolved, then confirmed with titles ("Do you mean course N <title>, module(s) <titles>?") before anything is written; a "no" leads to typed names matched by title.
+- **Hedged answers** ("probably B", "I think the first one", "A or B, leaning A") count as confidence 1 and never create a misconception; unclear confidence or an unclear letter is asked about. The scale is now 1 guess or unsure, 2 fairly confident, 3 sure.
+- **One plan formula.** `init`, `progress` and the page use the same estimate (`plan-estimate.md`); the seed script prints it.
+- **One source for numeric facts** (`facts.md`): fixes the inconsistent Dedicated Interconnect capacities (10, 100 and 400 Gbps) and others.
+
+### Changed
+
+- Tracker page: "concepts mastered" count, explanations for module level, coverage and the `level · correct/answers` format, a "How levels work" note, and an "outdated page" notice.
+- Version check: `templateVersion` and `latestPluginVersion` in `meta/settings` (schema stays 1). Skills compare them on their existing settings read and mention a newer page once per session; `rebuild` at the same version asks before republishing.
+- Faster, cheaper sessions: selective reads in quiz, challenge and progress; the whole quiz session is planned in one step; curated documentation links are cited by default and fetched only on demand; `learn` fetches at most two pages ([ADR 0010](docs/adr/0010-curated-links-first.md)).
+- Skills suggest a new chat per study session when a thread is already long; README has a "Usage and cost" section.
 
 ## [0.1.0] - release date set at publishing
 

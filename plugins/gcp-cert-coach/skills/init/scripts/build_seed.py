@@ -26,7 +26,7 @@ import pathlib
 import re
 import sys
 
-PLUGIN_VERSION = "0.1.0"  # keep equal to plugin.json "version" (checked in CI)
+PLUGIN_VERSION = "0.2.0"  # keep equal to plugin.json "version" (checked in CI)
 SCHEMA_VERSION = 1
 SKILLS_LINE = "In this Project, use the gcp-cert-coach skills for every study request (explanations, quizzes, challenges, mock exams, progress)."  # second Project instructions line (init step 11)
 BATCH_SIZE = 50  # ARCHITECTURE 5.1: seed in batches of at most 50 writes
@@ -50,6 +50,36 @@ def ui_strings(template: pathlib.Path) -> dict:
     src = template.read_text(encoding="utf-8")
     block = src[src.index("const EN = {"): src.index("};", src.index("const EN = {"))]
     return {k: json.loads('"' + v + '"') for k, v in re.findall(r'(\w+):"((?:[^"\\]|\\.)*)"', block)}
+
+
+def estimate_plan(acts, gaps, completed, mode, pace, today, exam_date, scoring) -> dict:
+    """Plan estimate; same formula as references/plan-estimate.md and the tracker page (nothing logged yet)."""
+    pc = scoring.get("plan", {})
+    gap_h, buf_f = pc.get("gapHoursPerTopic", 1), pc.get("practiceBufferFraction", 0.2)
+    required = remaining = 0.0
+    for x in acts:
+        if x.get("optional"):
+            continue
+        required += x.get("hours") or 0
+        mods = x["modules"]
+        for m in mods:
+            if m["id"] not in completed:
+                remaining += m["hours"] if m.get("hours") is not None else ((x.get("hours") or 0) / len(mods) if mods else 0)
+    if mode == "full" and gaps.get("topics"):
+        n = len(gaps["topics"])
+        per = gaps.get("activity", {}).get("hoursPerTopic", gap_h)
+        required += n * per
+        remaining += n * per
+    remaining += max(0.0, required * buf_f)  # nothing logged at setup
+    out = {"requiredHours": round(required, 2), "remainingHours": round(remaining, 1),
+           "paceHoursPerWeek": pace}
+    if exam_date:
+        weeks = max((dt.date.fromisoformat(exam_date) - dt.date.fromisoformat(today)).days, 1) / 7
+        out["requiredPaceHoursPerWeek"] = round(remaining / weeks, 1)
+        out["onTrack"] = remaining / weeks <= pace
+    else:
+        out["estimatedFinish"] = (dt.date.fromisoformat(today) + dt.timedelta(days=round(remaining / pace * 7))).isoformat()
+    return out
 
 
 def main() -> None:
@@ -85,6 +115,7 @@ def main() -> None:
     ops = []
     settings = {
         "schemaVersion": SCHEMA_VERSION, "pluginVersion": PLUGIN_VERSION,
+        "templateVersion": PLUGIN_VERSION, "latestPluginVersion": PLUGIN_VERSION,
         "certId": meta["certId"], "certName": meta["certName"], "certShortName": meta["certShortName"],
         "packSource": meta.get("packSource", "curated"), "packVersion": meta.get("packVersion"),
         "examGuide": {"version": meta["examGuide"].get("version"), "url": meta["examGuide"]["url"],
@@ -147,10 +178,11 @@ def main() -> None:
     template = pathlib.Path(a.template) if a.template else pathlib.Path(__file__).resolve().parent.parent / "assets" / "tracker.html"
     (out / "ui-strings-en.json").write_text(json.dumps(ui_strings(template), ensure_ascii=False, indent=1), encoding="utf-8")
 
+    plan = estimate_plan(acts, gaps, completed_mods, a.mode, a.pace, a.start_date, a.exam_date, scoring)
     summary = {"batches": len(batches), "operations": len(ops), "counts": counts,
                "completedModules": sorted(completed_mods), "title": f"{meta['certShortName']} Cert Coach",
                "trackerLine": f"GCP Cert Coach tracker: <artifact URL> (certification: {meta['certId']})",
-               "skillsLine": SKILLS_LINE}
+               "skillsLine": SKILLS_LINE, "plan": plan}
     (out / "summary.json").write_text(json.dumps(summary, indent=1), encoding="utf-8")
     print(json.dumps(summary, indent=1))
 

@@ -33,9 +33,9 @@ Explain one topic or one lab so the learner understands it well enough to answer
    - storage and databases: [references/cheatsheet-storage.md](references/cheatsheet-storage.md)
    - load balancers: [references/cheatsheet-load-balancers.md](references/cheatsheet-load-balancers.md)
    - IAM roles and service accounts: [references/cheatsheet-iam.md](references/cheatsheet-iam.md)
-3. **Documentation.** Fetch 1–3 official pages first (the concept's `docUrls`, or a search restricted to `docs.cloud.google.com` and `cloud.google.com`). Base every factual claim on what you fetched. When a fact is not confirmed by a fetched page, say so instead of guessing. Never use course materials as a source.
+3. **Documentation.** Fetch at most 2 official pages by default (the concept's `docUrls`, or a search restricted to `docs.cloud.google.com` and `cloud.google.com`) and offer "more detail" for a deeper pass. Numbers (capacities, SLAs, durations, limits) come from [references/facts.md](references/facts.md) or a page fetched now; a number from neither is marked unverified. Base every factual claim on what you used. When a fact is not confirmed by a fetched page, say so instead of guessing. Never use course materials as a source.
 4. **Explain.** Topic: follow [references/explanation-format.md](references/explanation-format.md). Lab: follow [references/lab-breakdown.md](references/lab-breakdown.md).
-5. **Next step.** Offer one: a short quiz on the topic (if its module is completed), a pre-test (if not), or the next related topic.
+5. **Next step.** If this conversation is already long (several finished explanations or a finished quiz summary), suggest once, in one line, a new chat for the next study session; the tracker keeps all state. Offer one: a short quiz on the topic (if its module is completed), a pre-test (if not), or the next related topic.
 
 ## Output format
 
@@ -48,12 +48,19 @@ The learner may paste lab instructions, transcripts or slides. Use them only to 
 ## Tracker access
 
 - **Locate:** a line `GCP Cert Coach tracker: <URL> (certification: <id>)` in the Project instructions or this conversation; otherwise the learner's artifact list, titles ending in "Cert Coach" (one: use it; several: ask which certification; none: continue without a tracker). Never create a tracker here.
+- **Version:** Plugin version: 0.2.0. If the tracker's `templateVersion` is older than this version, say once per session: "A new tracker page is available (x → y). Say 'rebuild' to update it."
 - **No data tool:** continue; if the conversation contains a tracker export, use it read-only.
 - This skill writes only `feedback`.
 
 ## Feedback
 
 When the learner disputes an explanation or suggests a change, write `feedback/<timestamp>-<4 random letters>` with `{ts, source: "learner", kind: "wrong_question" | "bug" | "improvement", text, logId: null, pluginVersion: settings.pluginVersion, status: "new"}`. Write `text` as a neutral summary without personal data and tell the learner it was recorded (or, without a data tool, that it could not be saved and what to write later).
+
+## References
+
+- [references/explanation-format.md](references/explanation-format.md), [references/lab-breakdown.md](references/lab-breakdown.md): formats
+- [references/facts.md](references/facts.md): verified numeric facts
+- Cheat sheets: see step 2
 
 ## Failure handling
 
