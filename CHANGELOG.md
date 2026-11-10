@@ -7,8 +7,8 @@ All notable changes to this project are documented here. The format follows [Kee
 ### Resume point
 
 - **Current phase:** 6 (measure and tune), following the maintainer's usage-saving plan: trigger evals once; re-run only failing or changed cases; J5 with 5 cases per model; one full run at the end; then Phases 7 and 8.
-- **Last completed step:** targeted re-runs done: every previously failing or changed case passes (runs 2026-11-10T15-36-21Z and T15-38-03Z, local).
-- **Exact next step:** J5: test call, then 5 cases (quiz-guess-no-gain, quiz-confident-mistake-misconception, quiz-completed-only, reset-confirm-snapshot, mock-verdict-hard) with haiku, sonnet, opus, --ablation none.
+- **Last completed step:** targeted re-runs done: every previously failing or changed case passes. J5 run was started and stopped at the maintainer's safe stop (results discarded).
+- **Exact next step:** J5: test call, then run-evals.sh --cases quiz-guess-no-gain,quiz-confident-mistake-misconception,quiz-completed-only,reset-confirm-snapshot,mock-verdict-hard --ablation none with haiku, sonnet, opus; then one full run; fill RESULTS.md placeholders; Phase 8.
 - **Open issues:** J3 below the bar in the trigger harness (mitigation shipped; decisive check in K2e).
 
 ### Build notes
