@@ -240,7 +240,7 @@ Every skill except `init` locates the tracker in this order:
 2. The learner's artifact list, filtered by titles ending in `Cert Coach`. One match → use it. Several → ask which certification. None → offer `init`.
 3. If the artifact data tool or the database is unavailable, continue the learning activity, say clearly that progress is not being saved, and suggest opening the conversation in claude.ai or the desktop app. In this read-only mode a skill uses a tracker export from the conversation when one is present and shows the write batch it would have made (as JSON), labeled "not saved". Destructive skills show the full plan (snapshot first, archive rather than delete) and apply nothing.
 
-`init` ends by printing the line from step 1 and recommending one Claude Project per certification.
+`init` ends by printing the line from step 1 plus a second line, `In this Project, use the gcp-cert-coach skills for every study request (explanations, quizzes, challenges, mock exams, progress).`, and recommending one Claude Project per certification. The second line counters under-triggering of skills on plain study requests (see `evals/RESULTS.md`, trigger accuracy).
 
 ### 5.4 Page
 

@@ -6,10 +6,10 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ### Resume point
 
-- **Current phase:** 6 (measure and tune). Safe stop: the CLI account hit its usage limit.
-- **Done this session:** review notes 1, 3, 4, 5 applied (grader changes listed in `evals/RESULTS.md` §4, `rebuild-migrate` migration-list requirement restored; init seeding path B without code execution; consistency check in pre-push and CI, CONTRIBUTING copy rule; checklist markers); `run-evals.sh --cases`; trigger sets in `evals/triggers/`; descriptions of learn, quiz, challenge, mock rewritten; ARCHITECTURE build decisions; targeted run 2.
-- **Exact next step:** re-run the four trigger evals (this session's results are invalid: usage limit), then the full eval run, fill `evals/RESULTS.md` placeholders, J5 subset (~10 cases, `--cases`), then Phase 8.
-- **Open issues:** `learn-no-course-text` skill does not fire; verify the learn description change.
+- **Current phase:** 6 (measure and tune), following the maintainer's usage-saving plan: trigger evals once; re-run only failing or changed cases; J5 with 5 cases per model; one full run at the end; then Phases 7 and 8.
+- **Last completed step:** init prints a second Project instructions line (use the skills for every study request); README quick start recommends explicit commands.
+- **Exact next step:** record the trigger eval results (running once) in evals/RESULTS.md and J3.
+- **Open issues:** learn-no-course-text does not fire learn; rebuild-migrate and 3 reworded graders not re-run yet.
 
 ### Build notes
 

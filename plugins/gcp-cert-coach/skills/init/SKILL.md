@@ -45,12 +45,12 @@ Copy this checklist and tick it off as you go:
 8. **Publish.** Take `assets/tracker.html` (`${CLAUDE_SKILL_DIR}/assets/tracker.html`), replace `<title>GCP Cert Coach</title>` with `<title><Short name> Cert Coach</title>` (for example `ACE Cert Coach`), and publish it as a new artifact with the db capability and no other capabilities; keep the default access rules (the owner reads and writes). Publish exactly this file; do not edit its code.
 9. **Seed.** Follow [references/seeding.md](references/seeding.md): build the write batches with the seed script when code execution is available, otherwise by hand from the pack files (path B there; never ask the learner to enable code execution); translate `settings.ui` when the language is not English; write the batches in order with the artifact data tool; and tell the learner which path was used.
 10. **Verify.** Read back `meta/settings` and one page of `activities`, `modules` and `concepts`; compare the counts with the seed summary (the script's, or your own counts on path B). If something is missing, rewrite only the failed batch once; if it still fails, report what is missing.
-11. **Hand-off.** Print, in a code block, the line `GCP Cert Coach tracker: <artifact URL> (certification: <certId>)` and tell the learner to paste it into the instructions of a Claude Project used only for this certification, so every chat there finds the tracker. Then suggest the next step: a quiz on a completed module, a pre-test on the next module, or an explanation.
+11. **Hand-off.** Print, in one code block, two lines: `GCP Cert Coach tracker: <artifact URL> (certification: <certId>)` and `In this Project, use the gcp-cert-coach skills for every study request (explanations, quizzes, challenges, mock exams, progress).` (keep both in English, whatever the explanation language). Tell the learner to paste them into the instructions of a Claude Project used only for this certification, so every chat there finds the tracker. Then suggest the next step: a quiz on a completed module, a pre-test on the next module, or an explanation.
 
 ## Output format
 
 - One question per message during setup, except step 5, which bundles the choices.
-- The final message contains: the tracker link, the Project instructions line in a code block, a two-line summary of the setup, and one suggested next command (`/gcp-cert-coach:quiz`, `/gcp-cert-coach:learn` or `/gcp-cert-coach:progress`).
+- The final message contains: the tracker link, the two Project instructions lines in one code block, a two-line summary of the setup, and one suggested next command (`/gcp-cert-coach:quiz`, `/gcp-cert-coach:learn` or `/gcp-cert-coach:progress`).
 
 ## Failure handling
 

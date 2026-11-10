@@ -56,12 +56,17 @@ claude plugin install gcp-cert-coach@gcp-certification-coach
 
 1. Create a Claude Project for one certification (for example "ACE prep").
 2. In a chat inside it, run `/gcp-cert-coach:init`. Choose the explanation language, the certification, Course or Full exam mode, Standard or Hard difficulty, weekly hours and an optional exam date, and say what you already completed (or let Claude read your progress page in the desktop app's built-in browser).
-3. Claude publishes your tracker and prints a line like `GCP Cert Coach tracker: <link> (certification: ace)`. Paste it into the Project instructions.
-4. Study the course, then say "I finished module 3 of course 2" and "quiz me".
+3. Claude publishes your tracker and prints two lines for the Project instructions. Paste both:
+   ```text
+   GCP Cert Coach tracker: <link> (certification: ace)
+   In this Project, use the gcp-cert-coach skills for every study request (explanations, quizzes, challenges, mock exams, progress).
+   ```
+   The first tells every chat where your tracker is; the second makes Claude use the coach's skills instead of answering from general knowledge.
+4. Study the course, then use the commands: `/gcp-cert-coach:progress` ("I finished module 3 of course 2"), `/gcp-cert-coach:quiz`, `/gcp-cert-coach:learn`, `/gcp-cert-coach:challenge`, `/gcp-cert-coach:mock`. Typing the command is the most reliable way to start a skill; plain requests work too inside the Project.
 
 ## Commands
 
-You can type the command or just say what you want.
+Typing the command is the most reliable; inside the Project (with both instruction lines) you can also just say what you want.
 
 | Command | Say for example | Writes to the tracker |
 |---|---|---|

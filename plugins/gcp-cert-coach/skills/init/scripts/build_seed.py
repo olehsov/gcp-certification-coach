@@ -28,6 +28,7 @@ import sys
 
 PLUGIN_VERSION = "0.1.0"  # keep equal to plugin.json "version" (checked in CI)
 SCHEMA_VERSION = 1
+SKILLS_LINE = "In this Project, use the gcp-cert-coach skills for every study request (explanations, quizzes, challenges, mock exams, progress)."  # second Project instructions line (init step 11)
 BATCH_SIZE = 50  # ARCHITECTURE 5.1: seed in batches of at most 50 writes
 
 
@@ -148,7 +149,8 @@ def main() -> None:
 
     summary = {"batches": len(batches), "operations": len(ops), "counts": counts,
                "completedModules": sorted(completed_mods), "title": f"{meta['certShortName']} Cert Coach",
-               "trackerLine": f"GCP Cert Coach tracker: <artifact URL> (certification: {meta['certId']})"}
+               "trackerLine": f"GCP Cert Coach tracker: <artifact URL> (certification: {meta['certId']})",
+               "skillsLine": SKILLS_LINE}
     (out / "summary.json").write_text(json.dumps(summary, indent=1), encoding="utf-8")
     print(json.dumps(summary, indent=1))
 
