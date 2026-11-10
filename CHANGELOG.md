@@ -4,6 +4,13 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Resume point
+
+- **Current phase:** 6 (measure and tune). Phases 0–5 are committed; Phase 7 documentation is drafted and committed (README, plugin README, CONTRIBUTING, icon, link check).
+- **Done in phase 6:** full eval run 1 with and without the plugin (with 0.77, without 0.39); failures triaged; grader wording aligned with the spec in `scripts/gen-evals.py` and cases regenerated; skill fixes in `init` (run setup steps without the artifact tool), `sync` (read-only shows the apply plan), `learn` (course text rule); trigger evals for learn, quiz, challenge and mock (no false triggers, under-triggering) and rewritten descriptions; `/skill-doctor` run once.
+- **Exact next step:** re-run `scripts/run-evals.sh --model sonnet --runs 1 -j 4` and the four trigger evals; then write `evals/RESULTS.md`, run the Haiku/Sonnet/Opus subset (J5), and continue with Phase 8 (quality gates, zip, hand-off).
+- **Open issues:** `learn-no-course-text` did not fire the learn skill in run 1 (description now names the notes case); `quiz-no-repeat-30` grader now allows a misconception re-test; check CHECKLIST J2–J5.
+
 ### Build notes
 
 Rules from the official documentation that were not reflected in `CLAUDE.md` or the specs, and how they were applied:

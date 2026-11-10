@@ -46,7 +46,7 @@ Diff tables per activity: change, item, before → after, effect on progress. A 
 - **Locate:** a line `GCP Cert Coach tracker: <URL> (certification: <id>)` in the Project instructions or this conversation; otherwise the learner's artifact list, titles ending in "Cert Coach" (one: use it; several: ask which certification; none: offer `/gcp-cert-coach:init`). Never create a tracker here.
 - **Schema:** if `meta/settings.schemaVersion` is above 1, ask the learner to update the plugin; below 1, run `/gcp-cert-coach:rebuild` first.
 - **Writes:** batches as above. Pass the version you read for each document you update; on a version conflict re-read once and redo; if it fails again, stop, report what was applied and point to the snapshot.
-- **No data tool or database unavailable:** show the diff only and say nothing was applied.
+- **No data tool or database unavailable:** show the diff and the apply plan in order (snapshot of the affected documents first, then the changes, archived not deleted), say nothing was applied, and say that confirmation will be asked in a session that can write.
 
 ## Feedback
 

@@ -1,6 +1,6 @@
 ---
 name: learn
-description: Explains Google Cloud services, concepts and labs for certification study with GCP Certification Coach, grounded in official Google Cloud documentation with links. Gives a practical explanation (what it is, how it works, when to use it, alternatives, best practices, exam angle, common traps) or a step-by-step breakdown of a lab the learner pastes (what each step does, why, other ways, production practice). Use when the learner says "explain", "how does X work", "what is the difference between", "when should I use", "break down this lab" or "help me understand" a Google Cloud topic. Not for answering practice questions (use quiz), full mock exams (use mock), hands-on tasks (use challenge) or recording progress (use progress).
+description: Explains Google Cloud services, concepts, comparisons and labs for someone preparing for a Google Cloud certification (Associate Cloud Engineer and others) with GCP Certification Coach, grounded in official documentation with links, in a fixed study format (how it works, when to use it, alternatives, exam angle, common traps) or as a step-by-step lab breakdown. Use this skill whenever a learner studying for a Google Cloud exam asks to explain, compare or understand a service or topic ("I don't get the difference between Cloud NAT and Private Google Access", "when would the exam want Spanner", "help me understand storage classes"), pastes lab steps or gcloud commands to break down, or asks to turn course transcripts or slides into notes, even if they do not name the coach. Not for practice questions (use quiz), a 50-question mock exam (use mock), hands-on tasks (use challenge) or recording progress (use progress).
 ---
 
 # Learn
@@ -43,7 +43,7 @@ Markdown with the section headings from the format reference, short paragraphs a
 
 ## Course materials
 
-The learner may paste lab instructions, transcripts or slides. Use them only to understand what the learner is looking at. Quote at most a short phrase needed to point at a step. Do not rewrite, summarize at length, translate or reformat course text for sharing; explain the topic in your own words from documentation instead, and say why in one sentence.
+The learner may paste lab instructions, transcripts or slides. Use them only to understand what the learner is looking at. Quote at most a short phrase needed to point at a step. Do not rewrite, quote at length, summarize closely, translate or reformat course text into notes, even for personal study or a study group: course materials are copyrighted. Say so in one sentence, then offer original notes on the same topic written from official documentation, with links.
 
 ## Tracker access
 

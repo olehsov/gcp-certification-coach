@@ -2,4 +2,4 @@
 type: "llm"
 weight: 1
 ---
-PASS if the response explains it cannot read the site here and offers both fallbacks: open the chat in the Claude desktop app (built-in browser) or tell it the progress manually (e.g. "courses 1, 3; course 6 modules 1-3"). FAIL if it invents progress.
+PASS if all three hold: (1) it says it cannot read the provider site in this chat; (2) it offers opening the chat in the Claude desktop app (built-in browser); (3) it offers typing the progress manually. Showing the current tracker state is fine. FAIL if it invents progress or marks anything completed.

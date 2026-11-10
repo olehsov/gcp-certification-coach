@@ -31,7 +31,7 @@ Legend: `[ ]` open · `[x]` done · `[~]` done with a deviation (explain in the 
 
 For each of the nine skills:
 
-- [x] D1 Frontmatter valid: `name` rules, third-person `description` ≤ 1024 chars with triggers and "not for" guidance — all nine: only `name` + `description`; descriptions 621–852 chars, third person, trigger phrases and "Not for … (use X)"
+- [x] D1 Frontmatter valid: `name` rules, third-person `description` ≤ 1024 chars with triggers and "not for" guidance — all nine: only `name` + `description`; descriptions 621–926 chars (learn, quiz, challenge, mock rewritten after the first trigger eval), third person, trigger phrases and "Not for … (use X)"; trigger re-check pending (J3)
 - [x] D2 Body < 500 lines with purpose, when to use, preconditions, step checklist, output format, failure handling, links to every reference file — bodies 51–74 lines; each has purpose, when to use, preconditions, checklist, output format, failure handling; every reference linked (checked by script)
 - [x] D3 References one level deep; files > 100 lines start with a table of contents — references one level deep; no reference file exceeds 100 lines; `quiz/references/scoring.md`, `init/references/seeding.md` and `progress/references/status-and-plan.md` start with a Contents block anyway
 - [x] D4 Tracker locating procedure (§5.3) included where needed — "Tracker access" section in every skill except init (which has the duplicate guard)
@@ -97,9 +97,9 @@ Skill-specific:
 ## J. Quality gates
 
 - [ ] J1 `claude plugin validate ./plugins/gcp-cert-coach` passes
-- [ ] J2 `claude plugin eval` passes and beats the baseline; results summarized in `evals/RESULTS.md`
-- [ ] J3 Descriptions tuned with the skill-creator skill for trigger accuracy (no false triggers between `quiz`, `mock`, `challenge`, `learn`)
-- [ ] J4 `/skill-doctor` report reviewed; issues fixed or explained
+- [~] J2 `claude plugin eval` passes and beats the baseline; results summarized in `evals/RESULTS.md` — in progress: run 1 (Sonnet, 1 run/arm) with-plugin mean 0.77 vs without 0.39; 9 failing cases triaged (6 grader wording fixed to match the spec, skill fixes in init, sync, learn); re-run pending; `evals/RESULTS.md` not written yet
+- [~] J3 Descriptions tuned with the skill-creator skill for trigger accuracy (no false triggers between `quiz`, `mock`, `challenge`, `learn`) — in progress: skill-creator trigger evals (16 queries each, Sonnet 5.5, 1 run): 0 false triggers; misses on positives (learn 5/8, quiz 5/8, challenge 5/8, mock 6/8); descriptions rewritten, re-run pending
+- [~] J4 `/skill-doctor` report reviewed; issues fixed or explained — run once: each plugin skill costs ~220–290 listing tokens per turn, no usage yet (new plugin); decision on shortening descriptions pending the trigger re-run
 - [ ] J5 Tested with Haiku, Sonnet and Opus; notes in `evals/RESULTS.md`
 - [ ] J6 `scripts/check-privacy.sh` passes (emails, claude.ai artifact URLs, qwiklabs, project-id and billing-account patterns, API keys, non-English text in skills and templates, personal denylist from `~/.config/gcp-cert-coach/denylist.txt` when present)
 - [ ] J7 `.github/workflows/validate.yml` runs plugin validate, the privacy check and gitleaks on push and pull request

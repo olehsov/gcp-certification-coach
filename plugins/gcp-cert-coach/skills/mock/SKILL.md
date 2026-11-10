@@ -1,6 +1,6 @@
 ---
 name: mock
-description: Runs a full 50-question mock exam for a Google Cloud certification with GCP Certification Coach, distributed across the official exam-guide sections by weight, one question at a time with a confidence rating and no answers revealed until the end, then gives a per-section breakdown, the weakest concepts, a red, amber or green recommendation about booking the exam, and saves everything to the tracker in one batch at the end. Use when the learner says "mock exam", "practice exam", "full exam simulation", "am I ready to book the exam", or continues a mock exam already in progress. Not for short practice sessions or single questions (use quiz), hands-on tasks (use challenge) or explanations (use learn).
+description: Runs a full 50-question mock exam for a Google Cloud certification with GCP Certification Coach: questions spread across the official exam-guide sections by weight, one at a time with a confidence rating and no answers until the end, then a per-section breakdown, the weakest concepts and a red, amber or green recommendation about booking the exam, saved to the tracker in one batch. Use this skill whenever a Google Cloud learner wants a mock, practice or full-length exam or an exam simulation, asks whether they are ready to book the exam, answers a question of a mock in progress ("question 12 of 50: C, confidence 3"), or reports mock results to get a verdict. Not for short practice sessions or single questions (use quiz), hands-on tasks (use challenge) or explanations (use learn).
 ---
 
 # Mock exam
