@@ -7,9 +7,9 @@ All notable changes to this project are documented here. The format follows [Kee
 ### Resume point
 
 - **Current phase:** 6 (measure and tune), following the maintainer's usage-saving plan: trigger evals once; re-run only failing or changed cases; J5 with 5 cases per model; one full run at the end; then Phases 7 and 8.
-- **Last completed step:** trigger evals run once and recorded (RESULTS.md section 5; J3 open: 1-2/8 positives, 0 false triggers); Phase 7 I1 and I4 done.
-- **Exact next step:** test call, then targeted re-run of learn-no-course-text, learn-explain-format, learn-lab-breakdown, quiz-no-repeat-30, rebuild-migrate, sync-renamed-keeps-data.
-- **Open issues:** J3 below the bar in the trigger harness; learn-no-course-text does not fire learn.
+- **Last completed step:** targeted re-runs done: every previously failing or changed case passes (runs 2026-11-10T15-36-21Z and T15-38-03Z, local).
+- **Exact next step:** J5: test call, then 5 cases (quiz-guess-no-gain, quiz-confident-mistake-misconception, quiz-completed-only, reset-confirm-snapshot, mock-verdict-hard) with haiku, sonnet, opus, --ablation none.
+- **Open issues:** J3 below the bar in the trigger harness (mitigation shipped; decisive check in K2e).
 
 ### Build notes
 

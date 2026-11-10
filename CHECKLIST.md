@@ -97,7 +97,7 @@ Skill-specific:
 ## J. Quality gates
 
 - [ ] J1 `claude plugin validate ./plugins/gcp-cert-coach` passes
-- [ ] J2 `claude plugin eval` passes and beats the baseline; results summarized in `evals/RESULTS.md` — progress: run 1 with 0.77 vs without 0.39; targeted run 2 (15 cases, with-plugin only): init, sync, progress cases all pass; open: learn-no-course-text (skill not firing), rebuild-migrate (skill now lists migration steps), 3 graders reworded as numbered conditions; full run pending; RESULTS.md drafted (grader changes done)
+- [ ] J2 `claude plugin eval` passes and beats the baseline; results summarized in `evals/RESULTS.md` — progress: run 1 with 0.77 vs without 0.39; targeted runs 2–4 (with-plugin only): all previously failing or changed cases now pass (learn-no-course-text fires learn; rebuild-migrate fixture fixed to a real schema-0 export); final full run pending
 - [ ] J3 Descriptions tuned with the skill-creator skill for trigger accuracy (no false triggers between `quiz`, `mock`, `challenge`, `learn`) — measured once (valid run, probes OK): learn 1/8, quiz 2/8, challenge 2/8, mock 2/8 positives, 0 false triggers; below the 5/8 acceptance bar, so not [~]; tuning stopped by maintainer decision; mitigation shipped (second Project instructions line, explicit commands in README); decisive check is triggering in a real Project (K)
 - [ ] J4 `/skill-doctor` report reviewed; issues fixed or explained — progress: run once (~220–290 listing tokens per skill); decision pending the trigger re-run
 - [ ] J5 Tested with Haiku, Sonnet and Opus; notes in `evals/RESULTS.md`
