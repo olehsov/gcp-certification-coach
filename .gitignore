@@ -1,0 +1,18 @@
+# Local test outputs and anything that may contain real learner data. Never commit these.
+*.zip
+*.plugin
+dist/
+evals/runs/
+evals/results/
+evals/**/transcripts/
+.env*
+notes.local.md
+*.local.*
+
+# OS and editor files (also forbidden inside the plugin folder by the directory checklist)
+.DS_Store
+Thumbs.db
+desktop.ini
+__MACOSX/
+.idea/
+.vscode/

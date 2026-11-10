@@ -1,0 +1,20 @@
+# Changelog
+
+All notable changes to this project are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses [Semantic Versioning](https://semver.org/).
+
+## [Unreleased]
+
+### Build notes
+
+Rules from the official documentation that were not reflected in `CLAUDE.md` or the specs, and how they were applied:
+
+- **Plugin README `## Data` section and 40-word minimum** (pre-submission checklist). Added to `CLAUDE.md` → Structure; already covered by CHECKLIST B6.
+- **Plugin folder limits** (pre-submission checklist): at most 512 files, every non-image file under 256 KiB, no `.DS_Store`, `Thumbs.db`, `desktop.ini`, `__MACOSX`, symlinks or binaries. Added to `CLAUDE.md`; enforced in CI and by `scripts/build-zip.sh`.
+- **Upload zip layout** (plugins overview): the archive holds exactly one `.claude-plugin/plugin.json`, at the zip root or inside a single top-level folder.
+- **SKILL.md frontmatter keys** (Claude Code skills reference): uploads outside Claude Code reject keys other than `name`, `description`, `license`, `compatibility`, `metadata`, `allowed-tools`. Skills in this plugin use only `name` and `description`. Added to `CLAUDE.md`.
+- **`${CLAUDE_SKILL_DIR}` is not substituted on claude.ai chat** (skills how-to): the skill folder is copied into the sandbox, so references also give the path relative to `SKILL.md`. Added to `CLAUDE.md`.
+- **Manifest details** (manifest reference): `author` is an object with `name` (and optional `url`); `homepage` must parse as a URL; plugin names must not start with `claude-` or `anthropic-`. Added to `CLAUDE.md`.
+- **`claude plugin eval`** (plugin evals docs): needs Claude Code 2.1.269 or later; cases are directories with `prompt.md` (frontmatter + prompt) and `graders/*.md`; the eval directory defaults to `<plugin>/evals`, so this repository passes `--eval-dir evals` to keep evals outside the plugin folder (CLAUDE.md layout rule). Exact command added to `CLAUDE.md`.
+- **`/skill-doctor`** reports per-skill context cost and usage (Claude Code 2.1.252 or later); used in Phase 6 as a cost and usage review.
+- **Evaluation sandbox limits**: eval runs happen in Claude Code with read-only tools by default, where the tracker artifact database is not available. Eval cases therefore provide a tracker snapshot as a fixture and grade behavior (selection, scoring arithmetic, confirmation steps, planned write batches) rather than real database writes. Real database behavior is covered by the manual test (CHECKLIST K).
+- **Privacy hardening** (maintainer spec update): native git hooks (`.githooks/`), personal denylist outside the repository, gitleaks in hooks and CI, repo-local commit identity using the GitHub noreply address.

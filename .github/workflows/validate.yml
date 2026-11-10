@@ -1,0 +1,57 @@
+name: validate
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    env:
+      # Pinned tool versions; bump deliberately.
+      CLAUDE_CODE_VERSION: "2.1.311"
+      GITLEAKS_VERSION: "8.30.1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # full history for gitleaks
+
+      - name: Privacy check (all tracked files)
+        run: scripts/check-privacy.sh --tracked
+
+      - name: Privacy check (full history)
+        run: scripts/check-privacy.sh --history
+
+      - name: Install gitleaks
+        run: |
+          curl -sSfL "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz" \
+            | tar -xz -C /usr/local/bin gitleaks
+          gitleaks version
+
+      - name: gitleaks (full history)
+        run: gitleaks git --redact --no-banner -v .
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install Claude Code CLI
+        run: npm install -g "@anthropic-ai/claude-code@${CLAUDE_CODE_VERSION}"
+
+      - name: Validate marketplace
+        run: claude plugin validate . --strict
+
+      - name: Validate plugin
+        run: claude plugin validate ./plugins/gcp-cert-coach --strict
+
+      - name: Plugin folder limits (directory checklist)
+        run: |
+          dir=plugins/gcp-cert-coach
+          count=$(find "$dir" -type f | wc -l)
+          echo "files: $count"; [ "$count" -le 512 ]
+          ! find "$dir" \( -name .DS_Store -o -name Thumbs.db -o -name desktop.ini -o -name __MACOSX -o -type l \) | grep .
+          ! find "$dir" -type f ! -name '*.png' ! -name '*.svg' -size +255k | grep .
+          [ ! -d "$dir/bin" ]

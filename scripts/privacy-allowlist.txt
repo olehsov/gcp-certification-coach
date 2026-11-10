@@ -1,0 +1,20 @@
+# Allow rules for scripts/check-privacy.sh false positives.
+#
+# Format, one rule per line:
+#   REGEX                 applies in every file
+#   PATH_GLOB::REGEX      applies only to files matching the glob (fnmatch, repo-relative)
+# A finding is ignored when the matched text matches REGEX. Keep rules narrow and add a
+# comment above each one. Never add personal data here; denylist terms cannot be allowlisted.
+
+# Invented example addresses on reserved example domains (RFC 2606).
+@example\.(?:com|org|net)$
+
+# Commit attribution trailer documented in CONTRIBUTING.md; a public, non-personal address.
+^noreply@anthropic\.com$
+
+# The privacy rules describe the lab-account pattern with a literal ellipsis.
+CLAUDE.md::^student-\.\.\.@qwiklabs\.net$
+CHECKLIST.md::^student-\.\.\.@qwiklabs\.net$
+
+# Placeholder project ids used in documentation and questions.
+\b(?:my|example|sample|demo|test)-project(?:-[a-z0-9]+)?\b

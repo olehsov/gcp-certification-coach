@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Pre-commit: block personal data and secrets before they enter git history.
+# Enabled by scripts/setup-hooks.sh (git config core.hooksPath .githooks). Never bypass with --no-verify.
+set -uo pipefail
+ROOT="$(git rev-parse --show-toplevel)"
+fail=0
+
+echo "pre-commit: privacy check on staged files"
+"$ROOT/scripts/check-privacy.sh" --staged || fail=1
+
+if command -v gitleaks >/dev/null 2>&1; then
+  echo "pre-commit: gitleaks on staged changes"
+  if gitleaks help git >/dev/null 2>&1; then
+    gitleaks git --pre-commit --staged --redact --no-banner "$ROOT" || fail=1
+  else
+    gitleaks protect --staged --redact --no-banner --source "$ROOT" || fail=1
+  fi
+else
+  echo "pre-commit: gitleaks not installed, skipped (CI always runs it; install: brew install gitleaks)"
+fi
+
+if [ "$fail" -ne 0 ]; then
+  echo "pre-commit: BLOCKED. Fix the findings above (or add a narrow, commented rule to scripts/privacy-allowlist.txt for a false positive)."
+  exit 1
+fi
