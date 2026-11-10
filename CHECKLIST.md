@@ -54,14 +54,14 @@ Skill-specific:
 
 ## E. Tracker template (ARCHITECTURE §5)
 
-- [ ] E1 `skills/init/assets/tracker.html` follows the artifact page contract in CLAUDE.md
-- [ ] E2 Implements schema v1 collections and all page sections in §5.4
-- [ ] E3 Readiness label switches between "Course readiness" and "Exam readiness" (FR-10)
-- [ ] E4 Effective level and decay computed for display (§6.5), statuses per §6.4
-- [ ] E5 Mode and difficulty toggles write `meta/settings`; everything else read-only
-- [ ] E6 UI strings from `settings.ui` with English fallbacks
-- [ ] E7 Empty state, 10-second timeout message, "not synced for 30 days" notice, `beta` badge for generated packs
-- [ ] E8 Works at 400 px, light and dark themes, reduced motion respected
+- [x] E1 `skills/init/assets/tracker.html` follows the artifact page contract in CLAUDE.md — starts with `<title>`, viewport-fit meta and `<style>`; no doctype/html/head/body; tokens on `:root` with both dark blocks; only Google Fonts; no external scripts
+- [x] E2 Implements schema v1 collections and all page sections in §5.4 — collections meta/settings, activities, modules, concepts, log, misconceptions, mocks; sections 1–10 of §5.4 (notices rendered at the top so warnings are seen first)
+- [x] E3 Readiness label switches between "Course readiness" and "Exam readiness" (FR-10) — header label from `settings.mode`; verified in a mock-db harness (Full → "Exam readiness", Course → "Course readiness")
+- [x] E4 Effective level and decay computed for display (§6.5), statuses per §6.4 — `effLevel`, `overdueDays`, `moduleStats` implement §6.3–6.6 and §6.8–6.9 from `settings.scoring`; `pauseHistory` added to settings for exact paused-day exclusion (ARCHITECTURE §5.2/§6.5 updated)
+- [x] E5 Mode and difficulty toggles write `meta/settings`; everything else read-only — mode/difficulty buttons call `update` on `meta/settings`; no other writes; controls disabled without db or when `user.can("data.write")` is false or a write is refused
+- [x] E6 UI strings from `settings.ui` with English fallbacks — `t(key)` reads `settings.ui[key]` with English fallbacks (`EN` map)
+- [x] E7 Empty state, 10-second timeout message, "not synced for 30 days" notice, `beta` badge for generated packs — tested in harness: empty db → designed empty state; no db → notice; hung load → 10 s timeout notice; stale `lastSyncAt` → sync notice; `packSource: generated` → beta chip
+- [x] E8 Works at 400 px, light and dark themes, reduced motion respected — harness at 400 px dark: scrollWidth = clientWidth (no horizontal scroll); log table scrolls in its own container; `prefers-reduced-motion` disables transitions
 
 ## F. Scoring and configuration (ADR 0003, 0006, ARCHITECTURE §6)
 

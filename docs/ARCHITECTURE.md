@@ -147,6 +147,7 @@ All documents are flat JSON. Timestamps are ISO 8601 UTC strings. Dates (`YYYY-M
 | `examDate` | date \| null | Optional |
 | `paused` | `{since: date}` \| null | Active pause |
 | `pausedDaysTotal` | int | Sum of completed pauses, excluded from decay and plan |
+| `pauseHistory` | array | Completed pauses `[{since, until}]` (dates). Lets skills and the page subtract exactly the paused days that fall after a concept's `lastReviewed` (§6.5). Added during the v0.1.0 build |
 | `lastSyncAt` | timestamp | Last successful `sync` or `init` |
 | `scoring` | object | Full constant set from §6, with `rationale` strings |
 | `createdAt`, `updatedAt` | timestamp | |
@@ -310,7 +311,7 @@ Missing an easy question costs more than missing a hard one because it signals a
 
 ### 6.5 Effective level and decay
 
-`effectiveLevel = level − decayPerWeekOverdue × weeksOverdue`, floored at 0, where `weeksOverdue` counts days past the review interval since `lastReviewed`, minus paused days. Skills compute the effective level before every update and store the result as the new `level`. The page computes it for display.
+`effectiveLevel = level − decayPerWeekOverdue × weeksOverdue`, floored at 0, where `weeksOverdue` counts days past the review interval since `lastReviewed`, minus paused days (the active pause plus `pauseHistory` entries overlapping that span), divided by 7. Skills compute the effective level before every update and store the result as the new `level`. The page computes it for display.
 
 ### 6.6 Selection priority for quiz questions
 

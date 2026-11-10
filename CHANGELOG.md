@@ -20,3 +20,4 @@ Rules from the official documentation that were not reflected in `CLAUDE.md` or 
 - **Privacy hardening** (maintainer spec update): native git hooks (`.githooks/`), personal denylist outside the repository, gitleaks in hooks and CI, repo-local commit identity using the GitHub noreply address.
 - **Eval directory must be inside the plugin root** (`claude plugin eval` rejects `..`). `evals/` stays at the repository root per the layout rule; `scripts/run-evals.sh` stages a temporary plugin copy with the cases inside it and keeps reports local (`--no-publish`).
 - **Eval runs need a standalone CLI login** (`claude auth login`); a desktop-app session does not authenticate the eval child processes.
+- **`settings.pauseHistory`** (spec clarification): `pausedDaysTotal` alone cannot tell which paused days fall after a concept's `lastReviewed`, so completed pauses are also kept as `[{since, until}]`. ARCHITECTURE §5.2 and §6.5 updated.
