@@ -18,7 +18,7 @@ Legend: `[ ]` open · `[x]` done · `[~]` done with a deviation (explain in the 
 - [x] B3 Nine skill folders: `init`, `learn`, `quiz`, `challenge`, `mock`, `progress`, `sync`, `rebuild`, `reset`; folder name equals `name` — `plugins/gcp-cert-coach/skills/*`
 - [x] B4 No `bin/` inside the plugin; only `plugin.json` inside the plugin's `.claude-plugin/` — CI step "Plugin folder limits" also checks `bin/`
 - [x] B5 `docs/`, `evals/`, `scripts/`, `.github/` outside the plugin folder — repo root
-- [ ] B6 `README.md`, `LICENSE` (MIT), `LICENSE-CONTENT` (CC BY 4.0), `CHANGELOG.md`, `CONTRIBUTING.md` at repo root; plugin `README.md` (≥ 40 words: what it does, how to use it, what data it sends) and `LICENSE` inside the plugin folder
+- [x] B6 `README.md`, `LICENSE` (MIT), `LICENSE-CONTENT` (CC BY 4.0), `CHANGELOG.md`, `CONTRIBUTING.md` at repo root; plugin `README.md` (≥ 40 words: what it does, how to use it, what data it sends) and `LICENSE` inside the plugin folder — root README, LICENSE (MIT), LICENSE-CONTENT (CC BY 4.0 legal code + scope header), CHANGELOG, CONTRIBUTING; plugin README (>40 words, `## Data` section) and LICENSE; validate reports nothing
 
 ## C. Evals first (best practices: evaluation-driven development)
 
@@ -31,26 +31,26 @@ Legend: `[ ]` open · `[x]` done · `[~]` done with a deviation (explain in the 
 
 For each of the nine skills:
 
-- [ ] D1 Frontmatter valid: `name` rules, third-person `description` ≤ 1024 chars with triggers and "not for" guidance
-- [ ] D2 Body < 500 lines with purpose, when to use, preconditions, step checklist, output format, failure handling, links to every reference file
-- [ ] D3 References one level deep; files > 100 lines start with a table of contents
-- [ ] D4 Tracker locating procedure (§5.3) included where needed
-- [ ] D5 Writes follow FR-3 (one batch per answer; mock in one batch at the end) with version pinning and one retry on conflict
-- [ ] D6 No hardcoded surface-specific tool names; no time-sensitive phrasing; consistent terminology
+- [x] D1 Frontmatter valid: `name` rules, third-person `description` ≤ 1024 chars with triggers and "not for" guidance — all nine: only `name` + `description`; descriptions 621–852 chars, third person, trigger phrases and "Not for … (use X)"
+- [x] D2 Body < 500 lines with purpose, when to use, preconditions, step checklist, output format, failure handling, links to every reference file — bodies 51–74 lines; each has purpose, when to use, preconditions, checklist, output format, failure handling; every reference linked (checked by script)
+- [x] D3 References one level deep; files > 100 lines start with a table of contents — references one level deep; no reference file exceeds 100 lines; `quiz/references/scoring.md`, `init/references/seeding.md` and `progress/references/status-and-plan.md` start with a Contents block anyway
+- [x] D4 Tracker locating procedure (§5.3) included where needed — "Tracker access" section in every skill except init (which has the duplicate guard)
+- [x] D5 Writes follow FR-3 (one batch per answer; mock in one batch at the end) with version pinning and one retry on conflict — quiz: one batch per answer; mock: one batch at the end (consecutive batches only if the tool limits size, mocks doc last); version pinning + one retry in every writing skill
+- [x] D6 No hardcoded surface-specific tool names; no time-sensitive phrasing; consistent terminology — skills say "artifact data tool" / "publish … with the db capability"; no tool identifiers; no dates or "new in" phrasing; terminology per CLAUDE.md
 
 Skill-specific:
 
-- [ ] D7 `init`: language → certification list → curated or generated pack → mode, difficulty, pace, exam date → initial progress (manual or browser) → confirm → publish → seed in ≤ 50-write batches → read-back verify → print Project instructions line (US-1..4)
-- [ ] D8 `init`: translates `settings.ui` for non-English languages; duplicate-tracker guard
-- [ ] D9 `learn`: explanation format and lab breakdown format; documentation links; no course text reproduction (US-5, US-6)
-- [ ] D10 `quiz`: selection priority §6.6; confidence 1/2/3; scoring §6.1; misconceptions §6.2; interleaving; no repeats; pre-test and warm-up modes; auto-resume (US-7..10, US-14)
-- [ ] D11 `challenge`: no step-by-step; narrative + verification command outputs; redaction reminder; score and bonus §6.7; summary only stored (US-11)
-- [ ] D12 `mock`: 50 questions weighted by sections; key revealed at end; one batch; verdict per profile (US-12)
-- [ ] D13 `progress`: mark modules; browser check with all FR-9 fallbacks; confirm before writing; pause; mode and difficulty change; plan §6.9 (US-13..16)
-- [ ] D14 `sync`: plan → diff → confirm → snapshot → apply; archived not deleted; `lastSyncAt` (US-17)
-- [ ] D15 `rebuild`: schema migration list; republish to the same URL; data untouched (US-18)
-- [ ] D16 `reset`: show scope → snapshot → explicit confirmation → reset; keeps tree and settings (US-19)
-- [ ] D17 Feedback capture available from every skill (US-20, FR-12)
+- [x] D7 `init`: language → certification list → curated or generated pack → mode, difficulty, pace, exam date → initial progress (manual or browser) → confirm → publish → seed in ≤ 50-write batches → read-back verify → print Project instructions line (US-1..4) — `skills/init/SKILL.md` steps 1–11 + `scripts/build_seed.py` (8 batches of ≤50 for ACE, tested) + `references/seeding.md`
+- [x] D8 `init`: translates `settings.ui` for non-English languages; duplicate-tracker guard — seeding.md §3 translation rules (keys and placeholders kept); duplicate guard is step 1 and re-checked after step 3
+- [x] D9 `learn`: explanation format and lab breakdown format; documentation links; no course text reproduction (US-5, US-6) — `learn/references/explanation-format.md`, `lab-breakdown.md`; "Course materials" rule in SKILL.md
+- [x] D10 `quiz`: selection priority §6.6; confidence 1/2/3; scoring §6.1; misconceptions §6.2; interleaving; no repeats; pre-test and warm-up modes; auto-resume (US-7..10, US-14) — `quiz/references/selection.md` (priority, interleaving, no repeats), `scoring.md` (formulas, cap, misconceptions, worked examples), `question-formats.md` (six formats); pause auto-resume + warm-up in step 2
+- [x] D11 `challenge`: no step-by-step; narrative + verification command outputs; redaction reminder; score and bonus §6.7; summary only stored (US-11) — `challenge/SKILL.md` + `references/challenge-format.md`: no step list, narrative + verification commands, redaction, bonus 15 + 10 × score, summary only
+- [x] D12 `mock`: 50 questions weighted by sections; key revealed at end; one batch; verdict per profile (US-12) — `mock/SKILL.md` + `references/mock-exam.md`: largest-remainder distribution (10/9/12/10/9 for ACE), keys at the end, one batch, verdict table per profile
+- [x] D13 `progress`: mark modules; browser check with all FR-9 fallbacks; confirm before writing; pause; mode and difficulty change; plan §6.9 (US-13..16) — `progress/SKILL.md` branches + `references/browser-progress-check.md` (all FR-9 fallbacks) + `references/status-and-plan.md` (§6.8–6.9)
+- [x] D14 `sync`: plan → diff → confirm → snapshot → apply; archived not deleted; `lastSyncAt` (US-17) — `sync/SKILL.md` + `references/diff-and-apply.md`: snapshot before apply, archive never delete, `lastSyncAt`
+- [x] D15 `rebuild`: schema migration list; republish to the same URL; data untouched (US-18) — `rebuild/SKILL.md` + `references/migrations.md` (0 → 1); republish to the same URL; own copy of the template
+- [x] D16 `reset`: show scope → snapshot → explicit confirmation → reset; keeps tree and settings (US-19) — `reset/SKILL.md`: scope with counts → snapshot → phrase `reset <ACE> progress` → batches; keeps tree, settings, completion marks by default
+- [x] D17 Feedback capture available from every skill (US-20, FR-12) — "Feedback" section with the `feedback/<id>` document shape in all nine skills
 
 ## E. Tracker template (ARCHITECTURE §5)
 
@@ -65,9 +65,9 @@ Skill-specific:
 
 ## F. Scoring and configuration (ADR 0003, 0006, ARCHITECTURE §6)
 
-- [ ] F1 All constants from §6 present in the pack's scoring file with a `rationale` per value
-- [ ] F2 `init` copies scoring into `settings.scoring`; other skills read constants only from the tracker
-- [ ] F3 Standard and Hard profiles complete
+- [x] F1 All constants from §6 present in the pack's scoring file with a `rationale` per value — `packs/ace/scoring.yaml`: every constant of §6 plus `rationale` keyed by dotted path; a script check found no constant without rationale
+- [x] F2 `init` copies scoring into `settings.scoring`; other skills read constants only from the tracker — `build_seed.py` copies the whole scoring.yaml into `settings.scoring`; skills read constants from the tracker (defaults only as a fallback with a rebuild suggestion)
+- [x] F3 Standard and Hard profiles complete — `profiles.standard` and `profiles.hard` complete (cap, intervals, decay, readiness gates, mock bands)
 - [ ] F4 Verified on claude.ai that a skill can read its own `references/` and `assets/` (ADR 0006 build-time check); result noted here
 
 ## G. ACE pack (ARCHITECTURE §7, docs/seed/ace-path-snapshot.yaml)
@@ -83,14 +83,14 @@ Skill-specific:
 
 ## H. Generated packs (ARCHITECTURE §7.2)
 
-- [ ] H1 Flow documented in `init` references; result labeled `beta`; learner confirms the tree before publishing
-- [ ] H2 Fallback when no browser: paste outline or open in desktop app
+- [x] H1 Flow documented in `init` references; result labeled `beta`; learner confirms the tree before publishing — `init/references/generated-pack.md`: steps, JSON shape, `packSource: generated`, beta label, confirmation before publishing
+- [x] H2 Fallback when no browser: paste outline or open in desktop app — same file, step 2: paste the outline or open the chat in the desktop app; never invent a tree
 
 ## I. Documentation
 
 - [ ] I1 Root `README.md`: what it is, who it's for, features, install (claude.ai Add marketplace; Claude Code command), quick start, command reference, modes and difficulty, how mastery works, privacy and data, FAQ, roadmap, contributing, license, disclaimer
-- [ ] I2 Mermaid diagrams in README: component overview, `init` sequence, quiz sequence, module status states, data model (render-checked on GitHub)
-- [ ] I3 `CONTRIBUTING.md`: how to add a pack, run evals, privacy rules, commit style
+- [x] I2 Mermaid diagrams in README: component overview, `init` sequence, quiz sequence, module status states, data model (render-checked on GitHub) — 5 diagrams (overview, init, quiz answer, module status, data model) rendered with Mermaid 10.9.1 in a local page: 5 SVGs, 0 errors
+- [x] I3 `CONTRIBUTING.md`: how to add a pack, run evals, privacy rules, commit style — `CONTRIBUTING.md`: setup-hooks, adding a pack, evals, checks, privacy rules, releases, commit style
 - [ ] I4 `CHANGELOG.md` with 0.1.0 entry
 - [ ] I5 `evals/README.md`; `docs/` up to date with any deviations made during the build
 
@@ -103,7 +103,7 @@ Skill-specific:
 - [ ] J5 Tested with Haiku, Sonnet and Opus; notes in `evals/RESULTS.md`
 - [ ] J6 `scripts/check-privacy.sh` passes (emails, claude.ai artifact URLs, qwiklabs, project-id and billing-account patterns, API keys, non-English text in skills and templates, personal denylist from `~/.config/gcp-cert-coach/denylist.txt` when present)
 - [ ] J7 `.github/workflows/validate.yml` runs plugin validate, the privacy check and gitleaks on push and pull request
-- [ ] J8 All links in README and docs resolve
+- [x] J8 All links in README and docs resolve — `scripts/check-links.py`: 182 external URLs → all 200, relative links resolve (repository URLs re-checked after publishing)
 - [x] J9 `.githooks/pre-commit` runs the privacy check and gitleaks on staged files; tested by staging a fake email and confirming the commit is blocked — staged `leak-test.txt` with an invented address → "pre-commit: BLOCKED", exit 1; file removed
 - [x] J10 `.gitignore` covers zips, eval run outputs, transcripts, `.env*`, `*.local.*` — `.gitignore` (also `evals/results/` written by `claude plugin eval`, OS files)
 - [x] J11 Full git history scanned once before publishing (gitleaks detect and the privacy check over all commits); nothing found — first scan flagged the owner handle via a denylist substring; handle now masked only in allowed files, two unpushed commits rewritten to drop the handle from checklist notes; rescan: privacy check clean (files + commit metadata), gitleaks "no leaks found" (re-run before publishing, L)

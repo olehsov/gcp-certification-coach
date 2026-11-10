@@ -108,7 +108,9 @@ def load_handle():
         return ""
 
 HANDLE = load_handle()
-HANDLE_URL_RX = re.compile(r"github\.com/" + re.escape(HANDLE) + r"\b", re.I) if HANDLE else None
+# Repository references: github.com/<handle>... URLs and the bare id <handle>/gcp-certification-coach
+# (marketplace shorthand in install commands).
+HANDLE_URL_RX = re.compile(r"github\.com/" + re.escape(HANDLE) + r"\b|\b" + re.escape(HANDLE) + r"/gcp-certification-coach\b", re.I) if HANDLE else None
 HANDLE_RX = re.compile(r"\b" + re.escape(HANDLE) + r"\b", re.I) if HANDLE else None
 
 def mask_handle(path, line):

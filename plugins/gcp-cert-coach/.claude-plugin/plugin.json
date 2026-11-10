@@ -10,5 +10,15 @@
   "homepage": "https://github.com/olehsov/gcp-certification-coach",
   "repository": "https://github.com/olehsov/gcp-certification-coach",
   "license": "MIT",
-  "keywords": ["google-cloud", "gcp", "certification", "exam-prep", "associate-cloud-engineer", "study-coach", "spaced-repetition", "quiz"]
+  "keywords": [
+    "google-cloud",
+    "gcp",
+    "certification",
+    "exam-prep",
+    "associate-cloud-engineer",
+    "study-coach",
+    "spaced-repetition",
+    "quiz"
+  ],
+  "icon": "./assets/icon.png"
 }
