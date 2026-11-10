@@ -18,3 +18,9 @@ CHECKLIST.md::^student-\.\.\.@qwiklabs\.net$
 
 # Placeholder project ids used in documentation and questions.
 \b(?:my|example|sample|demo|test)-project(?:-[a-z0-9]+)?\b
+
+# Commit identities: GitHub noreply addresses (the owner's commit identity per CLAUDE.md).
+(commit metadata)::@users\.noreply\.github\.com$
+
+# Placeholder tracker URL used in eval prompts and docs (not a real artifact).
+^claude\.ai/artifact/EXAMPLE$

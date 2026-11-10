@@ -88,6 +88,37 @@ def load_denylist():
 ALLOW = load_allowlist()
 DENY = load_denylist()
 
+# The repository owner's public GitHub handle is allowed in the manifests, license files and
+# GitHub URLs (CLAUDE.md -> Privacy). It is masked there before denylist matching, so a denylist
+# term that happens to be a substring of the handle does not flag it. Elsewhere it is not masked.
+HANDLE_FILES = {
+    ".claude-plugin/marketplace.json",
+    "plugins/gcp-cert-coach/.claude-plugin/plugin.json",
+    "LICENSE", "LICENSE-CONTENT", "plugins/gcp-cert-coach/LICENSE",
+    "(commit metadata)",  # commit author identity is the owner handle + noreply address
+}
+
+def load_handle():
+    try:
+        import json
+        with open("plugins/gcp-cert-coach/.claude-plugin/plugin.json", encoding="utf-8") as fh:
+            name = json.load(fh).get("author", {}).get("name", "")
+        return name if re.fullmatch(r"[A-Za-z0-9-]{2,39}", name or "") else ""
+    except (OSError, ValueError):
+        return ""
+
+HANDLE = load_handle()
+HANDLE_URL_RX = re.compile(r"github\.com/" + re.escape(HANDLE) + r"\b", re.I) if HANDLE else None
+HANDLE_RX = re.compile(r"\b" + re.escape(HANDLE) + r"\b", re.I) if HANDLE else None
+
+def mask_handle(path, line):
+    if not HANDLE:
+        return line
+    line = HANDLE_URL_RX.sub(lambda m: " " * len(m.group(0)), line)
+    if path in HANDLE_FILES:
+        line = HANDLE_RX.sub(lambda m: " " * len(m.group(0)), line)
+    return line
+
 def allowed(path, text):
     return any(fnmatch.fnmatch(path, g) and rx.search(text) for g, rx in ALLOW)
 
@@ -124,7 +155,7 @@ def scan(path, data):
             if not allowed(path, "non-English text"):
                 report(path, lineno, "non-English text")
         if DENY:
-            low = line.casefold()
+            low = mask_handle(path, line).casefold()
             if any(t in low for t in DENY):
                 report(path, lineno, "personal denylist term (term not shown)")
 
@@ -156,6 +187,15 @@ def main(argv):
                     continue
                 seen.add(sha)
                 targets.append((f"{path}@{rev[:8]}", git("cat-file", "blob", sha, binary=True)))
+        # Commit metadata: author/committer identities and messages.
+        meta = git("log", "--all", "--format=%H%x00%an <%ae>%x00%cn <%ce>%x00%B%x01")
+        for rec in meta.split("\x01"):
+            rec = rec.strip("\n")
+            if not rec:
+                continue
+            sha, author, committer, body = (rec.split("\0") + ["", "", ""])[:4]
+            text = "\n".join([author, committer, body])
+            targets.append((f"(commit metadata)@{sha}", text.encode("utf-8")))
     elif mode.startswith("-"):
         print(__doc__ or "usage: check-privacy.sh [--staged|--tracked|--history|FILE...]", file=sys.stderr)
         return 2
