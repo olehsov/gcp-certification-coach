@@ -91,7 +91,7 @@ Skill-specific:
 - [ ] I1 Root `README.md`: what it is, who it's for, features, install (claude.ai Add marketplace; Claude Code command), quick start, command reference, modes and difficulty, how mastery works, privacy and data, FAQ, roadmap, contributing, license, disclaimer
 - [x] I2 Mermaid diagrams in README: component overview, `init` sequence, quiz sequence, module status states, data model (render-checked on GitHub) — 5 diagrams (overview, init, quiz answer, module status, data model) rendered with Mermaid 10.9.1 in a local page: 5 SVGs, 0 errors
 - [x] I3 `CONTRIBUTING.md`: how to add a pack, run evals, privacy rules, commit style — `CONTRIBUTING.md`: setup-hooks, adding a pack, evals, checks, privacy rules, releases, commit style
-- [ ] I4 `CHANGELOG.md` with 0.1.0 entry
+- [x] I4 `CHANGELOG.md` with 0.1.0 entry — `## [0.1.0]` with an Added list; release date filled in at publishing (L4)
 - [ ] I5 `evals/README.md`; `docs/` up to date with any deviations made during the build
 
 ## J. Quality gates

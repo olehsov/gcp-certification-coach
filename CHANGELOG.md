@@ -30,3 +30,20 @@ Rules from the official documentation that were not reflected in `CLAUDE.md` or 
 - **`settings.pauseHistory`** (spec clarification): `pausedDaysTotal` alone cannot tell which paused days fall after a concept's `lastReviewed`, so completed pauses are also kept as `[{since, until}]`. ARCHITECTURE §5.2 and §6.5 updated.
 - **Self-contained skill copies** (ADR 0006): `rebuild` ships its own copy of `tracker.html`, and `progress` its own copy of the browser progress check; `scripts/check-consistency.sh` (CI) keeps the copies identical and the plugin version equal in `plugin.json`, `marketplace.json`, `build_seed.py` and the template.
 - **`modules.labs`**: informational list of lab titles per module, seeded from the pack and used by learn and challenge (ARCHITECTURE §5.2 addition).
+- **Project instructions skills line**: `init` prints a second line for the Project instructions asking Claude to use the plugin's skills for every study request, because skills under-trigger on plain study requests (`evals/RESULTS.md`, trigger accuracy).
+- **Seeding without code execution**: `init` builds the seed batches by hand from the pack files when the seed script cannot run, and says which path it used.
+
+## [0.1.0] - release date set at publishing
+
+First release.
+
+### Added
+
+- Marketplace `gcp-certification-coach` with one plugin, `gcp-cert-coach` (GCP Certification Coach).
+- Nine skills: `init`, `learn`, `quiz`, `challenge`, `mock`, `progress`, `sync`, `rebuild`, `reset`.
+- Tracker page template (schema version 1) published as a private artifact with a database: plan, exam-guide sections, review queue, skill tree, misconceptions, calibration, mock history, recent answers; mode and difficulty toggles; dark mode; phone width.
+- Curated Associate Cloud Engineer pack built from the Google Skills learning path and the exam guide (titles and structure only), with exam-guide gap topics and scoring constants with rationale.
+- Generated packs (beta) for other Google Cloud certifications.
+- Mastery model: confidence-weighted updates, misconceptions, review intervals, decay with pause handling, coverage, readiness, plan estimate.
+- Eval suite (37 cases) for `claude plugin eval`, trigger query sets, and results in `evals/RESULTS.md`.
+- Privacy protection: pre-commit and pre-push hooks, privacy check with a personal denylist outside the repository, gitleaks, CI validation.
