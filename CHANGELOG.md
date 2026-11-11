@@ -31,6 +31,13 @@ Fixes from the manual test on claude.ai.
 - Evals: fixture carries both lines that `init` prints; `quiz-warmup-after-pause` rubric reworded to what a read-only response can show.
 - Repository: removed `docs/seed/` and `BUILD_PROMPT.md` (superseded by the pack and the template).
 
+### Published
+
+- First public release: repository `olehsov/gcp-certification-coach`, tag `v0.2.0`, release asset `gcp-cert-coach-0.2.0.zip` (built from the tagged commit by `scripts/build-zip.sh`).
+- Secret scanning and push protection enabled before the first push.
+- CI (`validate.yml`) ran green on the first push unchanged: `claude plugin validate --strict` works unauthenticated, so no tokens or secrets are used by any workflow.
+- `scripts/check-links.py` no longer skips the repository's own URLs.
+
 ### Build notes
 
 Rules from the official documentation that were not reflected in `CLAUDE.md` or the specs, and how they were applied:

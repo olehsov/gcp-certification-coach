@@ -1,6 +1,6 @@
-# Release checklist: v0.1.0
+# Release checklist: v0.2.0
 
-Every item must be checked before the repository is made public. The builder checks items as they are done and adds a short note or file path as evidence. Items map to the PRD (US-, FR-), ARCHITECTURE (§) and ADRs.
+Every item was checked before the repository was made public (v0.1.0 was an unreleased test build; the first public release is v0.2.0). The builder checks items as they are done and adds a short note or file path as evidence. Items map to the PRD (US-, FR-), ARCHITECTURE (§) and ADRs.
 
 Legend: `[ ]` open · `[x]` done · `[~]` done with a deviation (explain in the note)
 
@@ -102,7 +102,7 @@ Skill-specific:
 - [x] J4 `/skill-doctor` report reviewed; issues fixed or explained — 4 findings: 1 fixed (`quiz` description 1038 to 1017 characters), 3 kept with reasons (listing cost, never-invoked hint, other plugins); `evals/RESULTS.md` §7; validate --strict (plugin and marketplace), consistency and privacy pass; the 13 quiz cases re-run on Sonnet
 - [~] J5 Tested with Haiku, Sonnet and Opus; notes in `evals/RESULTS.md` §10 — all three models call the skills with the two-line Project fixture and pass the scoring, selection and destructive cases; Haiku misses more LLM-judge rubric points (3 of 5 cases), so Sonnet is recommended for daily use and Opus for mocks. Full Sonnet run: 48 of 48 after fixes
 - [x] J6 `scripts/check-privacy.sh` passes (emails, claude.ai artifact URLs, qwiklabs, project-id and billing-account patterns, API keys, non-English text in skills and templates, personal denylist from `~/.config/gcp-cert-coach/denylist.txt` when present) — `--tracked` and `--history` clean with the denylist loaded; gitleaks over full history: no leaks found
-- [ ] J7 `.github/workflows/validate.yml` runs plugin validate, the privacy check and gitleaks on push and pull request — workflow written (validate --strict, privacy --tracked and --history, consistency incl. byte-identical tracker.html copies, gitleaks, folder limits); has never run because there is no remote yet; check at L3
+- [x] J7 `.github/workflows/validate.yml` runs plugin validate, the privacy check and gitleaks on push and pull request — first run green on both pushed commits (15–16 s): privacy (tracked and history), gitleaks, consistency, `validate --strict` for marketplace and plugin (runs unauthenticated in CI, no secrets needed), folder limits
 - [x] J8 All links in README and docs resolve — `scripts/check-links.py`: 182 external URLs → all 200, relative links resolve (repository URLs re-checked after publishing)
 - [x] J9 `.githooks/pre-commit` runs the privacy check and gitleaks on staged files; tested by staging a fake email and confirming the commit is blocked — staged `leak-test.txt` with an invented address → "pre-commit: BLOCKED", exit 1; file removed
 - [x] J10 `.gitignore` covers zips, eval run outputs, transcripts, `.env*`, `*.local.*` — `.gitignore` (also `evals/results/` written by `claude plugin eval`, OS files)
@@ -118,48 +118,48 @@ Skill-specific:
 - [~] K2b (deviation: claude.ai has no separate code-execution toggle; skills need "Create and edit files" on and code still runs when it is off, so path B cannot be reached there; path B is verified by the `init-seed-script-fails` eval and the wording no longer mentions code execution) In a second new Project, with code execution **off** (Settings → Capabilities): `init` for ACE; init says it seeded without the script (path B), never asks to enable code execution; counts on the page match K2 (activities, modules, concepts). If claude.ai does not offer plugin skills at all with code execution off, record that, and test path B instead by telling init in K2b that the script cannot be run
 - [x] K2c F4 check during K2/K2b: init read `assets/packs/ace/*.yaml` and `assets/tracker.html` from its own folder (the tree shows Google Skills titles; the page title is `ACE Cert Coach`); `rebuild` read its own `assets/tracker.html`; `progress` read its own `references/browser-progress-check.md`. Record the result in F4
 - [x] K2d The data tool accepted 50-write batches; `set`/`update` wording in the skills matched the tool
-- [~] K3 (partial: module numbering and confirmation fixed in 0.2.0, A3; re-test on the new zip) Mark progress manually and via browser check
-- [~] K4 (mostly passed; findings fixed in 0.2.0: header cueing A2, confidence parsing A4, doc grounding and cost A9; re-test) Quiz of 5 questions: only completed modules, confidence collected, tracker updates live; Mode and Difficulty toggles on the page write `meta/settings`
+- [~] K3 Mark progress manually and via browser check — module numbering and confirmation fixed in 0.2.0 (A3); verified by the maintainer's own use after install
+- [~] K4 Quiz of 5 questions: only completed modules, confidence collected, tracker updates live; Mode and Difficulty toggles on the page write `meta/settings` — mostly passed; findings fixed in 0.2.0 (header cueing A2, confidence parsing A4, doc grounding and cost A9); verified by the maintainer's own use after install
 - [x] K5 Pause, then quiz: plan resumes
-- [~] K6 (rebuild passed; reset passed in the same chat, but the snapshot held counts only: fixed in 0.2.0, A1; re-test restore in a new chat) `rebuild` keeps data; `reset` snapshots and asks for confirmation
+- [~] K6 `rebuild` keeps data; `reset` snapshots and asks for confirmation — rebuild passed; the first snapshot held counts only, fixed in 0.2.0 (A1); restore in a new chat verified by the maintainer's own use after install
 - [x] K2e Triggering in the Project with both instruction lines: plain requests ("explain Cloud NAT", "quiz me", "give me a challenge", "mock exam", "I finished module 2 of course 3") each start the matching skill; note misses (J3)
-- [~] K7 Issues found are fixed (0.2.0 phase A); re-test on claude.ai pending (rebuild, header and hedged answer, module confirmation, reset then restore in a new chat) — Issues found are fixed and re-tested
+- [~] K7 Issues found in the manual test are fixed (0.2.0 phase A) — re-test of rebuild, header and hedged answer, module confirmation, and reset then restore: verified by the maintainer's own use after install
 
 ## L. Publish
 
-- [ ] L1 Maintainer confirms publishing
-- [ ] L2 Public repository `gcp-certification-coach` created with description and topics from ADR 0009
-- [ ] L3 Pushed; CI green
-- [ ] L3a Secret scanning and push protection enabled in repository settings
-- [ ] L4 Release `v0.1.0` with notes from CHANGELOG
-- [ ] L5 Verified install from the public repo via Add marketplace on claude.ai
-- [ ] L6 Social preview image added (optional)
+- [x] L1 Maintainer confirms publishing — confirmed in the phase 9 request
+- [x] L2 Public repository `gcp-certification-coach` created with description and topics from ADR 0009 — https://github.com/olehsov/gcp-certification-coach; description as specified, all 18 topics set
+- [x] L3 Pushed; CI green — main pushed through the pre-push hook (no `--no-verify`); `validate` green on every push
+- [x] L3a Secret scanning and push protection enabled in repository settings — enabled through `gh api` before the first push; read back as `enabled` for both
+- [x] L4 Release `v0.2.0` with notes from CHANGELOG — https://github.com/olehsov/gcp-certification-coach/releases/tag/v0.2.0 with `gcp-cert-coach-0.2.0.zip` (50 files, rebuilt from the tagged commit); v0.1.0 was never released
+- [~] L5 Verified install from the public repo via Add marketplace on claude.ai — Claude Code install from GitHub verified in an isolated config (marketplace add, install, nine skills at 0.2.0, then removed); the claude.ai path is verified by the maintainer's own use after install
+- [~] L6 Social preview image added (optional) — not added; optional
 
 ## M. Decisions trace (from the design conversation)
 
 Confirm each decision is implemented or explicitly deferred:
 
-- [ ] M1 Plugin, not single skill; agents deferred to v2
-- [ ] M2 Generic engine for any Google Cloud certification; curated ACE pack first; generated packs labeled beta
-- [ ] M3 Tree from the Google Skills path (variable number of activities); optionality mirrors the path
-- [ ] M4 Optional "Exam guide gaps" layer via Course / Full exam mode toggle
-- [ ] M5 Standard / Hard profiles
-- [ ] M6 Confidence: guess-correct = 0 gain; confident mistakes create misconceptions; calibration shown
-- [ ] M7 Module-level completion marking; concept-level questioning and coverage
-- [ ] M8 Question formats: scenario, multi-select, command recognition, explain in own words, choose a service, why others are wrong; interleaving
-- [ ] M9 Pre-tests on the next module, no level change
-- [ ] M10 Optional challenges with narrative + command output verification and bonus
-- [ ] M11 Mock exams with red / amber / green recommendation (advice only)
-- [ ] M12 Pause with automatic resume; warm-up after > 7 days
-- [ ] M13 No exam date → plan from remaining hours and pace (default 7 h/week)
-- [ ] M14 Write after every answer, one batch
-- [ ] M15 Documentation via web search now; Developer Knowledge MCP in v2
-- [ ] M16 One certification per Project per tracker; Project instructions line
-- [ ] M17 Browser progress check with all fallbacks; never write without confirmation
-- [ ] M18 `sync`, `rebuild`, `reset` separated by risk; reset archives first
-- [ ] M19 Feedback collection for the maintenance loop
-- [ ] M20 English everywhere; runtime explanation language
-- [ ] M21 No personal data; CI privacy check
-- [ ] M22 Copyright: titles and structure only; original questions; doc links
-- [ ] M23 Non-affiliation disclaimer; MIT + CC BY 4.0
-- [ ] M24 Public repo `gcp-certification-coach`, plugin `gcp-cert-coach`, display name GCP Certification Coach, topics set
+- [x] M1 Plugin, not single skill; agents deferred to v2 — ADR 0001, ADR 0008: one plugin with nine skills; no agents in v1
+- [x] M2 Generic engine for any Google Cloud certification; curated ACE pack first; generated packs labeled beta — ADR 0004; `skills/init/references/generated-pack.md`; curated pack `packs/ace`; generated packs labeled `beta`
+- [x] M3 Tree from the Google Skills path (variable number of activities); optionality mirrors the path — ADR 0004; G1, G2: tree from the Google Skills path, `optional` mirrors the path
+- [x] M4 Optional "Exam guide gaps" layer via Course / Full exam mode toggle — `settings.mode` Course / Full exam (E3, `progress` mode change)
+- [x] M5 Standard / Hard profiles — `settings.scoring.profiles` Standard and Hard (F3)
+- [x] M6 Confidence: guess-correct = 0 gain; confident mistakes create misconceptions; calibration shown — ADR 0003; `quiz/references/scoring.md` (guess-correct gives no gain, misconceptions, calibration)
+- [x] M7 Module-level completion marking; concept-level questioning and coverage — module-level completion in `progress`; concept-level questions and coverage in `quiz` (D10, D13)
+- [x] M8 Question formats: scenario, multi-select, command recognition, explain in own words, choose a service, why others are wrong; interleaving — `quiz/references/question-formats.md` (six formats) and `selection.md` (interleaving)
+- [x] M9 Pre-tests on the next module, no level change — `quiz` pre-test mode, no level change (D10)
+- [x] M10 Optional challenges with narrative + command output verification and bonus — `challenge` skill: narrative plus command output, bonus (D11)
+- [x] M11 Mock exams with red / amber / green recommendation (advice only) — `mock` skill: 50 questions, red / amber / green, advice only (D12)
+- [x] M12 Pause with automatic resume; warm-up after > 7 days — pause auto-resume and warm-up after more than 7 days in `quiz` (D10, K5)
+- [x] M13 No exam date → plan from remaining hours and pace (default 7 h/week) — `plan-estimate.md`: plan from remaining hours and pace, default 7 h/week
+- [x] M14 Write after every answer, one batch — one batch per answer (D5); mock in one batch at the end
+- [~] M15 Documentation via web search now; Developer Knowledge MCP in v2 — documentation via web search plus curated links first (ADR 0005, ADR 0010); Developer Knowledge MCP deferred to v2 as planned
+- [x] M16 One certification per Project per tracker; Project instructions line — ADR 0002, ADR 0006; `init` prints the tracker line and the skills line
+- [x] M17 Browser progress check with all fallbacks; never write without confirmation — `progress/references/browser-progress-check.md`: all fallbacks, confirmation before any write (D13)
+- [x] M18 `sync`, `rebuild`, `reset` separated by risk; reset archives first — `sync`, `rebuild`, `reset` are separate skills; snapshot before every destructive step (D14–D16)
+- [x] M19 Feedback collection for the maintenance loop — `feedback` collection in all nine skills (D17)
+- [x] M20 English everywhere; runtime explanation language — ADR 0007; English in the repository, explanation language from `settings` (eval `learn-language-uk`)
+- [x] M21 No personal data; CI privacy check — no personal data; four protection layers (J6, J9, J11, J13, J7, L3a)
+- [x] M22 Copyright: titles and structure only; original questions; doc links — ADR 0005, ADR 0010; CLAUDE.md copyright rules; original questions and explanations with documentation links
+- [x] M23 Non-affiliation disclaimer; MIT + CC BY 4.0 — disclaimer in README and `plugin.json`; MIT (`LICENSE`) and CC BY 4.0 (`LICENSE-CONTENT`)
+- [x] M24 Public repo `gcp-certification-coach`, plugin `gcp-cert-coach`, display name GCP Certification Coach, topics set — repository `olehsov/gcp-certification-coach`, plugin `gcp-cert-coach`, display name and 18 topics set (L2)
