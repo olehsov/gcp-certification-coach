@@ -1,0 +1,1010 @@
+[
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b2-m3-k3",
+  "data": {
+   "moduleId": "b2-m3",
+   "order": 3,
+   "title": "VMs with multiple network interfaces",
+   "docUrls": [
+    "https://docs.cloud.google.com/vpc/docs/multiple-interfaces-concepts"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "b2-m4",
+  "data": {
+   "activityId": "b2",
+   "order": 4,
+   "title": "Monitor a Compute Engine Instance with Cloud Monitoring",
+   "sections": [
+    "4.6"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b2-m4-k1",
+  "data": {
+   "moduleId": "b2-m4",
+   "order": 1,
+   "title": "Installing the Ops Agent",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b2-m4-k2",
+  "data": {
+   "moduleId": "b2-m4",
+   "order": 2,
+   "title": "Uptime checks and alerting policies",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "b2-m5",
+  "data": {
+   "activityId": "b2",
+   "order": 5,
+   "title": "Managing Deployments Using Kubernetes Engine",
+   "sections": [
+    "3.2",
+    "4.2"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b2-m5-k1",
+  "data": {
+   "moduleId": "b2-m5",
+   "order": 1,
+   "title": "Deployment rollouts and rollbacks",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b2-m5-k2",
+  "data": {
+   "moduleId": "b2-m5",
+   "order": 2,
+   "title": "Canary deployments",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b2-m5-k3",
+  "data": {
+   "moduleId": "b2-m5",
+   "order": 3,
+   "title": "Blue-green deployments",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "b2-m6",
+  "data": {
+   "activityId": "b2",
+   "order": 6,
+   "title": "Develop your Google Cloud Network: Challenge Lab",
+   "sections": [
+    "3.2",
+    "3.5",
+    "4.5",
+    "5.1"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b2-m6-k1",
+  "data": {
+   "moduleId": "b2-m6",
+   "order": 1,
+   "title": "Network, IAM and GKE requirements to deployment",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "activities",
+  "doc_id": "b3",
+  "data": {
+   "order": 12,
+   "kind": "skill_badge",
+   "title": "Build Infrastructure with Terraform on Google Cloud",
+   "hours": 1.75,
+   "optional": false,
+   "urls": {
+    "googleSkills": "https://www.skills.google/paths/11/course_templates/636",
+    "coursera": null
+   },
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "b3-m1",
+  "data": {
+   "activityId": "b3",
+   "order": 1,
+   "title": "Terraform Fundamentals",
+   "sections": [
+    "3.6"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b3-m1-k1",
+  "data": {
+   "moduleId": "b3-m1",
+   "order": 1,
+   "title": "Providers and resources",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b3-m1-k2",
+  "data": {
+   "moduleId": "b3-m1",
+   "order": 2,
+   "title": "The init, plan and apply workflow",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "b3-m2",
+  "data": {
+   "activityId": "b3",
+   "order": 2,
+   "title": "Infrastructure as Code with Terraform",
+   "sections": [
+    "3.6"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b3-m2-k1",
+  "data": {
+   "moduleId": "b3-m2",
+   "order": 1,
+   "title": "Changing and destroying infrastructure",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b3-m2-k2",
+  "data": {
+   "moduleId": "b3-m2",
+   "order": 2,
+   "title": "Implicit and explicit dependencies",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "b3-m3",
+  "data": {
+   "activityId": "b3",
+   "order": 3,
+   "title": "Interact with Terraform Modules",
+   "sections": [
+    "3.6"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b3-m3-k1",
+  "data": {
+   "moduleId": "b3-m3",
+   "order": 1,
+   "title": "Using registry modules",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b3-m3-k2",
+  "data": {
+   "moduleId": "b3-m3",
+   "order": 2,
+   "title": "Building a local module",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "b3-m4",
+  "data": {
+   "activityId": "b3",
+   "order": 4,
+   "title": "Manage Terraform State",
+   "sections": [
+    "3.6"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b3-m4-k1",
+  "data": {
+   "moduleId": "b3-m4",
+   "order": 1,
+   "title": "Remote backend in Cloud Storage",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b3-m4-k2",
+  "data": {
+   "moduleId": "b3-m4",
+   "order": 2,
+   "title": "Importing existing resources",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b3-m4-k3",
+  "data": {
+   "moduleId": "b3-m4",
+   "order": 3,
+   "title": "State locking",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "b3-m5",
+  "data": {
+   "activityId": "b3",
+   "order": 5,
+   "title": "Build Infrastructure with Terraform on Google Cloud: Challenge Lab",
+   "sections": [
+    "3.6"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b3-m5-k1",
+  "data": {
+   "moduleId": "b3-m5",
+   "order": 1,
+   "title": "Terraform requirements to deployment",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "activities",
+  "doc_id": "gaps",
+  "data": {
+   "order": 13,
+   "kind": "gaps",
+   "title": "Exam guide gaps",
+   "hours": 16,
+   "optional": false,
+   "urls": {},
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "g01",
+  "data": {
+   "activityId": "gaps",
+   "order": 1,
+   "title": "Organization policies",
+   "sections": [
+    "1.1"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": 1,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g01-k1",
+  "data": {
+   "moduleId": "g01",
+   "order": 1,
+   "title": "Organization Policy Service",
+   "docUrls": [
+    "https://docs.cloud.google.com/organization-policy/overview"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g01-k2",
+  "data": {
+   "moduleId": "g01",
+   "order": 2,
+   "title": "Constraints and inheritance",
+   "docUrls": [
+    "https://docs.cloud.google.com/organization-policy/hierarchy-evaluation",
+    "https://docs.cloud.google.com/organization-policy/reference/org-policy-constraints"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "g02",
+  "data": {
+   "activityId": "gaps",
+   "order": 2,
+   "title": "Managing users and groups in Cloud Identity",
+   "sections": [
+    "1.1"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": 1,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g02-k1",
+  "data": {
+   "moduleId": "g02",
+   "order": 1,
+   "title": "Manual user and group management",
+   "docUrls": [
+    "https://docs.cloud.google.com/identity/docs/overview",
+    "https://docs.cloud.google.com/architecture/identity/overview-google-authentication"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g02-k2",
+  "data": {
+   "moduleId": "g02",
+   "order": 2,
+   "title": "Automated provisioning and directory sync",
+   "docUrls": [
+    "https://docs.cloud.google.com/architecture/identity/federating-gcp-with-active-directory-introduction",
+    "https://support.google.com/a/answer/106368"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "g03",
+  "data": {
+   "activityId": "gaps",
+   "order": 3,
+   "title": "Billing budgets, alerts and exports",
+   "sections": [
+    "1.2"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": 1,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g03-k1",
+  "data": {
+   "moduleId": "g03",
+   "order": 1,
+   "title": "Budgets and alert thresholds",
+   "docUrls": [
+    "https://docs.cloud.google.com/billing/docs/how-to/budgets"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g03-k2",
+  "data": {
+   "moduleId": "g03",
+   "order": 2,
+   "title": "Billing export to BigQuery",
+   "docUrls": [
+    "https://docs.cloud.google.com/billing/docs/how-to/export-data-bigquery"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g03-k3",
+  "data": {
+   "moduleId": "g03",
+   "order": 3,
+   "title": "Billing accounts and linking projects",
+   "docUrls": [
+    "https://docs.cloud.google.com/billing/docs/how-to/manage-billing-account",
+    "https://docs.cloud.google.com/billing/docs/how-to/modify-project"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "g04",
+  "data": {
+   "activityId": "gaps",
+   "order": 4,
+   "title": "Network Service Tiers",
+   "sections": [
+    "2.3"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": 1,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g04-k1",
+  "data": {
+   "moduleId": "g04",
+   "order": 1,
+   "title": "Premium and Standard tiers",
+   "docUrls": [
+    "https://docs.cloud.google.com/network-tiers/docs/overview"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "g05",
+  "data": {
+   "activityId": "gaps",
+   "order": 5,
+   "title": "OS Login and VM Manager",
+   "sections": [
+    "3.1"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": 1,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g05-k1",
+  "data": {
+   "moduleId": "g05",
+   "order": 1,
+   "title": "OS Login",
+   "docUrls": [
+    "https://docs.cloud.google.com/compute/docs/oslogin",
+    "https://docs.cloud.google.com/compute/docs/oslogin/set-up-oslogin"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g05-k2",
+  "data": {
+   "moduleId": "g05",
+   "order": 2,
+   "title": "VM Manager patch and inventory",
+   "docUrls": [
+    "https://docs.cloud.google.com/compute/docs/vm-manager",
+    "https://docs.cloud.google.com/compute/vm-manager/docs/patch",
+    "https://docs.cloud.google.com/compute/vm-manager/docs/os-inventory/os-inventory-management"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "g06",
+  "data": {
+   "activityId": "gaps",
+   "order": 6,
+   "title": "GKE cluster configurations and operations",
+   "sections": [
+    "3.2",
+    "4.2"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": 1,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g06-k1",
+  "data": {
+   "moduleId": "g06",
+   "order": 1,
+   "title": "Regional and private clusters",
+   "docUrls": [
+    "https://docs.cloud.google.com/kubernetes-engine/docs/concepts/regional-clusters",
+    "https://docs.cloud.google.com/kubernetes-engine/docs/concepts/network-isolation"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g06-k2",
+  "data": {
+   "moduleId": "g06",
+   "order": 2,
+   "title": "Node pools",
+   "docUrls": [
+    "https://docs.cloud.google.com/kubernetes-engine/docs/concepts/node-pools"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g06-k3",
+  "data": {
+   "moduleId": "g06",
+   "order": 3,
+   "title": "Horizontal and vertical Pod autoscaling",
+   "docUrls": [
+    "https://docs.cloud.google.com/kubernetes-engine/docs/concepts/horizontalpodautoscaler",
+    "https://docs.cloud.google.com/kubernetes-engine/docs/concepts/verticalpodautoscaler"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g06-k4",
+  "data": {
+   "moduleId": "g06",
+   "order": 4,
+   "title": "Artifact Registry access from GKE",
+   "docUrls": [
+    "https://docs.cloud.google.com/artifact-registry/docs/integrate-gke"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g06-k5",
+  "data": {
+   "moduleId": "g06",
+   "order": 5,
+   "title": "StatefulSets and Services",
+   "docUrls": [
+    "https://docs.cloud.google.com/kubernetes-engine/docs/concepts/statefulset",
+    "https://docs.cloud.google.com/kubernetes-engine/docs/concepts/service"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "g07",
+  "data": {
+   "activityId": "gaps",
+   "order": 7,
+   "title": "Event-driven Cloud Run and Cloud Run functions",
+   "sections": [
+    "3.3"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": 1,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g07-k1",
+  "data": {
+   "moduleId": "g07",
+   "order": 1,
+   "title": "Eventarc triggers",
+   "docUrls": [
+    "https://docs.cloud.google.com/eventarc/docs/overview",
+    "https://docs.cloud.google.com/run/docs/triggering/trigger-with-events"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ }
+]

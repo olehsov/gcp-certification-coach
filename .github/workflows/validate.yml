@@ -41,7 +41,13 @@ jobs:
       - name: Install Claude Code CLI
         run: npm install -g "@anthropic-ai/claude-code@${CLAUDE_CODE_VERSION}"
 
-      - name: Consistency (tracker.html copies byte-identical, shared references, versions)
+      - name: Install PyYAML and Magika (pinned)
+        run: python3 -m pip install pyyaml==6.0.3 magika==1.0.3
+
+      - name: File types (plugin folder holds only Markdown, text, JSON, YAML, images)
+        run: scripts/check-file-types.sh --require-magika --inventory
+
+      - name: Consistency (template copies, generated data, shared references, versions)
         run: scripts/check-consistency.sh
 
       - name: Validate marketplace
@@ -56,5 +62,5 @@ jobs:
           count=$(find "$dir" -type f | wc -l)
           echo "files: $count"; [ "$count" -le 512 ]
           ! find "$dir" \( -name .DS_Store -o -name Thumbs.db -o -name desktop.ini -o -name __MACOSX -o -type l \) | grep .
-          ! find "$dir" -type f ! -name '*.png' ! -name '*.svg' -size +255k | grep .
+          ! find "$dir" -type f ! -name '*.png' -size +255k | grep .
           [ ! -d "$dir/bin" ]

@@ -72,7 +72,7 @@ v0.2.0 cases (fixes from the manual test):
 | Module numbers are confirmed with titles before writing | `progress-numbers-confirm-titles`, `progress-numbers-denied-asks-names`, `progress-mark-module` |
 | Hedged answers are confidence 1 and create no misconception; unclear letter is confirmed | `quiz-hedged-confidence-1`, `quiz-ambiguous-letter-confirm` |
 | Outdated page is mentioned once, not rebuilt automatically; same-version rebuild asks | `quiz-template-outdated-notice`, `rebuild-already-up-to-date` |
-| Seeding without the script (path B), never asks to change settings | `init-seed-script-fails` |
+| Ready seed batches written in order, learner writes after, counts read back, nothing run or installed | `init-static-seed-readback` |
 
 ## Privacy
 

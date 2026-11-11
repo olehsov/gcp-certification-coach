@@ -40,4 +40,4 @@ For any Google Cloud certification without a curated pack. The result is labeled
 
 Ids: activities `c<N>` for courses and `b<N>` for skill badges in path order, modules `<activityId>-m<N>`, concepts `<moduleId>-k<N>`, gaps `g<NN>`. The scoring constants are the same for every certification: copy them from the ACE pack's scoring.yaml.
 
-Then run `build_seed.py --pack <file>.json` (see seeding.md) or build the batches by hand.
+Then build the write batches by hand from this object (path B in [seeding.md](seeding.md)).

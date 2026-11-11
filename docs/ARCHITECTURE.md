@@ -63,16 +63,16 @@ gcp-certification-coach/
 │       │   │   ├── SKILL.md
 │       │   │   ├── references/       # setup flow, tracker locating, browser progress check
 │       │   │   └── assets/
-│       │   │       ├── tracker.html  # tracker page template
+│       │   │       ├── tracker-template.json  # tracker page as a JSON array of lines (generated)
 │       │   │       └── packs/
-│       │   │           └── ace/      # curated ACE pack (see §7)
+│       │   │           └── ace/      # curated ACE pack (see §7) + seed/ (generated ready batches)
 │       │   ├── learn/       SKILL.md · references/ (explanation format, lab breakdown, cheat sheets)
 │       │   ├── quiz/        SKILL.md · references/ (question formats, scoring, selection)
 │       │   ├── challenge/   SKILL.md · references/ (challenge format, verification)
 │       │   ├── mock/        SKILL.md · references/
 │       │   ├── progress/    SKILL.md · references/ (browser progress check, plan)
 │       │   ├── sync/        SKILL.md · references/
-│       │   ├── rebuild/     SKILL.md · references/ (migrations)
+│       │   ├── rebuild/     SKILL.md · references/ (migrations) · assets/tracker-template.json (identical copy)
 │       │   └── reset/       SKILL.md
 │       ├── assets/
 │       │   └── icon.png                  # original plugin icon (no third-party marks), referenced by plugin.json
@@ -83,7 +83,11 @@ gcp-certification-coach/
 │   ├── ARCHITECTURE.md
 │   └── adr/
 ├── evals/                            # cases for `claude plugin eval`
+├── templates/
+│   └── tracker.html                  # the only place the tracker page is edited (not shipped)
 ├── scripts/
+│   ├── build-plugin-data.py          # templates/tracker.html + ACE pack -> template JSON and seed batches
+│   ├── check-file-types.sh           # plugin folder: only Markdown, text, JSON, YAML, images (libmagic + Magika)
 │   ├── check-privacy.sh              # generic patterns + personal denylist outside the repo
 │   ├── privacy-allowlist.txt         # narrowly scoped false-positive rules, each commented
 │   ├── setup-hooks.sh                # git config core.hooksPath .githooks (idempotent)
@@ -121,9 +125,9 @@ Rules: only `plugin.json` inside `.claude-plugin/`; one folder per skill named e
 
 ### 5.1 Publishing
 
-- `init` publishes `assets/tracker.html` as a new artifact with `capabilities: {"db": {}}` and default access rules (owner reads and writes).
+- `init` publishes the page from `assets/tracker-template.json` (lines joined, title text replaced, saved as an `.html` file; ADR 0011) as a new artifact with `capabilities: {"db": {}}` and default access rules (owner reads and writes).
 - Title: `<Short cert name> Cert Coach`, for example `ACE Cert Coach`.
-- After publishing, `init` seeds the database through the artifact data tool in batches of at most 50 writes, then reads back one page of each collection to verify.
+- After publishing, `init` seeds the database through the artifact data tool in batches of at most 50 writes (ACE: the ready batches in `packs/ace/seed/`, then the learner's choices as small pinned updates; generated packs: batches built by hand), then reads back one page of each collection and compares counts to verify.
 - The page never hardcodes learner data; its first frame is a designed empty state that fills from the database.
 
 ### 5.2 Database schema (`schemaVersion: 1`)
@@ -349,7 +353,7 @@ Interleave across modules; do not serve more than 2 consecutive questions from o
 
 ### 6.9 Plan
 
-The formula lives once, in `progress/references/plan-estimate.md` (copy in `init`); the tracker page, `progress` and the seed script follow it.
+The formula lives once, in `progress/references/plan-estimate.md` (copy in `init`); the tracker page, `progress` and `init` (with `seed/summary.json` inputs) follow it.
 
 - Remaining hours = hours of uncompleted required activities (module hours if known, else activity hours pro-rated by module count) + Full mode gap estimate (1 hour per gap topic) + practice buffer (20% of total required hours, minus practice already done at 3 minutes per logged answer).
 - Weeks = remaining hours / `paceHoursPerWeek`. Estimated finish = today + weeks + active pause days.
@@ -389,7 +393,7 @@ Each `SKILL.md` must contain: purpose, when to use and when not to use, precondi
 - Trigger: start preparing, set up, choose a certification.
 - Steps: ask language → list current certifications → choose → load curated pack or generate → choose mode, difficulty, pace, optional exam date → initial progress (manual or browser) → show summary for confirmation → publish tracker → seed database → verify read-back → print the Project instructions line and next steps.
 - Refuses to create a second tracker for a certification that already has one unless the learner confirms.
-- Seeds with `scripts/build_seed.py` when the script can run; otherwise (no tool to run it, a script error, PyYAML unavailable) builds the same batches from the pack files (see `init/references/seeding.md`) and says which path it used. The script's summary carries the plan estimate (§6.9) that init quotes before confirmation.
+- Seeds the curated pack from the ready batches in `packs/ace/seed/` and then applies the learner's choices; a generated pack gets batches built by hand (see `init/references/seeding.md`). `seed/summary.json` carries the plan inputs for the estimate (§6.9) that init quotes before confirmation.
 
 ### learn
 - Trigger: explain, how does X work, break down this lab.

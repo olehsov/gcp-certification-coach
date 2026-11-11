@@ -48,7 +48,7 @@ Use Sonnet for quizzes and daily learning and Opus for mock exams and hard topic
 
 ## What this plugin runs, sends and fetches
 
-- **Runs:** `skills/init/scripts/build_seed.py`, locally in Claude's sandbox. It uses only the Python standard library, makes no network calls and builds the seed batches from the bundled certification pack. The plugin has no hooks, MCP servers, connectors or telemetry.
+- **Runs:** no scripts or executables. The plugin folder holds only Markdown, YAML, JSON and one PNG icon. The tracker page and the seed batches for the bundled certification pack ship as ready JSON files that Claude reads and writes to your tracker. The plugin has no hooks, MCP servers, connectors or telemetry.
 - **Fetches:** public Google Cloud documentation (`docs.cloud.google.com`, `cloud.google.com`), the public certification and exam-guide pages, and the Google Skills learning path page (`www.skills.google`). The tracker page loads its fonts from Google Fonts (`fonts.googleapis.com`).
 - **Optional browser check:** if you ask, Claude opens your Google Skills or Coursera progress page in the Claude desktop app's built-in browser, reads only completion state, and writes nothing until you confirm. You sign in yourself.
 - **Reads and writes:** only the database of your own private tracker artifact in your Claude account: levels, answers to practice questions, misconceptions, mock results, challenge summaries, settings and feedback notes. No names, emails, Google Cloud project ids or raw command output are stored.

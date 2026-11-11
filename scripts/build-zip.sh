@@ -4,6 +4,7 @@
 # and excludes OS files that the plugin directory rejects. Output: dist/gcp-cert-coach-<version>.zip
 set -euo pipefail
 ROOT="$(git rev-parse --show-toplevel)"
+"$ROOT/scripts/check-file-types.sh" --inventory >/dev/null || { echo "build-zip: plugin folder has disallowed file types" >&2; exit 1; }
 cd "$ROOT/plugins"
 VERSION="$(python3 -c 'import json;print(json.load(open("gcp-cert-coach/.claude-plugin/plugin.json"))["version"])')"
 OUT="$ROOT/dist/gcp-cert-coach-$VERSION.zip"

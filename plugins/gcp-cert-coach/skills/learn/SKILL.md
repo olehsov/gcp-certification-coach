@@ -48,7 +48,7 @@ The learner may paste lab instructions, transcripts or slides. Use them only to 
 ## Tracker access
 
 - **Locate:** a line `GCP Cert Coach tracker: <URL> (certification: <id>)` in the Project instructions or this conversation; otherwise the learner's artifact list, titles ending in "Cert Coach" (one: use it; several: ask which certification; none: continue without a tracker). Never create a tracker here.
-- **Version:** Plugin version: 0.2.3. If the tracker's `templateVersion` is older than this version, say once per session: "A new tracker page is available (x → y). Say 'rebuild' to update it."
+- **Version:** Plugin version: 0.3.0. If the tracker's `templateVersion` is older than this version, say once per session: "A new tracker page is available (x → y). Say 'rebuild' to update it."
 - **No data tool:** continue; if the conversation contains a tracker export, use it read-only.
 - This skill writes only `feedback`.
 

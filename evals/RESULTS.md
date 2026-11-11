@@ -196,3 +196,10 @@ Total: 43 of 48 first time; all 48 pass after the actions below.
 | `mock-start-weighted` | Skill gap: the opening message never told the learner the per-section question counts | mock step 2 now says to give the count per section by name in one line when starting (section names stay out of question headers). Passes; the other three mock cases still pass |
 | `quiz-warmup-after-pause` | Rubric asked the judge to verify a `pausedDaysTotal` write that a read-only response cannot show | Rubric reworded to what is visible (says the plan resumed, warm-up on well-known concepts); the pause, resume and warm-up requirements are unchanged. Passes |
 | `init-seed-script-fails`, `rebuild-migrate`, `quiz-no-repeat-30` | Judge flake: responses met the rubric on reading | No change; each passes on re-run |
+
+## v0.3.0 (init and rebuild only)
+
+Sonnet, with-plugin arm only (`--ablation none`), 1 run per case, Haiku judge, Claude Code 2.1.311. Scope: the nine `init` and `rebuild` cases; the other skills are unchanged in 0.3.0.
+
+- 8 of 9 cases passed. The new `init-static-seed-readback` (replaces `init-seed-script-fails`) failed its first run on a judge vote. Its rubric was rewritten as explicit yes/no questions (same meaning: ready batches written in order, learner updates afterwards, counts read back, no script or install), then run 3 times: 2 of 3 passed. The failing run's response met the rubric on reading (batches in order, pinned updates, read-back of 13/86/284, no script); the judge voted FAIL FAIL FAIL, so this is recorded as a judge flake.
+- No skill text was changed because of an eval result.

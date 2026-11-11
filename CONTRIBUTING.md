@@ -18,7 +18,8 @@ Optional: create a personal denylist at `~/.config/gcp-cert-coach/denylist.txt` 
 - `plugins/gcp-cert-coach/`: everything users install (manifest, skills, README, LICENSE, icon). Nothing else goes here.
 - `docs/`, `evals/`, `scripts/`, `.github/`: outside the plugin folder.
 - One folder per skill under `skills/`, named like the skill. Supporting files sit in that skill's `references/`, `assets/` or `scripts/` and are linked from its `SKILL.md`. Skills never read another skill's folder (ADR 0006); the few shared files are copied and kept identical by `scripts/check-consistency.sh`.
-- The tracker page template is edited only in `skills/init/assets/tracker.html`. After every change, copy it over `skills/rebuild/assets/tracker.html` (`cp plugins/gcp-cert-coach/skills/init/assets/tracker.html plugins/gcp-cert-coach/skills/rebuild/assets/tracker.html`). The pre-push hook and CI run `scripts/check-consistency.sh`, which fails unless both copies are byte-identical. The same applies to `references/browser-progress-check.md`, edited in `init` and copied to `progress` (only line 3, the cross-reference, differs).
+- The tracker page is edited only in `templates/tracker.html` (open it in a browser to preview). After every change run `python3 scripts/build-plugin-data.py` (needs PyYAML), which regenerates `skills/init/assets/tracker-template.json` and its byte-identical copy in `skills/rebuild/assets/`; never edit the JSON by hand. The pre-push hook and CI run `scripts/check-consistency.sh`, which fails when the shipped JSON differs from a fresh run. The same duplication rule applies to `references/browser-progress-check.md`, edited in `init` and copied to `progress` (only line 3, the cross-reference, differs).
+- The plugin folder holds only Markdown, YAML, JSON and PNG (no HTML, scripts or lockfiles; ADR 0011). `scripts/check-file-types.sh --inventory` shows what libmagic and Magika detect; it runs in the pre-push hook, CI and `build-zip.sh` (`pip install magika==1.0.3`). Do not quote page tags in skill Markdown: content detection reads such a file as HTML.
 
 ## Adding a certification pack
 
@@ -26,7 +27,7 @@ Optional: create a personal denylist at `~/.config/gcp-cert-coach/denylist.txt` 
 2. Take activities, module and item titles from the public Google Skills path outline; take section names, weights and objective titles from the official exam guide. Never copy descriptions, transcripts, lab instructions, quiz questions or exam-guide text beyond titles.
 3. Map every exam-relevant module to objective ids and `core` or `support`; mark introductions, summaries and resources `examRelevant: false`.
 4. Write gap topics and concept titles in your own words, with 1–3 official documentation URLs per gap concept. Check every URL returns 200 and use canonical (post-redirect) URLs.
-5. Test the seed: `python3 plugins/gcp-cert-coach/skills/init/scripts/build_seed.py --pack <pack folder> --out /tmp/seed --start-date 2026-01-15` (needs PyYAML).
+5. Generate and test the seed: edit the pack YAML, run `python3 scripts/build-plugin-data.py`, and check the counts it prints. The ready batches land in `skills/init/assets/packs/<certId>/seed/` (commit them).
 6. Mention the pack in the init skill's certification step and in the README.
 
 ## Evals
@@ -66,7 +67,7 @@ Follow the rules in [CLAUDE.md](CLAUDE.md) → Skill authoring: third-person des
 ## Releases
 
 1. Update `CHANGELOG.md`.
-2. Bump the version in `plugin.json`, `.claude-plugin/marketplace.json`, `skills/init/scripts/build_seed.py` and `PLUGIN_VERSION` in both copies of `tracker.html` (`scripts/check-consistency.sh` verifies they match).
+2. Bump the version in `plugin.json`, `.claude-plugin/marketplace.json`, `PLUGIN_VERSION` in `templates/tracker.html`, then run `scripts/build-plugin-data.py` so the template JSON and the seed carry it (`scripts/check-consistency.sh` verifies they match).
 3. Run validate, evals and the checks above; commit; tag `v<version>`.
 
 ## Commits

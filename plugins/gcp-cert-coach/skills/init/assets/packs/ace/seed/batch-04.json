@@ -1,0 +1,986 @@
+[
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c5-m6",
+  "data": {
+   "activityId": "c5",
+   "order": 6,
+   "title": "Course Resources",
+   "sections": [],
+   "weight": "support",
+   "examRelevant": false,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c5-m6-k1",
+  "data": {
+   "moduleId": "c5-m6",
+   "order": 1,
+   "title": "Course resources",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "activities",
+  "doc_id": "c6",
+  "data": {
+   "order": 6,
+   "kind": "course",
+   "title": "Getting Started with Google Kubernetes Engine",
+   "hours": 5.75,
+   "optional": false,
+   "urls": {
+    "googleSkills": "https://www.skills.google/paths/11/course_templates/2",
+    "coursera": null
+   },
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c6-m1",
+  "data": {
+   "activityId": "c6",
+   "order": 1,
+   "title": "Course Introduction",
+   "sections": [],
+   "weight": "support",
+   "examRelevant": false,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c6-m1-k1",
+  "data": {
+   "moduleId": "c6-m1",
+   "order": 1,
+   "title": "Course introduction",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c6-m2",
+  "data": {
+   "activityId": "c6",
+   "order": 2,
+   "title": "Introduction to Google Cloud",
+   "sections": [
+    "1.1",
+    "1.2"
+   ],
+   "weight": "support",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [
+    "Accessing the Google Cloud Console and Cloud Shell"
+   ],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c6-m2-k1",
+  "data": {
+   "moduleId": "c6-m2",
+   "order": 1,
+   "title": "Cloud computing and Google Cloud",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c6-m2-k2",
+  "data": {
+   "moduleId": "c6-m2",
+   "order": 2,
+   "title": "Compute offerings",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c6-m2-k3",
+  "data": {
+   "moduleId": "c6-m2",
+   "order": 3,
+   "title": "The Google network",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c6-m2-k4",
+  "data": {
+   "moduleId": "c6-m2",
+   "order": 4,
+   "title": "Resource management",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c6-m2-k5",
+  "data": {
+   "moduleId": "c6-m2",
+   "order": 5,
+   "title": "Billing",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c6-m2-k6",
+  "data": {
+   "moduleId": "c6-m2",
+   "order": 6,
+   "title": "Interacting with Google Cloud",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c6-m3",
+  "data": {
+   "activityId": "c6",
+   "order": 3,
+   "title": "Introduction to Containers and Kubernetes",
+   "sections": [
+    "3.2"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [
+    "Working with Cloud Build"
+   ],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c6-m3-k1",
+  "data": {
+   "moduleId": "c6-m3",
+   "order": 1,
+   "title": "Containers",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c6-m3-k2",
+  "data": {
+   "moduleId": "c6-m3",
+   "order": 2,
+   "title": "Container images",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c6-m3-k3",
+  "data": {
+   "moduleId": "c6-m3",
+   "order": 3,
+   "title": "Cloud Build",
+   "docUrls": [
+    "https://docs.cloud.google.com/build/docs/overview"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c6-m3-k4",
+  "data": {
+   "moduleId": "c6-m3",
+   "order": 4,
+   "title": "Kubernetes",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c6-m3-k5",
+  "data": {
+   "moduleId": "c6-m3",
+   "order": 5,
+   "title": "Google Kubernetes Engine",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c6-m4",
+  "data": {
+   "activityId": "c6",
+   "order": 4,
+   "title": "Kubernetes Architecture",
+   "sections": [
+    "3.2",
+    "4.2"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [
+    "Deploying GKE Autopilot Clusters",
+    "Running a Containerized App on Google Kubernetes Engine"
+   ],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c6-m4-k1",
+  "data": {
+   "moduleId": "c6-m4",
+   "order": 1,
+   "title": "Kubernetes components",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c6-m4-k2",
+  "data": {
+   "moduleId": "c6-m4",
+   "order": 2,
+   "title": "Kubernetes concepts",
+   "docUrls": [
+    "https://docs.cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c6-m4-k3",
+  "data": {
+   "moduleId": "c6-m4",
+   "order": 3,
+   "title": "Object management",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c6-m4-k4",
+  "data": {
+   "moduleId": "c6-m4",
+   "order": 4,
+   "title": "Deployments and controllers",
+   "docUrls": [
+    "https://docs.cloud.google.com/kubernetes-engine/docs/get-started/deploy-workloads"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c6-m4-k5",
+  "data": {
+   "moduleId": "c6-m4",
+   "order": 5,
+   "title": "Services and networking",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c6-m5",
+  "data": {
+   "activityId": "c6",
+   "order": 5,
+   "title": "Kubernetes Operations",
+   "sections": [
+    "3.2",
+    "4.2"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [
+    "Deploying GKE Autopilot Clusters from Cloud Shell"
+   ],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c6-m5-k1",
+  "data": {
+   "moduleId": "c6-m5",
+   "order": 1,
+   "title": "The kubectl command",
+   "docUrls": [
+    "https://docs.cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c6-m5-k2",
+  "data": {
+   "moduleId": "c6-m5",
+   "order": 2,
+   "title": "Introspection",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c6-m6",
+  "data": {
+   "activityId": "c6",
+   "order": 6,
+   "title": "Course Summary",
+   "sections": [],
+   "weight": "support",
+   "examRelevant": false,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c6-m6-k1",
+  "data": {
+   "moduleId": "c6-m6",
+   "order": 1,
+   "title": "Course summary",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c6-m7",
+  "data": {
+   "activityId": "c6",
+   "order": 7,
+   "title": "Course Resources",
+   "sections": [],
+   "weight": "support",
+   "examRelevant": false,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c6-m7-k1",
+  "data": {
+   "moduleId": "c6-m7",
+   "order": 1,
+   "title": "Course resources",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "activities",
+  "doc_id": "c7",
+  "data": {
+   "order": 7,
+   "kind": "course",
+   "title": "Logging and Monitoring in Google Cloud",
+   "hours": 8.5,
+   "optional": false,
+   "urls": {
+    "googleSkills": "https://www.skills.google/paths/11/course_templates/99",
+    "coursera": null
+   },
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c7-m1",
+  "data": {
+   "activityId": "c7",
+   "order": 1,
+   "title": "Introduction to Google Cloud Observability",
+   "sections": [
+    "4.6"
+   ],
+   "weight": "support",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c7-m1-k1",
+  "data": {
+   "moduleId": "c7-m1",
+   "order": 1,
+   "title": "Need for observability",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c7-m1-k2",
+  "data": {
+   "moduleId": "c7-m1",
+   "order": 2,
+   "title": "Cloud Monitoring",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c7-m1-k3",
+  "data": {
+   "moduleId": "c7-m1",
+   "order": 3,
+   "title": "Cloud Logging",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c7-m1-k4",
+  "data": {
+   "moduleId": "c7-m1",
+   "order": 4,
+   "title": "Error Reporting",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c7-m1-k5",
+  "data": {
+   "moduleId": "c7-m1",
+   "order": 5,
+   "title": "Application performance management tools",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c7-m2",
+  "data": {
+   "activityId": "c7",
+   "order": 2,
+   "title": "Monitoring Critical Systems",
+   "sections": [
+    "4.6",
+    "1.1"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [
+    "Monitoring and Dashboarding Multiple Projects"
+   ],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c7-m2-k1",
+  "data": {
+   "moduleId": "c7-m2",
+   "order": 1,
+   "title": "Monitoring architecture patterns",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c7-m2-k2",
+  "data": {
+   "moduleId": "c7-m2",
+   "order": 2,
+   "title": "Monitoring multiple projects",
+   "docUrls": [
+    "https://docs.cloud.google.com/monitoring/settings"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c7-m2-k3",
+  "data": {
+   "moduleId": "c7-m2",
+   "order": 3,
+   "title": "Data model and dashboards",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c7-m2-k4",
+  "data": {
+   "moduleId": "c7-m2",
+   "order": 4,
+   "title": "Query metrics",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c7-m2-k5",
+  "data": {
+   "moduleId": "c7-m2",
+   "order": 5,
+   "title": "Uptime checks",
+   "docUrls": [
+    "https://docs.cloud.google.com/monitoring/uptime-checks"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c7-m3",
+  "data": {
+   "activityId": "c7",
+   "order": 3,
+   "title": "Alerting Policies",
+   "sections": [
+    "4.6"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [
+    "Alerting in Google Cloud",
+    "Service Monitoring"
+   ],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c7-m3-k1",
+  "data": {
+   "moduleId": "c7-m3",
+   "order": 1,
+   "title": "SLI, SLO and SLA",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c7-m3-k2",
+  "data": {
+   "moduleId": "c7-m3",
+   "order": 2,
+   "title": "Developing an alerting strategy",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c7-m3-k3",
+  "data": {
+   "moduleId": "c7-m3",
+   "order": 3,
+   "title": "Creating alerts",
+   "docUrls": [
+    "https://docs.cloud.google.com/monitoring/alerts"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c7-m3-k4",
+  "data": {
+   "moduleId": "c7-m3",
+   "order": 4,
+   "title": "Service Monitoring",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c7-m4",
+  "data": {
+   "activityId": "c7",
+   "order": 4,
+   "title": "Advanced Logging and Analysis",
+   "sections": [
+    "4.6"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [
+    "Log Analytics on Google Cloud"
+   ],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ }
+]

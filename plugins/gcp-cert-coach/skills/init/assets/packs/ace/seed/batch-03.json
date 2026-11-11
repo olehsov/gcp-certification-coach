@@ -1,0 +1,1009 @@
+[
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c4-m3-k2",
+  "data": {
+   "moduleId": "c4-m3",
+   "order": 2,
+   "title": "Cloud Storage features",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c4-m3-k3",
+  "data": {
+   "moduleId": "c4-m3",
+   "order": 3,
+   "title": "Choosing a storage class",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c4-m3-k4",
+  "data": {
+   "moduleId": "c4-m3",
+   "order": 4,
+   "title": "Filestore",
+   "docUrls": [
+    "https://docs.cloud.google.com/filestore/docs/overview"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c4-m3-k5",
+  "data": {
+   "moduleId": "c4-m3",
+   "order": 5,
+   "title": "Cloud SQL",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c4-m3-k6",
+  "data": {
+   "moduleId": "c4-m3",
+   "order": 6,
+   "title": "Spanner",
+   "docUrls": [
+    "https://docs.cloud.google.com/spanner/docs"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c4-m3-k7",
+  "data": {
+   "moduleId": "c4-m3",
+   "order": 7,
+   "title": "AlloyDB",
+   "docUrls": [
+    "https://docs.cloud.google.com/alloydb/docs/overview"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c4-m3-k8",
+  "data": {
+   "moduleId": "c4-m3",
+   "order": 8,
+   "title": "Firestore",
+   "docUrls": [
+    "https://docs.cloud.google.com/firestore/native/docs/overview"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c4-m3-k9",
+  "data": {
+   "moduleId": "c4-m3",
+   "order": 9,
+   "title": "Bigtable",
+   "docUrls": [
+    "https://docs.cloud.google.com/bigtable/docs/overview"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c4-m3-k10",
+  "data": {
+   "moduleId": "c4-m3",
+   "order": 10,
+   "title": "Memorystore",
+   "docUrls": [
+    "https://docs.cloud.google.com/memorystore/docs/redis/memorystore-for-redis-overview"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c4-m4",
+  "data": {
+   "activityId": "c4",
+   "order": 4,
+   "title": "Resource Management",
+   "sections": [
+    "1.1",
+    "1.2"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [
+    "Examine Billing Data with BigQuery"
+   ],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c4-m4-k1",
+  "data": {
+   "moduleId": "c4-m4",
+   "order": 1,
+   "title": "Resource Manager",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c4-m4-k2",
+  "data": {
+   "moduleId": "c4-m4",
+   "order": 2,
+   "title": "Quotas",
+   "docUrls": [
+    "https://docs.cloud.google.com/docs/quotas/overview"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c4-m4-k3",
+  "data": {
+   "moduleId": "c4-m4",
+   "order": 3,
+   "title": "Labels",
+   "docUrls": [
+    "https://docs.cloud.google.com/resource-manager/docs/labels-overview"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c4-m4-k4",
+  "data": {
+   "moduleId": "c4-m4",
+   "order": 4,
+   "title": "Billing",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c4-m5",
+  "data": {
+   "activityId": "c4",
+   "order": 5,
+   "title": "Resource Monitoring",
+   "sections": [
+    "4.6"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [
+    "Monitor Resources with Google Cloud Observability"
+   ],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c4-m5-k1",
+  "data": {
+   "moduleId": "c4-m5",
+   "order": 1,
+   "title": "Observability overview",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c4-m5-k2",
+  "data": {
+   "moduleId": "c4-m5",
+   "order": 2,
+   "title": "Monitoring",
+   "docUrls": [
+    "https://docs.cloud.google.com/monitoring/docs/monitoring-overview"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c4-m5-k3",
+  "data": {
+   "moduleId": "c4-m5",
+   "order": 3,
+   "title": "Logging",
+   "docUrls": [
+    "https://docs.cloud.google.com/logging/docs/overview"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c4-m5-k4",
+  "data": {
+   "moduleId": "c4-m5",
+   "order": 4,
+   "title": "Error Reporting",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c4-m5-k5",
+  "data": {
+   "moduleId": "c4-m5",
+   "order": 5,
+   "title": "Tracing",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c4-m5-k6",
+  "data": {
+   "moduleId": "c4-m5",
+   "order": 6,
+   "title": "Profiling",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c4-m5-k7",
+  "data": {
+   "moduleId": "c4-m5",
+   "order": 7,
+   "title": "Partner integrations",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c4-m6",
+  "data": {
+   "activityId": "c4",
+   "order": 6,
+   "title": "Course Resources",
+   "sections": [],
+   "weight": "support",
+   "examRelevant": false,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c4-m6-k1",
+  "data": {
+   "moduleId": "c4-m6",
+   "order": 1,
+   "title": "Course resources",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "activities",
+  "doc_id": "c5",
+  "data": {
+   "order": 5,
+   "kind": "course",
+   "title": "Elastic Google Cloud Infrastructure: Scaling and Automation",
+   "hours": 7,
+   "optional": false,
+   "urls": {
+    "googleSkills": "https://www.skills.google/paths/11/course_templates/178",
+    "coursera": null
+   },
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c5-m1",
+  "data": {
+   "activityId": "c5",
+   "order": 1,
+   "title": "Introduction",
+   "sections": [],
+   "weight": "support",
+   "examRelevant": false,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c5-m1-k1",
+  "data": {
+   "moduleId": "c5-m1",
+   "order": 1,
+   "title": "Course introduction",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c5-m2",
+  "data": {
+   "activityId": "c5",
+   "order": 2,
+   "title": "Interconnecting Networks",
+   "sections": [
+    "3.5"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [
+    "Configure Google Cloud HA VPN"
+   ],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c5-m2-k1",
+  "data": {
+   "moduleId": "c5-m2",
+   "order": 1,
+   "title": "Cloud VPN",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c5-m2-k2",
+  "data": {
+   "moduleId": "c5-m2",
+   "order": 2,
+   "title": "HA VPN",
+   "docUrls": [
+    "https://docs.cloud.google.com/network-connectivity/docs/vpn/concepts/overview"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c5-m2-k3",
+  "data": {
+   "moduleId": "c5-m2",
+   "order": 3,
+   "title": "Cloud Interconnect",
+   "docUrls": [
+    "https://docs.cloud.google.com/network-connectivity/docs/interconnect/concepts/overview"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c5-m2-k4",
+  "data": {
+   "moduleId": "c5-m2",
+   "order": 4,
+   "title": "Peering",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c5-m2-k5",
+  "data": {
+   "moduleId": "c5-m2",
+   "order": 5,
+   "title": "Choosing a connection",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c5-m2-k6",
+  "data": {
+   "moduleId": "c5-m2",
+   "order": 6,
+   "title": "Shared VPC and VPC Network Peering",
+   "docUrls": [
+    "https://docs.cloud.google.com/vpc/docs/shared-vpc",
+    "https://docs.cloud.google.com/vpc/docs/vpc-peering"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c5-m3",
+  "data": {
+   "activityId": "c5",
+   "order": 3,
+   "title": "Load Balancing and Autoscaling",
+   "sections": [
+    "2.3",
+    "3.1"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [
+    "Configure an Application Load Balancer with Autoscaling",
+    "Configure an Internal Network Load Balancer"
+   ],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c5-m3-k1",
+  "data": {
+   "moduleId": "c5-m3",
+   "order": 1,
+   "title": "Managed instance groups",
+   "docUrls": [
+    "https://docs.cloud.google.com/compute/docs/instance-groups"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c5-m3-k2",
+  "data": {
+   "moduleId": "c5-m3",
+   "order": 2,
+   "title": "Autoscaling and health checks",
+   "docUrls": [
+    "https://docs.cloud.google.com/compute/docs/autoscaler"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c5-m3-k3",
+  "data": {
+   "moduleId": "c5-m3",
+   "order": 3,
+   "title": "Application Load Balancing",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c5-m3-k4",
+  "data": {
+   "moduleId": "c5-m3",
+   "order": 4,
+   "title": "Cloud CDN",
+   "docUrls": [
+    "https://docs.cloud.google.com/cdn/docs/overview"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c5-m3-k5",
+  "data": {
+   "moduleId": "c5-m3",
+   "order": 5,
+   "title": "Network load balancing",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c5-m3-k6",
+  "data": {
+   "moduleId": "c5-m3",
+   "order": 6,
+   "title": "Internal load balancing",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c5-m3-k7",
+  "data": {
+   "moduleId": "c5-m3",
+   "order": 7,
+   "title": "Choosing a load balancer",
+   "docUrls": [
+    "https://docs.cloud.google.com/load-balancing/docs/choosing-load-balancer"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c5-m4",
+  "data": {
+   "activityId": "c5",
+   "order": 4,
+   "title": "Infrastructure Automation",
+   "sections": [
+    "3.6"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [
+    "Automating the Deployment of Infrastructure Using Terraform"
+   ],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c5-m4-k1",
+  "data": {
+   "moduleId": "c5-m4",
+   "order": 1,
+   "title": "Terraform",
+   "docUrls": [
+    "https://docs.cloud.google.com/docs/terraform/terraform-overview"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c5-m4-k2",
+  "data": {
+   "moduleId": "c5-m4",
+   "order": 2,
+   "title": "Google Cloud Marketplace",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c5-m5",
+  "data": {
+   "activityId": "c5",
+   "order": 5,
+   "title": "Managed Services",
+   "sections": [
+    "3.4",
+    "4.4"
+   ],
+   "weight": "support",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c5-m5-k1",
+  "data": {
+   "moduleId": "c5-m5",
+   "order": 1,
+   "title": "BigQuery",
+   "docUrls": [
+    "https://docs.cloud.google.com/bigquery/docs/introduction"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c5-m5-k2",
+  "data": {
+   "moduleId": "c5-m5",
+   "order": 2,
+   "title": "Dataflow",
+   "docUrls": [
+    "https://docs.cloud.google.com/dataflow/docs/overview"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c5-m5-k3",
+  "data": {
+   "moduleId": "c5-m5",
+   "order": 3,
+   "title": "Dataprep",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c5-m5-k4",
+  "data": {
+   "moduleId": "c5-m5",
+   "order": 4,
+   "title": "Managed Service for Apache Spark",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ }
+]

@@ -1,6 +1,6 @@
 # Plan estimate (single formula)
 
-The tracker page, `progress` and `init` all use this formula. Quote the number from here or from the seed script's summary, never from another calculation. Constants come from `settings.scoring.plan` (`gapHoursPerTopic` 1, `practiceBufferFraction` 0.2, `minutesPerLoggedAnswer` 3).
+The tracker page, `progress` and `init` all use this formula. Quote the number from here (curated packs: with the inputs in `seed/summary.json`), never from another calculation. Constants come from `settings.scoring.plan` (`gapHoursPerTopic` 1, `practiceBufferFraction` 0.2, `minutesPerLoggedAnswer` 3).
 
 1. **Required activities:** not archived, not optional, in the current mode (the `gaps` activity only in Full exam mode).
 2. **Required hours:** sum of activity `hours`; the gaps activity counts `gapHoursPerTopic` per gap topic.
@@ -12,4 +12,4 @@ The tracker page, `progress` and `init` all use this formula. Quote the number f
 
 Worked example (Course mode, required 58.75 h, uncompleted modules total 40 h, 20 logged answers): buffer = 0.2 × 58.75 − 20 × 3 / 60 = 10.75; remaining = 50.75 h; at 7 h per week = 7.25 weeks ≈ 51 days.
 
-At setup (`init`), nothing is logged yet, so the buffer is the full 20% of required hours. The seed script prints `remainingHours` and `estimatedFinish`; on the by-hand path compute them with the steps above.
+At setup (`init`), nothing is logged yet, so the buffer is the full 20% of required hours. For the curated pack, `assets/packs/ace/seed/summary.json` (`planInputs`) holds the required course hours and every module's resolved hours; on the generated path compute them from the pack with the steps above.

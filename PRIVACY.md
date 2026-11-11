@@ -17,7 +17,7 @@ Only your study progress: levels, the answer log, misconceptions, plan settings 
 
 ## Sending data
 
-No data is sent to any third-party service. The plugin only fetches public pages (Google Cloud documentation and the Google Skills learning path) and runs a local seeding script in the Claude sandbox.
+No data is sent to any third-party service. The plugin only fetches public pages (Google Cloud documentation and the Google Skills learning path) and writes ready seed data from its own files into your tracker. The plugin runs no scripts.
 
 ## Retention
 

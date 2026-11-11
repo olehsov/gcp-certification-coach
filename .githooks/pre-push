@@ -32,7 +32,10 @@ else
   echo "pre-push: gitleaks not installed, history scan skipped (CI always runs it; install: brew install gitleaks)"
 fi
 
-echo "pre-push: consistency check (tracker.html copies byte-identical, shared references, versions)"
+echo "pre-push: file types in the plugin folder (Markdown, text, JSON, YAML, images only)"
+"$ROOT/scripts/check-file-types.sh" || fail=1
+
+echo "pre-push: consistency check (template copies, generated data, shared references, versions)"
 "$ROOT/scripts/check-consistency.sh" || fail=1
 
 echo "pre-push: privacy check on all tracked files"

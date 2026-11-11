@@ -1,0 +1,720 @@
+[
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g07-k2",
+  "data": {
+   "moduleId": "g07",
+   "order": 2,
+   "title": "Pub/Sub and Cloud Storage events",
+   "docUrls": [
+    "https://docs.cloud.google.com/run/docs/tutorials/pubsub",
+    "https://docs.cloud.google.com/eventarc/standard/docs/run/create-trigger-storage-gcloud"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g07-k3",
+  "data": {
+   "moduleId": "g07",
+   "order": 3,
+   "title": "Choosing Cloud Run services or Cloud Run functions",
+   "docUrls": [
+    "https://docs.cloud.google.com/run/docs/functions/comparison",
+    "https://docs.cloud.google.com/functions/docs/concepts/overview"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "g08",
+  "data": {
+   "activityId": "gaps",
+   "order": 8,
+   "title": "Cloud Run revisions, traffic splitting and scaling",
+   "sections": [
+    "4.3"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": 1,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g08-k1",
+  "data": {
+   "moduleId": "g08",
+   "order": 1,
+   "title": "Revisions and traffic splitting",
+   "docUrls": [
+    "https://docs.cloud.google.com/run/docs/rollouts-rollbacks-traffic-migration"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g08-k2",
+  "data": {
+   "moduleId": "g08",
+   "order": 2,
+   "title": "Min and max instances and concurrency",
+   "docUrls": [
+    "https://docs.cloud.google.com/run/docs/configuring/min-instances",
+    "https://docs.cloud.google.com/run/docs/configuring/max-instances",
+    "https://docs.cloud.google.com/run/docs/about-concurrency"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "g09",
+  "data": {
+   "activityId": "gaps",
+   "order": 9,
+   "title": "Loading data",
+   "sections": [
+    "3.4"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": 1,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g09-k1",
+  "data": {
+   "moduleId": "g09",
+   "order": 1,
+   "title": "Command-line uploads with gcloud storage and bq",
+   "docUrls": [
+    "https://docs.cloud.google.com/storage/docs/uploading-objects",
+    "https://docs.cloud.google.com/bigquery/docs/quickstarts/load-data-bq"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g09-k2",
+  "data": {
+   "moduleId": "g09",
+   "order": 2,
+   "title": "Loading from Cloud Storage into BigQuery",
+   "docUrls": [
+    "https://docs.cloud.google.com/bigquery/docs/batch-loading-data",
+    "https://docs.cloud.google.com/bigquery/docs/loading-data-cloud-storage-csv"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g09-k3",
+  "data": {
+   "moduleId": "g09",
+   "order": 3,
+   "title": "Storage Transfer Service",
+   "docUrls": [
+    "https://docs.cloud.google.com/storage-transfer/docs/overview"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "g10",
+  "data": {
+   "activityId": "gaps",
+   "order": 10,
+   "title": "Pub/Sub basics",
+   "sections": [
+    "3.4"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": 1,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g10-k1",
+  "data": {
+   "moduleId": "g10",
+   "order": 1,
+   "title": "Topics and subscriptions",
+   "docUrls": [
+    "https://docs.cloud.google.com/pubsub/docs/overview",
+    "https://docs.cloud.google.com/pubsub/docs/subscriber"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g10-k2",
+  "data": {
+   "moduleId": "g10",
+   "order": 2,
+   "title": "Push and pull delivery",
+   "docUrls": [
+    "https://docs.cloud.google.com/pubsub/docs/push",
+    "https://docs.cloud.google.com/pubsub/docs/pull"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "g11",
+  "data": {
+   "activityId": "gaps",
+   "order": 11,
+   "title": "Firewall policies and targeting",
+   "sections": [
+    "3.5"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": 1,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g11-k1",
+  "data": {
+   "moduleId": "g11",
+   "order": 1,
+   "title": "Hierarchical and network firewall policies",
+   "docUrls": [
+    "https://docs.cloud.google.com/firewall/docs/firewall-policies-overview",
+    "https://docs.cloud.google.com/firewall/docs/firewall-policies"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g11-k2",
+  "data": {
+   "moduleId": "g11",
+   "order": 2,
+   "title": "Targeting by network tags and service accounts",
+   "docUrls": [
+    "https://docs.cloud.google.com/firewall/docs/firewalls"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g11-k3",
+  "data": {
+   "moduleId": "g11",
+   "order": 3,
+   "title": "Ingress and egress rules",
+   "docUrls": [
+    "https://docs.cloud.google.com/firewall/docs/firewalls"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "g12",
+  "data": {
+   "activityId": "gaps",
+   "order": 12,
+   "title": "Infrastructure as code tooling beyond Terraform",
+   "sections": [
+    "3.6"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": 1,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g12-k1",
+  "data": {
+   "moduleId": "g12",
+   "order": 1,
+   "title": "Config Connector",
+   "docUrls": [
+    "https://docs.cloud.google.com/config-connector/docs/overview"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g12-k2",
+  "data": {
+   "moduleId": "g12",
+   "order": 2,
+   "title": "Helm charts in Artifact Registry",
+   "docUrls": [
+    "https://docs.cloud.google.com/artifact-registry/docs/helm"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g12-k3",
+  "data": {
+   "moduleId": "g12",
+   "order": 3,
+   "title": "Cloud Foundation Toolkit",
+   "docUrls": [
+    "https://docs.cloud.google.com/docs/terraform/blueprints/terraform-blueprints"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "g13",
+  "data": {
+   "activityId": "gaps",
+   "order": 13,
+   "title": "Snapshot schedules and image management",
+   "sections": [
+    "4.1"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": 1,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g13-k1",
+  "data": {
+   "moduleId": "g13",
+   "order": 1,
+   "title": "Snapshots and snapshot schedules",
+   "docUrls": [
+    "https://docs.cloud.google.com/compute/docs/disks/create-snapshots",
+    "https://docs.cloud.google.com/compute/docs/disks/scheduled-snapshots"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g13-k2",
+  "data": {
+   "moduleId": "g13",
+   "order": 2,
+   "title": "Creating images from disks and snapshots",
+   "docUrls": [
+    "https://docs.cloud.google.com/compute/docs/images/create-custom"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "g14",
+  "data": {
+   "activityId": "gaps",
+   "order": 14,
+   "title": "Cloud Storage lifecycle and object security",
+   "sections": [
+    "4.4"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": 1,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g14-k1",
+  "data": {
+   "moduleId": "g14",
+   "order": 1,
+   "title": "Object Lifecycle Management",
+   "docUrls": [
+    "https://docs.cloud.google.com/storage/docs/lifecycle"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g14-k2",
+  "data": {
+   "moduleId": "g14",
+   "order": 2,
+   "title": "Uniform bucket-level access and signed URLs",
+   "docUrls": [
+    "https://docs.cloud.google.com/storage/docs/uniform-bucket-level-access",
+    "https://docs.cloud.google.com/storage/docs/access-control/signed-urls"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "g15",
+  "data": {
+   "activityId": "gaps",
+   "order": 15,
+   "title": "Database backup, restore and cost estimation",
+   "sections": [
+    "4.4"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": 1,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g15-k1",
+  "data": {
+   "moduleId": "g15",
+   "order": 1,
+   "title": "Cloud SQL backups and point-in-time recovery",
+   "docUrls": [
+    "https://docs.cloud.google.com/sql/docs/mysql/backup-recovery/backups",
+    "https://docs.cloud.google.com/sql/docs/mysql/backup-recovery/pitr"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g15-k2",
+  "data": {
+   "moduleId": "g15",
+   "order": 2,
+   "title": "Firestore backups",
+   "docUrls": [
+    "https://docs.cloud.google.com/firestore/native/docs/backups"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g15-k3",
+  "data": {
+   "moduleId": "g15",
+   "order": 3,
+   "title": "Estimating storage costs",
+   "docUrls": [
+    "https://cloud.google.com/products/calculator",
+    "https://cloud.google.com/storage/pricing"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "g16",
+  "data": {
+   "activityId": "gaps",
+   "order": 16,
+   "title": "Service account impersonation and short-lived credentials",
+   "sections": [
+    "5.2"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": 1,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g16-k1",
+  "data": {
+   "moduleId": "g16",
+   "order": 1,
+   "title": "Service account impersonation",
+   "docUrls": [
+    "https://docs.cloud.google.com/iam/docs/service-account-impersonation"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g16-k2",
+  "data": {
+   "moduleId": "g16",
+   "order": 2,
+   "title": "Short-lived credentials",
+   "docUrls": [
+    "https://docs.cloud.google.com/iam/docs/create-short-lived-credentials-direct"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "g16-k3",
+  "data": {
+   "moduleId": "g16",
+   "order": 3,
+   "title": "Attaching service accounts to resources",
+   "docUrls": [
+    "https://docs.cloud.google.com/iam/docs/attach-service-accounts"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ }
+]

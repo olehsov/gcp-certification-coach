@@ -4,6 +4,27 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-11-11
+
+The directory refused 0.2.3 ("files outside the allowed types accepted only from Verified organizations"). The plugin folder now holds only Markdown, YAML, JSON and one PNG, detected by content.
+
+### Changed
+
+- The tracker page ships as `skills/{init,rebuild}/assets/tracker-template.json` (`{"format", "version", "lines"}`, one string per line) instead of two HTML files. `init` and `rebuild` join the lines, replace the title text and publish; the page and its contract are unchanged. The source is `templates/tracker.html` (repository only); `scripts/build-plugin-data.py` generates the JSON.
+- ACE seeding no longer runs a script: the seed ships as ready batches in `skills/init/assets/packs/ace/seed/` (`batch-01..08.json`, `summary.json` with plan inputs, `ui-strings-en.json`). `init` writes them in order, applies the learner's choices as small pinned updates, then reads back 13 / 86 / 284. Generated packs are still seeded by hand. Seed documents and plan estimates equal the former script's output (checked for three setups).
+- `rebuild/SKILL.md` and `init/SKILL.md` no longer quote page tags (content detection read `rebuild/SKILL.md` as HTML).
+- Docs: ADR 0011 (supersedes the seed-script design), ARCHITECTURE, README "what this plugin runs", PRIVACY, CONTRIBUTING, CLAUDE.md, CHECKLIST.
+- Evals: `init-seed-script-fails` replaced by `init-static-seed-readback`.
+
+### Removed
+
+- `skills/init/scripts/build_seed.py` and both `tracker.html` files from the plugin folder.
+
+### Added
+
+- `scripts/check-file-types.sh`: libmagic and Magika on every plugin file, `#!`, extension, UTF-8/NUL and package-manager checks. Runs in the pre-push hook, CI and `build-zip.sh`.
+- `scripts/check-consistency.sh` regenerates the data and fails on drift.
+
 ## [0.2.3] - 2026-11-11
 
 ### Added

@@ -488,10 +488,11 @@ CASES = [
      context(snapshot(), "Rebuild my tracker page."),
      [fired("rebuild"),
       llm("PASS if it notices the page is already at the current plugin version (" + VERSION + ") and the schema is current, says so (already up to date) and asks whether to republish anyway instead of silently republishing, and plans no data changes. FAIL if it republishes or plans a migration without asking.")]),
-    ("init-seed-script-fails", "init", ["init", "seeding"],
-     f"Assume today is {TODAY}. Set up the GCP Cert Coach. My answers to all setup questions: explanation language English; certification Associate Cloud Engineer; mode Course; difficulty Standard; 7 hours per week; no exam date; nothing completed yet. I confirm the summary, go ahead and publish. Note: this chat has no Python at all, so the seed script cannot run here. (There are no artifact tools in this environment, so describe how you will seed.)",
+    ("init-static-seed-readback", "init", ["init", "seeding"],
+     f"Assume today is {TODAY}. Set up the GCP Cert Coach. My answers to all setup questions: explanation language English; certification Associate Cloud Engineer; mode Course; difficulty Standard; 7 hours per week; no exam date; courses 2 and 3 completed; nothing else. I confirm the summary, go ahead and publish. (There are no artifact tools in this environment, so describe how you will seed.)",
      [fired("init"),
-      llm("Check three conditions. (1) The response says the seed script could not run (or that the batches are built without it) and that the write batches are built by hand from the pack files. (2) The response does not ask the learner to enable code execution, install anything or change any setting; telling the learner that publishing needs claude.ai or the desktop app does not count as asking for a setting change. (3) The response describes batches of at most 50 writes written in order, with meta/settings first, and a read-back check of the counts. PASS if all three hold. FAIL if any one fails, or the tree is invented.")]),
+      llm("Answer each question with yes or no, then PASS only if all three are yes. Q1: Does the response say that ready-made seed batches shipped with the pack are written to the tracker, in order, without being rebuilt or edited? Q2: Does it say that the learner's choices and the completion marks for courses 2 and 3 are applied afterwards as separate updates to existing documents? Q3: Does it say that after writing it reads the tracker back and checks the counts (13 activities, 86 modules, 284 concepts)? FAIL if any answer is no or the tree is invented."),
+      llm("PASS if the response describes building the seed only by writing stored JSON batches and updates, and never says that a script or Python program is run to produce it or that a package is installed. FAIL if it says a script, Python or an install step is used for seeding.")]),
 ]
 
 

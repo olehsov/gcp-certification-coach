@@ -1,0 +1,983 @@
+[
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c9-m3-k2",
+  "data": {
+   "moduleId": "c9-m3",
+   "order": 2,
+   "title": "Author phase terms and concepts",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c9-m3-k3",
+  "data": {
+   "moduleId": "c9-m3",
+   "order": 3,
+   "title": "Terraform commands",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c9-m3-k4",
+  "data": {
+   "moduleId": "c9-m3",
+   "order": 4,
+   "title": "Terraform Validator",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c9-m4",
+  "data": {
+   "activityId": "c9",
+   "order": 4,
+   "title": "Writing Infrastructure Code for Google Cloud",
+   "sections": [
+    "3.6"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [
+    "Creating Resource Dependencies with Terraform"
+   ],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c9-m4-k1",
+  "data": {
+   "moduleId": "c9-m4",
+   "order": 1,
+   "title": "Resources",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c9-m4-k2",
+  "data": {
+   "moduleId": "c9-m4",
+   "order": 2,
+   "title": "Meta-arguments",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c9-m4-k3",
+  "data": {
+   "moduleId": "c9-m4",
+   "order": 3,
+   "title": "Resource dependencies",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c9-m4-k4",
+  "data": {
+   "moduleId": "c9-m4",
+   "order": 4,
+   "title": "Variables",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c9-m4-k5",
+  "data": {
+   "moduleId": "c9-m4",
+   "order": 5,
+   "title": "Variables best practices",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c9-m4-k6",
+  "data": {
+   "moduleId": "c9-m4",
+   "order": 6,
+   "title": "Output values",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c9-m4-k7",
+  "data": {
+   "moduleId": "c9-m4",
+   "order": 7,
+   "title": "Terraform Registry and Cloud Foundation Toolkit",
+   "docUrls": [
+    "https://docs.cloud.google.com/docs/terraform/blueprints/terraform-blueprints"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c9-m5",
+  "data": {
+   "activityId": "c9",
+   "order": 5,
+   "title": "Organizing and Reusing Configuration with Terraform Modules",
+   "sections": [
+    "3.6"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [
+    "Automating the Deployment of Infrastructure Using Terraform"
+   ],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c9-m5-k1",
+  "data": {
+   "moduleId": "c9-m5",
+   "order": 1,
+   "title": "Terraform modules",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c9-m5-k2",
+  "data": {
+   "moduleId": "c9-m5",
+   "order": 2,
+   "title": "Module use cases and benefits",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c9-m5-k3",
+  "data": {
+   "moduleId": "c9-m5",
+   "order": 3,
+   "title": "Reusing configurations with modules",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c9-m5-k4",
+  "data": {
+   "moduleId": "c9-m5",
+   "order": 4,
+   "title": "Module variables and outputs",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c9-m5-k5",
+  "data": {
+   "moduleId": "c9-m5",
+   "order": 5,
+   "title": "Module best practices",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c9-m6",
+  "data": {
+   "activityId": "c9",
+   "order": 6,
+   "title": "Introduction to Terraform State",
+   "sections": [
+    "3.6"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [
+    "Creating a Remote Backend"
+   ],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c9-m6-k1",
+  "data": {
+   "moduleId": "c9-m6",
+   "order": 1,
+   "title": "Terraform state",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c9-m6-k2",
+  "data": {
+   "moduleId": "c9-m6",
+   "order": 2,
+   "title": "Storing state files and remote backends",
+   "docUrls": [
+    "https://docs.cloud.google.com/docs/terraform/resource-management/store-state"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c9-m6-k3",
+  "data": {
+   "moduleId": "c9-m6",
+   "order": 3,
+   "title": "State best practices",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c9-m7",
+  "data": {
+   "activityId": "c9",
+   "order": 7,
+   "title": "Course Summary",
+   "sections": [],
+   "weight": "support",
+   "examRelevant": false,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c9-m7-k1",
+  "data": {
+   "moduleId": "c9-m7",
+   "order": 1,
+   "title": "Course summary",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "activities",
+  "doc_id": "b1",
+  "data": {
+   "order": 10,
+   "kind": "skill_badge",
+   "title": "Implementing Cloud Load Balancing for Compute Engine",
+   "hours": 0.5,
+   "optional": false,
+   "urls": {
+    "googleSkills": "https://www.skills.google/paths/11/course_templates/648",
+    "coursera": null
+   },
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "b1-m1",
+  "data": {
+   "activityId": "b1",
+   "order": 1,
+   "title": "Configure a Passthrough Network Load Balancer",
+   "sections": [
+    "2.3",
+    "3.1"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b1-m1-k1",
+  "data": {
+   "moduleId": "b1-m1",
+   "order": 1,
+   "title": "Passthrough Network Load Balancer architecture",
+   "docUrls": [
+    "https://docs.cloud.google.com/load-balancing/docs/network/networklb-backend-service"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b1-m1-k2",
+  "data": {
+   "moduleId": "b1-m1",
+   "order": 2,
+   "title": "Backend health checks",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b1-m1-k3",
+  "data": {
+   "moduleId": "b1-m1",
+   "order": 3,
+   "title": "Forwarding rules and static external IPs",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "b1-m2",
+  "data": {
+   "activityId": "b1",
+   "order": 2,
+   "title": "Set Up Application Load Balancers",
+   "sections": [
+    "2.3",
+    "3.1"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b1-m2-k1",
+  "data": {
+   "moduleId": "b1-m2",
+   "order": 1,
+   "title": "Instance templates and managed instance groups",
+   "docUrls": [
+    "https://docs.cloud.google.com/compute/docs/instance-templates"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b1-m2-k2",
+  "data": {
+   "moduleId": "b1-m2",
+   "order": 2,
+   "title": "Backend services and URL maps",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b1-m2-k3",
+  "data": {
+   "moduleId": "b1-m2",
+   "order": 3,
+   "title": "External Application Load Balancer",
+   "docUrls": [
+    "https://docs.cloud.google.com/load-balancing/docs/https"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b1-m2-k4",
+  "data": {
+   "moduleId": "b1-m2",
+   "order": 4,
+   "title": "Firewall rules for health check probes",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "b1-m3",
+  "data": {
+   "activityId": "b1",
+   "order": 3,
+   "title": "Use an Internal Application Load Balancer",
+   "sections": [
+    "2.3",
+    "3.1"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b1-m3-k1",
+  "data": {
+   "moduleId": "b1-m3",
+   "order": 1,
+   "title": "Internal Application Load Balancer",
+   "docUrls": [
+    "https://docs.cloud.google.com/load-balancing/docs/l7-internal"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b1-m3-k2",
+  "data": {
+   "moduleId": "b1-m3",
+   "order": 2,
+   "title": "Proxy-only subnets",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b1-m3-k3",
+  "data": {
+   "moduleId": "b1-m3",
+   "order": 3,
+   "title": "Regional backend services",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "b1-m4",
+  "data": {
+   "activityId": "b1",
+   "order": 4,
+   "title": "Implement Load Balancing on Compute Engine: Challenge Lab",
+   "sections": [
+    "2.3",
+    "3.1"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b1-m4-k1",
+  "data": {
+   "moduleId": "b1-m4",
+   "order": 1,
+   "title": "Load balancing requirements to deployment",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "activities",
+  "doc_id": "b2",
+  "data": {
+   "order": 11,
+   "kind": "skill_badge",
+   "title": "Develop Your Google Cloud Network",
+   "hours": 1.25,
+   "optional": false,
+   "urls": {
+    "googleSkills": "https://www.skills.google/paths/11/course_templates/625",
+    "coursera": null
+   },
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "b2-m1",
+  "data": {
+   "activityId": "b2",
+   "order": 1,
+   "title": "Manage Access Control with IAM",
+   "sections": [
+    "5.1"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b2-m1-k1",
+  "data": {
+   "moduleId": "b2-m1",
+   "order": 1,
+   "title": "Granting and revoking project roles",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b2-m1-k2",
+  "data": {
+   "moduleId": "b2-m1",
+   "order": 2,
+   "title": "Testing access as a second principal",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "b2-m2",
+  "data": {
+   "activityId": "b2",
+   "order": 2,
+   "title": "Introduction to SQL for BigQuery and Cloud SQL",
+   "sections": [
+    "3.4",
+    "4.4"
+   ],
+   "weight": "support",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b2-m2-k1",
+  "data": {
+   "moduleId": "b2-m2",
+   "order": 1,
+   "title": "Querying BigQuery datasets",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b2-m2-k2",
+  "data": {
+   "moduleId": "b2-m2",
+   "order": 2,
+   "title": "Importing data into Cloud SQL",
+   "docUrls": [
+    "https://docs.cloud.google.com/sql/docs/mysql/import-export"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b2-m2-k3",
+  "data": {
+   "moduleId": "b2-m2",
+   "order": 3,
+   "title": "SQL query basics",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "b2-m3",
+  "data": {
+   "activityId": "b2",
+   "order": 3,
+   "title": "Create and Configure Multiple VPC Networks",
+   "sections": [
+    "3.5",
+    "4.5"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b2-m3-k1",
+  "data": {
+   "moduleId": "b2-m3",
+   "order": 1,
+   "title": "Custom mode VPC networks and subnets",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "b2-m3-k2",
+  "data": {
+   "moduleId": "b2-m3",
+   "order": 2,
+   "title": "Firewall rules across VPC networks",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ }
+]

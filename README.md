@@ -229,7 +229,7 @@ Design documents: [PRD](docs/PRD.md), [architecture](docs/ARCHITECTURE.md), [dec
 - Your progress is stored only in a private artifact in your own Claude account. The plugin has no servers, no connectors and no telemetry.
 - Stored: levels, answers to practice questions, misconceptions, mock results, challenge summaries, settings, feedback notes. Not stored: names, emails, Google Cloud project ids, billing ids or raw command output.
 - Fetched: public Google Cloud documentation, certification and exam-guide pages, the Google Skills learning path, and fonts from Google Fonts for the tracker page; optionally your progress page in the desktop app's built-in browser (completion state only, confirmed before writing; you sign in yourself).
-- The only code the plugin runs is a local seed script (Python standard library, no network). Claude never runs commands in your Google Cloud project. Redact project ids and emails before pasting challenge output.
+- The plugin ships no scripts or executables, only Markdown, YAML, JSON and an icon. Claude never runs commands in your Google Cloud project. Redact project ids and emails before pasting challenge output.
 - This repository contains no personal data; CI and git hooks check every change.
 - Full policy: [Privacy](PRIVACY.md).
 

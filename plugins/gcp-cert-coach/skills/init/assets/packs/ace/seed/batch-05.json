@@ -1,0 +1,980 @@
+[
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c7-m4-k1",
+  "data": {
+   "moduleId": "c7-m4",
+   "order": 1,
+   "title": "Cloud Logging architecture",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c7-m4-k2",
+  "data": {
+   "moduleId": "c7-m4",
+   "order": 2,
+   "title": "Log types and collection",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c7-m4-k3",
+  "data": {
+   "moduleId": "c7-m4",
+   "order": 3,
+   "title": "Storing, routing and exporting logs",
+   "docUrls": [
+    "https://docs.cloud.google.com/logging/docs/routing/overview"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c7-m4-k4",
+  "data": {
+   "moduleId": "c7-m4",
+   "order": 4,
+   "title": "Querying and viewing logs",
+   "docUrls": [
+    "https://docs.cloud.google.com/logging/docs/view/logging-query-language"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c7-m4-k5",
+  "data": {
+   "moduleId": "c7-m4",
+   "order": 5,
+   "title": "Log-based metrics",
+   "docUrls": [
+    "https://docs.cloud.google.com/logging/docs/logs-based-metrics"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c7-m4-k6",
+  "data": {
+   "moduleId": "c7-m4",
+   "order": 6,
+   "title": "Log Analytics",
+   "docUrls": [
+    "https://docs.cloud.google.com/logging/docs/log-analytics"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c7-m5",
+  "data": {
+   "activityId": "c7",
+   "order": 5,
+   "title": "Working with Audit Logs",
+   "sections": [
+    "4.6"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [
+    "Cloud Audit Logs"
+   ],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c7-m5-k1",
+  "data": {
+   "moduleId": "c7-m5",
+   "order": 1,
+   "title": "Cloud Audit Logs",
+   "docUrls": [
+    "https://docs.cloud.google.com/logging/docs/audit"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c7-m5-k2",
+  "data": {
+   "moduleId": "c7-m5",
+   "order": 2,
+   "title": "Data Access audit logs",
+   "docUrls": [
+    "https://docs.cloud.google.com/logging/docs/audit/configure-data-access"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c7-m5-k3",
+  "data": {
+   "moduleId": "c7-m5",
+   "order": 3,
+   "title": "Audit log entry format",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c7-m5-k4",
+  "data": {
+   "moduleId": "c7-m5",
+   "order": 4,
+   "title": "Audit logging best practices",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c7-m6",
+  "data": {
+   "activityId": "c7",
+   "order": 6,
+   "title": "Course Summary",
+   "sections": [],
+   "weight": "support",
+   "examRelevant": false,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c7-m6-k1",
+  "data": {
+   "moduleId": "c7-m6",
+   "order": 1,
+   "title": "Course summary",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c7-m7",
+  "data": {
+   "activityId": "c7",
+   "order": 7,
+   "title": "Course Resources",
+   "sections": [],
+   "weight": "support",
+   "examRelevant": false,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c7-m7-k1",
+  "data": {
+   "moduleId": "c7-m7",
+   "order": 1,
+   "title": "Course resources",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "activities",
+  "doc_id": "c8",
+  "data": {
+   "order": 8,
+   "kind": "course",
+   "title": "Observability in Google Cloud",
+   "hours": 6.5,
+   "optional": false,
+   "urls": {
+    "googleSkills": "https://www.skills.google/paths/11/course_templates/864",
+    "coursera": null
+   },
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c8-m1",
+  "data": {
+   "activityId": "c8",
+   "order": 1,
+   "title": "Introduction",
+   "sections": [],
+   "weight": "support",
+   "examRelevant": false,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c8-m1-k1",
+  "data": {
+   "moduleId": "c8-m1",
+   "order": 1,
+   "title": "Course introduction",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c8-m2",
+  "data": {
+   "activityId": "c8",
+   "order": 2,
+   "title": "Configuring Google Cloud Services for Observability",
+   "sections": [
+    "4.6"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [
+    "Monitoring a Compute Engine by using Ops Agent"
+   ],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c8-m2-k1",
+  "data": {
+   "moduleId": "c8-m2",
+   "order": 1,
+   "title": "Ops Agent",
+   "docUrls": [
+    "https://docs.cloud.google.com/monitoring/agent/ops-agent"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c8-m2-k2",
+  "data": {
+   "moduleId": "c8-m2",
+   "order": 2,
+   "title": "Non-VM resources",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c8-m2-k3",
+  "data": {
+   "moduleId": "c8-m2",
+   "order": 3,
+   "title": "Cloud Operations for GKE",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c8-m2-k4",
+  "data": {
+   "moduleId": "c8-m2",
+   "order": 4,
+   "title": "Managed Service for Prometheus",
+   "docUrls": [
+    "https://docs.cloud.google.com/stackdriver/docs/managed-prometheus"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c8-m2-k5",
+  "data": {
+   "moduleId": "c8-m2",
+   "order": 5,
+   "title": "Exposing user-defined metrics",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c8-m3",
+  "data": {
+   "activityId": "c8",
+   "order": 3,
+   "title": "Monitoring Google Cloud Network",
+   "sections": [
+    "4.6"
+   ],
+   "weight": "support",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [
+    "Analyzing Network Traffic with VPC Flow Logs"
+   ],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c8-m3-k1",
+  "data": {
+   "moduleId": "c8-m3",
+   "order": 1,
+   "title": "VPC Flow Logs",
+   "docUrls": [
+    "https://docs.cloud.google.com/vpc/docs/flow-logs"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c8-m3-k2",
+  "data": {
+   "moduleId": "c8-m3",
+   "order": 2,
+   "title": "Firewall Rules Logging",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c8-m3-k3",
+  "data": {
+   "moduleId": "c8-m3",
+   "order": 3,
+   "title": "Load Balancer Logging",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c8-m3-k4",
+  "data": {
+   "moduleId": "c8-m3",
+   "order": 4,
+   "title": "Cloud NAT logs",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c8-m3-k5",
+  "data": {
+   "moduleId": "c8-m3",
+   "order": 5,
+   "title": "Packet Mirroring",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c8-m3-k6",
+  "data": {
+   "moduleId": "c8-m3",
+   "order": 6,
+   "title": "Network Intelligence Center",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c8-m4",
+  "data": {
+   "activityId": "c8",
+   "order": 4,
+   "title": "Investigating Application Performance Issues",
+   "sections": [
+    "4.6"
+   ],
+   "weight": "support",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [
+    "View application latency with Cloud Trace"
+   ],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c8-m4-k1",
+  "data": {
+   "moduleId": "c8-m4",
+   "order": 1,
+   "title": "Error Reporting",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c8-m4-k2",
+  "data": {
+   "moduleId": "c8-m4",
+   "order": 2,
+   "title": "Cloud Trace",
+   "docUrls": [
+    "https://docs.cloud.google.com/trace/docs/overview"
+   ],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c8-m4-k3",
+  "data": {
+   "moduleId": "c8-m4",
+   "order": 3,
+   "title": "Cloud Profiler",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c8-m5",
+  "data": {
+   "activityId": "c8",
+   "order": 5,
+   "title": "Optimizing the Costs for Google Cloud Observability",
+   "sections": [
+    "4.6"
+   ],
+   "weight": "support",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c8-m5-k1",
+  "data": {
+   "moduleId": "c8-m5",
+   "order": 1,
+   "title": "Observability costs and pricing",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c8-m5-k2",
+  "data": {
+   "moduleId": "c8-m5",
+   "order": 2,
+   "title": "Bill estimation",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c8-m5-k3",
+  "data": {
+   "moduleId": "c8-m5",
+   "order": 3,
+   "title": "Cost control best practices",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c8-m6",
+  "data": {
+   "activityId": "c8",
+   "order": 6,
+   "title": "Course Summary",
+   "sections": [],
+   "weight": "support",
+   "examRelevant": false,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c8-m6-k1",
+  "data": {
+   "moduleId": "c8-m6",
+   "order": 1,
+   "title": "Course summary",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "activities",
+  "doc_id": "c9",
+  "data": {
+   "order": 9,
+   "kind": "course",
+   "title": "Getting Started with Terraform for Google Cloud",
+   "hours": 6.5,
+   "optional": false,
+   "urls": {
+    "googleSkills": "https://www.skills.google/paths/11/course_templates/443",
+    "coursera": null
+   },
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c9-m1",
+  "data": {
+   "activityId": "c9",
+   "order": 1,
+   "title": "Course Introduction",
+   "sections": [],
+   "weight": "support",
+   "examRelevant": false,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c9-m1-k1",
+  "data": {
+   "moduleId": "c9-m1",
+   "order": 1,
+   "title": "Course introduction",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c9-m2",
+  "data": {
+   "activityId": "c9",
+   "order": 2,
+   "title": "Introduction to Terraform for Google Cloud",
+   "sections": [
+    "3.6"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c9-m2-k1",
+  "data": {
+   "moduleId": "c9-m2",
+   "order": 1,
+   "title": "Infrastructure as code",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c9-m2-k2",
+  "data": {
+   "moduleId": "c9-m2",
+   "order": 2,
+   "title": "Terraform overview",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c9-m2-k3",
+  "data": {
+   "moduleId": "c9-m2",
+   "order": 3,
+   "title": "Using Terraform",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "modules",
+  "doc_id": "c9-m3",
+  "data": {
+   "activityId": "c9",
+   "order": 3,
+   "title": "Terms and Concepts",
+   "sections": [
+    "3.6"
+   ],
+   "weight": "core",
+   "examRelevant": true,
+   "hours": null,
+   "labs": [
+    "Infrastructure as Code with Terraform"
+   ],
+   "completed": false,
+   "completedAt": null,
+   "archived": false
+  }
+ },
+ {
+  "op": "set",
+  "collection": "concepts",
+  "doc_id": "c9-m3-k1",
+  "data": {
+   "moduleId": "c9-m3",
+   "order": 1,
+   "title": "Terraform configurations and HCL",
+   "docUrls": [],
+   "level": 0,
+   "answers": 0,
+   "correct": 0,
+   "recent": [],
+   "days": [],
+   "lastReviewed": null,
+   "bonus": 0,
+   "archived": false
+  }
+ }
+]

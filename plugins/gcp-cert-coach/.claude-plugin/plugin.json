@@ -1,7 +1,7 @@
 {
   "name": "gcp-cert-coach",
   "displayName": "GCP Certification Coach",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "Study coach for Google Cloud certifications: skill tree from the official learning path, exam-style quizzes grounded in Google Cloud documentation, and mastery tracking in a live tracker page. Not affiliated with or endorsed by Google or Anthropic.",
   "author": {
     "name": "olehsov",
