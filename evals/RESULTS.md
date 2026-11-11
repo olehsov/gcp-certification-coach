@@ -81,7 +81,37 @@ Reading the result:
 - No false triggers: the descriptions never claim AWS, Azure, general coding or unrelated "quiz", "challenge" or "mock" requests.
 - Under-triggering is strong in this setup. Claude answers single-turn study questions from its own knowledge instead of loading a skill; context-dependent replies ("next question", "B, confidence 2") have no prior question to refer to. The test environment also lists about 100 other commands and 60 other skills from the maintainer's own setup, which compete with the one under test.
 - Inside the plugin eval (§3), where the whole plugin is installed and the prompt carries a tracker line, the `skill-fired` indicator shows the expected skill was called in most cases; the misses there are listed in §3.
-- J3 target (at least 5/8 with 0 false triggers) is **not met** in this harness. Description tuning stopped here to save usage. Mitigation shipped in v0.1.0: `init` prints a second Project instructions line ("In this Project, use the gcp-cert-coach skills for every study request ..."), and the README quick start recommends the explicit commands (`/gcp-cert-coach:quiz` and others). The decisive check is triggering in a real claude.ai Project during the manual test (CHECKLIST K).
+- The pass criterion for J3 is triggering in a real claude.ai Project, not this single-skill harness. In manual test K2e, with both Project instructions lines that `init` prints, plain learner phrases in a non-English learner language started `learn` and `quiz`. `challenge` and `mock` were not recorded separately. The harness numbers above stay as context: the harness cannot reproduce the Project lines or the sibling skills.
+- The harness target (at least 5/8 with 0 false triggers) was not met, and description tuning stopped there by maintainer decision to save usage. Mitigation shipped: the second Project instructions line printed by `init`, and explicit commands (`/gcp-cert-coach:quiz` and others) in the README quick start.
+
+## 7. Context cost (`/skill-doctor`)
+
+`/skill-doctor` was run non-interactively with the plugin loaded from the working copy (Claude Code 2.1.311). Its report covers the listing cost of every loaded skill and unused-skill hints. It has no structural checks, so the structural limits (description at most 1024 characters, frontmatter keys, body under 500 lines) are checked by `claude plugin validate --strict` and by hand.
+
+| Skill | Listing tokens per turn (approx.) | Description characters |
+|---|---|---|
+| quiz | 350 | 1038 before, 1017 after |
+| mock | 330 | 975 |
+| learn | 320 | 920 |
+| challenge | 310 | 902 |
+| progress | 290 | 852 |
+| reset | 290 | 836 |
+| init | 270 | 799 |
+| sync | 250 | 724 |
+| rebuild | 220 | 621 |
+
+Total about 2,630 tokens per turn for the nine skills. A full `SKILL.md` loads only when a skill runs.
+
+| Finding | Decision |
+|---|---|
+| `quiz` description was 1038 characters, over the 1024 limit | Fixed. The confidence scale in the description now reads "(1 guess, 2 think, 3 sure)" (1017 characters). No trigger phrase, no "Not for" clause removed, nothing added |
+| Listing cost of 220 to 350 tokens per skill | Kept. The length comes from the trigger phrases and the "Not for" clauses that separate the sibling skills. Triggering in a real Project works (K2e), and the harness measured only 1/8 to 2/8, so there is no measured gain from shortening either way. No description grows without a measured gain |
+| "Loaded but never invoked" for the plugin skills | Kept. This is a usage count over the last 7 days on the maintainer's machine, from a session that loaded the plugin only for this run. It says nothing about the plugin |
+| Other skills from other plugins in the report | Out of scope (not part of this plugin) |
+
+`claude plugin details` needs an installed plugin and does not take `--plugin-dir`, so no second token estimate was taken.
+
+Re-run after the `quiz` change (Sonnet, Haiku judge, with-plugin arm, `--ablation none`, the 13 `quiz-*` cases): 9 passed first time. Four had a judge or behavior miss and were re-run 3 times each: `quiz-confident-mistake-misconception` 2 of 3 full passes, `quiz-feedback-doc-link` 2 of 3, `quiz-no-repeat-30` 1 of 3, `quiz-template-outdated-notice` 2 of 3. In every miss but one, the response met the rubric on reading (judge votes). In one `quiz-template-outdated-notice` run the response left out the one-line notice about the new tracker page, so that case is intermittent on this behavior, as before the change (the skill text for it is unchanged). The description edit cannot change behavior after the skill has fired; the `skill-fired` graders passed in every run. All 13 cases pass at least once, and no grader was changed.
 
 ## 9. v0.2.0 targeted runs
 

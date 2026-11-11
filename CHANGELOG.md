@@ -58,6 +58,7 @@ Fixes from the manual test on claude.ai.
 - Version check: `templateVersion` and `latestPluginVersion` in `meta/settings` (schema stays 1). Skills compare them on their existing settings read and mention a newer page once per session; `rebuild` at the same version asks before republishing.
 - Faster, cheaper sessions: selective reads in quiz, challenge and progress; the whole quiz session is planned in one step; curated documentation links are cited by default and fetched only on demand; `learn` fetches at most two pages ([ADR 0010](docs/adr/0010-curated-links-first.md)).
 - Skills suggest a new chat per study session when a thread is already long; README has a "Usage and cost" section.
+- `quiz` description shortened to 1017 characters (was 1038, over the 1024 limit): confidence scale worded "1 guess, 2 think, 3 sure".
 
 ## [0.1.0] - release date set at publishing
 
