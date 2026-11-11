@@ -4,6 +4,13 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [0.2.3] - 2026-11-11
+
+### Added
+
+- `PRIVACY.md` at the repository root: what the plugin reads, stores and sends, retention, age and contact (GitHub issues). The directory submission warned about a missing privacy policy URL.
+- `privacyPolicyUrl` in `plugin.json`, and "Privacy" links in the root README and the plugin README.
+
 ## [0.2.2] - 2026-11-11
 
 ### Fixed

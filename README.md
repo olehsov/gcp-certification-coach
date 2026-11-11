@@ -231,6 +231,7 @@ Design documents: [PRD](docs/PRD.md), [architecture](docs/ARCHITECTURE.md), [dec
 - Fetched: public Google Cloud documentation, certification and exam-guide pages, the Google Skills learning path, and fonts from Google Fonts for the tracker page; optionally your progress page in the desktop app's built-in browser (completion state only, confirmed before writing; you sign in yourself).
 - The only code the plugin runs is a local seed script (Python standard library, no network). Claude never runs commands in your Google Cloud project. Redact project ids and emails before pasting challenge output.
 - This repository contains no personal data; CI and git hooks check every change.
+- Full policy: [Privacy](PRIVACY.md).
 
 ## FAQ
 

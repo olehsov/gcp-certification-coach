@@ -1,4 +1,4 @@
-# Release checklist: v0.2.2
+# Release checklist: v0.2.3
 
 Every item was checked before the repository was made public (v0.1.0 was an unreleased test build; the first public release is v0.2.0). The builder checks items as they are done and adds a short note or file path as evidence. Items map to the PRD (US-, FR-), ARCHITECTURE (§) and ADRs.
 

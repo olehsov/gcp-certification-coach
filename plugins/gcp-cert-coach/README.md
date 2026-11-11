@@ -55,6 +55,10 @@ Use Sonnet for quizzes and daily learning and Opus for mock exams and hard topic
 - **Sends elsewhere:** nothing. Feedback you give is saved only in your own tracker.
 - **Credentials:** none are requested, stored or handled. Your Google Cloud project is never touched: challenges are done by you, and Claude only reviews what you paste. Redact project ids and emails before pasting.
 
+## Privacy
+
+Read the [Privacy policy](https://github.com/olehsov/gcp-certification-coach/blob/main/PRIVACY.md).
+
 ## License
 
 Code is MIT (see `LICENSE` in this folder). Content, meaning the certification packs under `skills/init/assets/packs/` and the cheat sheets and references under `skills/*/references/`, is CC BY 4.0, as stated in [LICENSE-CONTENT](https://github.com/olehsov/gcp-certification-coach/blob/main/LICENSE-CONTENT) in the repository. Course and certification titles belong to their owners. Source and details: https://github.com/olehsov/gcp-certification-coach

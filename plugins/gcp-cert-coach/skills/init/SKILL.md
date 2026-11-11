@@ -66,7 +66,7 @@ When the learner disputes content or suggests a change, write `feedback/<timesta
 
 ## Version
 
-Plugin version: 0.2.2. The seeded settings record it as `pluginVersion`, `templateVersion` and `latestPluginVersion`.
+Plugin version: 0.2.3. The seeded settings record it as `pluginVersion`, `templateVersion` and `latestPluginVersion`.
 
 ## Privacy
 

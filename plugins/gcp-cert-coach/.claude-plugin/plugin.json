@@ -1,7 +1,7 @@
 {
   "name": "gcp-cert-coach",
   "displayName": "GCP Certification Coach",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Study coach for Google Cloud certifications: skill tree from the official learning path, exam-style quizzes grounded in Google Cloud documentation, and mastery tracking in a live tracker page. Not affiliated with or endorsed by Google or Anthropic.",
   "author": {
     "name": "olehsov",
@@ -10,6 +10,7 @@
   "homepage": "https://github.com/olehsov/gcp-certification-coach",
   "repository": "https://github.com/olehsov/gcp-certification-coach",
   "license": "MIT",
+  "privacyPolicyUrl": "https://github.com/olehsov/gcp-certification-coach/blob/main/PRIVACY.md",
   "keywords": [
     "google-cloud",
     "gcp",
