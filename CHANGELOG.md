@@ -4,14 +4,28 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
-### Resume point
+## [0.2.0] - 2026-11-11
 
-- **Current phase:** v0.2.0 fix round complete (phases A, B, C); waiting for the claude.ai re-test and the maintainer's "publish".
-- **Last completed step:** J5 model comparison and the full Sonnet run (48 of 48 after fixes, see `evals/RESULTS.md` §10); docs synced; seed files and build prompt removed from the repository (kept outside it); gates and zip rebuilt.
-- **Exact next step:** the claude.ai re-test list (upload zip, rebuild, one quiz, progress with titles, reset and restore). Phase 9 (publish) only after the maintainer says "publish".
-- **Open issues:** J3 below the bar in the trigger harness (K2e decides); J7 CI never run (no remote).
+Fixes from the manual test on claude.ai.
 
-### Changed in the v0.2.0 fix round (phase C)
+### Fixed
+
+- **Reset snapshots are restorable.** Snapshots now hold full copies of every document that is removed (chunked, row counts verified, `status: complete` before anything is changed), and `reset` has an explicit restore path that reads only from the snapshot, so it works in a new chat. `sync` and `rebuild` use the same format. Reset names the tracker it will wipe in the confirmation.
+- **Question headers no longer give the answer away.** Quiz, pre-test, warm-up and mock headers read `Question N of M · <difficulty>` only.
+- **Module numbers are always confirmed.** Numbers typed in `init` or `progress` are resolved, then confirmed with titles ("Do you mean course N <title>, module(s) <titles>?") before anything is written; a "no" leads to typed names matched by title.
+- **Hedged answers** ("probably B", "I think the first one", "A or B, leaning A") count as confidence 1 and never create a misconception; unclear confidence or an unclear letter is asked about. The scale is now 1 guess or unsure, 2 fairly confident, 3 sure.
+- **One plan formula.** `init`, `progress` and the page use the same estimate (`plan-estimate.md`); the seed script prints it.
+- **One source for numeric facts** (`facts.md`): fixes the inconsistent Dedicated Interconnect capacities (10, 100 and 400 Gbps) and others.
+
+### Changed
+
+- Tracker page: "concepts mastered" count, explanations for module level, coverage and the `level · correct/answers` format, a "How levels work" note, and an "outdated page" notice.
+- Version check: `templateVersion` and `latestPluginVersion` in `meta/settings` (schema stays 1). Skills compare them on their existing settings read and mention a newer page once per session; `rebuild` at the same version asks before republishing.
+- Faster, cheaper sessions: selective reads in quiz, challenge and progress; the whole quiz session is planned in one step; curated documentation links are cited by default and fetched only on demand; `learn` fetches at most two pages ([ADR 0010](docs/adr/0010-curated-links-first.md)).
+- Skills suggest a new chat per study session when a thread is already long; README has a "Usage and cost" section.
+- `quiz` description shortened to 1017 characters (was 1038, over the 1024 limit): confidence scale worded "1 guess, 2 think, 3 sure".
+
+### Changed in phase C
 
 - `mock`: the opening message states the question count per exam-guide section (section names stay out of question headers).
 - Evals: fixture carries both lines that `init` prints; `quiz-warmup-after-pause` rubric reworded to what a read-only response can show.
@@ -39,30 +53,9 @@ Rules from the official documentation that were not reflected in `CLAUDE.md` or 
 - **Project instructions skills line**: `init` prints a second line for the Project instructions asking Claude to use the plugin's skills for every study request, because skills under-trigger on plain study requests (`evals/RESULTS.md`, trigger accuracy).
 - **Seeding without the script**: `init` builds the seed batches by hand from the pack files when the seed script cannot run (no tool to run it, a script error, PyYAML unavailable), and says which path it used. claude.ai has no separate code-execution toggle, so this path is verified by an eval rather than by switching a setting.
 
-## [0.2.0] - release date set at publishing
+## [0.1.0] - not released publicly
 
-Fixes from the manual test on claude.ai.
-
-### Fixed
-
-- **Reset snapshots are restorable.** Snapshots now hold full copies of every document that is removed (chunked, row counts verified, `status: complete` before anything is changed), and `reset` has an explicit restore path that reads only from the snapshot, so it works in a new chat. `sync` and `rebuild` use the same format. Reset names the tracker it will wipe in the confirmation.
-- **Question headers no longer give the answer away.** Quiz, pre-test, warm-up and mock headers read `Question N of M · <difficulty>` only.
-- **Module numbers are always confirmed.** Numbers typed in `init` or `progress` are resolved, then confirmed with titles ("Do you mean course N <title>, module(s) <titles>?") before anything is written; a "no" leads to typed names matched by title.
-- **Hedged answers** ("probably B", "I think the first one", "A or B, leaning A") count as confidence 1 and never create a misconception; unclear confidence or an unclear letter is asked about. The scale is now 1 guess or unsure, 2 fairly confident, 3 sure.
-- **One plan formula.** `init`, `progress` and the page use the same estimate (`plan-estimate.md`); the seed script prints it.
-- **One source for numeric facts** (`facts.md`): fixes the inconsistent Dedicated Interconnect capacities (10, 100 and 400 Gbps) and others.
-
-### Changed
-
-- Tracker page: "concepts mastered" count, explanations for module level, coverage and the `level · correct/answers` format, a "How levels work" note, and an "outdated page" notice.
-- Version check: `templateVersion` and `latestPluginVersion` in `meta/settings` (schema stays 1). Skills compare them on their existing settings read and mention a newer page once per session; `rebuild` at the same version asks before republishing.
-- Faster, cheaper sessions: selective reads in quiz, challenge and progress; the whole quiz session is planned in one step; curated documentation links are cited by default and fetched only on demand; `learn` fetches at most two pages ([ADR 0010](docs/adr/0010-curated-links-first.md)).
-- Skills suggest a new chat per study session when a thread is already long; README has a "Usage and cost" section.
-- `quiz` description shortened to 1017 characters (was 1038, over the 1024 limit): confidence scale worded "1 guess, 2 think, 3 sure".
-
-## [0.1.0] - release date set at publishing
-
-First release.
+Maintainer test build (uploaded as a zip to claude.ai for the manual test); never tagged. Its content ships in 0.2.0.
 
 ### Added
 

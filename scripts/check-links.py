@@ -2,8 +2,7 @@
 """Check links in tracked Markdown and YAML files.
 
 Relative links must point to an existing file. External http(s) links must return HTTP 200
-(after redirects). Placeholder URLs (with <...>, {...}, EXAMPLE, example.com) and links to the
-repository itself before it is published are skipped.
+(after redirects). Placeholder URLs (with <...>, {...}, EXAMPLE, example.com) are skipped.
 
 Usage: python3 scripts/check-links.py [--offline]   (--offline checks relative links only)
 """
@@ -16,7 +15,7 @@ import urllib.error
 import urllib.request
 
 ROOT = pathlib.Path(subprocess.run(["git", "rev-parse", "--show-toplevel"], capture_output=True, text=True, check=True).stdout.strip())
-SKIP = re.compile(r"[<{]|EXAMPLE|example\.(com|org)|localhost|claude\.ai/(customize|directory)|github\.com/olehsov/gcp-certification-coach")
+SKIP = re.compile(r"[<{]|EXAMPLE|example\.(com|org)|localhost|claude\.ai/(customize|directory)")
 MD_LINK = re.compile(r"\]\(([^)\s]+)\)")
 URL = re.compile(r"https?://[^\s)\"'<>`\]]+")
 

@@ -6,9 +6,16 @@ Not affiliated with or endorsed by Google or Anthropic.
 
 ## Install
 
-On claude.ai or in the Claude desktop app: **Customize → Plugins → Add marketplace**, enter `olehsov/gcp-certification-coach`, then install **GCP Certification Coach**.
+On claude.ai or in the Claude desktop app: **Customize → Plugins → Add marketplace**, enter `olehsov/gcp-certification-coach`, then install **gcp-cert-coach** (GCP Certification Coach).
 
-In Claude Code:
+In Claude Code, inside a session:
+
+```text
+/plugin marketplace add olehsov/gcp-certification-coach
+/plugin install gcp-cert-coach@gcp-certification-coach
+```
+
+or from a shell:
 
 ```bash
 claude plugin marketplace add olehsov/gcp-certification-coach

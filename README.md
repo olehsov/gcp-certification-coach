@@ -44,9 +44,20 @@ Works in claude.ai chat, the Claude desktop app and Cowork. The first curated pa
 
 ## Install
 
-**claude.ai or the Claude desktop app:** Customize → Plugins → **Add marketplace** → enter `olehsov/gcp-certification-coach` → install **GCP Certification Coach**.
+**claude.ai or the Claude desktop app:**
 
-**Claude Code** (for maintenance and testing):
+1. Open **Customize → Plugins**.
+2. Choose **Add marketplace** and enter `olehsov/gcp-certification-coach`.
+3. Install **gcp-cert-coach** (GCP Certification Coach).
+
+**Claude Code** (for maintenance and testing), inside a session:
+
+```text
+/plugin marketplace add olehsov/gcp-certification-coach
+/plugin install gcp-cert-coach@gcp-certification-coach
+```
+
+or from a shell:
 
 ```bash
 claude plugin marketplace add olehsov/gcp-certification-coach
