@@ -16,9 +16,9 @@ This environment has no artifact data tool, so here is a read-only export of eve
 {
  "meta/settings": {
   "schemaVersion": 1,
-  "pluginVersion": "0.2.0",
-  "templateVersion": "0.2.0",
-  "latestPluginVersion": "0.2.0",
+  "pluginVersion": "0.2.1",
+  "templateVersion": "0.2.1",
+  "latestPluginVersion": "0.2.1",
   "certId": "ace",
   "certName": "Associate Cloud Engineer",
   "certShortName": "ACE",
@@ -424,7 +424,7 @@ This environment has no artifact data tool, so here is a read-only export of eve
    "id": "reset-20261109-1800",
    "ts": "2026-11-09T18:00:00Z",
    "reason": "reset",
-   "pluginVersion": "0.2.0",
+   "pluginVersion": "0.2.1",
    "certId": "ace",
    "trackerTitle": "ACE Cert Coach",
    "status": "complete",

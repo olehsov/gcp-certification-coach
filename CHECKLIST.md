@@ -1,4 +1,4 @@
-# Release checklist: v0.2.0
+# Release checklist: v0.2.1
 
 Every item was checked before the repository was made public (v0.1.0 was an unreleased test build; the first public release is v0.2.0). The builder checks items as they are done and adds a short note or file path as evidence. Items map to the PRD (US-, FR-), ARCHITECTURE (§) and ADRs.
 
@@ -18,7 +18,7 @@ Legend: `[ ]` open · `[x]` done · `[~]` done with a deviation (explain in the 
 - [x] B3 Nine skill folders: `init`, `learn`, `quiz`, `challenge`, `mock`, `progress`, `sync`, `rebuild`, `reset`; folder name equals `name` — `plugins/gcp-cert-coach/skills/*`
 - [x] B4 No `bin/` inside the plugin; only `plugin.json` inside the plugin's `.claude-plugin/` — CI step "Plugin folder limits" also checks `bin/`
 - [x] B5 `docs/`, `evals/`, `scripts/`, `.github/` outside the plugin folder — repo root
-- [x] B6 `README.md`, `LICENSE` (MIT), `LICENSE-CONTENT` (CC BY 4.0), `CHANGELOG.md`, `CONTRIBUTING.md` at repo root; plugin `README.md` (≥ 40 words: what it does, how to use it, what data it sends) and `LICENSE` inside the plugin folder — root README, LICENSE (MIT), LICENSE-CONTENT (CC BY 4.0 legal code + scope header), CHANGELOG, CONTRIBUTING; plugin README (>40 words, `## Data` section) and LICENSE; validate reports nothing
+- [x] B6 `README.md`, `LICENSE` (MIT), `LICENSE-CONTENT` (CC BY 4.0), `CHANGELOG.md`, `CONTRIBUTING.md` at repo root; plugin `README.md` (≥ 40 words: what it does, how to use it, what data it sends) and `LICENSE` inside the plugin folder — root README, LICENSE (MIT), LICENSE-CONTENT (CC BY 4.0 legal code + scope header), CHANGELOG, CONTRIBUTING; plugin README (>40 words, `## What this plugin runs, sends and fetches` section) and LICENSE; validate reports nothing
 
 ## C. Evals first (best practices: evaluation-driven development)
 
@@ -163,3 +163,31 @@ Confirm each decision is implemented or explicitly deferred:
 - [x] M22 Copyright: titles and structure only; original questions; doc links — ADR 0005, ADR 0010; CLAUDE.md copyright rules; original questions and explanations with documentation links
 - [x] M23 Non-affiliation disclaimer; MIT + CC BY 4.0 — disclaimer in README and `plugin.json`; MIT (`LICENSE`) and CC BY 4.0 (`LICENSE-CONTENT`)
 - [x] M24 Public repo `gcp-certification-coach`, plugin `gcp-cert-coach`, display name GCP Certification Coach, topics set — repository `olehsov/gcp-certification-coach`, plugin `gcp-cert-coach`, display name and 18 topics set (L2)
+
+## N. Directory pre-submission (v0.2.1)
+
+Audit of `plugins/gcp-cert-coach` against https://claude.com/docs/plugins/pre-submission-checklist. Result: pass, fixed or risk.
+
+| Row | Result | Evidence |
+|---|---|---|
+| Folder holds `.claude-plugin/plugin.json`; one plugin per submission | pass | path `plugins/gcp-cert-coach`; marketplace lists one plugin |
+| Paths inside the plugin folder; no hooks, MCP servers or commands | pass | only `icon` (`./assets/icon.png`); no `hooks/`, `.mcp.json` |
+| No symlinks, submodules, LFS; no `.gitattributes` | pass | none found |
+| No `.DS_Store`, `Thumbs.db`, `desktop.ini`, `__MACOSX` in the plugin | pass | none tracked or on disk in the plugin folder |
+| Valid file names; path characters; no case collisions | pass | checked |
+| Repository size and file count; files under 5 MiB | pass | 2.3 MiB, about 245 files |
+| `name` pattern; not reserved or generic | pass | `gcp-cert-coach` |
+| `displayName`, `author.name` single script | pass | ASCII |
+| `description`, `author`, `version` set; `homepage` URL; `license` set | pass | `plugin.json` |
+| Name not taken by another organization | risk | only the portal can check |
+| Name not mistakable for a known brand ("GCP", "Google Cloud") | risk | likely policy hold; name kept; description carries the not-affiliated sentence |
+| README at least 40 words outside code | pass | plugin README |
+| `LICENSE` in plugin folder and `license` in `plugin.json` | pass | MIT, identical to root (checked in CI) |
+| Non-image files under 256 KiB; at most 512 files | pass | largest 40 KiB; 50 files |
+| Only text and PNG/JPEG/GIF/WebP/fonts | pass | one valid PNG |
+| Bundled image shown in README with Markdown image syntax | fixed | icon added to plugin README |
+| Skill front matter valid, `description` is text | pass | 9 of 9 skills, keys `name` and `description` only |
+| Component spelling (`skills/<name>/SKILL.md`) | pass | checked |
+| README discloses everything run, sent, fetched | fixed | new section lists the seed script, hosts incl. Google Fonts, browser check, storage |
+| Launchers, registries, credentials, lockfiles, unreadable programs | pass | none; the seed script runs only when `SKILL.md` instructs it |
+

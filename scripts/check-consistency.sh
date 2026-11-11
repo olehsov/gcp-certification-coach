@@ -17,6 +17,8 @@ group snapshots.md reset sync rebuild
 group plan-estimate.md progress init
 group facts.md quiz learn mock challenge
 group answer-parsing.md quiz mock
+# The license shipped inside the plugin folder must match the root license (directory checklist).
+if ! cmp -s LICENSE $P/LICENSE; then echo "check-consistency: $P/LICENSE differs from the root LICENSE"; fail=1; fi
 v_manifest=$(python3 -c "import json;print(json.load(open('$P/.claude-plugin/plugin.json'))['version'])")
 v_market=$(python3 -c "import json;print([p for p in json.load(open('.claude-plugin/marketplace.json'))['plugins'] if p['name']=='gcp-cert-coach'][0].get('version',''))")
 v_seed=$(sed -n 's/^PLUGIN_VERSION = "\([^"]*\)".*/\1/p' $P/skills/init/scripts/build_seed.py)

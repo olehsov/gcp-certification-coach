@@ -4,6 +4,22 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-11-11
+
+Preparation for the Claude plugin directory, following the pre-submission checklist. No skill behavior changes.
+
+### Changed
+
+- Plugin README: new section "What this plugin runs, sends and fetches" (replaces `## Data`) that names the local seed script, every fetched host including Google Fonts for the tracker page, the optional browser check, what is stored, and that nothing is sent elsewhere and no credentials are handled. The bundled icon is shown with Markdown image syntax. The license section states MIT for code and CC BY 4.0 for content (packs and references), pointing to `LICENSE-CONTENT`.
+- Root README "Privacy and data" mentions the Google Fonts stylesheet and the local seed script. `CLAUDE.md` and `CHECKLIST.md` use the new section name.
+- Eval generator reads the plugin version from `plugin.json`; fixtures and two rubrics follow every version bump. Cases regenerated.
+- `scripts/check-consistency.sh` checks that `plugins/gcp-cert-coach/LICENSE` equals the root `LICENSE`.
+- Trackers published by 0.2.0 show the optional "new tracker page" notice once per session; say "rebuild" to update, data is untouched.
+
+### Build notes
+
+- Directory checklist audit (section N of `CHECKLIST.md`): all file, manifest, README, license and front matter rows pass. Open risks only the portal can show: plugin name availability, and a likely "name matches a known brand" hold for "GCP" and "Google Cloud" in the name. The name is kept.
+
 ## [0.2.0] - 2026-11-11
 
 Fixes from the manual test on claude.ai.

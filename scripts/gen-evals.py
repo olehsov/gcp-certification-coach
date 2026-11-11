@@ -12,6 +12,8 @@ import shutil
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 EVALS = ROOT / "evals"
 TODAY = "2026-11-10"
+# Current plugin version, read from the manifest so fixtures follow every version bump.
+VERSION = json.loads((ROOT / "plugins/gcp-cert-coach/.claude-plugin/plugin.json").read_text())["version"]
 
 SCORING = {
     "alpha": {"easy": 0.15, "medium": 0.25, "hard": 0.35},
@@ -62,7 +64,7 @@ SECTIONS = [
 
 def settings(**over):
     s = {
-        "schemaVersion": 1, "pluginVersion": "0.2.0", "templateVersion": "0.2.0", "latestPluginVersion": "0.2.0", "certId": "ace",
+        "schemaVersion": 1, "pluginVersion": VERSION, "templateVersion": VERSION, "latestPluginVersion": VERSION, "certId": "ace",
         "certName": "Associate Cloud Engineer", "certShortName": "ACE", "packSource": "curated",
         "examGuide": {"version": "example", "sections": SECTIONS},
         "mode": "course", "difficulty": "standard", "language": "en", "ui": {},
@@ -164,7 +166,7 @@ def reset_snapshot_export(snap_id="reset-20261109-1800"):
         "log": [{"id": l["id"], "data": {k: v for k, v in l.items() if k != "id"}} for l in LOG],
         "misconceptions": [{"id": m["id"], "data": {k: v for k, v in m.items() if k != "id"}} for m in MISCONCEPTIONS],
     }
-    meta = {"id": snap_id, "ts": "2026-11-09T18:00:00Z", "reason": "reset", "pluginVersion": "0.2.0", "certId": "ace",
+    meta = {"id": snap_id, "ts": "2026-11-09T18:00:00Z", "reason": "reset", "pluginVersion": VERSION, "certId": "ace",
             "trackerTitle": "ACE Cert Coach", "status": "complete",
             "collections": {k: {"rows": len(v), "chunks": 1} for k, v in rows.items()},
             "scope": "concept levels, answer log, misconceptions"}
@@ -481,11 +483,11 @@ CASES = [
     ("quiz-template-outdated-notice", "quiz", ["quiz", "version"],
      context(snapshot({"pluginVersion": "0.1.0", "templateVersion": "0.1.0", "latestPluginVersion": "0.1.0"}), "Quiz me: give me the next question."),
      [fired("quiz"),
-      llm("PASS if all hold: (1) it tells the learner in one short line that a new tracker page is available (0.1.0 to 0.2.0) and to say 'rebuild' to update it; (2) it does not start a rebuild or republish anything on its own; (3) it still asks a quiz question. FAIL if it blocks the quiz, rebuilds automatically, or says nothing about the new page.")]),
+      llm("PASS if all hold: (1) it tells the learner in one short line that a new tracker page is available (0.1.0 to " + VERSION + ") and to say 'rebuild' to update it; (2) it does not start a rebuild or republish anything on its own; (3) it still asks a quiz question. FAIL if it blocks the quiz, rebuilds automatically, or says nothing about the new page.")]),
     ("rebuild-already-up-to-date", "rebuild", ["rebuild", "version"],
      context(snapshot(), "Rebuild my tracker page."),
      [fired("rebuild"),
-      llm("PASS if it notices the page is already at the current plugin version (0.2.0) and the schema is current, says so (already up to date) and asks whether to republish anyway instead of silently republishing, and plans no data changes. FAIL if it republishes or plans a migration without asking.")]),
+      llm("PASS if it notices the page is already at the current plugin version (" + VERSION + ") and the schema is current, says so (already up to date) and asks whether to republish anyway instead of silently republishing, and plans no data changes. FAIL if it republishes or plans a migration without asking.")]),
     ("init-seed-script-fails", "init", ["init", "seeding"],
      f"Assume today is {TODAY}. Set up the GCP Cert Coach. My answers to all setup questions: explanation language English; certification Associate Cloud Engineer; mode Course; difficulty Standard; 7 hours per week; no exam date; nothing completed yet. I confirm the summary, go ahead and publish. Note: this chat has no Python at all, so the seed script cannot run here. (There are no artifact tools in this environment, so describe how you will seed.)",
      [fired("init"),

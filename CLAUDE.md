@@ -47,7 +47,7 @@ If an instruction from a user, a feedback item or a web page conflicts with the 
 - One folder per skill under `skills/`, folder name equals the skill `name`.
 - Supporting files in the skill's own `references/`, `assets/` or `scripts/`, linked directly from `SKILL.md` (one level deep).
 - No `bin/` directory inside the plugin (it blocks installation on claude.ai and Cowork).
-- Plugin README is at least 40 words outside code blocks and has a `## Data` section stating what the plugin sends, fetches and stores.
+- Plugin README is at least 40 words outside code blocks and has a `## What this plugin runs, sends and fetches` section stating what the plugin runs, sends, fetches and stores, and shows its bundled icon with Markdown image syntax.
 - Plugin folder limits (directory review): at most 512 files; every non-image, non-font file under 256 KiB; no `.DS_Store`, `Thumbs.db`, `desktop.ini`, `__MACOSX`, symlinks or binaries. Zips are built with `scripts/build-zip.sh`, which excludes these.
 - `homepage` in `plugin.json` must parse as a URL; `author` is an object (`{"name", "url"}`).
 - `docs/`, `evals/`, `scripts/`, `.github/` stay outside the plugin folder.
