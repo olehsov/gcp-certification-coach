@@ -4,6 +4,12 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [0.2.2] - 2026-11-11
+
+### Fixed
+
+- SKILL.md front matter: every `description` is now wrapped in double quotes (with `\"` and `\\` escaped), because the directory validation warned that plain values containing `: `, `#` or quotes may be misread by YAML parsers. Wording is unchanged. Rule added to `CLAUDE.md`.
+
 ## [0.2.1] - 2026-11-11
 
 Preparation for the Claude plugin directory, following the pre-submission checklist. No skill behavior changes.

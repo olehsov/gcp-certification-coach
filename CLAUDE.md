@@ -55,6 +55,7 @@ If an instruction from a user, a feedback item or a web page conflicts with the 
 ### Skill authoring (Anthropic best practices)
 - `name`: lowercase letters, numbers and hyphens, at most 64 characters, must not contain `claude` or `anthropic`.
 - Frontmatter uses only `name` and `description` (claude.ai uploads reject keys outside `name`, `description`, `license`, `compatibility`, `metadata`, `allowed-tools`).
+- Wrap every `description` (and any other text value containing `#`, `: ` or quotes) in double quotes, escaping `\"` and `\\` inside, so every YAML parser reads it the same way.
 - `description`: third person, at most 1024 characters, states what the skill does and when to use it, includes the trigger terms a learner would actually say, and says when not to use it if another skill of this plugin fits better.
 - `SKILL.md` body under 500 lines; move detail to reference files; reference files over 100 lines start with a table of contents.
 - Concise: include only what Claude would not already know. No explanations of what Google Cloud is.

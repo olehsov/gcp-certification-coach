@@ -1,6 +1,6 @@
 ---
 name: init
-description: Sets up GCP Certification Coach for one Google Cloud certification. Asks the explanation language, lists current Google Cloud certifications, builds the skill tree from the official Google Skills learning path (curated pack for Associate Cloud Engineer, generated beta pack for others), records mode, difficulty, weekly hours, exam date and what the learner already completed, then publishes a private tracker page with a database and prints the line to paste into Project instructions. Use when the learner says "start preparing for a Google Cloud certification", "set up the coach", "init", "choose a certification" or "create my tracker". Not for marking progress in an existing tracker (use progress), updating the tree from the live path (use sync) or refreshing the tracker page (use rebuild).
+description: "Sets up GCP Certification Coach for one Google Cloud certification. Asks the explanation language, lists current Google Cloud certifications, builds the skill tree from the official Google Skills learning path (curated pack for Associate Cloud Engineer, generated beta pack for others), records mode, difficulty, weekly hours, exam date and what the learner already completed, then publishes a private tracker page with a database and prints the line to paste into Project instructions. Use when the learner says \"start preparing for a Google Cloud certification\", \"set up the coach\", \"init\", \"choose a certification\" or \"create my tracker\". Not for marking progress in an existing tracker (use progress), updating the tree from the live path (use sync) or refreshing the tracker page (use rebuild)."
 ---
 
 # Init
@@ -66,7 +66,7 @@ When the learner disputes content or suggests a change, write `feedback/<timesta
 
 ## Version
 
-Plugin version: 0.2.1. The seeded settings record it as `pluginVersion`, `templateVersion` and `latestPluginVersion`.
+Plugin version: 0.2.2. The seeded settings record it as `pluginVersion`, `templateVersion` and `latestPluginVersion`.
 
 ## Privacy
 

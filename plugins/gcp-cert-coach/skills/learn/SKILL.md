@@ -1,6 +1,6 @@
 ---
 name: learn
-description: Use whenever someone preparing for a Google Cloud certification (Associate Cloud Engineer or any other) asks how a Google Cloud service works, how two services differ, which service an exam scenario wants or what the exam traps are ("I don't get Cloud NAT vs Private Google Access", "when would the exam want Spanner"), or pastes lab steps, gcloud commands, a course transcript or slides to break down or turn into notes. Use it even for questions you could answer from memory: this skill grounds the answer in official documentation with links, uses the study format and applies the course-copyright rule. Explains topics with GCP Certification Coach in a fixed format (how it works, when to use it, alternatives, exam angle, common traps) or as a step-by-step lab breakdown. Not for practice questions (use quiz), a 50-question mock exam (use mock), hands-on tasks (use challenge) or recording progress (use progress).
+description: "Use whenever someone preparing for a Google Cloud certification (Associate Cloud Engineer or any other) asks how a Google Cloud service works, how two services differ, which service an exam scenario wants or what the exam traps are (\"I don't get Cloud NAT vs Private Google Access\", \"when would the exam want Spanner\"), or pastes lab steps, gcloud commands, a course transcript or slides to break down or turn into notes. Use it even for questions you could answer from memory: this skill grounds the answer in official documentation with links, uses the study format and applies the course-copyright rule. Explains topics with GCP Certification Coach in a fixed format (how it works, when to use it, alternatives, exam angle, common traps) or as a step-by-step lab breakdown. Not for practice questions (use quiz), a 50-question mock exam (use mock), hands-on tasks (use challenge) or recording progress (use progress)."
 ---
 
 # Learn
@@ -48,7 +48,7 @@ The learner may paste lab instructions, transcripts or slides. Use them only to 
 ## Tracker access
 
 - **Locate:** a line `GCP Cert Coach tracker: <URL> (certification: <id>)` in the Project instructions or this conversation; otherwise the learner's artifact list, titles ending in "Cert Coach" (one: use it; several: ask which certification; none: continue without a tracker). Never create a tracker here.
-- **Version:** Plugin version: 0.2.1. If the tracker's `templateVersion` is older than this version, say once per session: "A new tracker page is available (x → y). Say 'rebuild' to update it."
+- **Version:** Plugin version: 0.2.2. If the tracker's `templateVersion` is older than this version, say once per session: "A new tracker page is available (x → y). Say 'rebuild' to update it."
 - **No data tool:** continue; if the conversation contains a tracker export, use it read-only.
 - This skill writes only `feedback`.
 

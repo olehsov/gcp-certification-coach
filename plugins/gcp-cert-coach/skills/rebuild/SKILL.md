@@ -1,6 +1,6 @@
 ---
 name: rebuild
-description: Updates the GCP Certification Coach tracker page to the current plugin version without touching learner data. Reads the current page and settings, migrates the tracker database when its schema version is older, and republishes the page template to the same artifact URL. Use when the learner says "rebuild", "update the tracker page", "the tracker looks outdated or broken", "the page shows old sections", after a plugin update, or when another skill reports an older schema version. Not for checking the learning path or exam guide for changes (use sync), resetting progress (use reset) or creating a tracker (use init).
+description: "Updates the GCP Certification Coach tracker page to the current plugin version without touching learner data. Reads the current page and settings, migrates the tracker database when its schema version is older, and republishes the page template to the same artifact URL. Use when the learner says \"rebuild\", \"update the tracker page\", \"the tracker looks outdated or broken\", \"the page shows old sections\", after a plugin update, or when another skill reports an older schema version. Not for checking the learning path or exam guide for changes (use sync), resetting progress (use reset) or creating a tracker (use init)."
 ---
 
 # Rebuild
@@ -42,7 +42,7 @@ A short plan, then a result: URL (unchanged), version before → after (page and
 ## Tracker access
 
 - **Locate:** a line `GCP Cert Coach tracker: <URL> (certification: <id>)` in the Project instructions or this conversation; otherwise the learner's artifact list, titles ending in "Cert Coach" (one: use it; several: ask which certification; none: ask for the URL or offer `/gcp-cert-coach:init`). Never create a tracker here.
-- **Version:** Plugin version: 0.2.1. Schema newer than 1: stop and ask the learner to update the plugin. Rebuild is the skill that fixes an older schema or template; it never asks the learner to rebuild.
+- **Version:** Plugin version: 0.2.2. Schema newer than 1: stop and ask the learner to update the plugin. Rebuild is the skill that fixes an older schema or template; it never asks the learner to rebuild.
 - **Writes:** pass the version you read for each document you update; on a version conflict re-read once and redo; if it fails again, stop and report.
 - **No artifact or data tool:** explain that rebuilding needs claude.ai or the Claude desktop app, and change nothing.
 
