@@ -23,7 +23,7 @@ URL = re.compile(r"https?://[^\s)\"'<>`\]]+")
 
 def files():
     out = subprocess.run(["git", "ls-files", "*.md", "*.yaml", "*.yml"], cwd=ROOT, capture_output=True, text=True, check=True).stdout
-    return [ROOT / f for f in out.split() if not f.startswith("docs/seed/")]
+    return [ROOT / f for f in out.split()]
 
 
 def check_url(url):

@@ -6,7 +6,7 @@ Legend: `[ ]` open · `[x]` done · `[~]` done with a deviation (explain in the 
 
 ## A. Preparation
 
-- [x] A1 Read PRD, ARCHITECTURE, all ADRs and CLAUDE.md — also docs/seed/* and BUILD_PROMPT.md
+- [x] A1 Read PRD, ARCHITECTURE, all ADRs and CLAUDE.md — the seed files and the build prompt (both removed from the repository before publishing; kept outside it)
 - [x] A2 Read the official docs listed in CLAUDE.md and note any rule that differs from these specs (update the specs, log in CHANGELOG) — CHANGELOG.md "Build notes"; CLAUDE.md updated (README `## Data`, file limits, frontmatter keys, relative paths on chat, eval command)
 - [x] A3 Studied the `productivity` plugin in `anthropics/knowledge-work-plugins` as a structural reference — relative `source`, object `author`, skills-only layout, page template shipped inside the plugin
 - [x] A4 Confirmed `gh` is authenticated and the repository name `gcp-certification-coach` is free on the owner's account — `gh auth status` ok (scopes repo, workflow); `gh repo view` → not found; author is the repository owner's public GitHub handle
@@ -70,7 +70,7 @@ Skill-specific:
 - [x] F3 Standard and Hard profiles complete — `profiles.standard` and `profiles.hard` complete (cap, intervals, decay, readiness gates, mock bands)
 - [x] F4 Verified on claude.ai that a skill can read its own `references/` and `assets/` (ADR 0006 build-time check); result noted here — manual test K2c passed: init read the pack and template from its own folder (curated ACE pack seeded, page published)
 
-## G. ACE pack (ARCHITECTURE §7, docs/seed/ace-path-snapshot.yaml)
+## G. ACE pack (ARCHITECTURE §7)
 
 - [x] G1 Path re-verified against the live Google Skills path; all activities present, including the three skill badges with their modules — path has 12 activities (9 courses + 3 skill badges), read in the built-in browser on 2026-11-10; badges: b1 4 labs, b2 6 labs, b3 5 labs (challenge lab last); differences from the seed applied (Google Skills hours, course 2 "Course Introduction" module, "Course Resources" modules, course 1 module renamed, course 6 architecture items)
 - [x] G2 Optional flags mirror the path — no activity is marked optional on the path → all `optional: false`
@@ -97,10 +97,10 @@ Skill-specific:
 ## J. Quality gates
 
 - [x] J1 `claude plugin validate ./plugins/gcp-cert-coach` passes — `--strict` passes for the plugin and the marketplace (Phase 8 gate)
-- [ ] J2 `claude plugin eval` passes and beats the baseline; results summarized in `evals/RESULTS.md` — v0.2.0: all 48 cases pass at least once after fixes (RESULTS §9); final full run is Phase C; earlier progress: run 1 with 0.77 vs without 0.39; targeted runs 2–4 (with-plugin only): all previously failing or changed cases now pass (learn-no-course-text fires learn; rebuild-migrate fixture fixed to a real schema-0 export); final full run pending; full run (with and without plugin) deferred until after the manual test, because its results may change the skills
+- [x] J2 `claude plugin eval` passes and beats the baseline; results summarized in `evals/RESULTS.md` — run 1 with-plugin 0.77 vs without 0.39; v0.2.0 full Sonnet run on the two-line fixture: 43 of 48 first time, 48 of 48 after fixes (RESULTS §10); full with/without comparison was not repeated for v0.2.0
 - [ ] J3 Descriptions tuned with the skill-creator skill for trigger accuracy (no false triggers between `quiz`, `mock`, `challenge`, `learn`) — measured once (valid run, probes OK): learn 1/8, quiz 2/8, challenge 2/8, mock 2/8 positives, 0 false triggers; below the 5/8 acceptance bar, so not [~]; tuning stopped by maintainer decision; mitigation shipped (second Project instructions line, explicit commands in README); decisive check is triggering in a real Project (K)
 - [ ] J4 `/skill-doctor` report reviewed; issues fixed or explained — progress: run once (~220–290 listing tokens per skill); decision pending the trigger re-run
-- [ ] J5 Tested with Haiku, Sonnet and Opus; notes in `evals/RESULTS.md` — progress: 5 key cases chosen (scoring x2, selection, destructive, mock verdict); first attempt stopped at a safe stop, not run yet; deferred until after the manual test
+- [~] J5 Tested with Haiku, Sonnet and Opus; notes in `evals/RESULTS.md` §10 — all three models call the skills with the two-line Project fixture and pass the scoring, selection and destructive cases; Haiku misses more LLM-judge rubric points (3 of 5 cases), so Sonnet is recommended for daily use and Opus for mocks. Full Sonnet run: 48 of 48 after fixes
 - [x] J6 `scripts/check-privacy.sh` passes (emails, claude.ai artifact URLs, qwiklabs, project-id and billing-account patterns, API keys, non-English text in skills and templates, personal denylist from `~/.config/gcp-cert-coach/denylist.txt` when present) — `--tracked` and `--history` clean with the denylist loaded; gitleaks over full history: no leaks found
 - [ ] J7 `.github/workflows/validate.yml` runs plugin validate, the privacy check and gitleaks on push and pull request — workflow written (validate --strict, privacy --tracked and --history, consistency incl. byte-identical tracker.html copies, gitleaks, folder limits); has never run because there is no remote yet; check at L3
 - [x] J8 All links in README and docs resolve — `scripts/check-links.py`: 182 external URLs → all 200, relative links resolve (repository URLs re-checked after publishing)

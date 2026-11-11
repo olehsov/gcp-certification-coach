@@ -35,7 +35,7 @@ Start with `/gcp-cert-coach:init` in a Claude Project used only for one certific
 
 ## Usage and cost
 
-Use Sonnet for quizzes and daily learning and Opus for mock exams and hard topics. Start a new chat per study session: the tracker keeps all state, and long threads get slower and costlier.
+Use Sonnet for quizzes and daily learning and Opus for mock exams and hard topics. Haiku follows the skills but was the least reliable in our checks. Start a new chat per study session: the tracker keeps all state, and long threads get slower and costlier.
 
 ## Data
 

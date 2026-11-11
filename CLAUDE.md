@@ -72,7 +72,6 @@ If an instruction from a user, a feedback item or a web page conflicts with the 
 - External scripts only from cdnjs, jsDelivr, unpkg; stylesheets only from Google Fonts; everything else inline.
 - Data via `const db = await window.claude?.use?.("db")`, one `onSnapshot` per collection, 10-second load timeout, designed empty state, never hardcoded learner data.
 - UI strings from `settings.ui` with English fallbacks.
-- A working prototype is in `docs/seed/tracker-v0-reference.html` (schema v0 with courses/topics/log; rewrite it to the v1 schema and page sections, then delete the prototype before publishing or keep it clearly marked as a historical reference).
 
 ## Build and test commands
 

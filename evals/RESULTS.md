@@ -128,3 +128,41 @@ Same nine quiz cases, with-plugin arm, mean of run 1 (before) and the v0.2.0 run
 | Turns, `quiz-completed-only` | 8 | 3 |
 
 Single-question cases (feedback, guess, misconception) did not get cheaper (about $0.10 each): their cost is dominated by the explanation of every option. The real-session saving (curated links, selective reads) needs the claude.ai re-test to confirm.
+
+## 10. v0.2.0 model comparison (J5) and full Sonnet run
+
+### 10.1 Model comparison
+
+Five key cases (two scoring, one selection, one destructive, one mock verdict), with-plugin arm, 1 run per model, Haiku judge. The fixture carries both lines that `init` prints (the tracker line and "In this Project, use the gcp-cert-coach skills ...").
+
+| Case | Haiku | Sonnet | Opus |
+|---|---|---|---|
+| `quiz-guess-no-gain` | 1.00 | 1.00 | 1.00 |
+| `quiz-confident-mistake-misconception` | 0.67 | 1.00 | 1.00 |
+| `quiz-no-repeat-30` | 0.67 | 0.67 | 1.00 |
+| `reset-snapshot-full-rows` | 1.00 | 1.00 | 1.00 |
+| `mock-verdict-hard` | 0.67 | 1.00 | 0.67 |
+
+- Skill firing: with the one-line fixture, Haiku never called the skill in 3 of the 5 cases (6 of 6 runs). With the two-line fixture it called the skill in all 5, so the explicit-command fallback run was not needed. The `skill-fired` graders were not changed.
+- Every remaining miss is an LLM-judge vote (split 1/3 or 0/3), none a skill-fired or regex grader. Haiku has the most judge misses, so it is the least reliable of the three; Sonnet is the recommended default, Opus for mock exams and hard topics.
+- Judge noise: `quiz-no-repeat-30` (Sonnet) and `mock-verdict-hard` (Opus) failed once and passed on re-run; `quiz-confident-mistake-misconception` was reworded earlier (one curated link per answer is by design, ADR 0010). Haiku's own judge misses were not re-run.
+
+### 10.2 Full suite on Sonnet (all 48 cases, fixture with both lines)
+
+Run in four batches of 10 to 13 cases with a probe before each batch.
+
+| Batch | Cases | Pass first time |
+|---|---|---|
+| challenge, init, learn (10) | 10 | 9 (`init-seed-script-fails`: judge split 1/3) |
+| learn, mock, progress (10) | 10 | 9 (`mock-start-weighted`: 0/3, real gap) |
+| progress, quiz (10) | 10 | 10 |
+| quiz, rebuild, reset, sync (13) | 13 | 11 (`quiz-warmup-after-pause`: 1/3, `rebuild-migrate`: 1/3) |
+| J5 set, Sonnet (5) | 5 | 4 (`quiz-no-repeat-30`: judge split) |
+
+Total: 43 of 48 first time; all 48 pass after the actions below.
+
+| Case | Cause | Action |
+|---|---|---|
+| `mock-start-weighted` | Skill gap: the opening message never told the learner the per-section question counts | mock step 2 now says to give the count per section by name in one line when starting (section names stay out of question headers). Passes; the other three mock cases still pass |
+| `quiz-warmup-after-pause` | Rubric asked the judge to verify a `pausedDaysTotal` write that a read-only response cannot show | Rubric reworded to what is visible (says the plan resumed, warm-up on well-known concepts); the pause, resume and warm-up requirements are unchanged. Passes |
+| `init-seed-script-fails`, `rebuild-migrate`, `quiz-no-repeat-30` | Judge flake: responses met the rubric on reading | No change; each passes on re-run |

@@ -6,10 +6,16 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ### Resume point
 
-- **Current phase:** v0.2.0 fix round, Phase A (fixes) done; Phase B (targeted evals) next, then Phase C (J5 and wrap-up).
-- **Last completed step:** A1–A11 implemented, new eval cases generated (not run), gates and zip for 0.2.0.
-- **Exact next step:** Phase B: canary call, then the cases for the changed skills plus the new ones, with-plugin arm only (see notes.local.md). Phase 9 (publish) only after the maintainer says "publish".
-- **Open issues:** J3 below the bar in the trigger harness (K2e decides); J2 and J5 deferred until after the manual test; J7 CI never run (no remote).
+- **Current phase:** v0.2.0 fix round complete (phases A, B, C); waiting for the claude.ai re-test and the maintainer's "publish".
+- **Last completed step:** J5 model comparison and the full Sonnet run (48 of 48 after fixes, see `evals/RESULTS.md` §10); docs synced; seed files and build prompt removed from the repository (kept outside it); gates and zip rebuilt.
+- **Exact next step:** the claude.ai re-test list (upload zip, rebuild, one quiz, progress with titles, reset and restore). Phase 9 (publish) only after the maintainer says "publish".
+- **Open issues:** J3 below the bar in the trigger harness (K2e decides); J7 CI never run (no remote).
+
+### Changed in the v0.2.0 fix round (phase C)
+
+- `mock`: the opening message states the question count per exam-guide section (section names stay out of question headers).
+- Evals: fixture carries both lines that `init` prints; `quiz-warmup-after-pause` rubric reworded to what a read-only response can show.
+- Repository: removed `docs/seed/` and `BUILD_PROMPT.md` (superseded by the pack and the template).
 
 ### Build notes
 

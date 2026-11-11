@@ -208,7 +208,7 @@ Design documents: [PRD](docs/PRD.md), [architecture](docs/ARCHITECTURE.md), [dec
 
 ## Usage and cost
 
-- Use Sonnet for quizzes and daily learning, and Opus for mock exams and hard topics.
+- Use Sonnet for quizzes and daily learning, and Opus for mock exams and hard topics. Haiku follows the skills but was the least reliable in our checks.
 - Start a new chat for each study session. All state lives in the tracker, so nothing is lost, and long threads make every turn slower and costlier.
 - Quizzes cite the curated documentation links by default and fetch a page only when needed, which keeps sessions fast.
 - When the tracker page falls behind the plugin, the coach and the page tell you; say "rebuild" to update it (your data is untouched).

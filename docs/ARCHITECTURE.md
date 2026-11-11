@@ -74,6 +74,8 @@ gcp-certification-coach/
 │       │   ├── sync/        SKILL.md · references/
 │       │   ├── rebuild/     SKILL.md · references/ (migrations)
 │       │   └── reset/       SKILL.md
+│       ├── assets/
+│       │   └── icon.png                  # original plugin icon (no third-party marks), referenced by plugin.json
 │       ├── README.md
 │       └── LICENSE
 ├── docs/

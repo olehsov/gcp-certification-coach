@@ -332,7 +332,7 @@ CASES = [
     ("quiz-warmup-after-pause", "quiz", ["quiz", "pause"],
      context(snapshot({"paused": {"since": "2026-10-25"}}), "Let's do a quiz."),
      [fired("quiz"),
-      llm("PASS if the response notices the plan is paused since 2026-10-25 (16 days, more than 7), resumes it automatically (ending the pause and adding the paused days to pausedDaysTotal), and starts with a warm-up on the learner's highest-level concepts (e.g. Resource hierarchy at 62). FAIL if it ignores the pause or asks the learner to unpause manually first.")]),
+      llm("PASS if the response notices the plan is paused since 2026-10-25 (16 days, more than 7), resumes it automatically (it says the plan resumed; in read-only mode it may say the resume would be recorded), and starts a warm-up (shorter, scored normally) with a first question on a topic the learner already knows well (Resource hierarchy or IAM, the highest levels in the export). FAIL if it ignores the pause, asks the learner to unpause manually first, or starts on a concept the learner has not answered before.")]),
     ("quiz-uncompleted-warning", "quiz", ["quiz", "selection"],
      context(snapshot(), "Quiz me on VPC networking."),
      [fired("quiz"),
